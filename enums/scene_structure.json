@@ -1,0 +1,119 @@
+{
+  "domain": "scene_structure",
+  "description": "Enumerations for beat types, scene functions, dramatic polarity, event types, want outcomes, causal roles, and stakes domains.",
+  "enums": {
+    "beat_type": {
+      "description": "The story-structural beat category — where this scene falls in the macro narrative arc.",
+      "values": [
+        { "value": "opening_image", "definition": "First scene: establishes the before-state of the story world and protagonist.", "example_usage": "Snyder beat 1." },
+        { "value": "status_quo", "definition": "World-as-it-is before the story disrupts it; establishes normalcy.", "example_usage": "Scenes immediately after opening that confirm the established world." },
+        { "value": "inciting_incident", "definition": "The event that irreversibly disrupts the status quo and launches the central problem.", "example_usage": "The call to adventure; the murder; the discovery." },
+        { "value": "call_to_adventure", "definition": "The protagonist is explicitly invited or confronted with the possibility of the story's quest.", "example_usage": "Hero is asked to undertake a mission; invitation arrives." },
+        { "value": "refusal", "definition": "The protagonist hesitates or refuses the call, showing the stakes of crossing the threshold.", "example_usage": "The hero finds reasons to stay; initial resistance." },
+        { "value": "first_threshold", "definition": "The protagonist commits irreversibly to the main action; no turning back.", "example_usage": "End of Act 1 in three-act structure; the point of no return." },
+        { "value": "rising_action", "definition": "Escalating complications as the protagonist pursues their want against opposition.", "example_usage": "Standard mid-story scenes." },
+        { "value": "midpoint", "definition": "A false victory, false defeat, or revelation that shifts the stakes and raises the question.", "example_usage": "Structural midpoint; often a revelation or reversal." },
+        { "value": "dark_night", "definition": "The protagonist's lowest point; all seems lost; the interior crisis before the climax.", "example_usage": "All Is Lost / Dark Night of the Soul beat." },
+        { "value": "climax", "definition": "The highest-tension confrontation where the central question is definitively answered.", "example_usage": "Final battle; decisive confrontation; the point of maximum tension." },
+        { "value": "resolution", "definition": "Immediate aftermath of climax; the old question is settled and the new world is visible.", "example_usage": "The dénouement begins." },
+        { "value": "denouement", "definition": "Final restoration of story world; loose ends resolved; the after-state established.", "example_usage": "Epilogue; final scenes after resolution." },
+        { "value": "flashback", "definition": "A scene that occurs outside the main timeline and depicts earlier story-world events.", "example_usage": "A memory scene; backstory dramatized." },
+        { "value": "flashforward", "definition": "A scene that occurs outside the main timeline and depicts later story-world events.", "example_usage": "A prologue from the end; anticipatory glimpse." },
+        { "value": "interlude", "definition": "A scene that pauses the main narrative thrust; may develop character, theme, or setting without advancing the plot.", "example_usage": "A quiet scene between two action beats; a thematic pause." }
+      ]
+    },
+    "scene_function": {
+      "description": "The primary dramatic purpose of the scene (what it accomplishes for the story).",
+      "values": [
+        { "value": "revelation", "definition": "Establishes or reveals a fact that changes the reader's or a character's understanding.", "example_usage": "The detective reveals the murderer; the character discovers the truth." },
+        { "value": "confrontation", "definition": "Two or more characters come into direct conflict of will, value, or desire.", "example_usage": "A debate, fight, argument, or face-to-face opposition." },
+        { "value": "decision", "definition": "A character makes a significant choice that shapes the plot and reveals character.", "example_usage": "The protagonist chooses to go or stay; commits to a course of action." },
+        { "value": "relationship_shift", "definition": "The relationship between two characters changes fundamentally.", "example_usage": "A friendship breaks; a romance begins; trust is extended or withdrawn." },
+        { "value": "world_building", "definition": "Establishes or deepens the story world without primarily advancing plot.", "example_usage": "A scene showing the rules of a society, magic system, or environment." },
+        { "value": "setback", "definition": "The protagonist's plan or goal suffers a significant failure or reversal.", "example_usage": "The plan fails; help is withdrawn; an ally turns enemy." },
+        { "value": "discovery", "definition": "A character, the reader, or both learn something new that wasn't previously accessible.", "example_usage": "A secret discovered; a document found; a connection made." },
+        { "value": "transit", "definition": "Movement from one scene location, emotional state, or narrative position to another.", "example_usage": "Travel scenes; transitions between major sequences." }
+      ]
+    },
+    "scene_polarity": {
+      "description": "The emotional/dramatic charge of the scene — whether it moves the protagonist's circumstances in a positive or negative direction on one or more axes.",
+      "values": [
+        { "value": "positive_to_positive", "definition": "Scene begins well for the protagonist and ends better." },
+        { "value": "positive_to_negative", "definition": "Scene begins well and ends badly — a reversal downward." },
+        { "value": "negative_to_positive", "definition": "Scene begins badly and ends better — a reversal upward." },
+        { "value": "negative_to_negative", "definition": "Scene begins badly and ends worse — deepening of trouble." },
+        { "value": "neutral_to_positive", "definition": "Scene begins at an established baseline and ends on a positive note." },
+        { "value": "neutral_to_negative", "definition": "Scene begins at baseline and ends badly." },
+        { "value": "ambiguous", "definition": "The shift is uncertain, contested, or depends on whose perspective is used." },
+        { "value": "revelation_reversal", "definition": "The shift results from a revelation that reframes what has already happened." },
+        { "value": "positive_external_negative_internal", "definition": "External circumstances improve while internal state worsens (or vice versa)." },
+        { "value": "negative_external_positive_internal", "definition": "External circumstances worsen while the character grows, resolves, or achieves clarity." },
+        { "value": "double_twist", "definition": "Two reversals occur within the scene: positive → negative → positive or inverse." },
+        { "value": "ironic_positive", "definition": "Technically positive outcome that carries a hidden negative cost or implication." },
+        { "value": "ironic_negative", "definition": "Technically negative outcome that carries a hidden positive implication." },
+        { "value": "anticlimax", "definition": "An expected reversal does not occur; tension deflated without resolution." },
+        { "value": "escalation", "definition": "No reversal; the ongoing negative or positive condition intensifies." },
+        { "value": "establishment", "definition": "No reversal; the scene establishes conditions for a later scene to exploit." },
+        { "value": "equilibrium_maintained", "definition": "The existing balance holds despite pressure to change it." },
+        { "value": "false_positive", "definition": "Appears positive but contains the seed of a coming reversal." },
+        { "value": "false_negative", "definition": "Appears negative but signals the approach of reversal upward." },
+        { "value": "sacrifice", "definition": "The protagonist achieves one value by surrendering another." },
+        { "value": "pyrrhic_victory", "definition": "The protagonist wins the scene's external conflict but at unsustainable cost." },
+        { "value": "moral_victory_material_defeat", "definition": "The protagonist loses materially but wins morally or internally." },
+        { "value": "moral_defeat_material_victory", "definition": "The protagonist wins materially but at a moral or internal cost." },
+        { "value": "bittersweet", "definition": "The scene ends with mixed valence: significant gain and significant loss simultaneously." }
+      ]
+    },
+    "event_type": {
+      "description": "The grammatical type of event in a Canonical Summary scene turn — what kind of thing happened.",
+      "values": [
+        { "value": "action", "definition": "A character performs a physical or behavioral action.", "example_usage": "'Gregor crawled to the door.'" },
+        { "value": "decision", "definition": "A character makes a choice that shapes subsequent events.", "example_usage": "'Elizabeth refused the offer.'" },
+        { "value": "revelation", "definition": "New information is made available (to a character, the reader, or both).", "example_usage": "'Grete discovered the furniture moving.'" },
+        { "value": "dialogue_exchange", "definition": "A significant verbal exchange between characters.", "example_usage": "'Darcy declared his admiration.'" },
+        { "value": "internal_shift", "definition": "A character's internal state changes — emotion, belief, resolve.", "example_usage": "'Her contempt hardened to resolve.'" },
+        { "value": "relationship_change", "definition": "The relationship between two characters changes.", "example_usage": "'The family ceased addressing Gregor by name.'" },
+        { "value": "plan_or_attempt", "definition": "A character formulates or executes a plan.", "example_usage": "'The lodgers devised a strategy to avoid Gregor.'" },
+        { "value": "consequence", "definition": "A direct result or outcome of a prior event.", "example_usage": "'The family's finances collapsed.'" },
+        { "value": "obstacle", "definition": "A force or entity impedes the character's want.", "example_usage": "'The father blocked the doorway.'" },
+        { "value": "complication", "definition": "An unexpected development complicates the existing situation.", "example_usage": "'The three lodgers threatened to break the lease.'" },
+        { "value": "world_event", "definition": "An event in the story world not driven by a specific character's agency.", "example_usage": "'The snow began to fall.'" }
+      ]
+    },
+    "want_outcome": {
+      "description": "The result of the focalizer's scene-level want at the end of the scene.",
+      "values": [
+        { "value": "achieved", "definition": "The character fully achieved what they wanted in this scene." },
+        { "value": "partially_achieved", "definition": "The character achieved some but not all of their scene want." },
+        { "value": "failed", "definition": "The character did not achieve their scene want." },
+        { "value": "deferred", "definition": "The want was not resolved; it carries over to subsequent scenes." },
+        { "value": "redirected", "definition": "The character abandoned or transformed their want during the scene." },
+        { "value": "irrelevant", "definition": "Events made the original want moot or impossible." }
+      ]
+    },
+    "causal_role": {
+      "description": "The scene's causal position in the narrative chain — does it set up, follow from, or stand independently?",
+      "values": [
+        { "value": "setup", "definition": "This scene plants a cause whose effect will arrive in a later scene.", "example_usage": "A Chekhov's gun scene; an exposition scene that makes later events possible." },
+        { "value": "payoff", "definition": "This scene delivers the effect of a cause planted in an earlier scene.", "example_usage": "The gun fired; the promise kept or broken; the setup fulfilled." },
+        { "value": "complication", "definition": "This scene introduces a factor that makes the existing situation more difficult.", "example_usage": "A new obstacle; an unexpected reversal; an escalation." },
+        { "value": "resolution", "definition": "This scene settles or closes an open question, conflict, or complication.", "example_usage": "A problem solved; a conflict ended; a decision made." },
+        { "value": "standalone", "definition": "This scene does not primarily function as setup or payoff for other scenes.", "example_usage": "A character study scene; a world-building scene." },
+        { "value": "simultaneous", "definition": "This scene occurs in parallel with events in another scene thread.", "example_usage": "Multi-POV narrative; B-thread scene." }
+      ]
+    },
+    "stakes_domain": {
+      "description": "The category of value at risk in this scene.",
+      "values": [
+        { "value": "physical", "definition": "Physical safety, health, survival, or bodily integrity at risk.", "example_usage": "A fight; an illness; a dangerous journey." },
+        { "value": "psychological", "definition": "Mental health, emotional stability, sanity, or sense of self at risk.", "example_usage": "A psychological crisis; identity threat; emotional breakdown." },
+        { "value": "social", "definition": "Reputation, relationships, community standing, or social belonging at risk.", "example_usage": "A scandal; a breakup; social exile." },
+        { "value": "moral", "definition": "The character's values, integrity, or ethical commitments are at risk.", "example_usage": "A temptation to compromise; a moral dilemma; a test of character." },
+        { "value": "financial", "definition": "Money, property, economic security, or livelihood at risk.", "example_usage": "A bankruptcy; a business deal; a theft." },
+        { "value": "professional", "definition": "Career, status, achievement, or professional identity at risk.", "example_usage": "A promotion; a dismissal; a professional test." },
+        { "value": "relational", "definition": "A specific important relationship at risk.", "example_usage": "A friendship threatened; a marriage at a turning point; a family bond strained." },
+        { "value": "existential", "definition": "Meaning, purpose, fundamental beliefs, or the character's sense of the world at risk.", "example_usage": "A crisis of faith; a philosophical reckoning; confrontation with mortality." }
+      ]
+    }
+  }
+}

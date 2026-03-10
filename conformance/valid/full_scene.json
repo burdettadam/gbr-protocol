@@ -1,0 +1,86 @@
+{
+  "$schema": "https://gbr-protocol.dev/schemas/scene-card.schema.json",
+  "scene_id": "conformance-full-s03",
+  "book_id": "conformance-test-full",
+  "chapter": 3,
+  "beat": "first_threshold",
+  "pov": "third_limited",
+  "focalizer": "elena",
+  "scene_function": "decision",
+  "scene_polarity": "negative_to_positive",
+  "narrative_order": "chronological",
+  "duration_mode": "scene",
+  "frequency": "singulative",
+  "time_of_day": "evening",
+  "setting_ref": "the_crossing",
+  "setting_type": "exterior_liminal",
+  "spatial_structure": "threshold",
+  "atmosphere": "liminal",
+  "territory_type": "neutral_ground",
+  "causal_role": "setup",
+  "stakes_domain": "existential",
+  "beat_sequence": 3,
+  "tone": "tense",
+  "consciousness_mode": "narrated_monologue",
+  "psychic_distance": 4,
+  "focalization_type": "internal_fixed",
+  "diegetic_level": "intradiegetic",
+  "character_states": [
+    {
+      "character_ref": "elena",
+      "pov_role": "focalizer",
+      "primary_emotion": "fear",
+      "masked_emotion": "determination",
+      "drive_model": "wound",
+      "want": "elena wants to cross the border before the gates close",
+      "tactic": "assertion",
+      "wound_activation": true,
+      "trigger_type": "want_threat",
+      "arc_stage": "first_threshold"
+    },
+    {
+      "character_ref": "marco",
+      "pov_role": "participant",
+      "primary_emotion": "anxiety",
+      "want": "marco wants to convince elena to stay",
+      "tactic": "appeal_to_emotion"
+    }
+  ],
+  "motifs": ["threshold", "water"],
+  "symbols": ["the_locked_gate"],
+  "iceberg_proportion": 0.7,
+  "subtext_load": "high",
+  "canonical_summary": {
+    "chapter": 3,
+    "scene": 1,
+    "location": "The Crossing",
+    "time": "evening",
+    "focalizer": "elena",
+    "want": "elena wants to cross the border before the gates close",
+    "scene_turns": [
+      {
+        "event_type": "dialogue_exchange",
+        "agent": "marco",
+        "verb": "pleads",
+        "patient": "elena",
+        "result": "elena hesitates"
+      },
+      {
+        "event_type": "internal_shift",
+        "agent": "elena",
+        "verb": "resolves",
+        "patient": "herself",
+        "result": "elena decides to cross regardless of the cost"
+      },
+      {
+        "event_type": "action",
+        "agent": "elena",
+        "verb": "steps_through",
+        "patient": "the gate",
+        "result": "the threshold is crossed; return is impossible"
+      }
+    ],
+    "outcome": "achieved",
+    "delta": "Elena has irrevocably committed to the journey. Marco is left behind. The wound of abandonment she carries is now the wound she inflicts."
+  }
+}

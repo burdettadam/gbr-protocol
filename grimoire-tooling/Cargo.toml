@@ -1,0 +1,72 @@
+[package]
+name = "grimoire-tooling"
+version = "0.1.0"
+edition = "2021"
+description = "Grimoire authoring-system tooling: gate checks, training pipeline, story generation"
+license = "MIT"
+
+# This crate provides the Grimoire writing system's authoring tools on top of
+# the stable GBR protocol types. It depends on `gbr-types` for all protocol-
+# level constructs and adds: gate system, sub-phase DAG, LLM training pipeline,
+# story recipe, and optional PyO3 Python bindings.
+
+[lib]
+name = "grimoire_tooling"
+crate-type = ["cdylib", "rlib"]
+
+[[bin]]
+name = "grimoire-validate-catalogs"
+path = "src/bin/validate_catalogs.rs"
+
+[[bin]]
+name = "grimoire-export-training"
+path = "src/bin/export_training.rs"
+
+[[bin]]
+name = "grimoire-gate-check"
+path = "src/bin/gate_check.rs"
+
+[[bin]]
+name = "grimoire-generate"
+path = "src/bin/generate_story.rs"
+
+[[bin]]
+name = "grimoire-ontology-drift-check"
+path = "src/bin/ontology_drift_check.rs"
+
+[[bin]]
+name = "grimoire-ontology-consistency-check"
+path = "src/bin/ontology_consistency_check.rs"
+
+[[bin]]
+name = "grimoire-export-owl"
+path = "src/bin/export_owl.rs"
+
+[[bin]]
+name = "grimoire-export-schemas"
+path = "src/bin/export_protocol_schemas.rs"
+
+[dependencies]
+gbr-types = { path = "../reference/rust" }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+schemars = { version = "0.8", features = ["derive", "indexmap2"] }
+strum = { version = "0.26", features = ["derive"] }
+strum_macros = "0.26"
+serde_yaml = "0.9"
+thiserror = "1"
+indexmap = { version = "2", features = ["serde"] }
+regex = "1"
+chrono = { version = "0.4", default-features = false, features = ["clock", "std"] }
+rand = "0.8"
+
+# PyO3 — optional, enabled via feature flag
+pyo3 = { version = "0.21", features = ["extension-module", "abi3-py310"], optional = true }
+pythonize = { version = "0.21", optional = true }
+
+[features]
+default = []
+python = ["pyo3", "pythonize"]
+
+[dev-dependencies]
+pretty_assertions = "1"

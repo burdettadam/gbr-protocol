@@ -1,0 +1,9 @@
+{
+  "error_type": "invalid_enum_value",
+  "field": "pov",
+  "invalid_value": "FIRST_PERSON_OBJECTIVE",
+  "document_type": "scene_card",
+  "conformance_level": 1,
+  "message": "The value 'FIRST_PERSON_OBJECTIVE' is not a valid pov_type enum value. Enum values are case-sensitive and snake_case. Valid values include: first_person, second_person, third_limited, third_omniscient, third_objective.",
+  "spec_reference": "SPECIFICATION.md §7.2, enums/narrative_voice.json"
+}

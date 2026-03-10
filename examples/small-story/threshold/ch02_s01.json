@@ -1,0 +1,147 @@
+{
+  "$schema": "https://gbr-protocol.dev/schemas/v0/scene-card.schema.json",
+  "_comment": "threshold ch02_s01 — Climax and Resolution. Nadia sits in the garden at dusk and postpones the sale.",
+
+  "scene_id": "threshold_ch02_s01",
+  "book_id": "threshold",
+  "chapter": 2,
+  "scene_number_in_chapter": 1,
+
+  "narrative_time": {
+    "order": "chronological",
+    "duration_mode": "scene",
+    "frequency": "singulative"
+  },
+
+  "beat": "climax",
+  "scene_function": "decision",
+
+  "pov": "third_limited",
+  "focalization_type": "internal_fixed",
+  "pov_role": "participant",
+  "focalizer": "nadia",
+  "diegetic_level": "intradiegetic",
+  "consciousness_mode": "narrated_monologue",
+  "psychic_distance": 2,
+  "narrator_reliability": "reliable",
+  "_narrator_reliability_note": "The narrator is reliable; Nadia is not. She makes a decision she cannot name. The narrator knows what Nadia is doing; Nadia thinks she is postponing logistics. The dramatic irony is closed-loop: reader and narrator share it; focalizer does not.",
+
+  "setting": {
+    "location": "garden",
+    "time_of_day": "dusk",
+    "setting_type": "exterior_private",
+    "atmosphere": "liminal",
+    "spatial_structure": "bounded",
+    "territory_type": "neutral_ground",
+    "_territory_note": "The garden is 'neutral_ground' — neither Nadia's space (she lived indoors) nor Robert's (he worked). It is where both of them were permitted to be without claiming. It is the only space in the property where nothing needs to be decided about."
+  },
+
+  "tone": "tender",
+
+  "canonical_summary": {
+    "want": "To call the estate agent and confirm the 48-hour valuation schedule",
+    "obstacle": "The journal is in her lap. She has read the same entry four times. The number pulls up; she does not dial.",
+    "scene_polarity": "positive_to_positive",
+    "_polarity_note": "Opens with Nadia in a quiet state — the grief has cracked open enough to let light through. Closes in the same quiet, but with an action taken. The polarity remains 'positive' by literary fiction standards: not resolved, but in motion.",
+    "outcome": "redirected",
+    "_outcome_note": "Nadia wanted to sell the house in 48 hours. She calls the estate agent and postpones. She does not say she is keeping the house — she says she needs 'a few more weeks.' This is the maximum arc movement the story can justify. The wound is cracked, not healed.",
+    "delta": "Nadia has no conscious explanation for what she has done. She knows she called; she knows she postponed; she knows she is holding her father's journal. The reader has an explanation. Nadia does not. This is the story's closing irony: the woman who prided herself on logic acts entirely from feeling, and cannot see it.",
+    "iceberg_proportion": 0.80,
+    "subtext_load": 0.85,
+    "scene_turns": [
+      {
+        "turn_number": 1,
+        "active_character": "nadia",
+        "verb": "sits",
+        "target": "garden_bench",
+        "emotional_state": "grief",
+        "masked_emotion": null,
+        "tactic": null,
+        "event_type": "action",
+        "significance": "satellite",
+        "_note": "No mask left. This is the first satellite in the story where Nadia is not performing control."
+      },
+      {
+        "turn_number": 2,
+        "active_character": "nadia",
+        "verb": "re-reads",
+        "target": "journal_entry_1987",
+        "emotional_state": "grief",
+        "masked_emotion": null,
+        "tactic": null,
+        "event_type": "action",
+        "significance": "satellite",
+        "_note": "Fourth time reading. The act is now a rite. She is not looking for new information; she is staying with it."
+      },
+      {
+        "turn_number": 3,
+        "active_character": "nadia",
+        "verb": "calls",
+        "target": "estate_agent",
+        "emotional_state": "grief",
+        "masked_emotion": null,
+        "tactic": "disengagement",
+        "event_type": "decision",
+        "significance": "kernel",
+        "_note": "She calls with the intention of confirming. The narrator does not explain the shift — it simply happens. Nadia says 'I need a few more weeks.' The estate agent agrees."
+      },
+      {
+        "turn_number": 4,
+        "active_character": "nadia",
+        "verb": "remains",
+        "target": "garden",
+        "emotional_state": "grief",
+        "masked_emotion": null,
+        "tactic": null,
+        "event_type": "action",
+        "significance": "kernel",
+        "_note": "She does not re-enter the house. The scene closes with her still in the garden as the light goes. The journal is in her lap. The key is in her pocket. She is staying without having decided to stay."
+      }
+    ]
+  },
+
+  "character_states": [
+    {
+      "character_id": "nadia",
+      "role_in_scene": "focalizer",
+      "arc_type": "positive_change",
+      "drive_model": "wound",
+      "emotion": "grief",
+      "masked_emotion": null,
+      "tactic": null,
+      "epistemic_state": {
+        "knowledge_objects": [
+          {
+            "fact": "she has postponed the sale",
+            "known_to_character": true,
+            "certainty": 1.0
+          },
+          {
+            "fact": "she has decided to stay",
+            "known_to_character": false,
+            "certainty": 0.0,
+            "_note": "Nadia does not know she has decided to stay. She believes she has made a logistical deferral. This epistemic gap is the story's final irony."
+          },
+          {
+            "fact": "why she has not re-entered the house",
+            "known_to_character": false,
+            "certainty": 0.0
+          }
+        ]
+      },
+      "arc_position": "transformation_complete",
+      "_arc_position_note": "The positive_change arc is complete in the sense that the pivot has happened — not in the sense that healing is complete. Literary fiction terminates at the turn, not the resolution."
+    }
+  ],
+
+  "causal_role": "payoff",
+  "stakes_domain": ["relational", "psychological"],
+  "motif_tags": ["the_key", "silence", "smallness", "the_journal"],
+
+  "theory_notes": {
+    "booth": "Closed dramatic irony: the narrator and reader share knowledge Nadia lacks. She believes she is deferring logistics; the reader understands she is choosing to grieve. Neither narrator nor reader corrects her — the irony is left intact as the story closes.",
+    "genette_frequency": "The re-reading of the journal entry (fourth time) is singulative in narration but iterative in Nadia's experience. The current scene narrates the fourth instance explicitly to foreground the shift from reading-for-information to reading-as-ritual.",
+    "hemingway": "The highest iceberg proportion in the story (0.80). What is submerged: the full weight of Nadia's grief, forty years of silence between father and daughter, the choice she has made without knowing she made it. What surfaces: she calls, she sits, she stays.",
+    "encoding_guidance": "When a character makes a decision they cannot name, encode the focalizer's epistemic_state with certainty=0.0 for the actual decision fact. This forces the system to distinguish between the action layer (decision logged) and the character layer (unknown to character). The delta should name the irony explicitly for training signal clarity."
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "$schema": "https://gbr-protocol.dev/schemas/registry.schema.json",
+  "book_id": "conformance-test-minimal",
+  "characters": {
+    "protagonist": {
+      "name": "Unnamed Protagonist",
+      "archetype": "hero",
+      "role": "protagonist"
+    }
+  },
+  "settings": {},
+  "relationships": [],
+  "want_vocabulary": {}
+}

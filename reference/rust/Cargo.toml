@@ -1,0 +1,33 @@
+[package]
+name = "gbr-types"
+version = "0.1.0"
+edition = "2021"
+description = "Protocol-core types for the Grimoire Book Representation (GBR) Protocol"
+license = "MIT"
+
+# This crate exports only the stable, protocol-level types: enums, entities,
+# catalogs, ontology, tags, voice, and constraints. It has no dependency on
+# the Grimoire writing system tooling (gates, training, pipeline, PyO3).
+#
+# External consumers who want only the schema-level type system should depend
+# on this crate. Consumers who also need the Grimoire authoring tools should
+# depend on `grimoire-tooling` (which re-exports this crate).
+
+[lib]
+name = "gbr_types"
+crate-type = ["rlib"]
+
+[dependencies]
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+schemars = { version = "0.8", features = ["derive", "indexmap2"] }
+strum = { version = "0.26", features = ["derive"] }
+strum_macros = "0.26"
+serde_yaml = "0.9"
+thiserror = "1"
+indexmap = { version = "2", features = ["serde"] }
+regex = "1"
+chrono = { version = "0.4", default-features = false, features = ["clock", "std"] }
+
+[dev-dependencies]
+pretty_assertions = "1"

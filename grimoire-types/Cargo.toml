@@ -2,63 +2,26 @@
 name = "grimoire-types"
 version = "0.1.0"
 edition = "2021"
-description = "Strongly-typed data model for the Grimoire writing system"
+description = "Backward-compatible facade re-exporting gbr-types and grimoire-tooling"
 license = "MIT"
+
+# This crate is a backward-compatibility shim. New code should depend on
+# either `gbr-types` (protocol-core only) or `grimoire-tooling` (full stack).
+# This crate re-exports both so that existing code using `grimoire_types::`
+# continues to work without changes.
 
 [lib]
 name = "grimoire_types"
-crate-type = ["cdylib", "rlib"]
-
-[[bin]]
-name = "grimoire-validate-catalogs"
-path = "src/bin/validate_catalogs.rs"
-
-[[bin]]
-name = "grimoire-export-training"
-path = "src/bin/export_training.rs"
-
-[[bin]]
-name = "grimoire-gate-check"
-path = "src/bin/gate_check.rs"
-
-[[bin]]
-name = "grimoire-generate"
-path = "src/bin/generate_story.rs"
-
-[[bin]]
-name = "grimoire-ontology-drift-check"
-path = "src/bin/ontology_drift_check.rs"
-
-[[bin]]
-name = "grimoire-ontology-consistency-check"
-path = "src/bin/ontology_consistency_check.rs"
-
-[[bin]]
-name = "grimoire-export-owl"
-path = "src/bin/export_owl.rs"
+crate-type = ["rlib"]
 
 [dependencies]
-serde = { version = "1", features = ["derive"] }
-serde_json = "1"
-schemars = { version = "0.8", features = ["derive", "indexmap2"] }
-strum = { version = "0.26", features = ["derive"] }
-strum_macros = "0.26"
-serde_yaml = "0.9"
-thiserror = "1"
-indexmap = { version = "2", features = ["serde"] }
-regex = "1"
-chrono = { version = "0.4", default-features = false, features = ["clock", "std"] }
-rand = "0.8"
-
-# PyO3 — optional, enabled via feature flag so the crate can be used
-# as a pure Rust library without Python.
-pyo3 = { version = "0.21", features = ["extension-module", "abi3-py310"], optional = true }
-# pythonize: converts serde-serializable Rust values into Python objects
-pythonize = { version = "0.21", optional = true }
+gbr-types = { path = "../reference/rust" }
+grimoire-tooling = { path = "../grimoire-tooling" }
 
 [features]
 default = []
-python = ["pyo3", "pythonize"]
+python = ["grimoire-tooling/python"]
 
 [dev-dependencies]
 pretty_assertions = "1"
+

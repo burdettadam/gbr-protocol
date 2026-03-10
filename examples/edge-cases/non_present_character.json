@@ -1,0 +1,136 @@
+{
+  "$schema": "https://gbr-protocol.dev/schemas/v0/scene-card.schema.json",
+  "_comment": "Edge case: a character who is narratively significant but not physically present in the scene appears in character_states with pov_role=non_present. Demonstrates off-stage character encoding.",
+  "scene_id": "edge-non-present-character",
+  "book_id": "gbr-conformance-edge-cases",
+  "chapter": 5,
+  "scene_number_in_chapter": 3,
+  "narrative_time": {
+    "order": "chronological",
+    "duration_mode": "scene",
+    "frequency": "singulative"
+  },
+  "beat": "revelation",
+  "scene_function": "revelation",
+  "pov": "third_limited",
+  "focalization_type": "internal_fixed",
+  "pov_role": "participant",
+  "focalizer": "alex",
+  "diegetic_level": "intradiegetic",
+  "consciousness_mode": "narrated_monologue",
+  "psychic_distance": 2,
+  "narrator_reliability": "factually_unreliable",
+  "_narrator_reliability_note": "Alex's understanding of Vera's motives is factually wrong — the reader is positioned to know this from ch3.",
+  "setting": {
+    "location": "the_apartment",
+    "time_of_day": "evening",
+    "setting_type": "interior_domestic",
+    "atmosphere": "suffocating",
+    "spatial_structure": "bounded",
+    "territory_type": "protagonist_home"
+  },
+  "tone": "ominous",
+  "canonical_summary": {
+    "want": "Alex wants to understand Vera's absence by reading the letter she left",
+    "obstacle": "The letter's language is deliberately ambiguous — Vera wrote it to be misread",
+    "scene_polarity": "negative_to_negative",
+    "outcome": "failed",
+    "delta": "Alex reaches a firm (but incorrect) conclusion about Vera's motives. Vera's off-stage presence is encoded through the letter's rhetoric and Alex's misreading — both are narratively active without Vera being in the room.",
+    "iceberg_proportion": 0.75,
+    "subtext_load": 0.8,
+    "scene_turns": [
+      {
+        "turn_number": 1,
+        "active_character": "alex",
+        "verb": "reads",
+        "target": "vera's_letter",
+        "emotional_state": "dread",
+        "masked_emotion": null,
+        "tactic": null,
+        "event_type": "action",
+        "significance": "satellite"
+      },
+      {
+        "turn_number": 2,
+        "active_character": "alex",
+        "verb": "misinterprets",
+        "target": "vera's_stated_reason_for_leaving",
+        "emotional_state": "shock",
+        "masked_emotion": "relief",
+        "tactic": null,
+        "event_type": "internal_shift",
+        "significance": "kernel",
+        "_note": "The masked_emotion=relief is the subtext the reader perceives; Alex does not acknowledge it even internally."
+      },
+      {
+        "turn_number": 3,
+        "active_character": "vera",
+        "verb": "withholds",
+        "target": "her_actual_reason_for_leaving",
+        "emotional_state": "grief",
+        "masked_emotion": null,
+        "tactic": "misdirection",
+        "event_type": "revelation",
+        "significance": "kernel",
+        "_note": "Vera is not in the room. Her turn is encoded via the letter — her past 'action' of writing the letter is active in the present scene. Non-present characters can have scene turns when their off-stage choices drive the scene's mechanics."
+      }
+    ]
+  },
+  "character_states": [
+    {
+      "character_id": "alex",
+      "role_in_scene": "focalizer",
+      "arc_type": "negative_fall",
+      "drive_model": "wound",
+      "emotion": "shock",
+      "masked_emotion": "relief",
+      "tactic": null,
+      "epistemic_state": {
+        "knowledge_objects": [
+          {
+            "fact": "vera's stated reason for leaving (abandonment of their shared project)",
+            "known_to_character": true,
+            "certainty": 0.95
+          },
+          {
+            "fact": "vera's actual reason for leaving (protecting alex from information she has)",
+            "known_to_character": false,
+            "certainty": 0.0
+          }
+        ]
+      }
+    },
+    {
+      "character_id": "vera",
+      "role_in_scene": "non_present",
+      "_role_note": "Vera is physically absent. She is encoded in character_states because her epistemic state and tactics are narratively active through the letter — a proxy presence. This is the canonical pattern for non-present characters who materially influence a scene.",
+      "arc_type": "flat",
+      "drive_model": "duty",
+      "emotion": "grief",
+      "masked_emotion": null,
+      "tactic": "misdirection",
+      "epistemic_state": {
+        "knowledge_objects": [
+          {
+            "fact": "the information she is withholding from alex",
+            "known_to_character": true,
+            "certainty": 1.0
+          },
+          {
+            "fact": "alex will misread the letter",
+            "known_to_character": true,
+            "certainty": 0.8
+          }
+        ]
+      }
+    }
+  ],
+  "causal_role": "setup",
+  "stakes_domain": ["relational", "psychological", "moral"],
+  "motif_tags": ["the_letter", "absence", "epistemic_gap"],
+  "theory_notes": {
+    "bal": "Vera functions as a focalized object even though she is not present — the letter is her proxy, and the scene's central dramatic irony (Alex misreads it) depends on the reader having access to Vera's epistemic state.",
+    "sternberg": "Classic curiosity gap: the reader knows more than Alex (from ch3 context). The gap is the engine of the scene.",
+    "encoding_guidance": "Non-present characters in character_states MUST have role_in_scene='non_present'. Their scene_turns (if any) should be encoded with a _note explaining the proxy mechanism (letter, phone call, reported speech, memory, etc.)."
+  }
+}

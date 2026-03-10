@@ -1,0 +1,103 @@
+{
+  "domain": "narrative_voice",
+  "description": "Enumerations for point of view, focalization, consciousness representation, psychic distance, diegetic levels, and narrator typing.",
+  "enums": {
+    "pov_type": {
+      "description": "Point of view narrator type — who narrates, and in what grammatical person.",
+      "values": [
+        { "value": "first_person", "definition": "The narrator uses 'I' and is a character within the story.", "example_usage": "Reliable or unreliable protagonist narrators; epistolary fiction." },
+        { "value": "second_person", "definition": "The narrator addresses the reader or a character as 'you'.", "example_usage": "Choose-your-own-adventure; experimental literary fiction; direct address." },
+        { "value": "third_limited", "definition": "Third-person narration limited to the perceptions of one character per scene.", "example_usage": "Most contemporary literary and genre fiction." },
+        { "value": "third_omniscient", "definition": "Third-person narration with access to multiple characters' thoughts and knowledge beyond any single character.", "example_usage": "Victorian novels; epic fantasy with multiple POV threads." },
+        { "value": "third_objective", "definition": "Third-person narration with no access to any character's interior; camera-eye only.", "example_usage": "Hemingway-style; minimalist fiction; screenplay-adjacent prose." }
+      ]
+    },
+    "focalization_type": {
+      "description": "Genette's focalization categories — who perceives, distinct from who narrates.",
+      "values": [
+        { "value": "zero", "definition": "Non-focalized (omniscient): the narrator knows more than any character.", "example_usage": "Omniscient authorial narrator with access to all interior states." },
+        { "value": "internal_fixed", "definition": "Single character's perspective filters all narrated events in the scene.", "example_usage": "Close third-person; first-person; deep POV." },
+        { "value": "internal_variable", "definition": "Focalization shifts between different characters across scenes or within a scene.", "example_usage": "Multi-POV chapters; free indirect discourse switching." },
+        { "value": "internal_multiple", "definition": "The same event is focalized through multiple characters' perspectives.", "example_usage": "Rashomon-style narration; he said/she said chapters covering the same event." },
+        { "value": "external", "definition": "Camera-eye focalization: no access to any character's interior state.", "example_usage": "Objective/behaviorist narration; Hemingway; screenplay-adjacent prose." }
+      ]
+    },
+    "consciousness_mode": {
+      "description": "Dorrit Cohn's taxonomy of how prose fiction represents mental life.",
+      "values": [
+        { "value": "psychonarration", "definition": "The narrator reports what a character thinks, using the narrator's own words and framing ('She felt humiliated').", "example_usage": "Narratorial summary of inner state; authorial mediation of consciousness." },
+        { "value": "quoted_monologue", "definition": "Direct thought presented in the character's own voice, usually tagged ('She thought: How dare he').", "example_usage": "Italicized direct thought; tagged interior monologue." },
+        { "value": "narrated_monologue", "definition": "Free indirect discourse (FID): character thought rendered in the narrator's grammar but the character's diction and perspective ('How dare he! What gave him the right?').", "example_usage": "The dominant mode of literary fiction; Jane Austen, Flaubert, James." },
+        { "value": "mixed", "definition": "A scene moves between multiple consciousness modes.", "example_usage": "Scenes that alternate psychonarration with narrated monologue." }
+      ]
+    },
+    "psychic_distance": {
+      "description": "John Gardner's five-level scale of felt distance between reader and character consciousness.",
+      "note": "This is an integer field (1–5) in the schema, not a string enum. Values are documented here for reference.",
+      "values": [
+        { "value": "1", "definition": "Maximally distant authorial narrator; generalized historical or sociological narration. ('It was winter of the year 1853...')" },
+        { "value": "2", "definition": "Named character introduced with authorial framing but without interiority. ('Henry Dowell was growing old...')" },
+        { "value": "3", "definition": "Character's perspective, but narrated through an intermediary narrator filter. ('He thought the town looked cold...')" },
+        { "value": "4", "definition": "Deep character filter: thoughts rendered in the character's diction and rhythm. ('Cold, yes, the town was cold...')" },
+        { "value": "5", "definition": "Stream of consciousness: direct unmediated thought, no narratorial distance. ('Cold. Bitter cold. God how he hated...')" }
+      ]
+    },
+    "diegetic_level": {
+      "description": "Genette's three narrative levels — where in the frame hierarchy the narration occurs.",
+      "values": [
+        { "value": "extradiegetic", "definition": "The outermost frame level: the narrator is outside the story world they narrate.", "example_usage": "Standard authorial narrator; frame story outer narrator." },
+        { "value": "intradiegetic", "definition": "The primary story level: the narrator exists within the story world.", "example_usage": "Most narrative content; homodiegetic narrator who is also a character." },
+        { "value": "metadiegetic", "definition": "A story-within-the-story level: narration occurring inside the intradiegetic level.", "example_usage": "A character telling a story to other characters; embedded tales; Scheherazade structure." }
+      ]
+    },
+    "narrator_reliability_type": {
+      "description": "Booth/Nünning narrator reliability classification — how and why a narrator may diverge from the implied author's norms.",
+      "values": [
+        { "value": "reliable", "definition": "Narrator's account aligns with the implied author's norms; the narrator's version of events can be trusted.", "example_usage": "Standard authorial narrator; unambiguous third-person narrator." },
+        { "value": "factually_unreliable", "definition": "Narrator misreports events — they lie, misremember, or have incomplete access to facts.", "example_usage": "A narrator who describes events they did not witness; a narrator who later contradicts themselves." },
+        { "value": "interpretively_unreliable", "definition": "Narrator misreads the meaning of events they accurately report.", "example_usage": "Stevens in Remains of the Day: accurately reports events but draws wrong conclusions." },
+        { "value": "evaluatively_unreliable", "definition": "Narrator misjudges the moral weight or ethical significance of events.", "example_usage": "Humbert Humbert in Lolita: minimizes harm he causes." },
+        { "value": "self_deceptive", "definition": "Narrator sincerely believes their own distorted account; unreliability is unconscious.", "example_usage": "A grieving narrator who cannot see their own role in events." },
+        { "value": "culturally_contingent", "definition": "Reliability depends on the reader's normative frame; the narrator reflects norms that some readers share and others reject.", "example_usage": "A narrator from a historical period with different moral assumptions." }
+      ]
+    },
+    "narratee_type": {
+      "description": "Gerald Prince's narratee types — the fictional entity addressed by the narrator.",
+      "values": [
+        { "value": "explicit", "definition": "A named or directly addressed narratee within the text ('Dear reader'; 'I am writing to you, Marcus...').", "example_usage": "Epistolary fiction; direct address narratives." },
+        { "value": "implicit", "definition": "A narratee constructed by the text's assumptions about what must be explained — present but not named.", "example_usage": "Most realistic fiction; the constructed ideal reader implied by expository choices." },
+        { "value": "dramatized", "definition": "The narratee is a character within the story who visibly reacts to or questions the narrator.", "example_usage": "Frame narratives where the frame audience is shown reacting (Canterbury Tales)." },
+        { "value": "zero_degree", "definition": "No specific narratee; the text addresses a universal unmarked reader position.", "example_usage": "Most omniscient third-person narration; standard genre fiction." }
+      ]
+    },
+    "pov_role_type": {
+      "description": "A character's perceptual role in a specific scene — used in Character Scene State.",
+      "values": [
+        { "value": "focalizer", "definition": "This character's perception filters all events in the scene; their interior is accessible.", "example_usage": "The POV character." },
+        { "value": "participant", "definition": "This character is present and acting in the scene but not the focalizer; their interior is not directly accessible.", "example_usage": "Any non-POV character who appears in the scene." },
+        { "value": "non_present", "definition": "This character is referenced or discussed in the scene but is not physically present.", "example_usage": "Characters talked about; ghost characters." }
+      ]
+    },
+    "tone": {
+      "description": "The narrator's or implied author's attitude toward the subject matter — distinct from mood (atmosphere) and voice (register).",
+      "values": [
+        { "value": "ironic", "definition": "The text's surface meaning differs from its intended meaning; distance between statement and reality is exploited." },
+        { "value": "satirical", "definition": "Social or political critique delivered through irony, exaggeration, or mockery." },
+        { "value": "elegiac", "definition": "Mournful reflection on loss, decline, or the passing of what was valuable." },
+        { "value": "lyrical", "definition": "Elevated, musical language; emphasis on beauty and feeling over event." },
+        { "value": "tense", "definition": "High suspense; the reader awaits an outcome with dread or urgency." },
+        { "value": "ominous", "definition": "A sense of foreboding or dark fate approaching." },
+        { "value": "wry", "definition": "Dry, understated irony delivered with apparent neutrality." },
+        { "value": "joyful", "definition": "Celebratory, light, positive energy." },
+        { "value": "tender", "definition": "Intimate, emotionally warm, affectionate." },
+        { "value": "bleak", "definition": "Absence of hope or redemption; cold despair." },
+        { "value": "clinical", "definition": "Detached, observational, analytical — emotions withheld." },
+        { "value": "urgent", "definition": "High energy; the reader is propelled forward by necessity." },
+        { "value": "formal", "definition": "Elevated, ceremonial register; social distance maintained." },
+        { "value": "intimate", "definition": "Close, confessional, direct — feels like private address." },
+        { "value": "comic", "definition": "Playful, humorous, light; conflict resolved or mitigated by laughter." },
+        { "value": "tragic", "definition": "Elevated grief; the weight of irreversible loss." }
+      ]
+    }
+  }
+}

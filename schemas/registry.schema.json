@@ -1,0 +1,199 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://grimoire.dev/protocol/v1/registry.schema.json",
+  "title": "EntityRegistry",
+  "description": "Per-book entity registry defining the controlled vocabulary of characters, settings, relationships, and want types. Source of truth for all entity references.",
+  "type": "object",
+  "required": ["book_id", "characters", "settings"],
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "description": "JSON Schema reference"
+    },
+    "book_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9_]+$",
+      "description": "Unique snake-case book identifier"
+    },
+    "title": {
+      "type": "string",
+      "description": "Human-readable book title"
+    },
+    "author": {
+      "type": "string",
+      "description": "Author name"
+    },
+
+    "characters": {
+      "type": "object",
+      "description": "Map of character slug → Character",
+      "additionalProperties": { "$ref": "#/$defs/character" }
+    },
+
+    "relationships": {
+      "type": "array",
+      "description": "Directed relationship edges",
+      "items": { "$ref": "#/$defs/relationship" }
+    },
+
+    "settings": {
+      "type": "object",
+      "description": "Map of setting slug → Setting",
+      "additionalProperties": { "$ref": "#/$defs/setting" }
+    },
+
+    "want_vocabulary": {
+      "type": "object",
+      "description": "Map of want slug → display label for canonical summaries",
+      "additionalProperties": { "type": "string" }
+    },
+
+    "narrator": {
+      "$ref": "#/$defs/narrator",
+      "description": "Narrative voice definition with optional voice embedding for continuity tracking"
+    }
+  },
+
+  "$defs": {
+    "character": {
+      "type": "object",
+      "required": ["id", "name"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9_]+$",
+          "description": "Snake-case slug"
+        },
+        "name": { "type": "string", "description": "Display name" },
+        "slot": { "type": ["string", "null"], "description": "Cast template slot" },
+        "archetype": { "$ref": "enums.schema.json#/$defs/archetype" },
+        "wound": { "$ref": "enums.schema.json#/$defs/wound" },
+        "alignment": { "$ref": "enums.schema.json#/$defs/alignment" },
+        "role": { "$ref": "enums.schema.json#/$defs/role" },
+        "drive_model": { "$ref": "enums.schema.json#/$defs/drive_model" },
+        "arc_type": { "$ref": "enums.schema.json#/$defs/arc_type" },
+        "actant": { "$ref": "enums.schema.json#/$defs/actant" },
+        "ghost": { "type": ["string", "null"], "description": "Internal wound origin" },
+        "want": { "type": ["string", "null"], "description": "External goal" },
+        "need": { "type": ["string", "null"], "description": "Thematic truth needed" },
+        "flaw": { "type": ["string", "null"], "description": "Fatal flaw" },
+        "voice_signature": { "$ref": "#/$defs/voice_signature" },
+        "voice_embedding": { "$ref": "#/$defs/voice_embedding" }
+      }
+    },
+
+    "relationship": {
+      "type": "object",
+      "required": ["source", "target", "rel_type"],
+      "properties": {
+        "source": { "type": "string", "pattern": "^[a-z0-9_]+$", "description": "Source character slug" },
+        "target": { "type": "string", "pattern": "^[a-z0-9_]+$", "description": "Target character slug" },
+        "rel_type": { "$ref": "enums.schema.json#/$defs/relationship_type" },
+        "description": { "type": ["string", "null"] },
+        "dynamic_at_start": { "$ref": "enums.schema.json#/$defs/relationship_dynamic" },
+        "dynamic_at_end": { "$ref": "enums.schema.json#/$defs/relationship_dynamic" },
+        "power_balance": { "$ref": "enums.schema.json#/$defs/power_balance" }
+      }
+    },
+
+    "setting": {
+      "type": "object",
+      "required": ["id", "name"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^[a-z0-9_]+$" },
+        "name": { "type": "string", "description": "Display name" },
+        "type": { "$ref": "enums.schema.json#/$defs/setting_type" },
+        "general_vibe": { "type": ["string", "null"] },
+        "sensory_signature": {
+          "type": "array",
+          "items": { "type": "string" },
+          "maxItems": 3,
+          "description": "Three defining sensory details"
+        }
+      }
+    },
+
+    "voice_signature": {
+      "type": "object",
+      "description": "Character voice fingerprint",
+      "properties": {
+        "sentence_length_tendency": {
+          "type": ["string", "null"],
+          "enum": ["short", "medium", "long", "varied", null]
+        },
+        "vocabulary_register": {
+          "type": ["string", "null"],
+          "enum": ["colloquial", "standard", "formal", "archaic", "mixed", null]
+        },
+        "syntax_complexity": {
+          "type": ["string", "null"],
+          "enum": ["simple", "moderate", "complex", null]
+        },
+        "fid_markers": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Free indirect discourse markers"
+        },
+        "forbidden_words": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "signature_phrases": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+
+    "voice_embedding": {
+      "type": "object",
+      "description": "Learned voice representation for continuity tracking. Created from author-provided samples.",
+      "properties": {
+        "model": {
+          "type": "string",
+          "description": "Embedding model identifier (e.g., text-embedding-3-small)"
+        },
+        "source_type": {
+          "type": "string",
+          "enum": ["dialogue_only", "fid_passages", "all_speech", "mixed"],
+          "description": "What prose was used to generate the embedding"
+        },
+        "sample_word_count": {
+          "type": "integer",
+          "minimum": 100,
+          "description": "Total words in source samples"
+        },
+        "vector": {
+          "type": "array",
+          "items": { "type": "number" },
+          "description": "Embedding vector (dimension depends on model)"
+        }
+      },
+      "required": ["model", "source_type", "vector"]
+    },
+
+    "narrator": {
+      "type": "object",
+      "description": "Narrative voice definition — the voice that speaks when no character is focalized",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["first_person", "third_limited", "third_omniscient", "second_person", "frame_narrator"],
+          "description": "Narrator type per Genette/Stanzel"
+        },
+        "voice_signature": { "$ref": "#/$defs/voice_signature" },
+        "voice_embedding": { "$ref": "#/$defs/voice_embedding" },
+        "reliability": {
+          "type": "string",
+          "enum": ["reliable", "unreliable", "ambiguous"],
+          "description": "Booth's narrator reliability classification"
+        },
+        "distance": {
+          "type": "string",
+          "enum": ["intimate", "close", "neutral", "distant", "ironic"],
+          "description": "Gardner's psychic distance default for narrator"
+        }
+      }
+    }
+  }
+}

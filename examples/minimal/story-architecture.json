@@ -1,0 +1,21 @@
+{
+  "$schema": "https://gbr-protocol.dev/schemas/story-architecture.schema.json",
+  "book_id": "minimal-example",
+  "genre": "literary_fiction",
+  "collision_architecture": {
+    "collision_type": "person_vs_self",
+    "inciting_incident": "Alex receives a letter from their estranged parent.",
+    "antagonist": {
+      "antagonist_type": "self",
+      "opposition_level": "conflict"
+    }
+  },
+  "protagonist_arc": {
+    "arc_type": "positive_change",
+    "wound": "abandonment",
+    "misbelief": "I am not worth staying for.",
+    "truth": "I am worthy of love and do not need my parent's presence to prove it.",
+    "want": "To reconnect with their parent.",
+    "need": "To accept themselves without external validation."
+  }
+}

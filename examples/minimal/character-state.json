@@ -1,0 +1,33 @@
+{
+  "$schema": "https://gbr-protocol.dev/schemas/character-state.schema.json",
+  "scene_id": "minimal-example-ch01-s01",
+  "book_id": "minimal-example",
+  "character_ref": "alex",
+  "pov_role": "focalizer",
+  "primary_emotion": "shock",
+  "masked_emotion": null,
+  "want": "alex wants to understand what the letter means",
+  "tactic": "avoidance",
+  "trigger_type": "unexpected_revelation",
+  "wound_activation": true,
+  "epistemic_state": [
+    {
+      "fact": "their parent has requested contact",
+      "is_true": true,
+      "source": "the letter",
+      "confidence": 1.0
+    },
+    {
+      "fact": "their parent's motivation is genuine remorse",
+      "is_true": null,
+      "source": "assumption",
+      "confidence": 0.3
+    }
+  ],
+  "objective": {
+    "action": "decide whether to respond",
+    "target": "the letter",
+    "obstacle": "fifteen years of self-protective emotional distance",
+    "method": null
+  }
+}

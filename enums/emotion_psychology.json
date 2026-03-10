@@ -1,0 +1,97 @@
+{
+  "domain": "emotion_psychology",
+  "description": "Enumerations for emotion types, interpersonal tactics, trigger types, and emotional arc shapes. Grounded in basic emotion theory (Ekman), cognitive appraisal theory (Lazarus), and narrative psychology.",
+  "enums": {
+    "emotion": {
+      "description": "Character's primary experienced emotion in a scene. Based on Plutchik's wheel expanded with narrative-relevant distinctions.",
+      "values": [
+        { "value": "anger", "definition": "Hostile arousal in response to a perceived wrong, insult, or obstacle.", "group": "primary" },
+        { "value": "fear", "definition": "Arousal response to a perceived threat to safety, status, or values.", "group": "primary" },
+        { "value": "joy", "definition": "Positive arousal; pleasure, happiness, or relief.", "group": "primary" },
+        { "value": "sadness", "definition": "Negative affect in response to loss, disappointment, or unmet need.", "group": "primary" },
+        { "value": "disgust", "definition": "Aversion to something perceived as contaminating, morally repugnant, or physically revolting.", "group": "primary" },
+        { "value": "surprise", "definition": "Sudden disruption of expectation — may be positive or negative.", "group": "primary" },
+        { "value": "anticipation", "definition": "Forward-oriented arousal toward an expected event — hope or dread.", "group": "primary" },
+        { "value": "trust", "definition": "Positive relational orientation; openness and security toward another.", "group": "primary" },
+        { "value": "shame", "definition": "Self-directed negative affect: I am defective or bad as a person.", "group": "self_conscious" },
+        { "value": "guilt", "definition": "Behavior-directed negative affect: I did something wrong (without self-condemnation as a whole person).", "group": "self_conscious" },
+        { "value": "pride", "definition": "Positive self-evaluation for an achievement or trait.", "group": "self_conscious" },
+        { "value": "embarrassment", "definition": "Social discomfort at being exposed or at having violated social norms.", "group": "self_conscious" },
+        { "value": "envy", "definition": "Wanting what another has; may include resentment toward the other.", "group": "social" },
+        { "value": "jealousy", "definition": "Fear of losing what one has to a rival; possessiveness threatened.", "group": "social" },
+        { "value": "contempt", "definition": "A status-hierarchical emotion: looking down on another as inferior.", "group": "social" },
+        { "value": "admiration", "definition": "Looking up to another; recognition of their superior virtue, skill, or quality.", "group": "social" },
+        { "value": "love", "definition": "Deep attachment, care, and valuing of another — includes romantic, familial, and platonic variants.", "group": "social" },
+        { "value": "grief", "definition": "Prolonged sadness in response to loss — more chronic and specific than ordinary sadness.", "group": "sustained" },
+        { "value": "longing", "definition": "Desire for something absent — a person, place, time, or state.", "group": "sustained" },
+        { "value": "anxiety", "definition": "Diffuse fear about uncertain future outcomes; worry without a specific immediate threat.", "group": "sustained" },
+        { "value": "despair", "definition": "Hopelessness; belief that positive change is impossible.", "group": "sustained" },
+        { "value": "hope", "definition": "Belief that positive change is possible; forward-directed positive affect.", "group": "sustained" },
+        { "value": "resignation", "definition": "Acceptance of an undesirable situation combined with relinquishing the will to change it.", "group": "sustained" },
+        { "value": "relief", "definition": "Positive affect following the removal or passing of a threat or negative state.", "group": "transitional" },
+        { "value": "shock", "definition": "Acute disruption of orientation following an unexpected, significant event.", "group": "transitional" },
+        { "value": "dread", "definition": "Anticipatory terror; fear of a known coming event.", "group": "transitional" },
+        { "value": "curiosity", "definition": "Positive arousal toward the unknown; desire to know or understand.", "group": "epistemic" },
+        { "value": "confusion", "definition": "Disorientation from conflicting information, unmet expectations, or inability to make sense.", "group": "epistemic" },
+        { "value": "numbness", "definition": "Affective shutdown; inability to feel in response to overwhelming stimulus.", "group": "dissociative" },
+        { "value": "ambivalence", "definition": "Simultaneous conflicting emotional responses to the same stimulus.", "group": "complex" }
+      ]
+    },
+    "tactic": {
+      "description": "The interpersonal strategy a character employs to achieve their scene want — distinct from emotion, which is what they feel.",
+      "values": [
+        { "value": "appeal_to_logic", "definition": "Uses evidence, argument, or rational demonstration to persuade." },
+        { "value": "appeal_to_emotion", "definition": "Uses emotional language, pathos, or personal feeling to persuade." },
+        { "value": "appeal_to_authority", "definition": "Invokes an authority, rule, or institutional power to compel compliance." },
+        { "value": "flattery", "definition": "Uses praise or compliments — genuine or performative — to soften or win over." },
+        { "value": "guilt_induction", "definition": "Invokes the other's past behavior or moral failures to create obligation." },
+        { "value": "threat", "definition": "Uses explicit or implicit threat of harm to compel compliance." },
+        { "value": "manipulation", "definition": "Uses deception or indirect psychological leverage to achieve the goal." },
+        { "value": "bargaining", "definition": "Offers something in exchange for compliance — transactional negotiation." },
+        { "value": "seduction", "definition": "Uses attraction, intimacy, or charm to disarm and win over." },
+        { "value": "withholding", "definition": "Withholds information, affection, or action as a pressure tactic." },
+        { "value": "intimidation", "definition": "Uses presence, status, or implied power to suppress opposition." },
+        { "value": "avoidance", "definition": "Refuses to engage; exits the interaction; turns away." },
+        { "value": "deflection", "definition": "Changes the subject, reframes, or redirects without addressing the core issue." },
+        { "value": "assertion", "definition": "States wants or positions clearly and directly without aggression." },
+        { "value": "capitulation", "definition": "Gives in to the other's want — may be genuine or strategic." },
+        { "value": "collaboration", "definition": "Works openly with another toward a shared goal." },
+        { "value": "humor", "definition": "Uses comedy, irony, or lightness to diffuse, deflect, or build rapport." },
+        { "value": "silence", "definition": "Says nothing; uses absence of speech as an active tactic." },
+        { "value": "distraction", "definition": "Introduces an irrelevant element to disrupt the other's focus or attack." },
+        { "value": "vulnerability", "definition": "Deliberately discloses weakness or need to create connection, sympathy, or trust." }
+      ]
+    },
+    "trigger_type": {
+      "description": "Category of event or stimulus that triggers the character's significant emotional response in this scene.",
+      "values": [
+        { "value": "wound_activation", "definition": "An event that touches or reactivates the character's core wound.", "example_usage": "A character with an abandonment wound encounters a situation that mirrors the original wound." },
+        { "value": "want_threat", "definition": "The character's scene-level or story-level want is threatened or blocked.", "example_usage": "An obstacle appears that may prevent the character from getting what they want." },
+        { "value": "unexpected_revelation", "definition": "The character learns something they did not know, changing their understanding.", "example_usage": "A secret revealed; a truth discovered." },
+        { "value": "relational_rupture", "definition": "A relationship the character values is damaged, broken, or threatened.", "example_usage": "A betrayal; a sudden coldness; an open conflict." },
+        { "value": "relational_repair", "definition": "A damaged relationship is healed or extended.", "example_usage": "Reconciliation; forgiveness; renewed connection." },
+        { "value": "identity_challenge", "definition": "The character's sense of self or core identity is threatened or destabilized.", "example_usage": "Someone questions who the character is or what they believe." },
+        { "value": "moral_crisis", "definition": "The character is forced to choose between two values, or to act against their principles.", "example_usage": "A moral dilemma; a temptation; an ethical test." },
+        { "value": "perceived_injustice", "definition": "The character experiences or witnesses a violation of fairness or rightness.", "example_usage": "Someone is wronged; a rule is broken unfairly." },
+        { "value": "success", "definition": "The character achieves something they wanted — positive trigger.", "example_usage": "A goal achieved; a relationship secured; a win." },
+        { "value": "loss", "definition": "The character loses something valued.", "example_usage": "A person, object, role, or opportunity lost." },
+        { "value": "sensory", "definition": "A physical sensation, sight, sound, or smell that triggers an emotional memory or response.", "example_usage": "A smell that triggers grief; a sound that triggers fear." },
+        { "value": "anticipation_of_event", "definition": "The character's emotion is triggered by anticipating an expected coming event.", "example_usage": "Pre-event anxiety; dread of what is coming." }
+      ]
+    },
+    "emotional_arc_type": {
+      "description": "The shape of a character's emotional journey across the full story — not scene-level, but whole-arc arc.",
+      "values": [
+        { "value": "rags_to_riches", "definition": "Character moves from emotional poverty (fear, low self-worth, isolation) to emotional wealth (agency, connection, self-acceptance).", "example_usage": "Classic positive change arc." },
+        { "value": "riches_to_rags", "definition": "Character descends from emotional security to despair, ruin, or death.", "example_usage": "Tragic arc; fall narrative." },
+        { "value": "voyage_and_return", "definition": "Character leaves their emotional baseline, experiences disruption, and returns changed (positively or negatively).", "example_usage": "Adventure structures; coming-of-age." },
+        { "value": "overcoming_the_monster", "definition": "Character moves through fear and escalating dread toward triumph over an external or internal threat.", "example_usage": "Horror arc; antagonist confrontation arc." },
+        { "value": "quest", "definition": "Character sustains a powerful desire-state across the arc, with emotional turbulence organized around that quest.", "example_usage": "Goal-driven arcs; treasure/love/justice quest." },
+        { "value": "comedy", "definition": "Character begins in distress or confusion, passes through complications, and ends in harmony and connection.", "example_usage": "Romantic comedy; comic resolution arc." },
+        { "value": "tragedy", "definition": "Character begins with potential and descends through flawed choices to a catastrophic end.", "example_usage": "Classical tragedy; Shakespearean structure." },
+        { "value": "disillusionment", "definition": "Character begins with idealism and ends with hardened or sorrowful knowledge of the world's actual nature.", "example_usage": "Portrait of the Artist; Great Expectations." },
+        { "value": "flat", "definition": "Character's emotional baseline does not fundamentally change; they function as a catalyst for others.", "example_usage": "Mentor/hero flat arcs; genre protagonists." }
+      ]
+    }
+  }
+}

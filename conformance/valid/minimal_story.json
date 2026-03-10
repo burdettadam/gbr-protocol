@@ -1,0 +1,5 @@
+{
+  "$schema": "https://gbr-protocol.dev/schemas/story-architecture.schema.json",
+  "book_id": "conformance-test-minimal",
+  "genre": "literary_fiction"
+}

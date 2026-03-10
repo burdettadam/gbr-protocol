@@ -1,0 +1,85 @@
+{
+  "$schema": "https://gbr-protocol.dev/schemas/v0/registry.schema.json",
+  "book_id": "threshold",
+  "title": "Threshold",
+  "author": "[Example — for GBR conformance corpus]",
+
+  "characters": {
+    "nadia": {
+      "id": "nadia",
+      "name": "Nadia Vance",
+      "archetype": "explorer",
+      "wound": "grief",
+      "alignment": "neutral_good",
+      "role": "protagonist",
+      "drive_model": "wound",
+      "arc_type": "positive_change",
+      "actant": "subject",
+      "ghost": "Her father died four months ago after years of emotional distance. She was not present at his death; she was in another city finishing a concert tour. The guilt has calcified into forward motion — keep moving, don't stop, don't feel.",
+      "want": "To sell the childhood home quickly, settle the estate, and return to her life in the city",
+      "need": "To stop moving long enough to grieve; to discover that her father's silence was not absence of love",
+      "lie_believed": "The house — and the past it contains — holds nothing but pain and a relationship that ended before it could be repaired",
+      "truth_needed": "The past contains gifts as well as wounds; staying is not weakness but the only way through",
+      "flaw": "Compulsive forward motion; inability to be still with loss"
+    },
+
+    "father": {
+      "id": "father",
+      "name": "Robert Vance",
+      "archetype": "sage",
+      "wound": "shame",
+      "alignment": "lawful_neutral",
+      "role": "antagonist",
+      "drive_model": "duty",
+      "arc_type": "flat",
+      "_note": "Robert is dead before the story begins. He is present only through objects (the house, the garden, the journal) and Nadia's memory. His arc is flat in the sense that he cannot change — the change is Nadia's perception of him."
+    }
+  },
+
+  "relationships": [
+    {
+      "character_a": "nadia",
+      "character_b": "father",
+      "relationship_type": "family_parent_child",
+      "dynamic": "distant",
+      "power_balance": "character_b_dominant",
+      "description": "A loving but emotionally inarticulate father; a daughter who learned his language of silence and resented it"
+    }
+  ],
+
+  "settings": {
+    "childhood_home": {
+      "id": "childhood_home",
+      "name": "The Vance House",
+      "setting_type": "interior_domestic",
+      "atmosphere": "uncanny",
+      "spatial_structure": "palimpsest",
+      "territory_type": "protagonist_home",
+      "description": "A mid-century two-storey house in a small coastal town. Nadia has not been inside since her father's diagnosis. Everything is exactly as it was — preserved, not lived in."
+    },
+    "father_study": {
+      "id": "father_study",
+      "name": "The Study",
+      "setting_type": "interior_domestic",
+      "atmosphere": "intimate",
+      "spatial_structure": "bounded",
+      "territory_type": "antagonist_domain",
+      "description": "Robert's study: bookshelves floor to ceiling, a rolltop desk, a leather chair facing the window. The room where Nadia was never invited as a child."
+    },
+    "garden": {
+      "id": "garden",
+      "name": "The Back Garden",
+      "setting_type": "exterior_private",
+      "atmosphere": "liminal",
+      "spatial_structure": "bounded",
+      "territory_type": "neutral_ground",
+      "description": "A walled garden Robert tended obsessively. At dusk, the light turns gold and the roses are past their peak. Nadia has never understood her father's attachment to it."
+    }
+  },
+
+  "want_vocabulary": {
+    "escape": "To leave the house and the grief behind",
+    "connection": "To find evidence that her father loved her",
+    "closure": "To complete the transaction of death — settlement, sale, farewell"
+  }
+}

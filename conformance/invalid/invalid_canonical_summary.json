@@ -1,0 +1,20 @@
+{
+  "$schema": "https://gbr-protocol.dev/schemas/scene-card.schema.json",
+  "scene_id": "conformance-invalid-s03",
+  "book_id": "conformance-test-invalid",
+  "chapter": 1,
+  "beat": "inciting_incident",
+  "pov": "third_limited",
+  "focalizer": "protagonist",
+  "canonical_summary": {
+    "chapter": 1,
+    "scene": 1,
+    "location": "Home",
+    "time": "morning",
+    "focalizer": "protagonist",
+    "want": "protagonist wants to escape",
+    "scene_turns": [],
+    "outcome": "failed",
+    "delta": "Nothing changed."
+  }
+}

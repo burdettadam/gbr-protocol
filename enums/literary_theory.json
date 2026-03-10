@@ -1,0 +1,126 @@
+{
+  "domain": "literary_theory",
+  "description": "Theory-grounded enumerations for genre classification, narrative collision types, antagonist typology, intertextuality, irony, speech acts, gaze, and other Grimoire-specific literary-theoretical fields.",
+  "enums": {
+    "genre_type": {
+      "description": "Top-level genre classification for the narrative frame.",
+      "values": [
+        { "value": "literary_fiction", "definition": "Prioritizes psychological depth, thematic complexity, and style over genre plot conventions." },
+        { "value": "commercial_fiction", "definition": "Organized primarily around plot engagement, reader pleasure, and genre conventions." },
+        { "value": "romance", "definition": "Central conflict organized around the formation or maintenance of a romantic relationship; mandatory HEA or HFN." },
+        { "value": "thriller", "definition": "High-stakes suspense narrative with external physical or institutional threat." },
+        { "value": "mystery", "definition": "Organized around the discovery and resolution of a crime or puzzle; epistemological drive." },
+        { "value": "horror", "definition": "Organized around the encounter with a monstrous or threatening entity; Noël Carroll's art-horror (fear + disgust)." },
+        { "value": "science_fiction", "definition": "Novum-based fiction: a scientifically conceivable difference from consensus reality drives the narrative (Darko Suvin's cognitive estrangement)." },
+        { "value": "fantasy", "definition": "Narrative in a secondary world or with supernatural elements not explained by scientific logic." },
+        { "value": "historical_fiction", "definition": "Set in a documented historical period; Lukács/Hutcheon — the relationship between past and present is a central concern." },
+        { "value": "contemporary_fiction", "definition": "Set in the present or recent past without generic overlay." },
+        { "value": "upmarket_fiction", "definition": "Hybrid: literary-quality writing with commercial accessibility and plot momentum." },
+        { "value": "crime_fiction", "definition": "Organized around criminal acts and their investigation, prosecution, or commission." },
+        { "value": "speculative_fiction", "definition": "Umbrella for SF, fantasy, horror, and their hybrids — 'what if' fiction of any kind." },
+        { "value": "memoir", "definition": "Autobiographical narrative focused on a thematic slice of the author's life." },
+        { "value": "autofiction", "definition": "Hybrid of autobiography and fiction; Doubrovsky/Lejeune — the author's name appears but the fictionality is signaled." },
+        { "value": "experimental", "definition": "Formally innovative work that foregrounds its own construction and departs from conventions of realism." },
+        { "value": "young_adult", "definition": "Primary audience is adolescent readers; typically features a teenage protagonist and coming-of-age or power negotiation themes (Trites)." },
+        { "value": "middle_grade", "definition": "Primary audience is children ages 8–12; deals with friendship, identity, and discovery within more protected moral frameworks." },
+        { "value": "picture_book", "definition": "Primarily visual narrative for young children; McCloud/Chute interdependence of image and text." },
+        { "value": "graphic_novel", "definition": "Sequential art narrative; McCloud's closure and gutter; panel transitions as primary narrative device." },
+        { "value": "verse_novel", "definition": "Novel-length narrative told in verse; prosody carries semantic and structural weight." },
+        { "value": "hybrid", "definition": "A work that deliberately combines two or more genre or form categories; the hybrid nature is a defining rather than accidental feature." }
+      ]
+    },
+    "collision_type": {
+      "description": "The primary structural collision pattern — the fundamental way the story's central conflict is organized. Grimoire-specific.",
+      "values": [
+        { "value": "person_vs_person", "definition": "The protagonist's central conflict is with another specific individual who opposes their want." },
+        { "value": "person_vs_self", "definition": "The protagonist's central conflict is internal — with their own beliefs, wounds, or psychology." },
+        { "value": "person_vs_society", "definition": "The protagonist's central conflict is with social norms, institutions, or collective power." },
+        { "value": "person_vs_nature", "definition": "The protagonist's central conflict is with the natural environment or physical forces." },
+        { "value": "person_vs_fate", "definition": "The protagonist's central conflict is with destiny, prophecy, or forces beyond any agent's control." },
+        { "value": "person_vs_technology", "definition": "The protagonist's central conflict involves technological systems or AI that oppose or constrain them." },
+        { "value": "person_vs_supernatural", "definition": "The protagonist's central conflict involves forces outside the natural order — gods, monsters, curses." },
+        { "value": "group_vs_group", "definition": "Two communities, factions, or social groups are in central conflict; individual characters enact that group collision." },
+        { "value": "idea_vs_idea", "definition": "Two philosophical positions or value systems are in collision; characters embody competing ideas." }
+      ]
+    },
+    "antagonist_type": {
+      "description": "The typological category of the story's primary opposing force.",
+      "values": [
+        { "value": "person", "definition": "A specific individual character who opposes the protagonist's want.", "example_usage": "A competing character; a villain." },
+        { "value": "institution", "definition": "An organization, system, or institution that opposes the protagonist.", "example_usage": "A government, a corporation, a church." },
+        { "value": "nature", "definition": "The physical environment or natural forces as the primary opposition.", "example_usage": "A storm, a disease, a hostile landscape." },
+        { "value": "self", "definition": "The protagonist's own psychology, wound, or misbelief as the primary opposing force.", "example_usage": "Internal arc where the protagonist's greatest enemy is themselves." },
+        { "value": "society", "definition": "Social norms, collective prejudice, or cultural expectations as the primary opposition.", "example_usage": "A protagonist fighting against what 'everyone knows' is acceptable." },
+        { "value": "supernatural", "definition": "A supernatural entity, force, or curse as the primary opposition.", "example_usage": "A monster, a curse, a god, a supernatural system." },
+        { "value": "technology", "definition": "A technological system, AI, or technological process as the primary opposition.", "example_usage": "An AI that opposes the protagonist; a system that has turned hostile." },
+        { "value": "fate_or_circumstance", "definition": "No specific agent — the collision is with destiny, chance, or unavoidable circumstance.", "example_usage": "Terminal illness; an inevitable historical event; inescapable tragedy." }
+      ]
+    },
+    "opposition_level": {
+      "description": "The intensity of active opposition the antagonist force is currently applying (Truby's five opposition levels).",
+      "values": [
+        { "value": "hindrance", "definition": "The opposing force creates minor obstacles without direct targeting of the protagonist's crucial goal.", "example_usage": "Early antagonist behavior; inconveniences; obstacles not yet aimed at core want." },
+        { "value": "conflict", "definition": "The opposing force actively contests the protagonist's goal in specific scenes.", "example_usage": "A confrontation; a competition; a direct dispute." },
+        { "value": "counter_plan", "definition": "The opposing force develops a deliberate strategy specifically aimed at defeating the protagonist.", "example_usage": "The antagonist begins planning against the protagonist specifically." },
+        { "value": "counter_plan_revelation", "definition": "The protagonist discovers the antagonist's counter-plan; the full scope of opposition is revealed.", "example_usage": "A revelation scene that escalates the threat level." },
+        { "value": "destruction", "definition": "The opposing force makes an all-out attempt to destroy or decisively defeat the protagonist.", "example_usage": "Climax-level confrontation; the final assault." }
+      ]
+    },
+    "transtextuality_type": {
+      "description": "Genette's five transtextual relations — how this text relates to other texts.",
+      "values": [
+        { "value": "intertextuality", "definition": "Direct text-to-text reference in the form of quotation, allusion, or plagiarism.", "example_usage": "A title that quotes another text; a direct allusion in the prose." },
+        { "value": "paratextuality", "definition": "Relation between the text and its paratexts — titles, epigraphs, dedications, prefaces, notes (Genette, Seuils).", "example_usage": "An epigraph that reframes the novel; a title that creates ironic distance." },
+        { "value": "metatextuality", "definition": "Commentary relation: this text discusses but does not cite the other text.", "example_usage": "A novel that critiques or interprets another without directly quoting it." },
+        { "value": "hypertextuality", "definition": "Transformation relation: this text derives from an earlier text (hypertext) through transformation or imitation.", "example_usage": "A retelling; a parody; a sequel; a Bildungsroman reworking." },
+        { "value": "architextuality", "definition": "The generic contract: the relation between this text and its genres, modes, and discourse types.", "example_usage": "The implicit genre frame a text invites the reader to apply." }
+      ]
+    },
+    "irony_type": {
+      "description": "Booth/Hutcheon taxonomy of irony types present in the narrative.",
+      "values": [
+        { "value": "verbal_stable", "definition": "Speaker's literal meaning differs from intended meaning; the real meaning is fixed and recoverable (Booth).", "example_usage": "Classic sarcasm; 'How charming.' said of something repellent." },
+        { "value": "verbal_unstable", "definition": "Speaker's meaning is indeterminate; the gap between literal and implied meaning cannot be fully closed.", "example_usage": "Ambiguous free indirect discourse; unreliable irony." },
+        { "value": "dramatic", "definition": "The reader knows more than one or more characters; the character's unknowing actions carry ironic weight.", "example_usage": "Oedipus; a character walking into a trap the reader can see." },
+        { "value": "situational", "definition": "Outcomes are contrary to what was expected, intended, or would be considered appropriate.", "example_usage": "The doctor dies of the disease they treat; the safety precaution causes the accident." },
+        { "value": "structural", "definition": "The overall form, ending, or architecture of the work undercuts or reverses the surface meaning.", "example_usage": "A novel framed as a romance that ends in ironic non-resolution." },
+        { "value": "romantic_irony", "definition": "Self-reflexive authorial irony: the text calls attention to its own constructedness, undermining the illusion of fiction (Schlegel).", "example_usage": "An author-intrusion that breaks the fourth wall; postmodern self-reference." },
+        { "value": "socratic", "definition": "Deliberate feigned ignorance to expose the other's actual ignorance or contradiction.", "example_usage": "A character who pretends not to know what they know to force a revelation." }
+      ]
+    },
+    "gaze_type": {
+      "description": "The type of looking relationship encoded in the scene — who looks, at whom, with what power implications (Mulvey, Foucault, Sartre).",
+      "values": [
+        { "value": "objectifying_male_gaze", "definition": "The focalizer's perspective treats another character as a visual object of desire, enacting the power structure Mulvey identifies in classical Hollywood cinema.", "example_usage": "A male focalizer's lingering description of a female character's body as spectacle." },
+        { "value": "critical_returned_gaze", "definition": "The looked-at character returns the gaze, subverting or refusing objectification.", "example_usage": "A character who stares back and is not diminished by being looked at." },
+        { "value": "panoptic_surveillance", "definition": "A character is observed by an institutional or anonymous gaze they cannot return; produces self-surveillance (Foucault).", "example_usage": "A prisoner aware of potential surveillance; a character in a monitored space." },
+        { "value": "empathic_witness", "definition": "The focalizer looks at another character with the intention of understanding rather than possession or judgment.", "example_usage": "A POV character who attempts to genuinely see another's experience from inside it." },
+        { "value": "clinical_observation", "definition": "The focalizer looks at another character as a specimen — analytically, without empathy.", "example_usage": "A scientist, detective, or diagnostician regarding another as a case to be solved." },
+        { "value": "self_examination", "definition": "A character turns the gaze on themselves — introspection, self-assessment, self-judgment.", "example_usage": "A character who examines their own reflection, literally or metaphorically." }
+      ]
+    },
+    "speech_act_category": {
+      "description": "Searle's five illocutionary act categories — the performative function of what is said in dialogue.",
+      "values": [
+        { "value": "assertive", "definition": "The speaker commits to the truth of a proposition — claims, states, describes, asserts, predicts.", "example_usage": "Any statement that can be evaluated as true or false." },
+        { "value": "directive", "definition": "The speaker tries to get the listener to do something — orders, requests, questions, begs, challenges.", "example_usage": "Commands; questions (which direct the listener to answer); requests." },
+        { "value": "commissive", "definition": "The speaker commits to a future action — promises, vows, threatens, offers.", "example_usage": "A promise; a threat; a pledge; a bid." },
+        { "value": "expressive", "definition": "The speaker expresses a psychological state — thanks, apologizes, congratulates, condoles, laments.", "example_usage": "An apology; a declaration of love; an expression of grief." },
+        { "value": "declarative", "definition": "The speaker changes institutional reality through the speech act itself — pronounces, fires, sentences, names, declares.", "example_usage": "'I now pronounce you married.' 'You're fired.' 'I hereby sentence you.'" }
+      ]
+    },
+    "freudian_mechanism": {
+      "description": "Psychoanalytic defense mechanisms encoded in character behavior or narrative structure.",
+      "values": [
+        { "value": "repression", "definition": "Unconsciously excluding threatening thoughts, feelings, or memories from conscious awareness.", "example_usage": "A character who cannot remember a traumatic event; a narrator who 'forgets' key details." },
+        { "value": "condensation", "definition": "Multiple unconscious ideas fused into a single image, figure, or scene (Freud, dream-work).", "example_usage": "A dream figure who combines several important people; a symbol carrying overdetermined meaning." },
+        { "value": "displacement", "definition": "Shifting emotional investment from its real object to a substitute (Freud, dream-work).", "example_usage": "A character who directs anger at the wrong person; a phobia that stands in for a deeper fear." },
+        { "value": "projection", "definition": "Attributing one's own unacceptable qualities to others.", "example_usage": "A character who accuses others of what they themselves are doing." },
+        { "value": "sublimation", "definition": "Channeling socially unacceptable impulses into acceptable activities.", "example_usage": "An artist whose creativity is routed aggression; a scientist whose cold precision is routed emotion." },
+        { "value": "rationalization", "definition": "Constructing post-hoc logical justifications for actions driven by unconscious motives.", "example_usage": "A narrator who explains their destructive choices in rational terms that don't hold up." },
+        { "value": "denial", "definition": "Refusing to accept an evident reality.", "example_usage": "A character who cannot process a loss and acts as if it hasn't happened." },
+        { "value": "return_of_repressed", "definition": "Repressed material returning in disguised, symptomatic, or compulsive form.", "example_usage": "The uncanny; compulsive repetition of a traumatic pattern." }
+      ]
+    }
+  }
+}

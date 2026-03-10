@@ -1,0 +1,50 @@
+{
+  "$schema": "https://gbr-protocol.dev/schemas/scene-card.schema.json",
+  "_comment": "EDGE CASE: frequency=iterative — this scene encodes a repeated habitual pattern, not a single event. The scene_turns describe the generic form of an event that recurs regularly, not one specific instance.",
+  "scene_id": "edge-iterative-ch02-s01",
+  "book_id": "edge-cases-example",
+  "chapter": 2,
+  "beat": "status_quo",
+  "pov": "third_limited",
+  "focalizer": "sam",
+  "frequency": "iterative",
+  "duration_mode": "summary",
+  "narrative_order": "chronological",
+  "scene_function": "world_building",
+  "time_of_day": "morning",
+  "character_states": [
+    {
+      "character_ref": "sam",
+      "pov_role": "focalizer",
+      "primary_emotion": "resignation",
+      "want": "sam wants the routine to be enough",
+      "trigger_type": "anticipation_of_event"
+    }
+  ],
+  "canonical_summary": {
+    "chapter": 2,
+    "scene": 1,
+    "location": "Sam's Kitchen",
+    "time": "morning (iterative: every weekday for three years)",
+    "focalizer": "sam",
+    "want": "sam wants the routine to be enough",
+    "scene_turns": [
+      {
+        "event_type": "action",
+        "agent": "sam",
+        "verb": "moves_through",
+        "patient": "the same sequence of objects — kettle, mug, chair, window",
+        "result": "the routine completes; the emptiness remains unchanged"
+      },
+      {
+        "event_type": "internal_shift",
+        "agent": "sam",
+        "verb": "suppresses",
+        "patient": "the awareness that nothing will be different today either",
+        "result": "sam leaves for work"
+      }
+    ],
+    "outcome": "achieved",
+    "delta": "The routine holds, and in holding it enacts the stasis that will eventually break. (Iterative: this is the world before the inciting incident.)"
+  }
+}

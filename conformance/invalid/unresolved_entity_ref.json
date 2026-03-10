@@ -1,0 +1,27 @@
+{
+  "$schema": "https://gbr-protocol.dev/schemas/scene-card.schema.json",
+  "scene_id": "conformance-invalid-s02",
+  "book_id": "conformance-test-invalid",
+  "chapter": 1,
+  "beat": "inciting_incident",
+  "pov": "third_limited",
+  "focalizer": "non_existent_character",
+  "character_states": [
+    {
+      "character_ref": "also_not_a_real_character",
+      "pov_role": "participant",
+      "primary_emotion": "anger"
+    }
+  ],
+  "canonical_summary": {
+    "chapter": 1,
+    "scene": 1,
+    "location": "Home",
+    "time": "morning",
+    "focalizer": "non_existent_character",
+    "want": "character wants to escape",
+    "scene_turns": [],
+    "outcome": "failed",
+    "delta": "Nothing changed."
+  }
+}

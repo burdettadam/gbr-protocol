@@ -1,0 +1,81 @@
+{
+  "domain": "setting",
+  "description": "Enumerations for setting classification, time-of-day, spatial structure, atmosphere, and territorial dynamics.",
+  "enums": {
+    "setting_type": {
+      "description": "Primary category of the scene's physical location.",
+      "values": [
+        { "value": "interior_domestic", "definition": "An enclosed space associated with home, private life, or domestic routine.", "example_usage": "Kitchen, bedroom, living room, apartment." },
+        { "value": "interior_institutional", "definition": "An enclosed space belonging to an institution, organization, or public authority.", "example_usage": "Office, hospital, school, courthouse, prison, church." },
+        { "value": "interior_commercial", "definition": "An enclosed space organized around commerce or commercial exchange.", "example_usage": "Shop, restaurant, hotel lobby, bank, market." },
+        { "value": "interior_liminal", "definition": "An enclosed transitional space; not a destination but a passage.", "example_usage": "Corridor, stairwell, elevator, waiting room, antechamber." },
+        { "value": "exterior_urban", "definition": "An outdoor space in a built urban environment.", "example_usage": "Street, square, alley, rooftop, park in a city." },
+        { "value": "exterior_rural", "definition": "An outdoor space in a non-urban, agricultural, or village environment.", "example_usage": "Field, village square, country road, farmyard." },
+        { "value": "exterior_wilderness", "definition": "An outdoor space characterized by unmanaged, undeveloped nature.", "example_usage": "Forest, mountain, desert, open sea, tundra." },
+        { "value": "exterior_liminal", "definition": "An outdoor transitional space — a threshold between locations or states.", "example_usage": "Doorstep, gate, bridge, crossroads, harbor." },
+        { "value": "vehicle", "definition": "A space defined by movement — a vehicle interior functioning as scene space.", "example_usage": "Train compartment, car interior, ship cabin, plane." },
+        { "value": "virtual_or_imagined", "definition": "A space that exists in a character's mind, memory, dream, or digital environment.", "example_usage": "Dream sequence, hallucination, virtual space, memory." },
+        { "value": "no_fixed_location", "definition": "Action occurs across multiple locations simultaneously or in transit between locations.", "example_usage": "A chase scene spanning multiple locations; a montage." }
+      ]
+    },
+    "time_of_day": {
+      "description": "The approximate time of day during the scene — relevant to light, atmosphere, and social context.",
+      "values": [
+        { "value": "dawn", "definition": "The transitional period as light first appears; before sunrise proper.", "example_usage": "Pre-dawn, first light, earliest morning." },
+        { "value": "morning", "definition": "After sunrise through noon; daylight established.", "example_usage": "Breakfast time through mid-morning." },
+        { "value": "noon", "definition": "Midday; maximum light; harshness or clarity.", "example_usage": "The hour of full sun; shadowless light." },
+        { "value": "afternoon", "definition": "Post-noon through late afternoon; declining light.", "example_usage": "The long afternoon; working hours." },
+        { "value": "dusk", "definition": "The transitional period as light fades; after sunset but before full dark.", "example_usage": "Golden hour, twilight, the in-between." },
+        { "value": "evening", "definition": "After dark but early; social hours.", "example_usage": "Dinner hours, early evening activity." },
+        { "value": "night", "definition": "Deep night; darkness established.", "example_usage": "Midnight and surrounding hours." },
+        { "value": "late_night", "definition": "After midnight; the dead hours before dawn.", "example_usage": "The small hours; 2–4am." },
+        { "value": "unspecified", "definition": "Time of day is not established in the scene.", "example_usage": "Timeless or deliberately unanchored scenes." }
+      ]
+    },
+    "spatial_structure": {
+      "description": "The spatial form or organizing principle of the setting (Lotman, Tuan, de Certeau).",
+      "values": [
+        { "value": "bounded", "definition": "The space has clear, meaningful boundaries — inside/outside distinction matters.", "example_usage": "A room with a locked door; a walled city; a territory with a guarded border." },
+        { "value": "open", "definition": "The space is expansive, unenclosed, without meaningful boundary.", "example_usage": "Open sea; empty plain; wilderness without trails." },
+        { "value": "labyrinthine", "definition": "The space is complex, disorienting, and difficult to navigate — one can get lost.", "example_usage": "A maze; a city slum; a building with no clear exits." },
+        { "value": "threshold", "definition": "The space is defined by being a crossing point between two other spaces.", "example_usage": "A doorstep; a shore; a border crossing; a window." },
+        { "value": "panoptic", "definition": "The space is organized around visibility and surveillance — being seen or not seen.", "example_usage": "A prison yard; a open-plan office; a stage or arena." },
+        { "value": "intimate", "definition": "The space is small-scale, personal, and associated with shelter, interiority, or safety (Bachelard).", "example_usage": "A childhood room; a favorite corner; a nest or refuge." },
+        { "value": "contested", "definition": "The space is subject to competing claims — multiple parties vie for control or presence.", "example_usage": "A disputed territory; a shared household in conflict; contested public space." },
+        { "value": "heterotopia", "definition": "A space that exists outside normal social rules — a liminal or counter-site (Foucault).", "example_usage": "A prison, a theater, a fairground, a ship — spaces with their own logic." },
+        { "value": "palimpsest", "definition": "A space layered with historical, cultural, or personal meaning — the past is present in the texture of the space.", "example_usage": "A haunted house; an ancestral home; a site of historical trauma." }
+      ]
+    },
+    "atmosphere": {
+      "description": "The dominant affective quality of the scene's setting — the felt mood of the space itself.",
+      "values": [
+        { "value": "oppressive", "definition": "The space exerts pressure; weight, heaviness, or threat in the physical environment." },
+        { "value": "threatening", "definition": "The space signals danger; the character may be harmed here." },
+        { "value": "desolate", "definition": "The space is empty, abandoned, or stripped of life; loneliness is in the environment." },
+        { "value": "uncanny", "definition": "The space is familiar yet wrong; generates unease through subtle distortion (Freud's unheimlich)." },
+        { "value": "serene", "definition": "The space is peaceful, undisturbed, and calming." },
+        { "value": "festive", "definition": "The space is charged with collective celebration, social energy, and noise." },
+        { "value": "intimate", "definition": "The space invites closeness, privacy, and personal disclosure." },
+        { "value": "clinical", "definition": "The space is cold, ordered, and functional; emotion is absent from the environment." },
+        { "value": "chaotic", "definition": "The space is disordered, loud, and overwhelming; no clear order or control." },
+        { "value": "liminal", "definition": "The space is in-between; transition, ambiguity, and unresolved states dominate." },
+        { "value": "sacred", "definition": "The space carries spiritual or ritualistic significance, real or felt." },
+        { "value": "mundane", "definition": "The space is unremarkable, quotidian; its ordinariness is the point." },
+        { "value": "suffocating", "definition": "The space prevents escape or breath; claustrophobia, entrapment." },
+        { "value": "sublime", "definition": "The space is vast, awe-inspiring, and humanly overwhelming in a way that produces both terror and wonder." }
+      ]
+    },
+    "territory_type": {
+      "description": "Who controls or claims the space, and what that control means for the characters.",
+      "values": [
+        { "value": "protagonist_home", "definition": "The space belongs to or is primarily controlled by the protagonist.", "example_usage": "The protagonist's apartment; their childhood home." },
+        { "value": "antagonist_domain", "definition": "The space belongs to or is primarily controlled by the antagonist or opposing force.", "example_usage": "The villain's lair; the institution that oppresses the protagonist." },
+        { "value": "neutral_ground", "definition": "The space is not controlled by either side; neither has natural advantage.", "example_usage": "A public place; a third party's home; a no-man's-land." },
+        { "value": "ally_territory", "definition": "The space belongs to or is primarily controlled by the protagonist's allies.", "example_usage": "A mentor's home; a friendly organization's headquarters." },
+        { "value": "contested", "definition": "Ownership or control of the space is itself a stake in the scene.", "example_usage": "A territory both sides want; a home that is being fought over." },
+        { "value": "institutional", "definition": "The space belongs to an institution with authority over both parties.", "example_usage": "A courtroom, a hospital, a workplace, a school." },
+        { "value": "wilderness", "definition": "The space belongs to no one; characters must survive its conditions rather than navigate its social rules.", "example_usage": "Nature as adversary; the open sea; the void." }
+      ]
+    }
+  }
+}

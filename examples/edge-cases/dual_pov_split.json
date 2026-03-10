@@ -1,0 +1,56 @@
+[
+  {
+    "$schema": "https://gbr-protocol.dev/schemas/scene-card.json",
+    "_comment": "EDGE CASE: dual_pov_split — this is one of two scene cards covering the same dramatic event. The scene is the same; the focalizer changes. Compare with the companion file dual_pov_split_b.json. Both are valid GBR. The two cards together demonstrate 'internal_multiple' focalization across a single dramatic event.",
+    "scene_id": "edge-dual-pov-ch05-s01a",
+    "book_id": "edge-cases-example",
+    "chapter": 5,
+    "beat": "confrontation",
+    "pov": "third_limited",
+    "focalizer": "alex",
+    "focalization_type": "internal_fixed",
+    "scene_function": "confrontation",
+    "scene_polarity": "positive_to_negative",
+    "character_states": [
+      {
+        "character_ref": "alex",
+        "pov_role": "focalizer",
+        "primary_emotion": "anger",
+        "masked_emotion": "fear",
+        "want": "alex wants to be heard without having to beg",
+        "tactic": "assertion"
+      },
+      {
+        "character_ref": "morgan",
+        "pov_role": "participant",
+        "primary_emotion": "contempt"
+      }
+    ],
+    "canonical_summary": {
+      "chapter": 5,
+      "scene": 1,
+      "location": "The Office (Alex's perspective)",
+      "time": "afternoon",
+      "focalizer": "alex",
+      "want": "alex wants to be heard without having to beg",
+      "scene_turns": [
+        {
+          "event_type": "dialogue_exchange",
+          "agent": "alex",
+          "verb": "presents",
+          "patient": "the full evidence of Morgan's oversight",
+          "result": "Morgan dismisses it without looking up"
+        },
+        {
+          "event_type": "internal_shift",
+          "agent": "alex",
+          "verb": "recognizes",
+          "patient": "that Morgan will never acknowledge the harm",
+          "result": "Alex stops arguing and makes the decision to leave"
+        }
+      ],
+      "outcome": "redirected",
+      "delta": "Alex does not get what they wanted (to be heard) but achieves something more important: the clarity to act."
+    }
+  }
+]

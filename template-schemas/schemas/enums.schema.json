@@ -1,0 +1,1382 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://grimoire.dev/schemas/v3/enums.schema.json",
+  "title": "GrimoireV3Enums",
+  "description": "Shared enum vocabularies for v3.0 training data",
+  "$defs": {
+    "emotion": {
+      "type": "string",
+      "enum": [
+        "joy", "contentment", "hope", "pride", "love", "gratitude", "relief",
+        "anger", "frustration", "resentment", "contempt", "disgust",
+        "fear", "anxiety", "dread", "panic",
+        "sadness", "grief", "despair", "melancholy", "loneliness",
+        "shame", "guilt", "embarrassment", "humiliation",
+        "surprise", "shock", "confusion", "disbelief",
+        "curiosity", "interest", "anticipation",
+        "boredom", "apathy", "resignation",
+        "jealousy", "envy",
+        "neutral", "conflicted", "mixed"
+      ],
+      "description": "Core emotional states"
+    },
+    "emotion_intensity": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 5,
+      "description": "1=subtle/masked, 3=clear, 5=overwhelming"
+    },
+    "tone": {
+      "type": "string",
+      "enum": [
+        "tender", "intimate", "warm", "affectionate",
+        "playful", "humorous", "ironic", "satirical", "sardonic",
+        "tense", "anxious", "ominous", "menacing", "threatening",
+        "confrontational", "hostile", "aggressive",
+        "melancholic", "elegiac", "mournful", "somber",
+        "hopeful", "optimistic", "triumphant",
+        "desperate", "frantic", "chaotic",
+        "calm", "peaceful", "contemplative", "reflective",
+        "formal", "ceremonial", "dignified",
+        "casual", "everyday", "mundane",
+        "mysterious", "eerie", "uncanny",
+        "romantic", "passionate", "erotic",
+        "clinical", "detached", "neutral"
+      ],
+      "description": "Scene's emotional/stylistic register"
+    },
+    "power_source": {
+      "type": "string",
+      "enum": [
+        "economic", "social_rank", "professional_authority", "physical",
+        "knowledge_secret", "knowledge_expertise", "moral_authority",
+        "emotional_leverage", "age_seniority", "charisma",
+        "institutional", "legal", "familial", "none"
+      ],
+      "description": "What gives one character power over another"
+    },
+    "want_type": {
+      "type": "string",
+      "enum": [
+        "approval", "acceptance", "validation", "respect",
+        "love", "affection", "intimacy", "connection",
+        "information", "truth", "honesty", "explanation",
+        "acknowledgment", "apology", "justice", "revenge",
+        "distance", "escape", "freedom", "independence",
+        "protection", "safety", "security",
+        "control", "obedience", "submission",
+        "help", "support", "cooperation",
+        "forgiveness", "reconciliation",
+        "silence", "discretion"
+      ],
+      "description": "What one character wants from another"
+    },
+    "underlying_conflict": {
+      "type": "string",
+      "enum": [
+        "respect_vs_contempt", "trust_vs_suspicion", "control_vs_autonomy",
+        "worth_vs_inadequacy", "belonging_vs_rejection", "truth_vs_deception",
+        "duty_vs_desire", "loyalty_vs_self_interest", "pride_vs_humility",
+        "class_prejudice", "cultural_clash", "generational_gap",
+        "past_injury", "unspoken_history", "competing_values",
+        "identity_conflict", "power_struggle", "resource_conflict",
+        "none"
+      ],
+      "description": "The deeper issue beneath surface disagreements"
+    },
+    "obstacle_type": {
+      "type": "string",
+      "enum": [
+        "opposing_character", "social_norms", "physical_barrier", "time_pressure",
+        "missing_information", "internal_resistance", "competing_obligation",
+        "resource_lack", "skill_lack", "authority_figure", "institutional",
+        "environmental", "emotional_block", "none"
+      ],
+      "description": "Category of what prevents character from achieving objective"
+    },
+    "tactic": {
+      "type": "string",
+      "enum": [
+        "direct_request", "demand", "persuasion", "manipulation",
+        "charm", "flattery", "seduction", "bribery",
+        "threat", "intimidation", "aggression",
+        "deflection", "avoidance", "withdrawal", "silence",
+        "honesty", "confession", "vulnerability",
+        "deception", "misdirection", "omission",
+        "appeal_to_emotion", "appeal_to_logic", "appeal_to_authority",
+        "bargaining", "compromise", "submission",
+        "defiance", "mockery", "sarcasm",
+        "passive_observation", "information_gathering"
+      ],
+      "description": "How a character pursues their objective"
+    },
+    "fid_marker": {
+      "type": "string",
+      "enum": [
+        "exclamatory_syntax", "character_vocabulary", "unattributed_questions",
+        "present_tense_feelings", "deictic_shifts", "evaluative_language",
+        "colloquial_register", "tag_questions"
+      ],
+      "description": "Markers of free indirect discourse"
+    },
+    "time_unit": {
+      "type": "string",
+      "enum": [
+        "seconds", "minutes", "hours", "days", "weeks", "months", "years", "immediate"
+      ]
+    },
+    "violation_signature": {
+      "type": "string",
+      "enum": [
+        "over_explanation", "under_explanation",
+        "single_syllable_shutdown", "topic_change",
+        "answering_different_question", "excessive_detail",
+        "vagueness_from_precise_speaker", "formality_shift",
+        "repetition_under_pressure", "false_pleasantry"
+      ],
+      "description": "How Gricean maxim violations manifest in dialogue"
+    },
+    "wound_category": {
+      "type": "string",
+      "enum": [
+        "abandonment", "betrayal", "rejection", "humiliation",
+        "inadequacy", "powerlessness", "invisibility", "worthlessness",
+        "entrapment", "loss", "injustice", "shame",
+        "unloved", "unprotected", "none"
+      ],
+      "description": "Category of core wound (not specific character wound)"
+    },
+    "social_role": {
+      "type": "string",
+      "enum": [
+        "authority_figure", "subordinate", "equal_peer", "rival",
+        "mentor", "student", "protector", "dependent",
+        "host", "guest", "stranger", "intimate",
+        "professional", "client", "servant", "master",
+        "elder", "youth", "parent", "child", "sibling",
+        "suitor", "beloved", "ex_partner", "spouse",
+        "ally", "adversary", "neutral_party"
+      ],
+      "description": "Social role character inhabits in scene"
+    },
+    "setting_type": {
+      "type": "string",
+      "enum": [
+        "estate_interior", "estate_exterior", "manor_house", "cottage",
+        "public_building", "religious_building", "government_building",
+        "commercial", "inn_tavern", "market",
+        "domestic_modest", "domestic_grand", "domestic_poor",
+        "transport", "carriage", "ship", "on_foot",
+        "natural_landscape", "garden", "forest", "field", "water_body",
+        "urban_street", "urban_square", "urban_alley",
+        "military", "prison", "hospital", "school"
+      ],
+      "description": "Category of setting location"
+    },
+    "location_qualifier": {
+      "type": "string",
+      "enum": [
+        "grand", "modest", "shabby", "intimate", "vast",
+        "private", "public", "semi_public",
+        "transitional", "utilitarian", "ceremonial", "sacred",
+        "familiar", "foreign", "contested"
+      ],
+      "description": "Qualitative aspect of the space"
+    },
+    "room_type": {
+      "type": "string",
+      "enum": [
+        "drawing_room", "sitting_room", "parlor", "library", "study",
+        "dining_room", "ballroom", "hall", "gallery",
+        "bedroom", "dressing_room", "nursery",
+        "kitchen", "servants_quarters", "cellar", "attic",
+        "entrance_hall", "corridor", "stairway",
+        "garden_room", "conservatory", "terrace",
+        "office", "shop_floor", "workshop",
+        "none"
+      ],
+      "description": "Specific room within a building"
+    },
+    "weather_condition": {
+      "type": "string",
+      "enum": [
+        "clear", "partly_cloudy", "overcast", "threatening",
+        "rain_light", "rain_heavy", "rain_starting", "rain_ending",
+        "snow_light", "snow_heavy", "sleet", "hail",
+        "fog", "mist", "haze",
+        "storm", "thunderstorm", "wind_light", "wind_strong", "gale",
+        "heat_oppressive", "cold_bitter", "humid", "dry",
+        "seasonal_typical", "unseasonable", "none"
+      ],
+      "description": "Atmospheric weather conditions"
+    },
+    "lighting_source": {
+      "type": "string",
+      "enum": [
+        "sunlight_direct", "sunlight_diffused", "sunlight_filtered",
+        "moonlight", "starlight",
+        "candle_single", "candles_multiple", "chandelier",
+        "fireplace", "torch", "lantern", "lamp_oil",
+        "gas_light", "electric",
+        "none", "mixed"
+      ],
+      "description": "Primary light source"
+    },
+    "lighting_quality": {
+      "type": "string",
+      "enum": [
+        "bright", "well_lit", "adequate", "dim", "dark", "pitch_black",
+        "harsh", "soft", "warm", "cold",
+        "flickering", "steady", "shifting",
+        "dappled", "shadowed", "contrasting"
+      ],
+      "description": "Quality of illumination"
+    },
+    "motif_category": {
+      "type": "string",
+      "enum": [
+        "entrapment", "freedom", "confinement", "escape",
+        "sight", "blindness", "perception", "revelation",
+        "journey", "arrival", "departure", "threshold",
+        "nature", "civilization", "wilderness", "garden",
+        "time", "decay", "growth", "season",
+        "mirror", "reflection", "doubling", "shadow",
+        "water", "fire", "earth", "air",
+        "light", "darkness", "dawn", "dusk",
+        "mask", "performance", "authenticity",
+        "letter", "book", "document", "secret",
+        "food", "hunger", "feast", "poison",
+        "blood", "wound", "healing",
+        "music", "silence", "noise"
+      ],
+      "description": "Thematic motif category"
+    },
+    "prop_category": {
+      "type": "string",
+      "enum": [
+        "furniture_seating", "furniture_table", "furniture_storage", "furniture_bed",
+        "document_letter", "document_book", "document_legal", "document_news",
+        "clothing_worn", "clothing_removed", "accessory", "jewelry",
+        "food", "drink", "dining_implement",
+        "personal_item", "keepsake", "gift",
+        "architectural_door", "architectural_window", "architectural_fireplace", "architectural_stair",
+        "nature_plant", "nature_animal", "nature_weather_related",
+        "weapon_blade", "weapon_firearm", "weapon_improvised",
+        "light_source", "timepiece", "mirror",
+        "musical_instrument", "art_object", "religious_object",
+        "container", "vehicle", "tool",
+        "symbolic_object"
+      ],
+      "description": "Category of physical object in scene"
+    },
+    "position_type": {
+      "type": "string",
+      "enum": [
+        "seated", "standing", "pacing", "lying", "kneeling",
+        "at_threshold", "at_window", "at_fireplace", "at_table",
+        "center_room", "corner", "background", "foreground",
+        "blocking_exit", "near_exit", "isolated", "clustered"
+      ],
+      "description": "Character's physical position in space"
+    },
+    "movement_type": {
+      "type": "string",
+      "enum": [
+        "enters", "exits", "approaches", "retreats", "circles",
+        "rises", "sits", "turns_toward", "turns_away",
+        "crosses_to", "remains_still", "gestures",
+        "touches_object", "handles_prop", "discards_prop",
+        "touches_character", "withdraws_contact",
+        "paces", "freezes", "collapses"
+      ],
+      "description": "Type of physical movement"
+    },
+    "sensory_type": {
+      "type": "string",
+      "enum": [
+        "visual_light", "visual_color", "visual_movement", "visual_texture",
+        "auditory_voice", "auditory_music", "auditory_nature", "auditory_mechanical", "auditory_silence",
+        "tactile_temperature", "tactile_texture", "tactile_pressure", "tactile_moisture",
+        "olfactory_pleasant", "olfactory_unpleasant", "olfactory_food", "olfactory_nature", "olfactory_human",
+        "gustatory_sweet", "gustatory_bitter", "gustatory_savory", "gustatory_sour"
+      ],
+      "description": "Category of sensory detail"
+    },
+    "character_role": {
+      "type": "string",
+      "enum": [
+        "protagonist", "deuteragonist", "antagonist",
+        "love_interest", "ally", "rival", "mentor",
+        "authority", "dependent", "family_member",
+        "confidant", "foil", "catalyst",
+        "stranger", "narrator",
+        "self", "other_present", "absent_party"
+      ],
+      "description": "Unified character role for scene references (not slug)"
+    },
+    "scene_polarity": {
+      "type": "string",
+      "enum": [
+        "hope", "fear", "trust", "suspicion",
+        "ignorance", "knowledge", "connection", "isolation",
+        "control", "chaos", "safety", "danger",
+        "certainty", "doubt", "love", "hate",
+        "calm", "agitation", "power", "powerlessness",
+        "belonging", "alienation", "clarity", "confusion"
+      ],
+      "description": "Dramatic polarity for scene turn tracking"
+    },
+    "thematic_question": {
+      "type": "string",
+      "enum": [
+        "can_love_overcome_obstacles",
+        "is_personal_change_possible",
+        "does_truth_matter_more_than_peace",
+        "can_wounds_heal",
+        "is_justice_attainable",
+        "does_social_class_determine_fate",
+        "can_pride_be_overcome",
+        "does_virtue_get_rewarded",
+        "is_forgiveness_possible",
+        "can_duty_coexist_with_desire",
+        "does_loyalty_demand_sacrifice",
+        "is_happiness_a_choice",
+        "can_the_past_be_escaped",
+        "does_power_corrupt",
+        "is_authenticity_worth_the_cost",
+        "can_love_survive_deception",
+        "is_redemption_earned_or_given",
+        "does_knowledge_bring_happiness"
+      ],
+      "description": "Central thematic question being explored"
+    },
+    "speech_register": {
+      "type": "string",
+      "enum": [
+        "formal_elevated", "formal_standard", "polite_neutral",
+        "casual_familiar", "intimate_private",
+        "archaic_period", "dialect_regional", "slang_subcultural",
+        "professional_technical", "ceremonial_ritual"
+      ],
+      "description": "Level of formality in character speech"
+    },
+    "narrative_voice_register": {
+      "type": "string",
+      "enum": [
+        "archaic", "period_appropriate", "contemporary",
+        "formal_literary", "conversational", "lyrical",
+        "journalistic", "academic", "vernacular"
+      ],
+      "description": "Stylistic register of narrative voice"
+    },
+    "perception_of_other": {
+      "type": "string",
+      "enum": [
+        "expects_approval", "expects_rejection", "expects_hostility",
+        "expects_indifference", "expects_support", "expects_betrayal",
+        "expects_honesty", "expects_deception", "expects_gratitude",
+        "expects_blame", "uncertain"
+      ],
+      "description": "What one character expects from another (creates 'The Gap')"
+    },
+    "trigger_type": {
+      "type": "string",
+      "enum": [
+        "past_injury_mentioned", "dismissal", "condescension",
+        "accusation", "comparison", "name_invoked",
+        "physical_proximity", "tone_of_voice", "specific_word", "none"
+      ],
+      "description": "What activates a character's wound response"
+    },
+    "relationship_turn": {
+      "type": "string",
+      "enum": [
+        "none", "deterioration", "improvement",
+        "revelation", "rupture", "reconciliation"
+      ],
+      "description": "How relationship state changes in a scene"
+    },
+    "pov_type": {
+      "type": "string",
+      "enum": [
+        "first_person", "second_person", "third_limited",
+        "third_omniscient", "third_objective"
+      ],
+      "description": "Point of view narrator type"
+    },
+    "focalization_type": {
+      "type": "string",
+      "enum": [
+        "zero", "internal_fixed", "internal_variable",
+        "internal_multiple", "external"
+      ],
+      "description": "Genette focalization category"
+    },
+    "consciousness_mode": {
+      "type": "string",
+      "enum": [
+        "psychonarration", "quoted_monologue",
+        "narrated_monologue", "mixed"
+      ],
+      "description": "Dorrit Cohn consciousness representation mode"
+    },
+    "emotional_arc": {
+      "type": "string",
+      "enum": [
+        "change", "stasis", "escalation",
+        "de_escalation", "realization", "reversal"
+      ],
+      "description": "How character's emotional state changes through scene"
+    },
+    "personal_arc_beat": {
+      "type": "string",
+      "enum": [
+        "setup", "catalyst", "debate", "break_into_two",
+        "fun_and_games", "midpoint", "bad_guys_close_in",
+        "dark_night", "break_into_three", "finale", "final_image"
+      ],
+      "description": "Snyder beat for character's personal arc (not plot)"
+    },
+    "objective_verb": {
+      "type": "string",
+      "enum": [
+        "obtain", "persuade", "escape", "protect", "confront",
+        "conceal", "confess", "decide", "impress", "survive",
+        "connect", "separate", "refuse", "accept", "reveal",
+        "learn", "prevent", "maintain", "none"
+      ],
+      "description": "Action verb for character objective"
+    },
+    "objective_object": {
+      "type": "string",
+      "enum": [
+        "information", "secret", "relationship", "proposal",
+        "accusation", "position", "resource", "safety",
+        "dignity", "truth", "alliance", "freedom",
+        "approval", "control", "reconciliation"
+      ],
+      "description": "What type of thing is being acted upon"
+    },
+    "objective_constraint": {
+      "type": "string",
+      "enum": [
+        "openly", "covertly", "maintaining_dignity",
+        "without_conflict", "permanently", "temporarily",
+        "conditionally", "none"
+      ],
+      "description": "How the objective must be achieved"
+    },
+    "body_language": {
+      "type": "string",
+      "enum": [
+        "eye_contact", "avoids_eye_contact", "clenched_fists",
+        "crossed_arms", "open_posture", "turned_away",
+        "leaning_in", "leaning_back", "fidgeting", "stillness",
+        "trembling", "tears", "forced_smile", "genuine_smile",
+        "frown", "blank_expression", "nodding", "shaking_head",
+        "touching_face", "touching_other", "maintaining_distance",
+        "closing_distance"
+      ],
+      "description": "Physical body language signals"
+    },
+    "scene_function": {
+      "type": "string",
+      "enum": [
+        "establish", "complicate", "reveal", "confront",
+        "decide", "transform", "resolve", "transition"
+      ],
+      "description": "Structural work this scene does"
+    },
+    "time_of_day": {
+      "type": "string",
+      "enum": [
+        "dawn", "morning", "midday", "afternoon",
+        "dusk", "evening", "night", "midnight", "pre_dawn"
+      ],
+      "description": "Time of day for scene setting"
+    },
+    "season": {
+      "type": "string",
+      "enum": ["spring", "summer", "autumn", "winter"],
+      "description": "Season for scene setting"
+    },
+    "pov_role": {
+      "type": "string",
+      "enum": ["focal", "present", "mentioned"],
+      "description": "Character's relationship to POV"
+    },
+    "posture": {
+      "type": "string",
+      "enum": [
+        "seated", "standing", "pacing", "lying",
+        "kneeling", "crouching", "leaning", "frozen"
+      ],
+      "description": "Character's physical posture"
+    },
+    "psychic_distance": {
+      "type": "string",
+      "enum": [
+        "distant_narrator", "close_narrator", "neutral_filter", "deep_filter", "stream_of_consciousness"
+      ],
+      "description": "Gardner psychic distance: distant_narrator (1=most distant), close_narrator (2), neutral_filter (3), deep_filter (4=character's voice), stream_of_consciousness (5=direct thought)"
+    },
+    "psychic_distance_trigger": {
+      "type": "string",
+      "enum": [
+        "dialogue_start", "revelation", "decision_point",
+        "emotional_peak", "action_sequence", "reflection", "scene_end"
+      ],
+      "description": "What triggers psychic distance shift"
+    },
+    "personal_stakes": {
+      "type": "string",
+      "enum": [
+        "identity", "self_respect", "safety", "freedom",
+        "livelihood", "reputation", "relationship", "goal",
+        "secret", "belief", "none"
+      ],
+      "description": "What's at stake for the character personally"
+    },
+    "relational_stakes": {
+      "type": "string",
+      "enum": [
+        "trust", "intimacy", "status", "connection",
+        "alliance", "rupture", "none"
+      ],
+      "description": "What's at stake relationally"
+    },
+    "social_circle": {
+      "type": "string",
+      "enum": [
+        "family", "professional", "community", "underground",
+        "romantic", "religious", "political", "artistic", "none"
+      ],
+      "description": "Social circle active in scene"
+    },
+    "social_mask": {
+      "type": "string",
+      "enum": [
+        "authentic", "performing", "concealing", "code_switching"
+      ],
+      "description": "Whether character presents authentically"
+    },
+    "relationship_distance": {
+      "type": "string",
+      "enum": [
+        "intimate", "personal", "social", "public", "distant", "hostile"
+      ],
+      "description": "Physical/emotional distance between characters"
+    },
+    "temporal_gap_type": {
+      "type": "string",
+      "enum": [
+        "none", "brief_ellipsis", "extended_ellipsis",
+        "chapter_break", "section_break"
+      ],
+      "description": "Time gap between scenes (continuity)"
+    },
+    "information_gap_type": {
+      "type": "string",
+      "enum": [
+        "temporary", "permanent", "ambiguous", "false", "none"
+      ],
+      "description": "Information gap for reader experience (Sternberg)"
+    },
+    "location_change_type": {
+      "type": "string",
+      "enum": [
+        "same", "adjacent", "nearby", "distant", "very_distant", "unknown"
+      ],
+      "description": "Spatial change between scenes"
+    },
+    "thread_type": {
+      "type": "string",
+      "enum": [
+        "plot", "relationship", "thematic", "mystery", "character_arc"
+      ],
+      "description": "Category of narrative thread"
+    },
+    "thread_status": {
+      "type": "string",
+      "enum": [
+        "introduced", "developing", "escalating",
+        "pivoting", "resolving", "dormant"
+      ],
+      "description": "Current state of narrative thread"
+    },
+    "callback_thread_type": {
+      "type": "string",
+      "enum": [
+        "plot", "dialogue", "image", "motif", "character_trait"
+      ],
+      "description": "What kind of callback this is"
+    },
+    "callback_effect": {
+      "type": "string",
+      "enum": [
+        "echo", "contrast", "escalation", "payoff", "reframe"
+      ],
+      "description": "Effect of the callback"
+    },
+    "reader_effect": {
+      "type": "string",
+      "enum": [
+        "curiosity", "suspense", "surprise", "dramatic_irony",
+        "recognition", "anticipation", "revelation"
+      ],
+      "description": "Primary reader experience effect (Sternberg)"
+    },
+    "information_asymmetry": {
+      "type": "string",
+      "enum": [
+        "reader_knows_more", "reader_knows_less", "equal", "reader_suspects"
+      ],
+      "description": "Knowledge differential between reader and character"
+    },
+    "gap_domain": {
+      "type": "string",
+      "enum": [
+        "plot", "character_motive", "backstory", "future", "reliability", "none"
+      ],
+      "description": "What domain the information gap concerns"
+    },
+    "motif_type": {
+      "type": "string",
+      "enum": [
+        "visual", "auditory", "tactile", "linguistic",
+        "behavioral", "spatial", "temporal"
+      ],
+      "description": "Sensory mode of motif manifestation"
+    },
+    "motif_deployment": {
+      "type": "string",
+      "enum": [
+        "introduced", "reinforced", "varied", "inverted", "culminating"
+      ],
+      "description": "How motif is used in scene"
+    },
+    "objective_correlative_type": {
+      "type": "string",
+      "enum": [
+        "natural_phenomenon", "physical_object", "setting_detail",
+        "action", "sound", "weather", "none"
+      ],
+      "description": "What external element carries emotional meaning"
+    },
+    "controlling_idea_position": {
+      "type": "string",
+      "enum": [
+        "supports", "challenges", "complicates", "tests", "neutral"
+      ],
+      "description": "How scene relates to novel's controlling idea"
+    },
+    "dominant_social_circle": {
+      "type": "string",
+      "enum": [
+        "family", "professional", "social", "intimate",
+        "public", "private", "institutional", "underground", "marginal"
+      ],
+      "description": "Which social circle dominates the scene"
+    },
+    "circle_intersection": {
+      "type": "string",
+      "enum": [
+        "none", "family_professional", "family_social",
+        "professional_social", "intimate_family",
+        "public_private", "multi_circle"
+      ],
+      "description": "Which circles collide in scene"
+    },
+    "territory_type": {
+      "type": "string",
+      "enum": [
+        "home_ground", "shared_space", "rival_territory",
+        "neutral_ground", "contested"
+      ],
+      "description": "Whose territory the scene takes place in"
+    },
+    "character_arrival": {
+      "type": "string",
+      "enum": [
+        "starts_present", "enters_early", "enters_mid",
+        "enters_late", "not_present"
+      ],
+      "description": "When character enters scene"
+    },
+    "character_departure": {
+      "type": "string",
+      "enum": [
+        "stays_throughout", "exits_early", "exits_mid",
+        "exits_late", "not_present"
+      ],
+      "description": "When character exits scene"
+    },
+    "spatial_structure": {
+      "type": "string",
+      "enum": [
+        "enclosed", "threshold", "open", "liminal", "vertical", "horizontal"
+      ],
+      "description": "Spatial semantics per Lotman"
+    },
+    "prop_function": {
+      "type": "string",
+      "enum": [
+        "set_dressing", "action_object", "symbolic", "chekhov_gun", "continuity"
+      ],
+      "description": "Narrative function of prop"
+    },
+    "sensory_prominence": {
+      "type": "string",
+      "enum": [
+        "background", "mentioned", "emphasized", "dominant"
+      ],
+      "description": "How prominent sensory detail is"
+    },
+    "character_territory": {
+      "type": "string",
+      "enum": ["home", "foreign", "neutral", "contested"],
+      "description": "Character's relationship to space (power topology)"
+    },
+    "power_balance": {
+      "type": "string",
+      "enum": [
+        "equal", "this_char_has_power", "other_char_has_power", "contested"
+      ],
+      "description": "Power dynamic between characters"
+    },
+    "knowledge_domain": {
+      "type": "string",
+      "enum": [
+        "character_trait", "relationship", "past_event",
+        "secret", "intention", "location", "resource", "social_status"
+      ],
+      "description": "What category of thing is known"
+    },
+    "knowledge_predicate": {
+      "type": "string",
+      "enum": [
+        "loves", "hates", "married", "engaged", "separated", "divorced", "related_to",
+        "betrayed", "helped", "harmed", "saved", "abandoned", "rejected", "forgave",
+        "lied_to", "deceived", "manipulated", "told_truth",
+        "is_wealthy", "is_poor", "is_powerful", "is_vulnerable", "is_hiding", "is_present",
+        "knows_secret", "has_debt", "owes_favor", "broke_promise", "kept_promise",
+        "caused", "prevented", "witnessed", "planned", "intends",
+        "owns", "wants", "fears"
+      ],
+      "description": "Predicate of knowledge item"
+    },
+    "knowledge_certainty": {
+      "type": "string",
+      "enum": [
+        "witnessed", "told_directly", "inferred",
+        "rumored", "suspected", "assumed"
+      ],
+      "description": "How character acquired knowledge"
+    },
+    "narrative_order": {
+      "type": "string",
+      "enum": [
+        "chronological", "analepsis", "prolepsis", "braided", "in_medias_res"
+      ],
+      "description": "Genette temporal order"
+    },
+    "analepsis_type": {
+      "type": "string",
+      "enum": [
+        "external", "internal", "complete", "partial", "none"
+      ],
+      "description": "Type of flashback"
+    },
+    "prolepsis_type": {
+      "type": "string",
+      "enum": [
+        "announcing", "completing", "external", "internal", "none"
+      ],
+      "description": "Type of flashforward"
+    },
+    "duration_mode": {
+      "type": "string",
+      "enum": [
+        "scene", "summary", "ellipsis", "pause", "stretch"
+      ],
+      "description": "Genette duration mode"
+    },
+    "frequency": {
+      "type": "string",
+      "enum": [
+        "singulative", "iterative", "repetitive", "multiple_singulative"
+      ],
+      "description": "Genette frequency"
+    },
+    "iterative_pattern": {
+      "type": "string",
+      "enum": [
+        "daily", "weekly", "seasonal", "habitual", "none"
+      ],
+      "description": "Pattern if iterative frequency"
+    },
+    "subtext_technique": {
+      "type": "string",
+      "enum": [
+        "gricean_violation", "deflection", "loaded_silence",
+        "iceberg", "pinter_pause", "apparent_irrelevance", "none"
+      ],
+      "description": "How subtext is created"
+    },
+    "gricean_maxim": {
+      "type": "string",
+      "enum": [
+        "quantity", "quality", "relation", "manner", "multiple", "none"
+      ],
+      "description": "Which Gricean maxim is violated"
+    },
+    "iceberg_category": {
+      "type": "string",
+      "enum": [
+        "past_trauma", "secret_love", "hidden_resentment",
+        "guilt", "fear", "desire", "family_secret",
+        "betrayal", "loss", "ambition", "none"
+      ],
+      "description": "What's beneath the surface (Hemingway iceberg)"
+    },
+    "chapter_position": {
+      "type": "string",
+      "enum": [
+        "opening", "early", "middle", "late", "closing", "entire_chapter"
+      ],
+      "description": "Where scene falls within chapter"
+    },
+    "beat_type": {
+      "type": "string",
+      "enum": [
+        "hook", "setup", "catalyst", "debate", "threshold",
+        "tests", "approach", "ordeal", "reward", "road_back",
+        "resurrection", "return", "crisis", "climax", "resolution"
+      ],
+      "description": "Story beat type"
+    },
+    "sequence_type": {
+      "type": "string",
+      "enum": [
+        "setup", "catalyst", "debate", "break_into_two",
+        "fun_and_games", "midpoint", "bad_guys_close_in",
+        "all_is_lost", "dark_night", "break_into_three",
+        "finale", "final_image"
+      ],
+      "description": "Snyder sequence type"
+    },
+
+    "grammatical_sentence_type": {
+      "type": "string",
+      "enum": [
+        "declarative", "interrogative", "imperative", "exclamatory"
+      ],
+      "description": "Grammatical sentence type (declarative/interrogative/imperative/exclamatory)"
+    },
+    "sentence_structure": {
+      "type": "string",
+      "enum": [
+        "fragment", "simple", "compound", "complex", "compound_complex"
+      ],
+      "description": "Grammatical sentence structure"
+    },
+    "sentence_length_category": {
+      "type": "string",
+      "enum": [
+        "fragment", "short", "medium", "long", "marathon"
+      ],
+      "description": "Sentence length: fragment (<5), short (5-12), medium (13-25), long (26-50), marathon (>50 words)"
+    },
+    "prose_rhythm": {
+      "type": "string",
+      "enum": [
+        "staccato", "flowing", "varied", "periodic", "telegraphic", "cumulative"
+      ],
+      "description": "Rhythm pattern: staccato (short bursts), flowing (long unbroken), varied (contrasting lengths), periodic (main clause delayed), telegraphic (extreme brevity), cumulative (building detail)"
+    },
+    "diction_level": {
+      "type": "string",
+      "enum": [
+        "monosyllabic", "plain", "conversational", "formal", "literary", "ornate"
+      ],
+      "description": "Vocabulary complexity and register"
+    },
+    "concreteness": {
+      "type": "string",
+      "enum": [
+        "abstract", "general", "concrete", "sensory", "visceral"
+      ],
+      "description": "Level of sensory particularity"
+    },
+    "figure_type": {
+      "type": "string",
+      "enum": [
+        "metaphor", "simile", "personification", "metonymy", "synecdoche",
+        "hyperbole", "litotes", "oxymoron", "antithesis", "zeugma",
+        "chiasmus", "anaphora", "anadiplosis", "epistrophe",
+        "asyndeton", "polysyndeton", "none"
+      ],
+      "description": "Figurative language device (Jakobson axis of selection)"
+    },
+    "defamiliarization_level": {
+      "type": "string",
+      "enum": [
+        "automatized", "mild", "moderate", "strong", "radical"
+      ],
+      "description": "Shklovsky ostranenie: automatized (transparent), mild (slight friction), moderate (noticeable strangeness), strong (perception forced), radical (language foregrounded)"
+    },
+    "sound_device": {
+      "type": "string",
+      "enum": [
+        "alliteration", "assonance", "consonance", "onomatopoeia",
+        "euphony", "cacophony", "sibilance", "plosives", "none"
+      ],
+      "description": "Phonological/sound pattern device"
+    },
+    "process_type": {
+      "type": "string",
+      "enum": [
+        "material", "mental", "verbal", "relational", "behavioral", "existential"
+      ],
+      "description": "Halliday transitivity: material (doing), mental (sensing), verbal (saying), relational (being), behavioral (physiological), existential (existing)"
+    },
+    "agent_encoding": {
+      "type": "string",
+      "enum": [
+        "clear_agent", "obscured_agent", "agentless_passive", "nominalization", "ambient"
+      ],
+      "description": "How agency is grammatically encoded (Halliday)"
+    },
+    "attribution_style": {
+      "type": "string",
+      "enum": [
+        "said", "said_variant", "action_beat", "none", "mixed"
+      ],
+      "description": "How dialogue is attributed"
+    },
+    "discourse_mode": {
+      "type": "string",
+      "enum": [
+        "direct_speech", "indirect_speech", "free_indirect_discourse",
+        "narrated_speech", "speech_summary", "thought_report",
+        "direct_thought", "free_indirect_thought"
+      ],
+      "description": "Mode of representing speech and thought (Cohn/Leech & Short)"
+    },
+    "foregrounding_type": {
+      "type": "string",
+      "enum": [
+        "external_deviation", "internal_deviation", "parallelism",
+        "cohesion_pattern", "semantic_saturation", "none"
+      ],
+      "description": "Leech & Short foregrounding: external_deviation (from language norms), internal_deviation (from text's own pattern), parallelism (repeated pattern), cohesion_pattern (linking), semantic_saturation (word field dominance)"
+    },
+    "prose_pacing": {
+      "type": "string",
+      "enum": [
+        "compressed", "standard", "expanded", "dilated"
+      ],
+      "description": "Scene vs. summary ratio at prose level"
+    },
+    "vocabulary_source": {
+      "type": "string",
+      "enum": [
+        "character_owned", "narrator_owned", "period_appropriate", "mixed"
+      ],
+      "description": "Whose vocabulary appears in FID passages"
+    },
+    "clause_position": {
+      "type": "string",
+      "enum": [
+        "main_initial", "main_medial", "main_final", "embedded"
+      ],
+      "description": "Position of main clause within sentence"
+    },
+    "paragraph_function": {
+      "type": "string",
+      "enum": [
+        "scene_action", "dialogue_exchange", "interiority", "description",
+        "exposition", "transition", "summary", "reflection"
+      ],
+      "description": "Dominant function of paragraph"
+    },
+
+    "genre_type": {
+      "type": "string",
+      "enum": [
+        "romance", "literary", "thriller", "mystery", "fantasy", "science_fiction",
+        "horror", "historical", "contemporary", "young_adult", "middle_grade",
+        "memoir", "western", "gothic", "comedy", "tragedy", "satire"
+      ],
+      "description": "Primary genre classification"
+    },
+    "collision_pattern": {
+      "type": "string",
+      "enum": [
+        "rival_circles_equal", "class_crossing", "insider_outsider", "forbidden_proximity",
+        "forced_proximity", "same_circle_disruption", "institutional_hierarchy",
+        "performance_for_audience", "institutional_merger", "returning_insider",
+        "temperament_collision", "triangulated_circles", "hidden_world",
+        "competitive_arena", "generational_divide", "investigator_enters_closed_world",
+        "sealed_community", "lone_figure_vs_institution", "underworld_overworld",
+        "cat_and_mouse_circles", "infiltration", "civilian_enters_institutional",
+        "whistleblower_vs_institution", "fugitive_and_pursuers", "hostage_boundary",
+        "psychological_boundary", "fellowship_vs_dark_power", "world_crossing_literal",
+        "commoner_enters_power_structure", "court_factions"
+      ],
+      "description": "Social circle collision pattern (Phase 02)"
+    },
+    "collision_type": {
+      "type": "string",
+      "enum": [
+        "world_crossing", "power_asymmetry", "resource_competition",
+        "loyalty_conflict", "value_clash", "identity_threat", "forced_alliance"
+      ],
+      "description": "Category of collision dynamics"
+    },
+    "inciting_incident_type": {
+      "type": "string",
+      "enum": [
+        "stranger_arrives", "protagonist_displaced", "return_of_the_past", "forced_departure",
+        "assigned_together", "arrangement_proposed", "stranded_or_trapped",
+        "discovery_revelation", "inheritance_bequest", "challenge_issued",
+        "crime_witnessed", "wrong_accused", "loss_or_death", "betrayal_discovered",
+        "secret_exposed", "opportunity_offered", "threshold_crossed", "call_refused_then_forced"
+      ],
+      "description": "Type of inciting incident that forces collision into motion"
+    },
+    "drive_model": {
+      "type": "string",
+      "enum": [
+        "wound", "desire", "duty", "perception", "existential"
+      ],
+      "description": "Character motivation model: wound (Weiland/Cron), desire (wants-based), duty (obligation-based), perception (epistemology-based), existential (meaning-based)"
+    },
+    "antagonist_type": {
+      "type": "string",
+      "enum": [
+        "character", "institutional", "natural", "internal", "societal", "cosmic", "layered"
+      ],
+      "description": "Category of opposition source"
+    },
+    "antagonist_arc_type": {
+      "type": "string",
+      "enum": [
+        "flat_evil", "tragic_descent", "revelation", "redemption", "parallel", "escalation"
+      ],
+      "description": "Antagonist trajectory through the story"
+    },
+    "opposition_level": {
+      "type": "string",
+      "enum": [
+        "physical", "intellectual", "emotional", "moral", "thematic"
+      ],
+      "description": "Level at which antagonist opposes protagonist (Truby)"
+    },
+    "diegetic_level": {
+      "type": "string",
+      "enum": [
+        "extradiegetic", "intradiegetic", "metadiegetic"
+      ],
+      "description": "Genette narrative level: extradiegetic (outer frame), intradiegetic (main story), metadiegetic (story-within-story)"
+    },
+    "boundary_type": {
+      "type": "string",
+      "enum": [
+        "physical", "social", "institutional", "psychological", "temporal", "ontological"
+      ],
+      "description": "Lotman semantic boundary type"
+    },
+    "semantic_zone": {
+      "type": "string",
+      "enum": [
+        "safety", "danger", "past", "future", "known", "unknown",
+        "power", "powerlessness", "freedom", "constraint", "sacred", "profane"
+      ],
+      "description": "Lotman semantic zone values"
+    },
+    "intimate_space_type": {
+      "type": "string",
+      "enum": [
+        "attic", "cellar", "nest", "shell", "corner", "drawer", "chest", "threshold"
+      ],
+      "description": "Bachelard topoanalysis intimate space types"
+    },
+    "speech_act_category": {
+      "type": "string",
+      "enum": [
+        "assertive", "directive", "commissive", "expressive", "declaration"
+      ],
+      "description": "Searle's five illocutionary act categories"
+    },
+    "illocutionary_force": {
+      "type": "string",
+      "enum": [
+        "assert", "claim", "report", "describe", "insist", "deny",
+        "order", "command", "request", "ask", "beg", "plead", "invite", "suggest",
+        "promise", "vow", "pledge", "threaten", "offer", "guarantee", "refuse",
+        "thank", "apologize", "congratulate", "condole", "welcome", "deplore",
+        "declare", "pronounce", "name", "appoint", "fire", "adjourn"
+      ],
+      "description": "Specific illocutionary force of speech act (Austin/Searle)"
+    },
+    "chronotope_type": {
+      "type": "string",
+      "enum": [
+        "road", "threshold", "salon", "castle", "provincial_town", "idyll",
+        "adventure_time", "everyday_time", "crisis_time", "biographical_time"
+      ],
+      "description": "Bakhtin chronotope (time-space) type"
+    },
+    "arc_direction": {
+      "type": "string",
+      "enum": [
+        "positive", "negative", "flat", "disillusionment", "fall_then_rise", "rise_then_fall"
+      ],
+      "description": "Character arc trajectory direction"
+    },
+    "power_asymmetry_type": {
+      "type": "string",
+      "enum": [
+        "equal", "dominant_a", "dominant_b", "contested", "shifting"
+      ],
+      "description": "Power balance type in collision pattern"
+    },
+
+    "narrator_reliability_type": {
+      "type": "string",
+      "enum": [
+        "reliable", "factually_unreliable", "interpretively_unreliable",
+        "evaluatively_unreliable", "self_deceptive", "culturally_contingent"
+      ],
+      "description": "Booth/Nünning narrator reliability: reliable, factually (misreports), interpretively (misinterprets), evaluatively (misjudges), self-deceptive (believes own distortions), culturally_contingent (reliability depends on reader frames)"
+    },
+    "knowledge_gap_source": {
+      "type": "string",
+      "enum": [
+        "withheld_past", "uncertain_future", "suppressed_by_focalizer",
+        "unreliable_source", "limited_perception", "deliberate_omission"
+      ],
+      "description": "Sternberg: what creates the information gap — withheld_past (curiosity), uncertain_future (suspense), suppressed_by_focalizer (dramatic irony)"
+    },
+    "trauma_representation_mode": {
+      "type": "string",
+      "enum": [
+        "integrated", "fragmented", "belated", "acting_out", "working_through",
+        "dissociated", "somatized"
+      ],
+      "description": "Caruth/Herman/LaCapra: how trauma is narratively represented — integrated (processed), fragmented (shattered), belated (returns later), acting_out (compulsive repetition), working_through (conscious integration)"
+    },
+    "somatic_trauma_response": {
+      "type": "string",
+      "enum": [
+        "startle", "freeze", "dissociation", "hypervigilance", "numbness",
+        "flashback_body", "trembling", "nausea", "constricted_breathing", "none"
+      ],
+      "description": "Van der Kolk embodied trauma: body-first responses before cognition"
+    },
+    "metafictional_technique": {
+      "type": "string",
+      "enum": [
+        "direct_address", "authorial_intrusion", "mise_en_abyme",
+        "frame_breaking", "self_reference", "exposed_device",
+        "alternative_endings", "reader_as_character", "none"
+      ],
+      "description": "Waugh/McHale metafiction: techniques that foreground fiction's constructed nature"
+    },
+    "metaphor_quality": {
+      "type": "string",
+      "enum": [
+        "dead", "conventional", "active", "resonant", "mixed"
+      ],
+      "description": "Max Black interaction theory: dead (lost force), conventional (familiar), active (genuine tension), resonant (radiates meaning), mixed (multiple vehicles)"
+    },
+    "want_need_alignment": {
+      "type": "string",
+      "enum": [
+        "aligned", "opposed", "unknown_need", "false_want", "evolving"
+      ],
+      "description": "Truby want vs. need: aligned (want=need), opposed (want blocks need), unknown_need (character unaware), false_want (pursuing wrong goal), evolving (relationship shifting)"
+    },
+
+    "actantial_role": {
+      "type": "string",
+      "enum": [
+        "subject", "object", "sender", "receiver", "helper", "opponent"
+      ],
+      "description": "Greimas actantial model: subject (desires), object (desired), sender (initiates), receiver (benefits), helper (aids), opponent (impedes)"
+    },
+    "irony_type": {
+      "type": "string",
+      "enum": [
+        "verbal", "situational", "dramatic", "structural", "cosmic", "socratic", "romantic", "none"
+      ],
+      "description": "Booth/Hutcheon irony taxonomy: verbal (says opposite), situational (events contradict expectations), dramatic (audience knows more), structural (sustained ironic distance), cosmic (fate mocks), socratic (feigned ignorance), romantic (author breaks frame)"
+    },
+    "gaze_type": {
+      "type": "string",
+      "enum": [
+        "active", "passive_spectacle", "scopophilic", "power_gaze", "counter_gaze", "neutral", "none"
+      ],
+      "description": "Mulvey gaze theory: active (perceives/acts), passive_spectacle (looked at), scopophilic (visual pleasure), power_gaze (surveillance/domination), counter_gaze (returned/resisted), neutral (unmarked)"
+    },
+    "transtextuality_type": {
+      "type": "string",
+      "enum": [
+        "intertextuality", "paratextuality", "metatextuality", "hypertextuality", "architextuality", "none"
+      ],
+      "description": "Genette transtextuality: intertextuality (quotation/allusion), paratextuality (titles/prefaces), metatextuality (commentary), hypertextuality (transformation), architextuality (genre relation)"
+    },
+    "comic_mode": {
+      "type": "string",
+      "enum": [
+        "satire", "manners", "farce", "dark_comedy", "absurdist", "picaresque", "romantic_comedy", "deadpan", "none"
+      ],
+      "description": "Bergson/Morreall comedy modes: satire (critique), manners (social hypocrisy), farce (physical chaos), dark_comedy (suffering as humor), absurdist (logic fails), picaresque (outsider exposes), romantic_comedy (love through misunderstanding), deadpan (flat delivery)"
+    },
+    "textual_affect_type": {
+      "type": "string",
+      "enum": [
+        "cruel_optimism", "affective_stickiness", "ugly_feelings", "slow_death", "impasse", "disorientation", "none"
+      ],
+      "description": "Ahmed/Berlant affect theory: cruel_optimism (attachment to damaging object), affective_stickiness (emotion adheres to objects), ugly_feelings (envy/anxiety/irritation vs. grand emotions), slow_death (attrition under capitalism), impasse (suspension of agency), disorientation (loss of bearings)"
+    },
+    "anti_mimetic_technique": {
+      "type": "string",
+      "enum": [
+        "impossible_narrator", "denarration", "contradictory_storyworld", "anti_temporal", "permutation", "second_person_anti_mimetic", "none"
+      ],
+      "description": "Richardson unnatural narratology: impossible_narrator (dead/unborn/omniscient-first-person), denarration (events un-happen), contradictory_storyworld (logical impossibilities), anti_temporal (reversed/scrambled causality), permutation (multiple incompatible versions), second_person_anti_mimetic (you-as-protagonist defamiliarization)"
+    },
+    "event_significance": {
+      "type": "string",
+      "enum": [
+        "kernel", "satellite"
+      ],
+      "description": "Chatman story/discourse: kernel (plot-changing, cannot be removed without altering story logic), satellite (texture, elaboration, can be removed without changing plot)"
+    },
+    "jakobson_function": {
+      "type": "string",
+      "enum": [
+        "referential", "emotive", "conative", "phatic", "metalingual", "poetic"
+      ],
+      "description": "Jakobson six functions of language: referential (context/world), emotive (speaker attitude), conative (effect on addressee), phatic (contact/connection), metalingual (about language itself), poetic (message form)"
+    },
+    "narratee_type": {
+      "type": "string",
+      "enum": [
+        "explicit", "implicit", "dramatized", "zero_degree", "none"
+      ],
+      "description": "Prince narratee theory: explicit (named/addressed directly), implicit (constructed by narration but unnamed), dramatized (narratee as character with reactions), zero_degree (unmarked/universal reader position)"
+    },
+    "pentad_focus": {
+      "type": "string",
+      "enum": [
+        "act", "scene", "agent", "agency", "purpose"
+      ],
+      "description": "Burke Pentad: which element dominates — act (what happened), scene (where/when), agent (who did it), agency (how/by what means), purpose (why)"
+    },
+    "emplotment_type": {
+      "type": "string",
+      "enum": [
+        "romance", "tragedy", "comedy", "satire"
+      ],
+      "description": "Hayden White emplotment: romance (hero transcends world), tragedy (fall from grace), comedy (reconciliation with society), satire (inadequacy of consciousness)"
+    },
+    "burke_form_type": {
+      "type": "string",
+      "enum": [
+        "progressive", "repetitive", "conventional", "minor"
+      ],
+      "description": "Burke form types: progressive (syllogistic/qualitative/plot-driven), repetitive (variations on theme), conventional (genre expectations), minor (local effects like metaphor)"
+    },
+    "freudian_mechanism": {
+      "type": "string",
+      "enum": [
+        "condensation", "displacement", "uncanny", "repetition_compulsion",
+        "projection", "rationalization", "sublimation", "repression", "none"
+      ],
+      "description": "Freud: symbol/dream-work mechanisms — condensation (multiple meanings in one image), displacement (affect shifted to safer target), uncanny (familiar made strange), repetition_compulsion (re-enacting trauma), projection/rationalization/sublimation/repression (defense mechanisms)"
+    },
+    "lacan_register": {
+      "type": "string",
+      "enum": [
+        "real", "symbolic", "imaginary", "none"
+      ],
+      "description": "Lacan three registers: real (pre-linguistic, traumatic, unsymbolizable), symbolic (language, law, social order), imaginary (image, ego, mirror-stage identification)"
+    },
+    "abject_category": {
+      "type": "string",
+      "enum": [
+        "corporeal", "maternal", "religious_defilement", "death", "identity_threat", "none"
+      ],
+      "description": "Kristeva abjection: corporeal (bodily waste), maternal (repudiated origin), religious_defilement (taboo/pollution), death (corpse as ultimate abject), identity_threat (category disturbance)"
+    },
+    "mimesis_phase": {
+      "type": "string",
+      "enum": [
+        "prefiguration", "configuration", "refiguration"
+      ],
+      "description": "Ricoeur threefold mimesis: prefiguration (pre-understanding of action/symbolic field), configuration (emplotment/text creation), refiguration (reader reception/lived application)"
+    },
+
+    "postcolonial_mode": {
+      "type": "string",
+      "enum": [
+        "orientalism", "hybridity", "third_space", "mimicry", "double_consciousness",
+        "subaltern_silence", "decolonial", "ambivalence", "structural_dehumanization",
+        "language_politics", "none"
+      ],
+      "description": "Said/Spivak/Bhabha: orientalism (exoticizing), hybridity (cultural mixing), third_space (in-between), mimicry (colonial imitation), double_consciousness (Du Bois/Fanon), subaltern_silence (Spivak), decolonial (resistance), ambivalence (desire/dread), structural_dehumanization (Achebe), language_politics (Ngũgĩ)"
+    },
+    "feminist_narrative_type": {
+      "type": "string",
+      "enum": [
+        "engaging_narrator", "distancing_narrator", "marriage_plot", "writing_beyond_ending",
+        "immasculation", "plausibility_convention", "authority_and_gender", "womens_culture",
+        "authorial_voice", "personal_voice", "communal_voice", "none"
+      ],
+      "description": "Lanser/DuPlessis/Warhol/Fetterley: engaging/distancing narrator (Warhol), marriage_plot vs. writing_beyond_ending (DuPlessis), immasculation (Fetterley), authority_and_gender + voice modes (Lanser)"
+    },
+    "queer_mode": {
+      "type": "string",
+      "enum": [
+        "closet_epistemology", "compulsory_heterosexuality", "reproductive_futurism",
+        "queer_temporality", "queer_futurity", "none"
+      ],
+      "description": "Sedgwick/Butler/Edelman/Halberstam/Muñoz: closet_epistemology (knowledge/secrecy), compulsory_heterosexuality (Rich), reproductive_futurism (Edelman), queer_temporality (Halberstam), queer_futurity (Muñoz)"
+    },
+    "performativity_mode": {
+      "type": "string",
+      "enum": [
+        "citationality", "drag_performance", "passing", "felicitous_performative",
+        "misfire", "subversive_repetition", "heteronorm_citation", "disidentification", "none"
+      ],
+      "description": "Butler: citationality (sedimented norms), drag (parodic exposure), passing (normative concealment), misfire (failed performance), subversive_repetition (displacing citation), disidentification (Muñoz)"
+    },
+    "survivance_mode": {
+      "type": "string",
+      "enum": [
+        "survivance", "victimry", "trickster_discourse", "dead_voices", "none"
+      ],
+      "description": "Vizenor: survivance (active presence), victimry (colonial victim construction), trickster_discourse (radical irony/transformation), dead_voices (colonial simulations of Indianness)"
+    },
+    "storywork_protocol": {
+      "type": "string",
+      "enum": [
+        "respect", "responsibility", "reciprocity", "reverence", "holism", "interrelatedness", "synergy"
+      ],
+      "description": "Archibald Indigenous Storywork: 7 principles of ethical engagement with Indigenous stories"
+    },
+    "narrative_ethics_mode": {
+      "type": "string",
+      "enum": [
+        "coduction", "author_empathy_design", "character_empathy", "broadcast_empathy",
+        "bounded_empathy", "strategic_empathy", "moral_laboratory", "complicity",
+        "representation_ethics", "power_dynamics", "none"
+      ],
+      "description": "Booth/Keen/Nussbaum/Spivak: coduction (implied author as moral agent), empathy modes (Keen), moral_laboratory (Nussbaum), complicity (reader implication), representation_ethics/power_dynamics (Spivak)"
+    }
+  }
+}
+

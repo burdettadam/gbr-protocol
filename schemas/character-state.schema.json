@@ -1,0 +1,159 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://grimoire.dev/protocol/v1/character-state.schema.json",
+  "title": "CharacterSceneState",
+  "description": "Character state at scene boundaries: emotional journey, knowledge, objectives, tactics, and relationship dynamics.",
+  "type": "object",
+  "required": ["character", "pov_role"],
+  "properties": {
+    "character": {
+      "type": "string",
+      "pattern": "^[a-z0-9_]+$",
+      "description": "Character slug"
+    },
+    "pov_role": { "$ref": "enums.schema.json#/$defs/pov_role" },
+
+    "psychic_distance": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 5,
+      "description": "Gardner scale (focal character only)"
+    },
+    "psychic_distance_shifts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["trigger", "from_level", "to_level"],
+        "properties": {
+          "trigger": { "$ref": "enums.schema.json#/$defs/psychic_distance_trigger" },
+          "from_level": { "type": "integer", "minimum": 1, "maximum": 5 },
+          "to_level": { "type": "integer", "minimum": 1, "maximum": 5 }
+        }
+      }
+    },
+    "consciousness_mode": { "$ref": "enums.schema.json#/$defs/consciousness_mode" },
+    "fid_markers": {
+      "type": "array",
+      "items": { "$ref": "enums.schema.json#/$defs/fid_marker" }
+    },
+
+    "emotional_state_entry": {
+      "type": "object",
+      "required": ["emotion"],
+      "properties": {
+        "emotion": { "$ref": "enums.schema.json#/$defs/emotion" },
+        "intensity": { "$ref": "enums.schema.json#/$defs/emotion_intensity" },
+        "secondary_emotion": { "$ref": "enums.schema.json#/$defs/emotion" },
+        "masked": { "type": "boolean" }
+      }
+    },
+    "emotional_state_exit": {
+      "type": "object",
+      "required": ["emotion"],
+      "properties": {
+        "emotion": { "$ref": "enums.schema.json#/$defs/emotion" },
+        "intensity": { "$ref": "enums.schema.json#/$defs/emotion_intensity" },
+        "secondary_emotion": { "$ref": "enums.schema.json#/$defs/emotion" },
+        "masked": { "type": "boolean" }
+      }
+    },
+    "emotional_arc": { "$ref": "enums.schema.json#/$defs/emotional_arc" },
+
+    "knowledge_at_entry": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/knowledge_item" }
+    },
+    "knowledge_gaps": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/knowledge_item" }
+    },
+    "knowledge_gained": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/knowledge_item" }
+    },
+
+    "objective": {
+      "type": "object",
+      "properties": {
+        "verb": { "$ref": "enums.schema.json#/$defs/objective_verb" },
+        "object_type": { "$ref": "enums.schema.json#/$defs/objective_object" },
+        "target_role": { "$ref": "enums.schema.json#/$defs/character_role" },
+        "constraint": { "$ref": "enums.schema.json#/$defs/objective_constraint" }
+      }
+    },
+    "tactic": { "$ref": "enums.schema.json#/$defs/tactic" },
+    "tactic_shift": { "$ref": "enums.schema.json#/$defs/tactic" },
+
+    "obstacle": {
+      "type": "object",
+      "properties": {
+        "type": { "$ref": "enums.schema.json#/$defs/obstacle_type" },
+        "source_role": { "$ref": "enums.schema.json#/$defs/character_role" }
+      }
+    },
+
+    "stakes": {
+      "type": "object",
+      "properties": {
+        "personal": { "$ref": "enums.schema.json#/$defs/personal_stakes" },
+        "relational": { "$ref": "enums.schema.json#/$defs/relational_stakes" },
+        "level": { "type": "integer", "minimum": 1, "maximum": 5 }
+      }
+    },
+
+    "personal_arc_beat": { "$ref": "enums.schema.json#/$defs/personal_arc_beat" },
+    "arc_direction": { "$ref": "enums.schema.json#/$defs/arc_direction" },
+    "drive_model": { "$ref": "enums.schema.json#/$defs/drive_model" },
+
+    "wound_triggered": { "type": "boolean" },
+    "wound_category": { "$ref": "enums.schema.json#/$defs/wound_category" },
+
+    "want_need_alignment": { "$ref": "enums.schema.json#/$defs/want_need_alignment" },
+    "actantial_role": { "$ref": "enums.schema.json#/$defs/actantial_role" },
+
+    "posture": { "$ref": "enums.schema.json#/$defs/posture" },
+    "body_language": {
+      "type": "array",
+      "items": { "$ref": "enums.schema.json#/$defs/body_language" }
+    },
+
+    "social_circles_active": {
+      "type": "array",
+      "items": { "$ref": "enums.schema.json#/$defs/social_circle" }
+    },
+    "social_mask": { "$ref": "enums.schema.json#/$defs/social_mask" },
+    "social_role": { "$ref": "enums.schema.json#/$defs/social_role" },
+
+    "relationships": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["target_role"],
+        "properties": {
+          "target_role": { "$ref": "enums.schema.json#/$defs/character_role" },
+          "power_balance": { "$ref": "enums.schema.json#/$defs/power_balance" },
+          "power_source": { "$ref": "enums.schema.json#/$defs/power_source" },
+          "underlying_conflict": { "$ref": "enums.schema.json#/$defs/underlying_conflict" },
+          "wants_from_other": { "$ref": "enums.schema.json#/$defs/want_type" },
+          "perceives_other_as": { "$ref": "enums.schema.json#/$defs/perception_of_other" },
+          "trigger_type": { "$ref": "enums.schema.json#/$defs/trigger_type" },
+          "relationship_turn": { "$ref": "enums.schema.json#/$defs/relationship_turn" }
+        }
+      }
+    }
+  },
+
+  "$defs": {
+    "knowledge_item": {
+      "type": "object",
+      "required": ["domain", "predicate"],
+      "properties": {
+        "domain": { "$ref": "enums.schema.json#/$defs/knowledge_domain" },
+        "predicate": { "$ref": "enums.schema.json#/$defs/knowledge_predicate" },
+        "about_role": { "$ref": "enums.schema.json#/$defs/character_role" },
+        "secondary_role": { "$ref": "enums.schema.json#/$defs/character_role" },
+        "certainty": { "$ref": "enums.schema.json#/$defs/knowledge_certainty" }
+      }
+    }
+  }
+}

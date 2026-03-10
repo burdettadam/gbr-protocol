@@ -1,0 +1,161 @@
+{
+  "$schema": "https://gbr-protocol.dev/schemas/v0/scene-card.schema.json",
+  "_comment": "threshold ch01_s02 — Revelation. Nadia finds her father's journal in the study.",
+
+  "scene_id": "threshold_ch01_s02",
+  "book_id": "threshold",
+  "chapter": 1,
+  "scene_number_in_chapter": 2,
+
+  "narrative_time": {
+    "order": "chronological",
+    "duration_mode": "scene",
+    "frequency": "singulative"
+  },
+
+  "beat": "revelation",
+  "scene_function": "revelation",
+
+  "pov": "third_limited",
+  "focalization_type": "internal_fixed",
+  "pov_role": "participant",
+  "focalizer": "nadia",
+  "diegetic_level": "intradiegetic",
+  "consciousness_mode": "narrated_monologue",
+  "psychic_distance": 2,
+  "narrator_reliability": "reliable",
+  "_narrator_reliability_note": "For the first time in the story, Nadia's perception is trustworthy — she is reading a primary document (the journal) not reconstructing memory. The reliability is ironic: she is most accurate when the object speaks and she falls silent.",
+
+  "setting": {
+    "location": "father_study",
+    "time_of_day": "afternoon",
+    "setting_type": "interior_domestic",
+    "atmosphere": "intimate",
+    "spatial_structure": "bounded",
+    "territory_type": "antagonist_domain",
+    "_territory_note": "The study is 'antagonist_domain' because it was Robert's space — Nadia was never invited here as a child. She enters it now as an intruder settling an estate."
+  },
+
+  "tone": "elegiac",
+
+  "canonical_summary": {
+    "want": "Nadia wants to catalogue the study's contents for the estate sale — nothing more",
+    "obstacle": "The journal is open on the desk. It has been open since before Robert died, as if waiting. She cannot catalogue a book she has begun to read.",
+    "scene_polarity": "negative_to_positive",
+    "_polarity_note": "Opens in Nadia's controlled negative state; closes with the journal entry having cracked her open. The 'positive' is destabilizing — she is not better; she is thawed.",
+    "outcome": "failed",
+    "_outcome_note": "Nadia does not complete the study catalogue. She sits in her father's chair for a length of time she will not be able to account for afterward.",
+    "delta": "Nadia now knows that her father used words — in private, on paper — that he could never use aloud. The entry describes her playing piano at age nine, and the word he uses is 'longing.' This is the information that breaks her model of him. She cannot unsee it.",
+    "iceberg_proportion": 0.75,
+    "subtext_load": 0.8,
+    "embedded_analepsis": {
+      "type": "document",
+      "mechanism": "journal_entry_read_in_present",
+      "narrative_order": "analepsis",
+      "fabula_date": "1987",
+      "_note": "The journal entry is read in the present; it is not narrated as a flashback scene. Robert's words are quoted directly (or nearly so), making this an embedded analepsis via document proxy rather than scene-level temporal shift."
+    },
+    "scene_turns": [
+      {
+        "turn_number": 1,
+        "active_character": "nadia",
+        "verb": "enters",
+        "target": "father_study",
+        "emotional_state": "resolve",
+        "masked_emotion": "dread",
+        "tactic": "appeal_to_logic",
+        "event_type": "action",
+        "significance": "satellite"
+      },
+      {
+        "turn_number": 2,
+        "active_character": "nadia",
+        "verb": "finds",
+        "target": "journal_open_on_desk",
+        "emotional_state": "surprise",
+        "masked_emotion": null,
+        "tactic": null,
+        "event_type": "discovery",
+        "significance": "kernel"
+      },
+      {
+        "turn_number": 3,
+        "active_character": "father",
+        "verb": "describes",
+        "target": "nadia_playing_piano_at_nine",
+        "emotional_state": "longing",
+        "masked_emotion": null,
+        "tactic": null,
+        "event_type": "revelation",
+        "significance": "kernel",
+        "_note": "Father is non_present. His scene turn is encoded via the journal — his written words are the active agent of this turn. The year is 1987; he is writing from 40 years ago. The verb 'describes' is the narrator's characterization of the journal entry's content."
+      },
+      {
+        "turn_number": 4,
+        "active_character": "nadia",
+        "verb": "sits",
+        "target": "fathers_chair",
+        "emotional_state": "grief",
+        "masked_emotion": null,
+        "tactic": null,
+        "event_type": "internal_shift",
+        "significance": "kernel",
+        "_note": "She does not decide to sit — she is in the chair. The narration registers the event as complete before Nadia does."
+      }
+    ]
+  },
+
+  "character_states": [
+    {
+      "character_id": "nadia",
+      "role_in_scene": "focalizer",
+      "arc_type": "positive_change",
+      "drive_model": "wound",
+      "emotion": "grief",
+      "masked_emotion": null,
+      "_masked_emotion_note": "For the first time, the mask is gone. The grief is direct.",
+      "tactic": null,
+      "epistemic_state": {
+        "knowledge_objects": [
+          {
+            "fact": "her father used the word 'longing' when writing about her in 1987",
+            "known_to_character": true,
+            "certainty": 1.0
+          },
+          {
+            "fact": "why he never said any of this aloud",
+            "known_to_character": false,
+            "certainty": 0.0
+          },
+          {
+            "fact": "whether the rest of the journal contains similar entries",
+            "known_to_character": false,
+            "certainty": 0.5
+          }
+        ]
+      }
+    },
+    {
+      "character_id": "father",
+      "role_in_scene": "non_present",
+      "_role_note": "Robert is present through the journal. His epistemic state is from 1987 — he does not know what became of Nadia, whether she learned to accept his silence, whether she was at his bedside. His entry is written in ignorance of its own future significance.",
+      "arc_type": "flat",
+      "drive_model": "duty",
+      "emotion": "longing",
+      "masked_emotion": "love",
+      "_masked_emotion_note": "In the journal, the emotion registered is 'longing'; the reader understands this as masked love — love that could not find its direct form.",
+      "tactic": "misdirection",
+      "_tactic_note": "Robert's 'tactic' in the journal is indirection: he writes about watching Nadia play rather than writing to her. The journal is addressed to no one, which is the only way he could be honest."
+    }
+  ],
+
+  "causal_role": "payoff",
+  "stakes_domain": ["relational", "psychological", "moral"],
+  "motif_tags": ["silence", "the_journal", "smallness"],
+
+  "theory_notes": {
+    "genette": "The journal entry functions as embedded analepsis via document proxy: the fabula event (Robert writing in 1987) is not narrated as a scene; it speaks directly through quotation. This avoids a flashback cut while achieving the same temporal depth.",
+    "hemingway": "Iceberg proportion 0.75: what Robert could not say aloud is present in the scene as absence. The journal entry contains the thing he omitted from every conversation. The 'seven-eighths below water' is the forty-year accumulation of unexpressed feeling.",
+    "encoding_guidance": "Non-present characters with scene turns via document proxy should have their embedded_analepsis noted at the canonical_summary level, not as a separate scene. This avoids inflating scene count while preserving temporal information."
+  }
+}

@@ -1,0 +1,123 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://grimoire.dev/protocol/v1/story-architecture.schema.json",
+  "title": "StoryArchitecture",
+  "description": "Book-level structural metadata: genre, collision patterns, antagonist design, protagonist arc, actantial model, transtextuality.",
+  "type": "object",
+  "required": ["book_id", "genre"],
+  "properties": {
+    "book_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9_]+$"
+    },
+    "title": { "type": "string" },
+    "author": { "type": "string" },
+
+    "genre": {
+      "type": "object",
+      "required": ["primary"],
+      "properties": {
+        "primary": { "$ref": "enums.schema.json#/$defs/genre_type" },
+        "secondary": { "$ref": "enums.schema.json#/$defs/genre_type" },
+        "subgenre": { "type": "string" }
+      }
+    },
+
+    "collision_architecture": {
+      "type": "object",
+      "description": "Social circle collision dynamics (Grimoire Phase 02)",
+      "properties": {
+        "collision_type": { "$ref": "enums.schema.json#/$defs/collision_type" },
+        "collision_pattern": { "$ref": "enums.schema.json#/$defs/collision_pattern" },
+        "power_asymmetry": { "$ref": "enums.schema.json#/$defs/power_asymmetry_type" }
+      }
+    },
+
+    "inciting_incident": {
+      "type": "object",
+      "properties": {
+        "type": { "$ref": "enums.schema.json#/$defs/inciting_incident_type" },
+        "chapter": { "type": "integer" }
+      }
+    },
+
+    "antagonist": {
+      "type": "object",
+      "description": "Primary antagonist design (Truby thematic mirror)",
+      "properties": {
+        "antagonist_type": { "$ref": "enums.schema.json#/$defs/antagonist_type" },
+        "arc_type": { "$ref": "enums.schema.json#/$defs/antagonist_arc_type" },
+        "opposition_level": { "$ref": "enums.schema.json#/$defs/opposition_level" },
+        "thematic_mirror": { "type": "boolean" }
+      }
+    },
+
+    "protagonist_arc": {
+      "type": "object",
+      "description": "Protagonist arc design",
+      "properties": {
+        "arc_direction": { "$ref": "enums.schema.json#/$defs/arc_direction" },
+        "drive_model": { "$ref": "enums.schema.json#/$defs/drive_model" },
+        "lie_believed": { "type": "string", "description": "Weiland/Cron: false belief at story start" },
+        "truth_needed": { "type": "string", "description": "Truth protagonist must learn" },
+        "want_need_alignment": { "$ref": "enums.schema.json#/$defs/want_need_alignment" }
+      }
+    },
+
+    "structure": {
+      "type": "object",
+      "properties": {
+        "act_count": { "type": "integer", "minimum": 1, "maximum": 5 },
+        "chapter_count": { "type": "integer" },
+        "word_count": { "type": "integer" },
+        "diegetic_level": { "$ref": "enums.schema.json#/$defs/diegetic_level" },
+        "has_frame_narrative": { "type": "boolean" }
+      }
+    },
+
+    "actantial_map": {
+      "type": "array",
+      "description": "Greimas actantial model mapping",
+      "items": {
+        "type": "object",
+        "required": ["character_slug", "actantial_role"],
+        "properties": {
+          "character_slug": { "type": "string" },
+          "character_role": { "$ref": "enums.schema.json#/$defs/character_role" },
+          "actantial_role": { "$ref": "enums.schema.json#/$defs/actantial_role" }
+        }
+      }
+    },
+
+    "transtextuality": {
+      "type": "object",
+      "description": "Genette transtextual relations",
+      "properties": {
+        "intertexts": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "source_text": { "type": "string" },
+              "relation_type": { "$ref": "enums.schema.json#/$defs/transtextuality_type" },
+              "description": { "type": "string" }
+            }
+          }
+        },
+        "architext_genre": { "type": "string", "description": "Genre tradition the text participates in" }
+      }
+    },
+
+    "themes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "theme": { "type": "string" },
+          "controlling_idea": { "type": "string", "description": "McKee: value + cause" },
+          "thematic_question": { "$ref": "enums.schema.json#/$defs/thematic_question" }
+        }
+      }
+    }
+  }
+}

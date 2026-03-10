@@ -1,0 +1,139 @@
+{
+  "$schema": "https://gbr-protocol.dev/schemas/v0/scene-card.schema.json",
+  "_comment": "Edge case: focalizer with arc_type=flat. The focalizer does not change — the world is changed by their unchanging commitment. Demonstrates that flat arcs require careful delta encoding.",
+  "scene_id": "edge-flat-arc-focalizer",
+  "book_id": "gbr-conformance-edge-cases",
+  "chapter": 8,
+  "scene_number_in_chapter": 2,
+  "narrative_time": {
+    "order": "chronological",
+    "duration_mode": "scene",
+    "frequency": "singulative"
+  },
+  "beat": "midpoint",
+  "scene_function": "confrontation",
+  "pov": "third_limited",
+  "focalization_type": "internal_fixed",
+  "pov_role": "participant",
+  "focalizer": "constance",
+  "diegetic_level": "intradiegetic",
+  "consciousness_mode": "psychonarration",
+  "psychic_distance": 3,
+  "narrator_reliability": "reliable",
+  "setting": {
+    "location": "the_tribunal_chamber",
+    "time_of_day": "midday",
+    "setting_type": "institutional",
+    "atmosphere": "oppressive",
+    "spatial_structure": "panoptic",
+    "territory_type": "antagonist_domain"
+  },
+  "tone": "tense",
+  "canonical_summary": {
+    "want": "Constance wants the tribunal to release the detained villagers",
+    "obstacle": "The tribunal chairman holds all formal power and is determined to make Constance recant",
+    "scene_polarity": "negative_to_positive",
+    "_polarity_note": "The polarity is positive for Constance's side, but the mechanism is her refusal to change — she wins by staying still. This is the flat arc's characteristic: the external world bends toward the focalizer's fixed values.",
+    "outcome": "partially_achieved",
+    "delta": "Constance does not change. The chairman, confronted with her immovability, releases two of the five villagers — a partial concession that costs Constance nothing internally but advances the plot. The reader sees that Constance's 'arc' is the world's arc.",
+    "_delta_note": "In a flat arc, the delta is measured externally (what the world concedes) rather than internally (how the focalizer changes). Both must be encoded to avoid a misleading null delta.",
+    "iceberg_proportion": 0.5,
+    "subtext_load": 0.55,
+    "scene_turns": [
+      {
+        "turn_number": 1,
+        "active_character": "constance",
+        "verb": "refuses",
+        "target": "the_chairman's_demand_to_sign_the_recantation",
+        "emotional_state": "resolve",
+        "masked_emotion": null,
+        "tactic": "refuses_to_engage",
+        "event_type": "decision",
+        "significance": "kernel"
+      },
+      {
+        "turn_number": 2,
+        "active_character": "chairman",
+        "verb": "escalates",
+        "target": "constance",
+        "emotional_state": "anger",
+        "masked_emotion": "fear",
+        "tactic": "threat",
+        "event_type": "action",
+        "significance": "kernel"
+      },
+      {
+        "turn_number": 3,
+        "active_character": "constance",
+        "verb": "waits",
+        "target": null,
+        "emotional_state": "resolve",
+        "masked_emotion": null,
+        "tactic": "silence",
+        "event_type": "action",
+        "significance": "satellite",
+        "_note": "Silence as tactic. The flat arc focalizer's power often manifests as non-action: the refusal to move is itself the event."
+      },
+      {
+        "turn_number": 4,
+        "active_character": "chairman",
+        "verb": "concedes",
+        "target": "two_of_the_five_villagers",
+        "emotional_state": "humiliation",
+        "masked_emotion": null,
+        "tactic": null,
+        "event_type": "decision",
+        "significance": "kernel"
+      }
+    ]
+  },
+  "character_states": [
+    {
+      "character_id": "constance",
+      "role_in_scene": "focalizer",
+      "arc_type": "flat",
+      "_arc_type_note": "Constance's arc is flat throughout the novel. She does not learn or change her values. She is the moral standard against which other characters' changes are measured.",
+      "drive_model": "duty",
+      "emotion": "resolve",
+      "masked_emotion": null,
+      "tactic": "silence",
+      "epistemic_state": {
+        "knowledge_objects": [
+          {
+            "fact": "the chairman will not release all five",
+            "known_to_character": true,
+            "certainty": 0.9
+          },
+          {
+            "fact": "two villagers will be released if she holds",
+            "known_to_character": false,
+            "certainty": 0.0
+          }
+        ]
+      },
+      "objective_object": {
+        "want": "release of the detained villagers",
+        "action": "refuses_to_sign",
+        "target": "recantation_document",
+        "obstacle": "chairman's_authority"
+      }
+    },
+    {
+      "character_id": "chairman",
+      "role_in_scene": "participant",
+      "arc_type": "negative_fall",
+      "drive_model": "desire",
+      "emotion": "anger",
+      "masked_emotion": "fear",
+      "tactic": "threat"
+    }
+  ],
+  "causal_role": "payoff",
+  "stakes_domain": ["moral", "social", "physical"],
+  "motif_tags": ["immovability", "duty", "institutional_power"],
+  "theory_notes": {
+    "weiland": "Flat arc per K.M. Weiland: the focalizer's truth is correct from the start; the story is about the world being changed by contact with that truth (Creating Character Arcs, ch. 14).",
+    "truby": "Opposition level: confrontation. The chairman's counter-plan (force recantation) fails because Constance's want and need are aligned — there is no internal gap to exploit.",
+    "encoding_guidance": "When encoding flat arc scenes: (1) delta must reference external change, not internal; (2) arc_type=flat should appear in character_states; (3) tactics like 'silence' or 'refuses_to_engage' are often the primary action verbs."
+  }
+}

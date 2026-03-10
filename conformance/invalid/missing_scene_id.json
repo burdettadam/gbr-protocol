@@ -1,0 +1,8 @@
+{
+  "$schema": "https://gbr-protocol.dev/schemas/scene-card.schema.json",
+  "book_id": "conformance-test-invalid",
+  "chapter": 1,
+  "beat": "inciting_incident",
+  "pov": "third_limited",
+  "focalizer": "protagonist"
+}

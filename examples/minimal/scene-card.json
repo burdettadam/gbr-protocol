@@ -1,0 +1,51 @@
+{
+  "$schema": "https://gbr-protocol.dev/schemas/scene-card.schema.json",
+  "scene_id": "minimal-example-ch01-s01",
+  "book_id": "minimal-example",
+  "chapter": 1,
+  "beat": "inciting_incident",
+  "pov": "third_limited",
+  "focalizer": "alex",
+  "scene_function": "revelation",
+  "scene_polarity": "neutral_to_negative",
+  "time_of_day": "morning",
+  "setting_ref": "the_apartment",
+  "duration_mode": "scene",
+  "narrative_order": "chronological",
+  "tone": "tense",
+  "character_states": [
+    {
+      "character_ref": "alex",
+      "pov_role": "focalizer",
+      "primary_emotion": "shock",
+      "want": "alex wants to understand what the letter means",
+      "trigger_type": "unexpected_revelation"
+    }
+  ],
+  "canonical_summary": {
+    "chapter": 1,
+    "scene": 1,
+    "location": "Alex's Apartment",
+    "time": "morning",
+    "focalizer": "alex",
+    "want": "alex wants to understand what the letter means",
+    "scene_turns": [
+      {
+        "event_type": "discovery",
+        "agent": "alex",
+        "verb": "opens",
+        "patient": "a letter from their estranged parent",
+        "result": "alex learns their parent has requested contact after fifteen years of silence"
+      },
+      {
+        "event_type": "internal_shift",
+        "agent": "alex",
+        "verb": "freezes",
+        "patient": "themselves",
+        "result": "all of alex's practiced distance collapses into the old wound"
+      }
+    ],
+    "outcome": "deferred",
+    "delta": "Alex's carefully maintained emotional distance from their abandonment is shattered; they must now decide whether to respond."
+  }
+}

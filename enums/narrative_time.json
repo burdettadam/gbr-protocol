@@ -1,0 +1,36 @@
+{
+  "domain": "narrative_time",
+  "description": "Enumerations for the three Genettian dimensions of narrative temporality: order, duration, and frequency.",
+  "source": "Gérard Genette, Narrative Discourse (1972/1980).",
+  "enums": {
+    "narrative_order": {
+      "description": "Temporal order of events — the relationship between chronological story sequence (histoire) and narrative presentation sequence (récit).",
+      "values": [
+        { "value": "chronological", "definition": "Events narrated in the order they occur in the story world (histoire = récit).", "example_usage": "Default linear narrative; events A, B, C narrated as A, B, C." },
+        { "value": "analepsis", "definition": "Retrospective narration: a scene covers events that occurred before the current story-time point (flashback).", "example_usage": "A character remembers a childhood event; a chapter covers backstory." },
+        { "value": "prolepsis", "definition": "Anticipatory narration: a scene covers events that will occur after the current story-time point (flashforward or foreshadowing).", "example_usage": "A prologue scene from the story's end; narrative anticipation of future events." },
+        { "value": "braided", "definition": "Multiple simultaneous timelines are interwoven across the narrative, with the reader moving between them.", "example_usage": "Dual or triple timelines alternating chapters; time-jump structure." },
+        { "value": "in_medias_res", "definition": "Narration begins in the middle of the action, with earlier events established through exposition or analepsis.", "example_usage": "Opening action scene followed by backstory; Homer's Iliad structure." }
+      ]
+    },
+    "duration_mode": {
+      "description": "Story time vs. discourse time relationship — how much story time is covered by how much text.",
+      "values": [
+        { "value": "scene", "definition": "Story time approximately equals discourse time; real-time dramatic scene. (ST ≈ DT)", "example_usage": "A fully dramatized conversation; a real-time action sequence." },
+        { "value": "summary", "definition": "Story time is compressed into brief discourse time; many events covered quickly. (ST > DT)", "example_usage": "'Three months passed.' A chapter covers a year in a few paragraphs." },
+        { "value": "ellipsis", "definition": "Story time passes but discourse time is zero; a gap in the narration. (DT = 0)", "example_usage": "A chapter break where years elapse; '***' indicating time skipped." },
+        { "value": "pause", "definition": "Discourse time advances but story time is stopped; description or reflection. (ST = 0)", "example_usage": "A descriptive passage; a meditation; a narrator's long digression." },
+        { "value": "stretch", "definition": "Discourse time exceeds story time; slow-motion expansion of a brief event. (DT > ST)", "example_usage": "A slow-motion fight scene; stream-of-consciousness rendering of a split second." }
+      ]
+    },
+    "frequency": {
+      "description": "How many times an event occurs in the story world versus how many times it is narrated.",
+      "values": [
+        { "value": "singulative", "definition": "An event occurs once in the story world and is narrated once (1:1). The default narrative mode.", "example_usage": "Most individual scenes; a single dramatized event." },
+        { "value": "iterative", "definition": "Events occur many times in the story world but are narrated as a single generic instance (n:1). ('Every morning she would...')", "example_usage": "Characterizing habitual behavior; establishing background social conditions; conveying passage of time through routine." },
+        { "value": "repetitive", "definition": "An event occurs once in the story world but is narrated multiple times, potentially from different perspectives (1:n).", "example_usage": "Rashomon structure; the same event revisited by different characters or narrators." },
+        { "value": "multiple_singulative", "definition": "Multiple instances of similar events each narrated separately (n:n).", "example_usage": "A character's many similar arguments narrated individually; serial repetition with variation." }
+      ]
+    }
+  }
+}

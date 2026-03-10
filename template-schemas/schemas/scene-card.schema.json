@@ -1,0 +1,186 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://grimoire.dev/protocol/v1/scene-card.schema.json",
+  "title": "SceneCard",
+  "description": "Complete scene specification enabling bidirectional prose ↔ structure conversion. Contains structural position, voice/craft settings, character states, and canonical summary.",
+  "type": "object",
+  "required": ["scene_id", "book_id", "chapter", "beat", "pov", "focalizer"],
+  "properties": {
+    "scene_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9_]+$",
+      "description": "Unique scene identifier (e.g., pride_ch34_s01)"
+    },
+    "book_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9_]+$"
+    },
+    "chapter": { "type": "integer", "minimum": 1 },
+    "scene_index": { "type": "integer", "minimum": 1 },
+
+    "act": { "type": "integer", "minimum": 1, "maximum": 5 },
+    "sequence": { "$ref": "enums.schema.json#/$defs/sequence_type" },
+    "beat": { "$ref": "enums.schema.json#/$defs/beat_type" },
+    "arc_position": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1,
+      "description": "0.0–1.0 position through story arc"
+    },
+    "scene_function": { "$ref": "enums.schema.json#/$defs/scene_function" },
+
+    "turn": {
+      "type": "object",
+      "description": "Emotional/dramatic direction change",
+      "properties": {
+        "from": { "$ref": "enums.schema.json#/$defs/scene_polarity" },
+        "to": { "$ref": "enums.schema.json#/$defs/scene_polarity" }
+      }
+    },
+
+    "pov": { "$ref": "enums.schema.json#/$defs/pov_type" },
+    "focalization": { "$ref": "enums.schema.json#/$defs/focalization_type" },
+    "focalizer": {
+      "type": "string",
+      "pattern": "^[a-z0-9_]+$",
+      "description": "Character slug of focalizer"
+    },
+    "psychic_distance": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 5,
+      "description": "Gardner scale: 1=authorial distance, 5=deep interiority"
+    },
+    "consciousness_mode": { "$ref": "enums.schema.json#/$defs/consciousness_mode" },
+
+    "diegetic_level": { "$ref": "enums.schema.json#/$defs/diegetic_level" },
+    "narratee_type": { "$ref": "enums.schema.json#/$defs/narratee_type" },
+    "narrator_reliability": { "$ref": "enums.schema.json#/$defs/narrator_reliability_type" },
+
+    "narrative_time": {
+      "type": "object",
+      "description": "Genette temporal architecture",
+      "properties": {
+        "order": { "$ref": "enums.schema.json#/$defs/narrative_order" },
+        "analepsis_type": { "$ref": "enums.schema.json#/$defs/analepsis_type" },
+        "prolepsis_type": { "$ref": "enums.schema.json#/$defs/prolepsis_type" },
+        "duration_mode": { "$ref": "enums.schema.json#/$defs/duration_mode" },
+        "duration": {
+          "type": "object",
+          "properties": {
+            "value": { "type": "integer" },
+            "unit": { "$ref": "enums.schema.json#/$defs/time_unit" }
+          }
+        },
+        "frequency": { "$ref": "enums.schema.json#/$defs/frequency" },
+        "iterative_pattern": { "$ref": "enums.schema.json#/$defs/iterative_pattern" }
+      }
+    },
+
+    "target_tension": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 5,
+      "description": "1=calm, 5=maximum tension"
+    },
+    "target_pacing": { "$ref": "enums.schema.json#/$defs/duration_mode" },
+    "tone": { "$ref": "enums.schema.json#/$defs/tone" },
+
+    "setting": {
+      "type": "string",
+      "pattern": "^[a-z0-9_]+$",
+      "description": "Setting slug from registry"
+    },
+    "setting_instance": { "$ref": "#/$defs/setting_instance" },
+
+    "participants": {
+      "type": "array",
+      "items": { "type": "string", "pattern": "^[a-z0-9_]+$" },
+      "description": "Character slugs present in scene"
+    },
+    "character_states": {
+      "type": "array",
+      "items": { "$ref": "character-state.schema.json" },
+      "description": "Per-character state specifications"
+    },
+
+    "subtext": {
+      "type": "object",
+      "properties": {
+        "technique": { "$ref": "enums.schema.json#/$defs/subtext_technique" },
+        "maxim_violated": { "$ref": "enums.schema.json#/$defs/gricean_maxim" },
+        "violation_type": { "$ref": "enums.schema.json#/$defs/violation_signature" },
+        "iceberg_category": { "$ref": "enums.schema.json#/$defs/iceberg_category" }
+      }
+    },
+
+    "canonical_summary": {
+      "type": "object",
+      "description": "Semantic components for deterministic summary rendering",
+      "required": ["pov_character", "event_type", "setting"],
+      "properties": {
+        "pov_character": { "type": "string", "description": "Character slug" },
+        "event_type": { "$ref": "enums.schema.json#/$defs/event_type" },
+        "participants": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Character slugs"
+        },
+        "setting": { "type": "string", "description": "Setting slug" },
+        "character_want": { "type": "string", "description": "Want vocabulary slug" },
+        "want_outcome": { "$ref": "enums.schema.json#/$defs/want_outcome" },
+        "stakes_domain": { "$ref": "enums.schema.json#/$defs/stakes_domain" },
+        "atmosphere": { "$ref": "enums.schema.json#/$defs/atmosphere" },
+        "causal_role": { "$ref": "enums.schema.json#/$defs/causal_role" }
+      }
+    },
+
+    "prose": {
+      "type": "string",
+      "description": "The actual prose passage (generation output / extraction input)"
+    },
+    "word_count": { "type": "integer" },
+    "chapter_position": { "$ref": "enums.schema.json#/$defs/chapter_position" }
+  },
+
+  "$defs": {
+    "setting_instance": {
+      "type": "object",
+      "description": "Scene-specific setting details",
+      "properties": {
+        "setting": { "type": "string", "description": "Setting slug" },
+        "time_of_day": { "$ref": "enums.schema.json#/$defs/time_of_day" },
+        "weather": { "$ref": "enums.schema.json#/$defs/weather_condition" },
+        "lighting_source": { "$ref": "enums.schema.json#/$defs/lighting_source" },
+        "lighting_quality": { "$ref": "enums.schema.json#/$defs/lighting_quality" },
+        "spatial_structure": { "$ref": "enums.schema.json#/$defs/spatial_structure" },
+        "territory_type": { "$ref": "enums.schema.json#/$defs/territory_type" },
+        "sensory_emphasis": {
+          "type": "array",
+          "items": { "$ref": "enums.schema.json#/$defs/sensory_type" }
+        },
+        "props": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "category": { "$ref": "enums.schema.json#/$defs/prop_category" },
+              "function": { "$ref": "enums.schema.json#/$defs/prop_function" },
+              "description": { "type": "string" }
+            }
+          }
+        },
+        "motifs_present": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "category": { "$ref": "enums.schema.json#/$defs/motif_category" },
+              "deployment": { "$ref": "enums.schema.json#/$defs/motif_deployment" }
+            }
+          }
+        }
+      }
+    }
+  }
+}

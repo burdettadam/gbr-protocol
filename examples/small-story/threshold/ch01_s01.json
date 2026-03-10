@@ -1,0 +1,142 @@
+{
+  "$schema": "https://gbr-protocol.dev/schemas/v0/scene-card.schema.json",
+  "_comment": "threshold ch01_s01 — Status Quo + Inciting Incident. Nadia arrives at the house.",
+
+  "scene_id": "threshold_ch01_s01",
+  "book_id": "threshold",
+  "chapter": 1,
+  "scene_number_in_chapter": 1,
+
+  "narrative_time": {
+    "order": "chronological",
+    "duration_mode": "scene",
+    "frequency": "singulative"
+  },
+
+  "beat": "status_quo",
+  "scene_function": "world_building",
+
+  "pov": "third_limited",
+  "focalization_type": "internal_fixed",
+  "pov_role": "participant",
+  "focalizer": "nadia",
+  "diegetic_level": "intradiegetic",
+  "consciousness_mode": "narrated_monologue",
+  "psychic_distance": 2,
+  "narrator_reliability": "factually_unreliable",
+  "_narrator_reliability_note": "Nadia's perception of the house — its smallness, its stasis — is filtered through grief and four months of postponement. The reader should sense her unreliability in how she assesses her own readiness.",
+
+  "setting": {
+    "location": "childhood_home",
+    "time_of_day": "morning",
+    "setting_type": "interior_domestic",
+    "atmosphere": "uncanny",
+    "spatial_structure": "palimpsest",
+    "territory_type": "protagonist_home"
+  },
+
+  "tone": "clinical",
+
+  "canonical_summary": {
+    "want": "Nadia wants to move through the house efficiently: assess, catalogue, call the estate agent, leave by tomorrow evening",
+    "obstacle": "The house refuses to be efficient. It is smaller than she remembered and larger than grief. The key sticks in the lock for a moment — not long enough to matter, long enough to notice.",
+    "scene_polarity": "negative_to_negative",
+    "_polarity_note": "The scene opens in Nadia's controlled negative state (grief armored as efficiency) and closes there. Nothing breaks through — yet. This is the false equilibrium before the inciting incident proper (the journal, next scene).",
+    "outcome": "partially_achieved",
+    "_outcome_note": "Nadia succeeds in entering the house and beginning her catalogue. But she cannot maintain the clinical distance she planned. She ends the scene standing in the kitchen with the key in her hand, not yet moving.",
+    "delta": "Nadia's armor — the fiction that this is a logistical task — is intact but has taken the first small crack. She has noticed the house is smaller. She has not yet admitted what this means.",
+    "iceberg_proportion": 0.65,
+    "subtext_load": 0.6,
+    "scene_turns": [
+      {
+        "turn_number": 1,
+        "active_character": "nadia",
+        "verb": "arrives",
+        "target": "childhood_home",
+        "emotional_state": "resolve",
+        "masked_emotion": "dread",
+        "tactic": "appeal_to_logic",
+        "event_type": "action",
+        "significance": "satellite"
+      },
+      {
+        "turn_number": 2,
+        "active_character": "nadia",
+        "verb": "unlocks",
+        "target": "front_door",
+        "emotional_state": "resolve",
+        "masked_emotion": "grief",
+        "tactic": null,
+        "event_type": "action",
+        "significance": "kernel",
+        "_note": "The key sticks briefly. This is the inciting incident in miniature: the house resists, she forces it. Physically trivial; psychically significant."
+      },
+      {
+        "turn_number": 3,
+        "active_character": "nadia",
+        "verb": "catalogs",
+        "target": "ground_floor_rooms",
+        "emotional_state": "resolve",
+        "masked_emotion": "grief",
+        "tactic": "appeal_to_logic",
+        "event_type": "action",
+        "significance": "satellite",
+        "_note": "She moves through rooms naming what they contain. The narration mimics her strategy: inventory rather than feeling."
+      },
+      {
+        "turn_number": 4,
+        "active_character": "nadia",
+        "verb": "stops",
+        "target": "kitchen_doorway",
+        "emotional_state": "confusion",
+        "masked_emotion": "grief",
+        "tactic": null,
+        "event_type": "internal_shift",
+        "significance": "kernel",
+        "_note": "She stops without knowing why. She is holding the key. The narration leaves the reason unstated — the reader understands before Nadia does."
+      }
+    ]
+  },
+
+  "character_states": [
+    {
+      "character_id": "nadia",
+      "role_in_scene": "focalizer",
+      "arc_type": "positive_change",
+      "drive_model": "wound",
+      "emotion": "resolve",
+      "masked_emotion": "grief",
+      "tactic": "appeal_to_logic",
+      "epistemic_state": {
+        "knowledge_objects": [
+          {
+            "fact": "what the estate agent needs to proceed with the sale",
+            "known_to_character": true,
+            "certainty": 1.0
+          },
+          {
+            "fact": "why she has been carrying the house key in her pocket for four months without opening the envelope",
+            "known_to_character": false,
+            "certainty": 0.0
+          }
+        ]
+      },
+      "objective_object": {
+        "want": "assess and exit the house before grief can catch up",
+        "action": "catalogs_rooms",
+        "target": "childhood_home",
+        "obstacle": "the_house_is_her_fathers_body"
+      }
+    }
+  ],
+
+  "causal_role": "setup",
+  "stakes_domain": ["psychological", "relational"],
+  "motif_tags": ["the_key", "smallness", "silence"],
+
+  "theory_notes": {
+    "cohn": "Narrated monologue throughout — Nadia's cataloguing voice and the narrator's voice are fused. The reader cannot always tell whether 'small' is a perceptual fact or a defense.",
+    "booth": "The narrator is 'factually_unreliable' in a technical sense: Nadia's readiness assessment and her perception of the house's scale are both colored by grief. The reader has access to the unreliability; Nadia does not.",
+    "bachelard": "The house as topoanalysis object (Poetics of Space): the house is not just a setting but the site where Nadia's self was formed. Its smallness is the smallness of the child who lived there — and of the father she is now realizing she misread."
+  }
+}

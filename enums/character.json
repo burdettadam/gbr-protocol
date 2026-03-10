@@ -1,0 +1,129 @@
+{
+  "domain": "character",
+  "description": "Enumerations for character classification, psychology, motivation, and structural role.",
+  "enums": {
+    "archetype": {
+      "description": "Campbell/Vogler archetypal character templates (21 variants).",
+      "values": [
+        { "value": "hero", "definition": "The protagonist who faces the central ordeal and drives the main story action.", "example_usage": "The primary protagonist." },
+        { "value": "mentor", "definition": "A wise guide who advises, trains, or equips the hero.", "example_usage": "A father figure, teacher, or experienced advisor character." },
+        { "value": "threshold_guardian", "definition": "A figure who tests the hero at boundaries between story worlds.", "example_usage": "A character who blocks entry or challenges the hero's readiness." },
+        { "value": "herald", "definition": "A character or force that announces change or adventure, catalyzing the call to action.", "example_usage": "The messenger who delivers the inciting news." },
+        { "value": "shapeshifter", "definition": "A character with ambiguous, shifting loyalty who disrupts the hero's certainty.", "example_usage": "A love interest or ally whose true allegiance is unclear." },
+        { "value": "shadow", "definition": "The dark reflection or antagonist who embodies the hero's fears or rejected qualities.", "example_usage": "The primary villain or dark double of the protagonist." },
+        { "value": "ally", "definition": "A companion who supports the hero's journey without a competing agenda.", "example_usage": "A loyal friend or sidekick." },
+        { "value": "trickster", "definition": "A comic relief or chaos agent who subverts order and forces adaptation.", "example_usage": "A character who breaks rules and creates unpredictable situations." },
+        { "value": "everyman", "definition": "A relatable, ordinary character who grounds the story in recognizable experience.", "example_usage": "A working-class character who represents the reader's perspective." },
+        { "value": "lover", "definition": "A character primarily driven by passion, connection, and the pursuit of relationship.", "example_usage": "The romantic lead whose primary motivation is love." },
+        { "value": "caregiver", "definition": "A protector or nurturer defined by selfless service to others.", "example_usage": "A parent, nurse, or community leader figure." },
+        { "value": "sage", "definition": "A truth-seeker and philosopher who values knowledge above all else.", "example_usage": "A scholar, detective, or intellectual mentor character." },
+        { "value": "innocent", "definition": "An optimistic character who seeks safety and believes the world is good.", "example_usage": "A naive protagonist at story start; a child character." },
+        { "value": "rebel", "definition": "A character who overthrows what isn't working and challenges established order.", "example_usage": "A revolutionary, outlaw, or rule-breaker protagonist." },
+        { "value": "ruler", "definition": "A character driven by control, responsibility, and the maintenance of order.", "example_usage": "A king, CEO, patriarch, or institutional authority figure." },
+        { "value": "outcast", "definition": "A character rejected by society who operates from the margins.", "example_usage": "An exile, pariah, or social outsider." },
+        { "value": "creator", "definition": "An innovator or artist driven to bring something new into existence.", "example_usage": "An inventor, writer, or visionary character." },
+        { "value": "explorer", "definition": "A seeker of new experiences who cannot stay confined by convention.", "example_usage": "An adventurer, traveler, or character driven by curiosity." },
+        { "value": "magician", "definition": "A character who transforms reality — themselves or their world.", "example_usage": "A literal or metaphorical transformer; a catalyst character." },
+        { "value": "jester", "definition": "A character who lives in the moment and uses humor to reveal truth.", "example_usage": "A comic figure who speaks difficult truths through laughter." },
+        { "value": "outlaw", "definition": "A character who breaks rules deliberately and rejects social contracts.", "example_usage": "A criminal protagonist or anti-hero defined by transgression." }
+      ]
+    },
+    "wound": {
+      "description": "Core psychological wound categories (23 variants: 13 umbrella + 10 fine-grained).",
+      "values": [
+        { "value": "abandonment", "definition": "The character was left, rejected, or not chosen by someone whose love they needed.", "group": "umbrella" },
+        { "value": "betrayal", "definition": "Someone the character trusted acted against them or violated their confidence.", "group": "umbrella" },
+        { "value": "guilt_and_failure", "definition": "The character blames themselves for a harm, loss, or failure — real or perceived.", "group": "umbrella" },
+        { "value": "trauma_and_abuse", "definition": "The character experienced physical, emotional, or sexual violence.", "group": "umbrella" },
+        { "value": "shame", "definition": "The character internalized the belief that they are fundamentally defective or unworthy.", "group": "umbrella" },
+        { "value": "grief", "definition": "The character carries unresolved mourning for a person, identity, or future lost.", "group": "umbrella" },
+        { "value": "trust_violation", "definition": "An institution, system, or authority the character relied on failed or actively harmed them.", "group": "umbrella" },
+        { "value": "powerlessness", "definition": "The character was unable to protect themselves or others from harm.", "group": "umbrella" },
+        { "value": "identity_rejection", "definition": "The character's authentic self was denied, suppressed, or punished by others.", "group": "umbrella" },
+        { "value": "injustice", "definition": "The character experienced systematic unfairness or was punished for someone else's actions.", "group": "umbrella" },
+        { "value": "neglect", "definition": "The character's needs — physical or emotional — were chronically ignored.", "group": "umbrella" },
+        { "value": "survivor_guilt", "definition": "The character survived something that others did not and carries the weight of that survival.", "group": "umbrella" },
+        { "value": "displacement", "definition": "The character lost their home, culture, or sense of belonging through exile or migration.", "group": "umbrella" },
+        { "value": "parental_abandonment", "definition": "A parent left, died, or was emotionally absent at a critical developmental moment.", "group": "fine-grained" },
+        { "value": "romantic_abandonment", "definition": "A romantic partner left, betrayed, or rejected the character at a defining moment.", "group": "fine-grained" },
+        { "value": "social_exile", "definition": "The character was ostracized, shunned, or expelled from a community they valued.", "group": "fine-grained" },
+        { "value": "institutional_betrayal", "definition": "A trusted institution (school, church, military, company) failed or actively harmed the character.", "group": "fine-grained" },
+        { "value": "public_humiliation", "definition": "The character's failure, weakness, or secret was exposed publicly.", "group": "fine-grained" },
+        { "value": "identity_shame", "definition": "The character was taught that a core aspect of who they are (race, sexuality, gender, disability) is wrong.", "group": "fine-grained" },
+        { "value": "loss_of_purpose", "definition": "The character lost the role, mission, or belief system that defined their identity.", "group": "fine-grained" },
+        { "value": "catastrophic_failure", "definition": "The character made a decision or took an action with devastating, irreversible consequences.", "group": "fine-grained" },
+        { "value": "moral_compromise", "definition": "The character acted against their own values — possibly under coercion — and cannot forgive themselves.", "group": "fine-grained" },
+        { "value": "smothering", "definition": "The character was controlled, over-protected, or had their autonomy systematically denied.", "group": "fine-grained" }
+      ]
+    },
+    "alignment": {
+      "description": "9-cell moral alignment grid encoding law/chaos and good/evil axes.",
+      "values": [
+        { "value": "lawful_good", "definition": "Acts according to a code of honor; believes rules and goodness are compatible." },
+        { "value": "neutral_good", "definition": "Acts to do good without strong loyalty to rules or chaos." },
+        { "value": "chaotic_good", "definition": "Acts for good but resists rules and authority." },
+        { "value": "lawful_neutral", "definition": "Follows rules and order without strong moral commitment to good or evil." },
+        { "value": "true_neutral", "definition": "Avoids taking sides; balances all forces." },
+        { "value": "chaotic_neutral", "definition": "Acts on impulse; values personal freedom over rules or ethics." },
+        { "value": "lawful_evil", "definition": "Pursues self-interest or harmful goals within or through established rules and hierarchy." },
+        { "value": "neutral_evil", "definition": "Does whatever is necessary to achieve harmful goals without preferring order or chaos." },
+        { "value": "chaotic_evil", "definition": "Acts with destructive intent, rejecting all rules and caring nothing for others." }
+      ]
+    },
+    "role": {
+      "description": "Functional narrative role (what the character does to the plot). Distinct from archetype (psychological template).",
+      "values": [
+        { "value": "protagonist", "definition": "The story is organized around their want and arc." },
+        { "value": "deuteragonist", "definition": "The secondary significant character with their own arc." },
+        { "value": "antagonist", "definition": "Opposes the protagonist's want, creating central conflict." },
+        { "value": "love_interest", "definition": "Primary romantic other to the protagonist or deuteragonist." },
+        { "value": "mentor", "definition": "Guides, trains, or advises other characters." },
+        { "value": "confidant", "definition": "Receives the protagonist's internal thoughts; enables exposition of inner life." },
+        { "value": "ally", "definition": "Supports the protagonist without a competing central agenda." },
+        { "value": "foil", "definition": "Exists structurally to contrast the protagonist, making their qualities visible." },
+        { "value": "catalyst", "definition": "Triggers change in others without necessarily having their own arc." },
+        { "value": "bridge_character", "definition": "Connects two social worlds or group of characters." },
+        { "value": "ghost_character", "definition": "Absent character whose presence is felt through others' psychology." },
+        { "value": "trickster", "definition": "Agent of chaos; disrupts status quo and tests other characters." },
+        { "value": "guardian", "definition": "Tests the protagonist before allowing access to the next world or stage." },
+        { "value": "herald", "definition": "Announces change; delivers the call to adventure." },
+        { "value": "shapeshifter", "definition": "Shifts alliance or identity; creates doubt about motives." },
+        { "value": "contagonist", "definition": "Works against the protagonist from within the same group; impedes without being the antagonist." },
+        { "value": "walk_on", "definition": "Minor character with no arc; functional presence only." }
+      ]
+    },
+    "drive_model": {
+      "description": "Character motivational framework — the primary 'spring' driving the character across the whole story.",
+      "values": [
+        { "value": "wound", "definition": "The character is driven primarily by a core psychological wound and its resulting misbelief (Weiland/Cron).", "example_usage": "A trauma survivor whose wound shapes every decision." },
+        { "value": "desire", "definition": "The character is driven by what they want — a conscious goal or longing.", "example_usage": "A character who wants wealth, love, or recognition above all else." },
+        { "value": "duty", "definition": "The character is driven by obligation — to a person, code, institution, or role.", "example_usage": "A soldier, parent, or caretaker who acts from responsibility." },
+        { "value": "perception", "definition": "The character is driven by epistemology — the need to understand, know, or see clearly.", "example_usage": "A detective, scholar, or character whose arc is about seeing the truth." },
+        { "value": "existential", "definition": "The character is driven by questions of meaning, purpose, and identity.", "example_usage": "A character in existential crisis; a character questioning the point of their life." }
+      ]
+    },
+    "arc_type": {
+      "description": "Character arc trajectory across the whole story.",
+      "values": [
+        { "value": "positive_change", "definition": "Character overcomes the lie they believe and embraces the truth they need (Weiland).", "example_usage": "Classic hero journey arc; comedy arc." },
+        { "value": "negative_fall", "definition": "Character rejects the truth and embraces the lie — tragedy or corruption.", "example_usage": "Tragic protagonist; villain arc." },
+        { "value": "flat", "definition": "Character already holds the truth and functions to catalyze change in others.", "example_usage": "Western hero; mentor figure; some action protagonists." },
+        { "value": "minor", "definition": "Character changes but not along the main thematic axis of the story.", "example_usage": "Supporting character with a small personal arc." },
+        { "value": "disillusionment", "definition": "Character begins believing the truth, loses it, ends in tragedy.", "example_usage": "Idealist broken by experience." },
+        { "value": "corruption", "definition": "Character knowingly compromises their principles and becomes a worse version of themselves.", "example_usage": "Breaking Bad-style arc; slow moral decline." },
+        { "value": "none", "definition": "Character has no arc — they are the same at the end as at the start.", "example_usage": "Functional characters; true walk-ons; some ensemble members." }
+      ]
+    },
+    "actant": {
+      "description": "Greimas actantial role — the character's structural position in the story's narrative grammar.",
+      "values": [
+        { "value": "subject", "definition": "The character who desires the object and drives the main action.", "example_usage": "The protagonist." },
+        { "value": "object", "definition": "The entity, value, or goal that the subject seeks.", "example_usage": "May be a person, quality, or abstract goal — not always a character." },
+        { "value": "sender", "definition": "The motivating authority who initiates the quest or establishes the mission.", "example_usage": "A king who sends the hero; a moral imperative; societal pressure." },
+        { "value": "receiver", "definition": "The entity who benefits from the subject achieving the object.", "example_usage": "May be the subject themselves or another character." },
+        { "value": "helper", "definition": "An entity who aids the subject in achieving the object.", "example_usage": "Allies, tools, lucky events." },
+        { "value": "opponent", "definition": "An entity who impedes the subject from achieving the object.", "example_usage": "Antagonist, obstacles, opposing forces." }
+      ]
+    }
+  }
+}

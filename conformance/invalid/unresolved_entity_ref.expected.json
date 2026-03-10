@@ -1,0 +1,9 @@
+{
+  "error_type": "unresolved_entity_reference",
+  "fields": ["focalizer", "character_states[0].character_ref"],
+  "invalid_values": ["non_existent_character", "also_not_a_real_character"],
+  "document_type": "scene_card",
+  "conformance_level": 2,
+  "message": "Character references in focalizer and character_states.character_ref must resolve to keys in the Entity Registry (characters map). 'non_existent_character' and 'also_not_a_real_character' are not defined in the registry for book_id 'conformance-test-invalid'.",
+  "spec_reference": "SPECIFICATION.md §10.2"
+}

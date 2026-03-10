@@ -1,0 +1,191 @@
+{
+  "$schema": "https://gbr-protocol.dev/schemas/v0/scene-card.schema.json",
+  "_comment": "Edge case: third_omniscient POV with multiple interior accesses in a single scene. Demonstrates how focalization_type=internal_multiple is encoded and how character_states handles multiple active inner lives.",
+  "scene_id": "edge-omniscient-multiple-focalizer",
+  "book_id": "gbr-conformance-edge-cases",
+  "chapter": 19,
+  "scene_number_in_chapter": 1,
+  "narrative_time": {
+    "order": "chronological",
+    "duration_mode": "scene",
+    "frequency": "singulative"
+  },
+  "beat": "climax",
+  "scene_function": "confrontation",
+  "pov": "third_omniscient",
+  "focalization_type": "internal_multiple",
+  "_focalization_note": "The narrator accesses the interiors of three characters in sequence within a single scene. This is Genette's internal_multiple: the same scene is focalized through more than one character's consciousness. Each shift is encoded as a scene_turn change in active_character with a corresponding change in the consciousness dimension.",
+  "pov_role": "non_present",
+  "_pov_role_note": "With third_omniscient, the narrator is extradiegetic and non-present. The focalizer field is null — focalization shifts across turns.",
+  "focalizer": null,
+  "diegetic_level": "extradiegetic",
+  "consciousness_mode": "mixed",
+  "_consciousness_mode_note": "mixed because the narrator uses psychonarration for Elena (narrator-mediated), narrated_monologue (FID) for Marco, and quoted_monologue (interior monologue) for Vera. The omniscient narrator deploys different modes for different characters.",
+  "psychic_distance": 2,
+  "narrator_reliability": "reliable",
+  "setting": {
+    "location": "the_crossing",
+    "time_of_day": "dusk",
+    "setting_type": "exterior_public",
+    "atmosphere": "liminal",
+    "spatial_structure": "threshold",
+    "territory_type": "contested"
+  },
+  "tone": "tragic",
+  "canonical_summary": {
+    "want": "Each character wants something different and mutually incompatible: Elena wants Marco to leave; Marco wants Elena to stay; Vera wants neither of them to see what she has done",
+    "obstacle": "All three characters are converging on the same physical space with the same unavoidable information",
+    "scene_polarity": "positive_to_negative",
+    "outcome": "failed",
+    "delta": "The three-way collision produces an irrevocable rupture. Because the reader has access to all three interiors simultaneously, the tragedy is fully legible — each character acts on their own incomplete information, and the omniscient narrator's multi-access is the structural engine of the irony.",
+    "iceberg_proportion": 0.4,
+    "_iceberg_note": "Omniscient narrators typically operate at lower iceberg proportions — more is surfaced directly. The 0.4 here reflects the narrator's choice to show inner states directly rather than imply them.",
+    "subtext_load": 0.45,
+    "scene_turns": [
+      {
+        "turn_number": 1,
+        "active_character": "elena",
+        "verb": "watches",
+        "target": "marco_approaching_from_the_bridge",
+        "emotional_state": "dread",
+        "masked_emotion": null,
+        "tactic": null,
+        "event_type": "action",
+        "significance": "satellite",
+        "consciousness_mode_for_turn": "psychonarration",
+        "_note": "Narrator mediates Elena's interiority: 'She knew, without being able to say how she knew, that this was the last time.'"
+      },
+      {
+        "turn_number": 2,
+        "active_character": "marco",
+        "verb": "rehearses",
+        "target": "the_words_he_has_prepared",
+        "emotional_state": "hope",
+        "masked_emotion": "fear",
+        "tactic": "appeal_to_shared_history",
+        "event_type": "internal_shift",
+        "significance": "satellite",
+        "consciousness_mode_for_turn": "narrated_monologue",
+        "_note": "FID: 'What was one more attempt? He had nothing left to lose, which meant he had nothing left to protect.' The narrator's voice and Marco's voice are fused."
+      },
+      {
+        "turn_number": 3,
+        "active_character": "vera",
+        "verb": "decides",
+        "target": "to_step_into_view",
+        "emotional_state": "resolve",
+        "masked_emotion": "terror",
+        "tactic": "confession",
+        "event_type": "decision",
+        "significance": "kernel",
+        "consciousness_mode_for_turn": "quoted_monologue",
+        "_note": "Interior monologue (tagged): 'I will not let them destroy each other over something I can still confess.' This is the scene's catastrophic turn — her decision to appear changes everything."
+      },
+      {
+        "turn_number": 4,
+        "active_character": "elena",
+        "verb": "recognizes",
+        "target": "vera",
+        "emotional_state": "shock",
+        "masked_emotion": null,
+        "tactic": null,
+        "event_type": "revelation",
+        "significance": "kernel",
+        "consciousness_mode_for_turn": "psychonarration"
+      },
+      {
+        "turn_number": 5,
+        "active_character": "marco",
+        "verb": "understands",
+        "target": "everything",
+        "emotional_state": "devastation",
+        "masked_emotion": null,
+        "tactic": null,
+        "event_type": "revelation",
+        "significance": "kernel",
+        "consciousness_mode_for_turn": "narrated_monologue"
+      }
+    ]
+  },
+  "character_states": [
+    {
+      "character_id": "elena",
+      "role_in_scene": "participant",
+      "_role_note": "In third_omniscient with internal_multiple focalization, all characters whose interiors are accessed should be listed as participant — not focalizer, since there is no single focalizer.",
+      "arc_type": "negative_fall",
+      "drive_model": "wound",
+      "emotion": "shock",
+      "masked_emotion": null,
+      "tactic": null,
+      "epistemic_state": {
+        "knowledge_objects": [
+          {
+            "fact": "vera's role in the original rupture",
+            "known_to_character": false,
+            "certainty": 0.0
+          },
+          {
+            "fact": "marco's feelings about leaving",
+            "known_to_character": "approximate",
+            "certainty": 0.5
+          }
+        ]
+      }
+    },
+    {
+      "character_id": "marco",
+      "role_in_scene": "participant",
+      "arc_type": "positive_change",
+      "drive_model": "desire",
+      "emotion": "devastation",
+      "masked_emotion": null,
+      "tactic": null,
+      "epistemic_state": {
+        "knowledge_objects": [
+          {
+            "fact": "vera's confession (now known)",
+            "known_to_character": true,
+            "certainty": 1.0
+          },
+          {
+            "fact": "elena's true feelings",
+            "known_to_character": false,
+            "certainty": 0.2
+          }
+        ]
+      }
+    },
+    {
+      "character_id": "vera",
+      "role_in_scene": "participant",
+      "arc_type": "negative_fall",
+      "drive_model": "duty",
+      "emotion": "resolve",
+      "masked_emotion": "terror",
+      "tactic": "confession",
+      "epistemic_state": {
+        "knowledge_objects": [
+          {
+            "fact": "the information she is about to reveal",
+            "known_to_character": true,
+            "certainty": 1.0
+          },
+          {
+            "fact": "how elena and marco will receive the confession",
+            "known_to_character": false,
+            "certainty": 0.0
+          }
+        ]
+      }
+    }
+  ],
+  "causal_role": "payoff",
+  "stakes_domain": ["relational", "moral", "psychological"],
+  "motif_tags": ["convergence", "knowledge_gap", "confession", "the_crossing"],
+  "theory_notes": {
+    "genette": "internal_multiple focalization: narrator accesses more than one character's interiority within the same scene. Distinguished from third_omniscient with zero focalization (narrator knows everything but does not enter interiors) and from internal_variable (where focalization shifts across scenes/chapters rather than within one).",
+    "cohn": "mixed consciousness_mode per turn: psychonarration (mediated interior), narrated_monologue (FID), quoted_monologue (interior monologue) — the omniscient narrator modulates its distance differently for each character, a stylistic signature.",
+    "booth": "The omniscient narrator here is highly 'dramatized' (Booth) — it editorializes minimally but its selection of which character to enter, and when, is itself an evaluative act.",
+    "encoding_guidance": "For third_omniscient + internal_multiple: (1) focalizer=null; (2) each scene_turn includes consciousness_mode_for_turn; (3) all three-interiored characters are 'participant' not 'focalizer'; (4) the scene-level consciousness_mode is 'mixed'."
+  }
+}

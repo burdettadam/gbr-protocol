@@ -1,0 +1,56 @@
+{
+  "domain": "relationship",
+  "description": "Enumerations for relationship taxonomy, dynamic type, and power balance between characters.",
+  "enums": {
+    "relationship_type": {
+      "description": "The fundamental social category of the relationship between two characters.",
+      "values": [
+        { "value": "family_parent_child", "definition": "A biological, adoptive, or functional parent-child relationship.", "example_usage": "Parent and adult child; guardian and ward." },
+        { "value": "family_sibling", "definition": "A biological, adoptive, or functional sibling relationship.", "example_usage": "Brothers, sisters, half-siblings, stepsiblings." },
+        { "value": "family_extended", "definition": "A relationship between extended family members (aunts, uncles, cousins, grandparents, in-laws).", "example_usage": "Grandparent and grandchild; cousins; in-law relationships." },
+        { "value": "family_chosen", "definition": "A non-biological relationship functioning with the emotional force of family.", "example_usage": "Chosen family; found family; deep long-term bonds that replace or supplement biological family." },
+        { "value": "romantic_partner", "definition": "A current or recent romantic partnership.", "example_usage": "Spouse, partner, boyfriend/girlfriend, lover." },
+        { "value": "romantic_former", "definition": "A previous romantic relationship that has ended but remains relevant.", "example_usage": "Ex-spouse, ex-partner; former lover." },
+        { "value": "romantic_unrequited", "definition": "A romantic interest that is not reciprocated.", "example_usage": "Unrequited love; one-sided crush; secret longing." },
+        { "value": "friendship", "definition": "A non-romantic relationship based on mutual regard, history, and care.", "example_usage": "Best friends, old friends, casual friends." },
+        { "value": "professional_peer", "definition": "Colleagues or equals within a shared professional context.", "example_usage": "Co-workers, fellow academics, bandmates." },
+        { "value": "professional_hierarchical", "definition": "A professional relationship with a clear power differential (boss/employee, teacher/student, mentor/mentee).", "example_usage": "Supervisor and subordinate; professor and student." },
+        { "value": "rival", "definition": "A relationship defined by competition for a shared goal, resource, or recognition.", "example_usage": "Competing characters with parallel goals." },
+        { "value": "antagonist_protagonist", "definition": "The primary oppositional relationship of the story.", "example_usage": "The antagonist and the protagonist in direct opposition." },
+        { "value": "enemy", "definition": "Active hostility; the characters are in conflict and wish each other harm.", "example_usage": "Sworn enemies; characters with antagonistic intent." },
+        { "value": "alliance", "definition": "A relationship of mutual utility that may or may not involve personal connection.", "example_usage": "Political allies; strategic partners; convenient collaborators." },
+        { "value": "acquaintance", "definition": "A relationship of minimal depth; the characters know of each other without significant history.", "example_usage": "Neighbors, familiar strangers, people who have met once." },
+        { "value": "stranger", "definition": "No prior relationship; the characters meet for the first time in the scene context.", "example_usage": "A chance encounter; first meeting." },
+        { "value": "institutional", "definition": "A relationship defined by the characters' roles within a shared institution, with little personal history.", "example_usage": "Doctor/patient, guard/prisoner, priest/parishioner." },
+        { "value": "ambiguous", "definition": "The relationship type is deliberately unclear or contested by the characters themselves.", "example_usage": "A relationship that doesn't fit categories; one in active transition." }
+      ]
+    },
+    "relationship_dynamic": {
+      "description": "The dominant behavioral or emotional pattern governing the relationship in the current story moment.",
+      "values": [
+        { "value": "supportive", "definition": "The relationship is characterized by mutual or one-directional care, validation, and support.", "example_usage": "A friend who helps without agenda; a mentor's positive guidance." },
+        { "value": "adversarial", "definition": "The relationship is characterized by opposition, conflict, or active competing interests.", "example_usage": "A rivalry in active combat; an ongoing dispute." },
+        { "value": "dependent", "definition": "One character is significantly reliant on the other for physical, emotional, or material well-being.", "example_usage": "A caretaker relationship; one who cannot function without the other." },
+        { "value": "manipulative", "definition": "One character is using the other through deception, emotional leverage, or indirect psychological pressure.", "example_usage": "An abusive relationship; a character being groomed." },
+        { "value": "protective", "definition": "One character acts primarily to shield the other from harm.", "example_usage": "A guardian protecting a ward; a sibling who takes on harm to protect another." },
+        { "value": "competitive", "definition": "Both characters are vying for the same goal, resource, or recognition.", "example_usage": "Rivals in open competition; colleagues competing for a promotion." },
+        { "value": "ambivalent", "definition": "The relationship is characterized by conflicting feelings — the characters both value and resent each other.", "example_usage": "Toxic love; necessary enemies; frenemies." },
+        { "value": "distant", "definition": "The relationship maintains surface form without authentic connection; emotional distance is the defining quality.", "example_usage": "An estranged family relationship; a dead marriage maintained for social appearances." },
+        { "value": "intimate", "definition": "The relationship is characterized by emotional closeness, mutual disclosure, and genuine understanding.", "example_usage": "Deep friendship; loving marriage; trusted confidant." },
+        { "value": "transactional", "definition": "The relationship is purely functional — mutual service without personal investment.", "example_usage": "Hired help; professional relationships without warmth; alliances of convenience." },
+        { "value": "hierarchical", "definition": "The relationship is defined primarily by power and rank, with the power differential actively shaping all interactions.", "example_usage": "Boss and subordinate; ruler and subject; master and apprentice with active inequality." },
+        { "value": "shifting", "definition": "The relationship dynamic is in active transition — what it is now is not what it was or will be.", "example_usage": "A relationship in crisis or evolution; a friendship becoming something else." }
+      ]
+    },
+    "power_balance": {
+      "description": "The distribution of power (social, institutional, emotional, physical, informational) between the two characters in this relationship at this point in the story.",
+      "values": [
+        { "value": "character_a_dominant", "definition": "Character A holds significantly more power than Character B in this relationship at this point.", "example_usage": "The employer in a relationship with their employee; the parent of a young child." },
+        { "value": "character_b_dominant", "definition": "Character B holds significantly more power than Character A in this relationship at this point.", "example_usage": "Inverse of the above — depends on which character is defined as A and B." },
+        { "value": "roughly_equal", "definition": "Power is approximately balanced; neither character has a decisive or consistent advantage.", "example_usage": "Peers; mutual friends; equals in an alliance." },
+        { "value": "contested", "definition": "Control of power is actively disputed — the relationship itself is partly about who holds power.", "example_usage": "A power struggle; a shifting hierarchy; rivals fighting for dominance." },
+        { "value": "contextually_variable", "definition": "Power shifts depending on domain — one character holds physical power, the other holds informational power, etc.", "example_usage": "A jailer who holds physical control but whom a prisoner has blackmail material against." }
+      ]
+    }
+  }
+}

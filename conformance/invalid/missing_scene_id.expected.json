@@ -1,0 +1,8 @@
+{
+  "error_type": "missing_required_field",
+  "field": "scene_id",
+  "document_type": "scene_card",
+  "conformance_level": 1,
+  "message": "scene_id is a required field on every Scene Card document. It must be unique within the corpus.",
+  "spec_reference": "SPECIFICATION.md §7.1"
+}

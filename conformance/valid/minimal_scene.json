@@ -1,0 +1,28 @@
+{
+  "$schema": "https://gbr-protocol.dev/schemas/scene-card.schema.json",
+  "scene_id": "conformance-minimal-s01",
+  "book_id": "conformance-test-minimal",
+  "chapter": 1,
+  "beat": "inciting_incident",
+  "pov": "third_limited",
+  "focalizer": "protagonist",
+  "canonical_summary": {
+    "chapter": 1,
+    "scene": 1,
+    "location": "Unnamed Location",
+    "time": "morning",
+    "focalizer": "protagonist",
+    "want": "protagonist wants to understand what happened",
+    "scene_turns": [
+      {
+        "event_type": "action",
+        "agent": "protagonist",
+        "verb": "discovers",
+        "patient": "an unexpected change",
+        "result": "the situation is irrevocably altered"
+      }
+    ],
+    "outcome": "failed",
+    "delta": "The protagonist's world has changed; they do not yet know how to proceed."
+  }
+}

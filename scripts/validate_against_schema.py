@@ -36,7 +36,7 @@ from typing import Any
 import yaml
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
-SCHEMAS_DIR = PROJECT_ROOT / "schemas"
+SCHEMAS_DIR = PROJECT_ROOT / "template-schemas"
 
 # ── Regex ──────────────────────────────────────────────────────────────────────
 

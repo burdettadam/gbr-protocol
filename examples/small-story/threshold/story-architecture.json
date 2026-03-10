@@ -1,0 +1,84 @@
+{
+  "$schema": "https://gbr-protocol.dev/schemas/v0/story-architecture.schema.json",
+  "book_id": "threshold",
+  "title": "Threshold",
+
+  "genre": "literary_fiction",
+  "collision_type": "person_vs_self",
+  "antagonist_type": "self",
+
+  "protagonist_arc": {
+    "character_id": "nadia",
+    "wound": "grief",
+    "lie_believed": "The past holds nothing but pain. Forward motion is the only honest response to loss.",
+    "ghost": "She was not at his bedside when he died. She was on stage.",
+    "want": "Sell the house in 48 hours. Return to the city. Resume.",
+    "need": "Stay still. Stay long enough to grieve. Find out who her father was when she wasn't watching.",
+    "truth_needed": "Her father's silence was not indifference. He had a language she didn't speak.",
+    "arc_type": "positive_change",
+    "arc_midpoint": "The journal entry — Nadia's name in her father's handwriting, describing her piano playing with an emotion she had never attributed to him: longing.",
+    "arc_resolution": "Nadia postpones the sale. She does not yet know why. The reader does."
+  },
+
+  "beat_sequence": [
+    {
+      "beat": "status_quo",
+      "chapter": 1,
+      "scene": 1,
+      "description": "Nadia arrives at the house — clinical, purposeful, armored"
+    },
+    {
+      "beat": "inciting_incident",
+      "chapter": 1,
+      "scene": 1,
+      "description": "The house is smaller than she remembered. The key still fits. The grief is still there."
+    },
+    {
+      "beat": "revelation",
+      "chapter": 1,
+      "scene": 2,
+      "description": "In the study, she finds the journal. One entry. 1987."
+    },
+    {
+      "beat": "climax",
+      "chapter": 2,
+      "scene": 1,
+      "description": "In the garden at dusk, journal in hand. The phone call to the estate agent."
+    },
+    {
+      "beat": "resolution",
+      "chapter": 2,
+      "scene": 1,
+      "description": "Not an answer. A stay of execution. The grief has a shape now."
+    }
+  ],
+
+  "thematic_controlling_idea": "grief can only be completed by staying, not by leaving",
+
+  "motifs": [
+    {
+      "motif": "the_key",
+      "description": "Nadia carries the house key in her coat pocket for four months without opening the envelope it came in. The key appears in all three scenes."
+    },
+    {
+      "motif": "silence",
+      "description": "Both father and daughter speak through objects rather than words. The journal breaks this pattern — Robert used words, privately, that he could not use aloud."
+    },
+    {
+      "motif": "smallness",
+      "description": "The house is smaller than Nadia remembered. Her father was smaller than his myth. The wound is smaller — and more specific — than grief in the abstract."
+    }
+  ],
+
+  "narrative_time": {
+    "primary_order": "chronological",
+    "analepsis_count": 0,
+    "embedded_analepsis": "The journal entry (1987) is read in the present. It functions as an embedded analepsis: the past speaks directly to the present without scene-level flashback.",
+    "span_story_time": "approximately 36 hours",
+    "span_narrated_time": "approximately 24 pages"
+  },
+
+  "focalization_strategy": "third_limited throughout, fixed on Nadia. The father is never focalized — he exists only as object: the house, the study, the journal, Nadia's memories.",
+
+  "conformance_notes": "This story uses 3 scenes across 2 chapters. It is designed as a complete short-story-length GBR example demonstrating: person_vs_self collision, embedded analepsis, flat arc for a non-present antagonist, and a redirected rather than achieved want outcome."
+}

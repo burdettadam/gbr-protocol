@@ -1,0 +1,8 @@
+{
+  "error_type": "empty_scene_turns",
+  "field": "canonical_summary.scene_turns",
+  "document_type": "scene_card",
+  "conformance_level": 2,
+  "message": "canonical_summary.scene_turns MUST contain at least one scene turn. An empty scene_turns array violates the Scene Turn Requirement (SPECIFICATION.md §7.4). A scene with no events cannot round-trip: there is nothing for a reader to recover from the summary.",
+  "spec_reference": "SPECIFICATION.md §7.4, §9.2"
+}
