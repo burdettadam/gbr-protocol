@@ -1,5 +1,5 @@
 {
-  "$schema": "https://gbr-protocol.dev/schemas/registry.schema.json",
+  "$schema": "https://gbr-protocol.dev/schemas/v0/registry.schema.json",
   "book_id": "conformance-test-minimal",
   "characters": {
     "protagonist": {

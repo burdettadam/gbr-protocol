@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://grimoire.dev/protocol/v1/story-architecture.schema.json",
+  "$id": "https://gbr-protocol.dev/schemas/v0/story-architecture.schema.json",
   "title": "StoryArchitecture",
   "description": "Book-level structural metadata: genre, collision patterns, antagonist design, protagonist arc, actantial model, transtextuality.",
   "type": "object",
@@ -14,13 +14,19 @@
     "author": { "type": "string" },
 
     "genre": {
-      "type": "object",
-      "required": ["primary"],
-      "properties": {
-        "primary": { "$ref": "enums.schema.json#/$defs/genre_type" },
-        "secondary": { "$ref": "enums.schema.json#/$defs/genre_type" },
-        "subgenre": { "type": "string" }
-      }
+      "oneOf": [
+        { "$ref": "enums.schema.json#/$defs/genre_type" },
+        {
+          "type": "object",
+          "required": ["primary"],
+          "properties": {
+            "primary": { "$ref": "enums.schema.json#/$defs/genre_type" },
+            "secondary": { "$ref": "enums.schema.json#/$defs/genre_type" },
+            "subgenre": { "type": "string" }
+          }
+        }
+      ],
+      "description": "Genre — string slug or object with primary/secondary/subgenre"
     },
 
     "collision_architecture": {

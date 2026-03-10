@@ -1,5 +1,5 @@
 {
-  "$schema": "https://gbr-protocol.dev/schemas/scene-card.schema.json",
+  "$schema": "https://gbr-protocol.dev/schemas/v0/scene-card.schema.json",
   "scene_id": "conformance-minimal-s01",
   "book_id": "conformance-test-minimal",
   "chapter": 1,

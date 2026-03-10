@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://grimoire.dev/protocol/v1/registry.schema.json",
+  "$id": "https://gbr-protocol.dev/schemas/v0/registry.schema.json",
   "title": "EntityRegistry",
   "description": "Per-book entity registry defining the controlled vocabulary of characters, settings, relationships, and want types. Source of truth for all entity references.",
   "type": "object",

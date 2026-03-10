@@ -1,17 +1,63 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://grimoire.dev/protocol/v1/character-state.schema.json",
+  "$id": "https://gbr-protocol.dev/schemas/v0/character-state.schema.json",
   "title": "CharacterSceneState",
   "description": "Character state at scene boundaries: emotional journey, knowledge, objectives, tactics, and relationship dynamics.",
   "type": "object",
-  "required": ["character", "pov_role"],
+  "anyOf": [{"required": ["character_id"]}, {"required": ["character_ref"]}],
   "properties": {
-    "character": {
+    "character_id": {
       "type": "string",
-      "pattern": "^[a-z0-9_]+$",
+      "pattern": "^[a-z0-9_-]+$",
       "description": "Character slug"
     },
+    "character": {
+      "type": "string",
+      "pattern": "^[a-z0-9_-]+$",
+      "description": "Character slug (legacy alias for character_id)"
+    },
+    "character_ref": {
+      "type": "string",
+      "description": "Character slug (conformance alias)"
+    },
+    "role_in_scene": { "$ref": "enums.schema.json#/$defs/role_in_scene" },
     "pov_role": { "$ref": "enums.schema.json#/$defs/pov_role" },
+
+    "arc_type": { "$ref": "enums.schema.json#/$defs/arc_type" },
+    "drive_model": { "$ref": "enums.schema.json#/$defs/drive_model" },
+
+    "emotion": { "$ref": "enums.schema.json#/$defs/emotion" },
+    "primary_emotion": { "$ref": "enums.schema.json#/$defs/emotion" },
+    "masked_emotion": {
+      "oneOf": [
+        { "$ref": "enums.schema.json#/$defs/emotion" },
+        { "type": "null" }
+      ]
+    },
+    "tactic": {
+      "oneOf": [
+        { "$ref": "enums.schema.json#/$defs/tactic" },
+        { "type": "null" }
+      ]
+    },
+
+    "epistemic_state": {
+      "type": "object",
+      "properties": {
+        "knowledge_objects": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "fact": { "type": "string" },
+              "known_to_character": { "type": "boolean" },
+              "certainty": { "type": "number", "minimum": 0, "maximum": 1 }
+            },
+            "additionalProperties": true
+          }
+        }
+      }
+    },
 
     "psychic_distance": {
       "type": "integer",
@@ -81,7 +127,7 @@
         "constraint": { "$ref": "enums.schema.json#/$defs/objective_constraint" }
       }
     },
-    "tactic": { "$ref": "enums.schema.json#/$defs/tactic" },
+    "tactic": { "oneOf": [{ "$ref": "enums.schema.json#/$defs/tactic" }, { "type": "null" }] },
     "tactic_shift": { "$ref": "enums.schema.json#/$defs/tactic" },
 
     "obstacle": {

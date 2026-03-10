@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://grimoire.dev/schemas/v3/enums.schema.json",
+  "$id": "https://gbr-protocol.dev/schemas/v0/enums.schema.json",
   "title": "GrimoireV3Enums",
   "description": "Shared enum vocabularies for v3.0 training data",
   "$defs": {
@@ -16,7 +16,8 @@
         "curiosity", "interest", "anticipation",
         "boredom", "apathy", "resignation",
         "jealousy", "envy",
-        "neutral", "conflicted", "mixed"
+        "neutral", "conflicted", "mixed",
+        "resolve", "longing", "determination"
       ],
       "description": "Core emotional states"
     },
@@ -106,7 +107,8 @@
         "appeal_to_emotion", "appeal_to_logic", "appeal_to_authority",
         "bargaining", "compromise", "submission",
         "defiance", "mockery", "sarcasm",
-        "passive_observation", "information_gathering"
+        "passive_observation", "information_gathering",
+        "assertion", "disengagement"
       ],
       "description": "How a character pursues their objective"
     },
@@ -384,7 +386,8 @@
       "enum": [
         "past_injury_mentioned", "dismissal", "condescension",
         "accusation", "comparison", "name_invoked",
-        "physical_proximity", "tone_of_voice", "specific_word", "none"
+        "physical_proximity", "tone_of_voice", "specific_word",
+        "want_threat", "none"
       ],
       "description": "What activates a character's wound response"
     },
@@ -483,7 +486,8 @@
       "type": "string",
       "enum": [
         "establish", "complicate", "reveal", "confront",
-        "decide", "transform", "resolve", "transition"
+        "decide", "transform", "resolve", "transition",
+        "world_building", "revelation", "decision"
       ],
       "description": "Structural work this scene does"
     },
@@ -502,7 +506,7 @@
     },
     "pov_role": {
       "type": "string",
-      "enum": ["focal", "present", "mentioned"],
+      "enum": ["focal", "present", "mentioned", "participant", "focalizer"],
       "description": "Character's relationship to POV"
     },
     "posture": {
@@ -691,7 +695,8 @@
       "type": "string",
       "enum": [
         "home_ground", "shared_space", "rival_territory",
-        "neutral_ground", "contested"
+        "neutral_ground", "contested",
+        "protagonist_home", "antagonist_domain"
       ],
       "description": "Whose territory the scene takes place in"
     },
@@ -714,7 +719,8 @@
     "spatial_structure": {
       "type": "string",
       "enum": [
-        "enclosed", "threshold", "open", "liminal", "vertical", "horizontal"
+        "enclosed", "threshold", "open", "liminal", "vertical", "horizontal",
+        "palimpsest", "bounded"
       ],
       "description": "Spatial semantics per Lotman"
     },
@@ -851,7 +857,8 @@
       "enum": [
         "hook", "setup", "catalyst", "debate", "threshold",
         "tests", "approach", "ordeal", "reward", "road_back",
-        "resurrection", "return", "crisis", "climax", "resolution"
+        "resurrection", "return", "crisis", "climax", "resolution",
+        "status_quo", "revelation", "inciting_incident", "first_threshold"
       ],
       "description": "Story beat type"
     },
@@ -1376,6 +1383,48 @@
         "representation_ethics", "power_dynamics", "none"
       ],
       "description": "Booth/Keen/Nussbaum/Spivak: coduction (implied author as moral agent), empathy modes (Keen), moral_laboratory (Nussbaum), complicity (reader implication), representation_ethics/power_dynamics (Spivak)"
+    },
+
+    "event_type": {
+      "type": "string",
+      "enum": [
+        "action", "decision", "dialogue_exchange",
+        "discovery", "revelation", "internal_shift"
+      ],
+      "description": "Category of scene turn event"
+    },
+    "outcome_type": {
+      "type": "string",
+      "enum": ["achieved", "failed", "redirected", "partially_achieved"],
+      "description": "Whether the character achieved their scene want"
+    },
+    "causal_role_type": {
+      "type": "string",
+      "enum": ["setup", "payoff", "pivot", "bridge"],
+      "description": "How this scene functions causally in the plot"
+    },
+    "role_in_scene": {
+      "type": "string",
+      "enum": ["focalizer", "participant", "non_present"],
+      "description": "Character's functional role in the scene"
+    },
+    "polarity_transition": {
+      "type": "string",
+      "enum": [
+        "positive_to_positive", "positive_to_negative",
+        "negative_to_positive", "negative_to_negative",
+        "neutral_to_positive", "neutral_to_negative",
+        "positive_to_neutral", "negative_to_neutral"
+      ],
+      "description": "Scene-level dramatic polarity turn (entry → exit)"
+    },
+    "arc_type": {
+      "type": "string",
+      "enum": [
+        "positive_change", "negative_change", "flat",
+        "disillusionment", "fall_then_rise", "rise_then_fall"
+      ],
+      "description": "Direction of a character's arc through the story"
     }
   }
 }

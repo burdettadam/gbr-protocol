@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://grimoire.dev/protocol/v1/scene-card.schema.json",
+  "$id": "https://gbr-protocol.dev/schemas/v0/scene-card.schema.json",
   "title": "SceneCard",
   "description": "Complete scene specification enabling bidirectional prose ↔ structure conversion. Contains structural position, voice/craft settings, character states, and canonical summary.",
   "type": "object",
@@ -8,16 +8,16 @@
   "properties": {
     "scene_id": {
       "type": "string",
-      "pattern": "^[a-z0-9_]+$",
+      "pattern": "^[a-z0-9_-]+$",
       "description": "Unique scene identifier (e.g., pride_ch34_s01)"
     },
     "book_id": {
       "type": "string",
-      "pattern": "^[a-z0-9_]+$"
+      "pattern": "^[a-z0-9_-]+$"
     },
     "chapter": { "type": "integer", "minimum": 1 },
     "scene_index": { "type": "integer", "minimum": 1 },
-
+    "scene_number_in_chapter": { "type": "integer", "minimum": 1 },
     "act": { "type": "integer", "minimum": 1, "maximum": 5 },
     "sequence": { "$ref": "enums.schema.json#/$defs/sequence_type" },
     "beat": { "$ref": "enums.schema.json#/$defs/beat_type" },
@@ -40,9 +40,10 @@
 
     "pov": { "$ref": "enums.schema.json#/$defs/pov_type" },
     "focalization": { "$ref": "enums.schema.json#/$defs/focalization_type" },
+    "focalization_type": { "$ref": "enums.schema.json#/$defs/focalization_type" },
     "focalizer": {
       "type": "string",
-      "pattern": "^[a-z0-9_]+$",
+      "pattern": "^[a-z0-9_-]+$",
       "description": "Character slug of focalizer"
     },
     "psychic_distance": {
@@ -87,15 +88,33 @@
     "tone": { "$ref": "enums.schema.json#/$defs/tone" },
 
     "setting": {
-      "type": "string",
-      "pattern": "^[a-z0-9_]+$",
-      "description": "Setting slug from registry"
+      "oneOf": [
+        {
+          "type": "string",
+          "pattern": "^[a-z0-9_-]+$",
+          "description": "Setting slug from registry"
+        },
+        {
+          "type": "object",
+          "required": ["location"],
+          "properties": {
+            "location": { "type": "string", "pattern": "^[a-z0-9_-]+$" },
+            "time_of_day": { "$ref": "enums.schema.json#/$defs/time_of_day" },
+            "setting_type": { "type": "string" },
+            "atmosphere": { "type": "string" },
+            "spatial_structure": { "$ref": "enums.schema.json#/$defs/spatial_structure" },
+            "territory_type": { "$ref": "enums.schema.json#/$defs/territory_type" }
+          },
+          "additionalProperties": true
+        }
+      ],
+      "description": "Setting slug or inline setting object with location + context"
     },
     "setting_instance": { "$ref": "#/$defs/setting_instance" },
 
     "participants": {
       "type": "array",
-      "items": { "type": "string", "pattern": "^[a-z0-9_]+$" },
+      "items": { "type": "string", "pattern": "^[a-z0-9_-]+$" },
       "description": "Character slugs present in scene"
     },
     "character_states": {
@@ -115,24 +134,43 @@
     },
 
     "canonical_summary": {
-      "type": "object",
       "description": "Semantic components for deterministic summary rendering",
-      "required": ["pov_character", "event_type", "setting"],
-      "properties": {
-        "pov_character": { "type": "string", "description": "Character slug" },
-        "event_type": { "$ref": "enums.schema.json#/$defs/event_type" },
-        "participants": {
-          "type": "array",
-          "items": { "type": "string" },
-          "description": "Character slugs"
-        },
-        "setting": { "type": "string", "description": "Setting slug" },
-        "character_want": { "type": "string", "description": "Want vocabulary slug" },
-        "want_outcome": { "$ref": "enums.schema.json#/$defs/want_outcome" },
-        "stakes_domain": { "$ref": "enums.schema.json#/$defs/stakes_domain" },
-        "atmosphere": { "$ref": "enums.schema.json#/$defs/atmosphere" },
-        "causal_role": { "$ref": "enums.schema.json#/$defs/causal_role" }
-      }
+      "oneOf": [
+        { "type": "string" },
+        {
+          "type": "object",
+          "properties": {
+            "want": { "type": "string" },
+            "obstacle": { "type": "string" },
+            "scene_polarity": { "$ref": "enums.schema.json#/$defs/polarity_transition" },
+            "outcome": { "$ref": "enums.schema.json#/$defs/outcome_type" },
+            "delta": { "type": "string" },
+            "iceberg_proportion": { "type": "number", "minimum": 0, "maximum": 1 },
+            "subtext_load": { "type": "number", "minimum": 0, "maximum": 1 },
+            "scene_turns": {
+              "type": "array",
+              "items": { "$ref": "#/$defs/scene_turn" }
+            },
+            "embedded_analepsis": {
+              "type": "object",
+              "properties": {
+                "type": { "type": "string" },
+                "mechanism": { "type": "string" },
+                "narrative_order": { "$ref": "enums.schema.json#/$defs/narrative_order" },
+                "fabula_date": { "type": "string" }
+              },
+              "additionalProperties": true
+            },
+            "pov_character": { "type": "string" },
+            "location": { "type": "string" },
+            "time": { "type": "string" },
+            "focalizer": { "type": "string" },
+            "chapter": { "type": "integer" },
+            "scene": { "type": "integer" }
+          },
+          "additionalProperties": true
+        }
+      ]
     },
 
     "prose": {
@@ -140,10 +178,61 @@
       "description": "The actual prose passage (generation output / extraction input)"
     },
     "word_count": { "type": "integer" },
-    "chapter_position": { "$ref": "enums.schema.json#/$defs/chapter_position" }
+    "chapter_position": { "$ref": "enums.schema.json#/$defs/chapter_position" },
+
+    "causal_role": { "$ref": "enums.schema.json#/$defs/causal_role_type" },
+    "stakes_domain": {
+      "oneOf": [
+        { "type": "string" },
+        { "type": "array", "items": { "type": "string" } }
+      ]
+    },
+    "motif_tags": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "theory_notes": {
+      "type": "object",
+      "additionalProperties": { "type": "string" }
+    },
+    "pov_role": { "$ref": "enums.schema.json#/$defs/pov_role" }
   },
 
   "$defs": {
+    "scene_turn": {
+      "type": "object",
+      "properties": {
+        "turn_number": { "type": "integer", "minimum": 1 },
+        "active_character": { "type": "string" },
+        "agent": { "type": "string" },
+        "verb": { "type": "string" },
+        "target": { "type": "string" },
+        "patient": { "type": "string" },
+        "result": { "type": "string" },
+        "emotional_state": {
+          "oneOf": [
+            { "$ref": "enums.schema.json#/$defs/emotion" },
+            { "type": "null" }
+          ]
+        },
+        "masked_emotion": {
+          "oneOf": [
+            { "$ref": "enums.schema.json#/$defs/emotion" },
+            { "type": "null" }
+          ]
+        },
+        "tactic": {
+          "oneOf": [
+            { "$ref": "enums.schema.json#/$defs/tactic" },
+            { "type": "null" }
+          ]
+        },
+        "event_type": { "$ref": "enums.schema.json#/$defs/event_type" },
+        "significance": { "$ref": "enums.schema.json#/$defs/event_significance" }
+      },
+      "additionalProperties": true
+    },
+
     "setting_instance": {
       "type": "object",
       "description": "Scene-specific setting details",

@@ -5,6 +5,9 @@
 		},
 		{
 			"path": "."
+		},
+		{
+			"path": "../gbr-research"
 		}
 	],
 	"settings": {

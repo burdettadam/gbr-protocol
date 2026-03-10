@@ -1,0 +1,21 @@
+fix: align schemas to GBR 0.1.0 document format
+
+- Update all schema $id URLs to gbr-protocol.dev/schemas/v0/
+- Add missing enum values: beat_type (4), scene_function (3), tactic (2),
+  trigger_type (1), emotion (resolve, longing, determination),
+  spatial_structure (palimpsest, bounded), territory_type (protagonist_home,
+  antagonist_domain), pov_role (participant, focalizer)
+- Add new $defs: event_type, outcome_type, causal_role_type, role_in_scene,
+  polarity_transition, arc_type
+- scene-card: setting oneOf string/object; canonical_summary oneOf string/object;
+  scene_turn $def; scene_number_in_chapter + focalization_type aliases;
+  causal_role, stakes_domain, motif_tags, theory_notes, pov_role fields;
+  slug patterns allow hyphens
+- character-state: anyOf required (character_id or character_ref);
+  add character_id, role_in_scene, arc_type, emotion, masked_emotion,
+  tactic(nullable), epistemic_state; fix duplicate tactic definition;
+  slug patterns allow hyphens
+- story-architecture: genre accepts string slug or object
+- conformance/valid: $schema URLs updated to include /v0/ path segment
+
+All 5 scene-card examples now pass Level 1 (schema) validation.
