@@ -1,274 +1,190 @@
 {
-    "$schema": "../../../docs/sip/schemas/artifact.schema.json",
-    "_comment": "threshold ch02_s01 — SIP narrative profile (migrated from GBR v0.2.0). Climax and Resolution: Nadia sits in the garden at dusk and postpones the sale.",
-    "protocol": "semantic-interaction-protocol",
-    "protocol_version": "0.1.0",
-    "profile": "narrative",
-    "profile_version": "0.1.0",
-    "artifact_id": "threshold_ch02_s01",
-    "metadata": {
-        "title": "Threshold — Chapter 2, Scene 1",
-        "book_id": "threshold",
-        "chapter": 2,
-        "source_format": "GBR v0.2.0",
-        "scene_id": "threshold_ch02_s01"
+  "protocol": "semantic-interaction-protocol",
+  "protocol_version": "0.1.0",
+  "profile": "narrative",
+  "profile_version": "0.1.0",
+  "artifact_id": "threshold_ch02_s01",
+  "metadata": {
+    "book_id": "threshold",
+    "chapter": 2,
+    "scene_id": "threshold_ch02_s01",
+    "source_format": "GBR v0.2.0"
+  },
+  "entities": [
+    {
+      "entity_id": "nadia",
+      "entity_type": "character",
+      "display_name": "Nadia"
     },
-    "entities": [
-        {
-            "entity_id": "nadia",
-            "entity_type": "character",
-            "display_name": "Nadia",
-            "observable_descriptors": {
-                "name": "Nadia",
-                "pov_role": "focalizer"
-            },
-            "structural_properties": {
-                "role": "protagonist"
-            },
-            "interpretations": {
-                "arc_type": "positive_change",
-                "arc_beat": "transformation_complete",
-                "drive_model": "wound",
-                "wound": "grief",
-                "arc_note": "The positive_change arc is complete in the sense that the pivot has happened — not that healing is complete. Literary fiction terminates at the turn, not the resolution."
-            }
-        },
-        {
-            "entity_id": "garden",
-            "entity_type": "location",
-            "display_name": "Garden",
-            "observable_descriptors": {
-                "setting_type": "domestic_exterior",
-                "atmosphere": "liminal"
-            },
-            "structural_properties": {
-                "setting": "garden"
-            },
-            "interpretations": {
-                "symbolic_function": "threshold_space",
-                "theory_note": "The garden is the liminal space between house (past, father's interior) and the exterior world (the sale, the future). Nadia is still in the garden as the light goes — she is staying without having decided to stay."
-            }
-        }
-    ],
-    "units": [
-        {
-            "unit_id": "threshold_ch02_s01_scene",
-            "artifact_id": "threshold_ch02_s01",
-            "unit_type": "scene",
-            "sequence_index": 1,
-            "observables": {
-                "participants": [
-                    "nadia"
-                ],
-                "context": {
-                    "focalizer": "nadia",
-                    "setting": "garden",
-                    "diegetic_level": "intradiegetic",
-                    "time_of_day": "dusk",
-                    "atmosphere": "liminal",
-                    "narrative_time": {
-                        "order": "chronological",
-                        "duration_mode": "scene",
-                        "frequency": "singulative"
-                    }
-                },
-                "event_type": "decision"
-            },
-            "structure": {
-                "position": 0.9,
-                "causal_role": "payoff",
-                "grouping": {
-                    "beat": "climax",
-                    "scene_function": "decision",
-                    "scene_number_in_chapter": 1
-                },
-                "steps": [
-                    {
-                        "sequence_number": 1,
-                        "agent": "nadia",
-                        "action": "sits",
-                        "target": "garden_bench",
-                        "event_type": "action",
-                        "significance": "supplementary",
-                        "interpretations": {
-                            "emotional_state": "grief",
-                            "theory_note": "No mask left. This is the first supplementary step in the story where Nadia is not performing control."
-                        }
-                    },
-                    {
-                        "sequence_number": 2,
-                        "agent": "nadia",
-                        "action": "re-reads",
-                        "target": "journal_entry_1987",
-                        "event_type": "action",
-                        "significance": "supplementary",
-                        "interpretations": {
-                            "emotional_state": "grief",
-                            "theory_note": "Fourth time reading. The act is now a rite. She is not looking for new information; she is staying with it."
-                        }
-                    },
-                    {
-                        "sequence_number": 3,
-                        "agent": "nadia",
-                        "action": "calls",
-                        "target": "estate_agent",
-                        "event_type": "decision",
-                        "significance": "essential",
-                        "interpretations": {
-                            "emotional_state": "grief",
-                            "tactic": "disengagement",
-                            "theory_note": "She calls with the intention of confirming. The narrator does not explain the shift — it simply happens. Nadia says 'I need a few more weeks.' The estate agent agrees."
-                        }
-                    },
-                    {
-                        "sequence_number": 4,
-                        "agent": "nadia",
-                        "action": "remains",
-                        "target": "garden",
-                        "event_type": "action",
-                        "significance": "essential",
-                        "interpretations": {
-                            "emotional_state": "grief",
-                            "theory_note": "She does not re-enter the house. The scene closes with her still in the garden as the light goes. The journal is in her lap. The key is in her pocket. She is staying without having decided to stay."
-                        }
-                    }
-                ],
-                "transition": {
-                    "subject": "nadia",
-                    "before": {
-                        "state_type": "epistemic",
-                        "value": "intending_to_confirm_sale",
-                        "evidence": "She called to confirm the 48-hour valuation schedule."
-                    },
-                    "after": {
-                        "state_type": "epistemic",
-                        "value": "sale_postponed_without_explanation",
-                        "evidence": "She has postponed. She has no conscious explanation. She is in the garden as the light goes."
-                    },
-                    "trigger": "the journal in her lap; the number on the phone; something she will not be able to name",
-                    "description": "Nadia has no conscious explanation for what she has done. She knows she called; she knows she postponed; she knows she is holding her father's journal. The reader has an explanation. Nadia does not. This is the story's closing irony: the woman who prided herself on logic acts entirely from feeling, and cannot see it.",
-                    "confidence": 0.95
-                },
-                "semantic_fingerprint": "NADIA calls ESTATE_AGENT | ROLE=payoff | SHIFT=grief→grief | BEAT=climax | ARC=pivot"
-            },
-            "interpretations": {
-                "pov": "third_limited",
-                "focalization": "internal_fixed",
-                "consciousness_mode": "narrated_monologue",
-                "psychic_distance": 2,
-                "narrator_reliability": "reliable",
-                "narrator_reliability_note": "The narrator is reliable; Nadia is not. She makes a decision she cannot name. The narrator knows what Nadia is doing; Nadia thinks she is postponing logistics. The dramatic irony is closed-loop: reader and narrator share it; focalizer does not.",
-                "stakes_domain": [
-                    "relational",
-                    "psychological"
-                ],
-                "canonical_metrics": {
-                    "iceberg_proportion": 0.8,
-                    "subtext_load": 0.85
-                },
-                "canonical_summary": {
-                    "want": "To call the estate agent and confirm the 48-hour valuation schedule",
-                    "obstacle": "The journal is in her lap. She has read the same entry four times. The number pulls up; she does not dial.",
-                    "outcome": "redirected"
-                },
-                "dramatic_irony": {
-                    "type": "closed",
-                    "theory": "Booth",
-                    "holder": [
-                        "narrator",
-                        "reader"
-                    ],
-                    "excluded": [
-                        "nadia"
-                    ],
-                    "irony_content": "The narrator and reader know Nadia has decided to stay. Nadia believes she has made a logistical deferral. Neither narrator nor reader corrects her — the irony is left intact as the story closes.",
-                    "theory_note": "Booth (Rhetoric of Fiction): closed dramatic irony. The knowledge asymmetry is complete — the focalizer is the last to know, and is never corrected within the text."
-                },
-                "motif_tags": [
-                    "the_key",
-                    "silence",
-                    "smallness",
-                    "the_journal"
-                ],
-                "theory_notes": {
-                    "booth": "Closed dramatic irony: the narrator and reader share knowledge Nadia lacks. She believes she is deferring logistics; the reader understands she is choosing to grieve. Neither narrator nor reader corrects her — the irony is left intact as the story closes.",
-                    "genette_frequency": "The re-reading of the journal entry (fourth time) is singulative in narration but iterative in Nadia's experience. The current scene narrates the fourth instance explicitly to foreground the shift from reading-for-information to reading-as-ritual.",
-                    "hemingway": "The highest iceberg proportion in the story (0.80). What is submerged: the full weight of Nadia's grief, forty years of silence between father and daughter, the choice she has made without knowing she made it. What surfaces: she calls, she sits, she stays."
-                }
-            },
-            "craft_targets": {
-                "tone": "tender"
-            },
-            "participant_states": [
-                {
-                    "entity_ref": "nadia",
-                    "role_in_unit": "focalizer",
-                    "pre_state": {
-                        "state_type": "emotional",
-                        "value": "grief",
-                        "confidence": 0.95
-                    },
-                    "post_state": {
-                        "state_type": "emotional",
-                        "value": "grief",
-                        "confidence": 0.95
-                    },
-                    "objective": {
-                        "action": "confirms_sale",
-                        "target": "estate_agent"
-                    },
-                    "obstacle": "she cannot make the call she called to make",
-                    "information_state": {
-                        "knows": [
-                            {
-                                "subject": "nadia",
-                                "predicate": "knows_that",
-                                "about": "she has postponed the sale"
-                            }
-                        ],
-                        "gaps": [
-                            {
-                                "subject": "nadia",
-                                "predicate": "does_not_know",
-                                "about": "she has decided to stay — this is the story's final irony; she believes she has made a logistical deferral"
-                            },
-                            {
-                                "subject": "nadia",
-                                "predicate": "does_not_know",
-                                "about": "why she has not re-entered the house"
-                            }
-                        ],
-                        "gained": []
-                    },
-                    "interpretations": {
-                        "arc_type": "positive_change",
-                        "arc_beat": "transformation_complete",
-                        "drive_model": "wound",
-                        "emotion": "grief"
-                    }
-                }
-            ]
-        }
-    ],
-    "relationships": [
-        {
-            "source": "nadia",
-            "target": "garden",
-            "relationship_type": "inhabits_threshold",
-            "evidence": "She sits in the garden and does not re-enter the house as the light goes.",
-            "interpretations": {
-                "symbolic_weight": "high",
-                "liminal_function": "she is between deciding and not-deciding; between the house and the world"
-            }
-        }
-    ],
-    "interpretations": {
-        "artifact_theme": "the_decision_she_could_not_name",
-        "phase": "climax_and_resolution",
-        "value_charge": {
-            "open": "positive",
-            "close": "positive",
-            "turn": "positive→positive"
-        }
+    {
+      "entity_id": "garden",
+      "entity_type": "location",
+      "display_name": "Garden"
     }
+  ],
+  "units": [
+    {
+      "unit_id": "threshold_ch02_s01_scene",
+      "artifact_id": "threshold_ch02_s01",
+      "unit_type": "scene",
+      "sequence_index": 1,
+      "observables": {
+        "participants": [
+          "nadia"
+        ],
+        "context": {
+          "atmosphere": "liminal",
+          "diegetic_level": "intradiegetic",
+          "focalizer": "nadia",
+          "narrative_time": {
+            "duration_mode": "scene",
+            "frequency": "singulative",
+            "order": "chronological"
+          },
+          "setting": "garden",
+          "time_of_day": "dusk"
+        }
+      },
+      "structure": {
+        "causal_role": "resolution",
+        "grouping": {
+          "beat": "climax",
+          "scene_function": "decision",
+          "scene_number_in_chapter": 1
+        },
+        "steps": [
+          {
+            "sequence_number": 1,
+            "agent": "nadia",
+            "action": "sits",
+            "target": "garden_bench",
+            "event_type": "action",
+            "significance": "supplementary",
+            "interpretations": {
+              "emotional_state": "grief"
+            }
+          },
+          {
+            "sequence_number": 2,
+            "agent": "nadia",
+            "action": "re-reads",
+            "target": "journal_entry_1987",
+            "event_type": "action",
+            "significance": "supplementary",
+            "interpretations": {
+              "emotional_state": "grief"
+            }
+          },
+          {
+            "sequence_number": 3,
+            "agent": "nadia",
+            "action": "calls",
+            "target": "estate_agent",
+            "event_type": "decision",
+            "significance": "essential",
+            "interpretations": {
+              "emotional_state": "grief",
+              "tactic": "disengagement"
+            }
+          },
+          {
+            "sequence_number": 4,
+            "agent": "nadia",
+            "action": "remains",
+            "target": "garden",
+            "event_type": "action",
+            "significance": "essential",
+            "interpretations": {
+              "emotional_state": "grief"
+            }
+          }
+        ],
+        "transition": {
+          "subject": "threshold_ch02_s01",
+          "before": {
+            "state_type": "value_charge",
+            "value": "positive"
+          },
+          "after": {
+            "state_type": "value_charge",
+            "value": "positive"
+          },
+          "description": "Nadia has no conscious explanation for what she has done. She knows she called; she knows she postponed; she knows she is holding her father's journal. The reader has an explanation. Nadia does not. This is the story's closing irony: the woman who prided herself on logic acts entirely from feeling, and cannot see it."
+        },
+        "semantic_fingerprint": "NADIA calls ESTATE_AGENT | ROLE=payoff | SHIFT=positive→positive | BEAT=climax"
+      },
+      "interpretations": {
+        "canonical_metrics": {
+          "iceberg_proportion": 0.8,
+          "subtext_load": 0.85
+        },
+        "canonical_summary": {
+          "obstacle": "The journal is in her lap. She has read the same entry four times. The number pulls up; she does not dial.",
+          "outcome": "redirected",
+          "want": "To call the estate agent and confirm the 48-hour valuation schedule"
+        },
+        "consciousness_mode": "narrated_monologue",
+        "focalization": "internal_fixed",
+        "motif_tags": [
+          "the_key",
+          "silence",
+          "smallness",
+          "the_journal"
+        ],
+        "narrator_reliability": "reliable",
+        "pov": "third_limited",
+        "psychic_distance": 2,
+        "stakes_domain": [
+          "relational",
+          "psychological"
+        ]
+      },
+      "craft_targets": {
+        "tone": "tender"
+      },
+      "participant_states": [
+        {
+          "entity_ref": "nadia",
+          "role_in_unit": "focalizer",
+          "pre_state": {
+            "state_type": "emotional",
+            "value": "grief"
+          },
+          "information_state": {
+            "knows": [
+              {
+                "subject": "nadia",
+                "predicate": "knows_that",
+                "about": "she has postponed the sale"
+              }
+            ],
+            "gaps": [
+              {
+                "subject": "nadia",
+                "predicate": "does_not_know",
+                "about": "she has decided to stay"
+              },
+              {
+                "subject": "nadia",
+                "predicate": "does_not_know",
+                "about": "why she has not re-entered the house"
+              }
+            ]
+          },
+          "interpretations": {
+            "arc_type": "positive_change",
+            "drive_model": "wound",
+            "emotion": "grief"
+          }
+        }
+      ]
+    }
+  ],
+  "interpretations": {
+    "value_charge": {
+      "close": "positive",
+      "open": "positive",
+      "turn": "positive→positive"
+    }
+  }
 }
