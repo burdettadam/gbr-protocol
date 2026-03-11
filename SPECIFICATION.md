@@ -1,8 +1,15 @@
 # GBR Protocol Specification
 
 **Version:** 0.2.0  
-**Status:** Draft  
+**Status:** Draft (Legacy — see note below)  
 **Date:** 2026-03-10
+
+> **Architecture note (2026-03-11):** GBR v0.2.0 is now the *migration source* for the current generation of tooling. New work targets the **Semantic Interaction Protocol (SIP)** core and the **GBR Narrative Profile** built on top of it:
+>
+> - **SIP core** — [`sip-protocol` repo](https://github.com/adamburdett/sip-protocol): domain-agnostic specification, 12 JSON schemas, conformance suite, `sip-types` Rust crate
+> - **GBR Narrative Profile** — [`PROFILE.md`](PROFILE.md): narrative-specific types, fingerprint grammar, GBR v0.2.0 → SIP migration guide, validation rules
+>
+> The `grimoire-sip-convert` CLI converts GBR v0.2.0 scene cards into SIP narrative artifacts. This document remains normative for the v0.2.0 source format only.
 
 ---
 
