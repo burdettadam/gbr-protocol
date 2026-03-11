@@ -18,6 +18,7 @@ name = "gbr_types"
 crate-type = ["rlib"]
 
 [dependencies]
+sip-types = { path = "../../../sip-protocol/reference/rust" }
 serde = { version = "1", features = ["derive"] }
 serde_json = "1"
 schemars = { version = "0.8", features = ["derive", "indexmap2"] }

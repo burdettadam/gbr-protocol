@@ -11,10 +11,10 @@ The **Grimoire Book Representation (GBR) Protocol** is a formal standard for rep
 ```
 ┌─────────────────────────────────────────┐
 │          GBR Narrative Profile           │  narrative-specific types, enums,
-│  (docs/sip/profiles/narrative/PROFILE.md)│  fingerprint grammar, validation rules
+│             (PROFILE.md)                 │  fingerprint grammar, validation rules
 ├─────────────────────────────────────────┤
 │    Semantic Interaction Protocol (SIP)   │  domain-agnostic: entities, units,
-│       (docs/sip/SPECIFICATION.md)        │  steps, states, interpretations
+│        (sip-protocol repo)               │  steps, states, interpretations
 ├─────────────────────────────────────────┤
 │           GBR Protocol (legacy)          │  scene cards, registries,
 │              (SPECIFICATION.md)          │  story architecture, canonical summary
@@ -22,6 +22,8 @@ The **Grimoire Book Representation (GBR) Protocol** is a formal standard for rep
 ```
 
 New work targets SIP + the narrative profile. Existing GBR documents (v0.2.0) are the migration source; the converter binary produces SIP-native artifacts.
+
+> **Repo split (v0.3.0):** SIP core has been extracted into the standalone [`sip-protocol`](https://github.com/adamburdett/sip-protocol) repository. The `gbr-types` Rust crate now depends on `sip-types` from that repo. The narrative profile document lives at [`PROFILE.md`](PROFILE.md).
 
 ---
 
@@ -40,6 +42,7 @@ New work targets SIP + the narrative profile. Existing GBR documents (v0.2.0) ar
 ```
 gbr-protocol/
   SPECIFICATION.md               # GBR normative specification (v0.2.0)
+  PROFILE.md                     # GBR Narrative Profile (SIP profile document)
   VERSIONING.md                  # Versioning policy
   CHANGELOG.md                   # Release history
   protocol/                      # Per-section expansion of the GBR spec
@@ -48,16 +51,10 @@ gbr-protocol/
   examples/                      # Structured example corpus (GBR + SIP)
   conformance/                   # GBR validation test suite
   reference/                     # Reference implementations (Rust, Python)
-    reference/rust/src/sip/      # SIP Rust types (gbr-types crate)
+    reference/rust/              # gbr-types crate (depends on sip-types)
     reference/python/            # Python conformance validator (GBR + SIP)
   grimoire-tooling/              # CLI binaries
   docs/                          # Design docs, ADRs, field audits
-    docs/sip/                    # SIP specification, schemas, conformance, profiles
-      docs/sip/SPECIFICATION.md           # SIP normative spec
-      docs/sip/schemas/                   # SIP JSON Schemas (12 files)
-      docs/sip/conformance/valid/         # SIP valid fixtures (4)
-      docs/sip/conformance/invalid/       # SIP invalid fixtures (6)
-      docs/sip/profiles/narrative/        # Narrative profile (Normative Draft)
   template-schemas/              # Grimoire template extraction schemas
 ```
 
@@ -75,24 +72,8 @@ It covers document types (Scene Card, Entity Registry, Story Architecture, Chara
 
 SIP is a domain-agnostic protocol for decomposing artifacts into canonical structures. It is the foundation GBR's narrative profile is built on.
 
-- **Specification:** [`docs/sip/SPECIFICATION.md`](docs/sip/SPECIFICATION.md)
-- **Narrative Profile:** [`docs/sip/profiles/narrative/PROFILE.md`](docs/sip/profiles/narrative/PROFILE.md) — registers narrative-specific types, the semantic fingerprint grammar, migration guide from GBR v0.2.0, and validation rules
-- **Schemas:** [`docs/sip/schemas/`](docs/sip/schemas/) — 12 JSON Schema files covering all SIP core objects
-- **Conformance:** [`docs/sip/conformance/`](docs/sip/conformance/) — 4 valid + 6 invalid fixtures
-
-A SIP artifact for a narrative scene looks like:
-
-```json
-{
-  "protocol": "semantic-interaction-protocol",
-  "protocol_version": "0.1.0",
-  "profile": "narrative",
-  "profile_version": "0.1.0",
-  "artifact_id": "threshold_ch01_s01",
-  "entities": [ ... ],
-  "units": [ ... ]
-}
-```
+- **Repository:** [`sip-protocol`](https://github.com/adamburdett/sip-protocol) — specification, schemas, conformance suite, and `sip-types` Rust crate
+- **Narrative Profile:** [`PROFILE.md`](PROFILE.md) — registers narrative-specific types, the semantic fingerprint grammar, migration guide from GBR v0.2.0, and validation rules
 
 ---
 
@@ -137,9 +118,7 @@ Structured example documents are in [`examples/`](examples/):
 - `conformance/valid/` — documents that MUST pass all validation
 - `conformance/invalid/` — documents with known defects; each paired with an `.expected.json`
 
-**SIP** — [`docs/sip/conformance/`](docs/sip/conformance/):
-- `docs/sip/conformance/valid/` — 4 fixtures (minimal, multi-unit, full-narrative, full-software)
-- `docs/sip/conformance/invalid/` — 6 fixtures (dangling-entity-ref, misordered-steps, missing-observables, missing-protocol, no-change-transition, wrong-protocol-value)
+**SIP** — see [`sip-protocol/conformance/`](https://github.com/adamburdett/sip-protocol/tree/main/conformance) in the sip-protocol repo.
 
 ---
 
@@ -147,7 +126,7 @@ Structured example documents are in [`examples/`](examples/):
 
 ### Rust — `gbr-types` crate ([`reference/rust/`](reference/rust/))
 
-Typed structs for both GBR document types and the full SIP core object model (`reference/rust/src/sip/`). Includes 11 unit tests covering round-trips and conformance invariants.
+Typed structs for GBR document types. SIP core types are provided by the `sip-types` crate (from the sip-protocol repo) and re-exported as `gbr_types::sip::*` for backward compatibility. Includes unit tests covering round-trips and conformance invariants.
 
 ```bash
 cargo test -p gbr-types

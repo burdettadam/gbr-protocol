@@ -9,6 +9,20 @@ This project uses [Semantic Versioning](VERSIONING.md).
 
 ## [Unreleased]
 
+### Changed — SIP Repo Split (Phase 5)
+
+**SIP core extracted to standalone `sip-protocol` repository.**
+
+The Semantic Interaction Protocol is now maintained in a separate [`sip-protocol`](https://github.com/adamburdett/sip-protocol) repo. GBR builds on SIP as a dependency:
+
+- `docs/sip/` removed; all content lives in `sip-protocol`
+- `PROFILE.md` promoted to repo root (was `docs/sip/profiles/narrative/PROFILE.md`)
+- `reference/rust/src/sip/` removed; SIP Rust types now provided by the `sip-types` crate
+- `gbr-types` `Cargo.toml` gains `sip-types = { path = "..." }` dependency
+- `gbr-types` `lib.rs`: `pub mod sip;` replaced by `pub use sip_types as sip;` (zero downstream breakage — all `gbr_types::sip::*` paths unchanged)
+
+---
+
 ### Added — SIP Extraction (Phases 1–4)
 
 **Semantic Interaction Protocol specification** (`docs/sip/`)
