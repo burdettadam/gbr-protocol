@@ -57,7 +57,14 @@ _KNOWN_BASE_URLS = [
 
 REPO_ROOT = pathlib.Path(__file__).resolve().parent.parent.parent
 SCHEMAS_DIR = REPO_ROOT / "schemas"
-SIP_SCHEMAS_DIR = REPO_ROOT / "docs" / "sip" / "schemas"
+# SIP schemas live in the standalone sip-protocol repo (sibling of gbr-protocol).
+# Fall back to the old in-tree location to keep older checkouts working.
+_SIP_PROTOCOL_DIR = REPO_ROOT.parent / "sip-protocol"
+SIP_SCHEMAS_DIR = (
+    _SIP_PROTOCOL_DIR / "schemas"
+    if (_SIP_PROTOCOL_DIR / "schemas").is_dir()
+    else REPO_ROOT / "docs" / "sip" / "schemas"
+)
 
 SCHEMA_MAP = {
     "registry": "registry.schema.json",
@@ -391,7 +398,7 @@ class GBRValidator:
 class SIPValidator:
     """Multi-level conformance checker for a SIP artifact (sip-artifact type).
 
-    Level 1 — JSON Schema: validates against docs/sip/schemas/artifact.schema.json
+    Level 1 — JSON Schema: validates against sip-protocol/schemas/artifact.schema.json
                with all other SIP sub-schemas available for $ref resolution.
     Level 2 — Referential: all entity_ref values in units and relationships
                resolve to a declared entity_id in artifact.entities.

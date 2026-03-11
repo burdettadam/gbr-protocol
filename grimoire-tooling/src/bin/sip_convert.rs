@@ -3,7 +3,7 @@
 /// Usage:
 ///   grimoire-sip-convert --input <gbr-scene-card.json> [--registry <registry.json>] [--output <file.json>]
 ///
-/// The converter applies the field mapping defined in `docs/sip/profiles/narrative/PROFILE.md §7`:
+/// The converter applies the field mapping defined in `PROFILE.md §7`:
 ///
 ///   scene_id                          → artifact_id
 ///   observables.*                     → units[0].observables + entities[]
