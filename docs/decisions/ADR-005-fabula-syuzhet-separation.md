@@ -2,7 +2,7 @@
 
 **Status:** Accepted  
 **Date:** 2026-01-29  
-**Authors:** GBR Protocol Working Group
+**Authors:** CAP Narrative Profile Protocol Working Group
 
 ---
 
@@ -23,7 +23,7 @@ This distinction is foundational to narratology (Tomashevsky 1925, Chatman 1978,
 
 ## Decision
 
-**GBR Scene Cards encode both fabula and syuzhet time.** The `narrative_order` field on a Scene Card specifies the relationship between fabula and syuzhet for that scene. The `scene_id` and `chapter` / `beat_sequence` fields encode syuzhet position (where the scene appears in the text). The `canonical_summary` content (particularly the `want` and `scene_turns`) is understood to be expressed in fabula time (what happened then), even if the scene is narrated later.
+**CAP Narrative Profile Scene Cards encode both fabula and syuzhet time.** The `narrative_order` field on a Scene Card specifies the relationship between fabula and syuzhet for that scene. The `scene_id` and `chapter` / `beat_sequence` fields encode syuzhet position (where the scene appears in the text). The `canonical_summary` content (particularly the `want` and `scene_turns`) is understood to be expressed in fabula time (what happened then), even if the scene is narrated later.
 
 The five `narrative_order` values are: `chronological`, `analepsis`, `prolepsis`, `braided`, `in_medias_res`.
 
@@ -35,7 +35,7 @@ The five `narrative_order` values are: `chronological`, `analepsis`, `prolepsis`
 - Cross-corpus analysis of temporal structure is possible: "what proportion of this novel is told in analepsis?"
 - Character psychology tracking distinguishes "when X happened to the character" from "when the reader learns about it"
 - The distinction enables questions like "what does the reader know at each narrative moment?" (information asymmetry analysis)
-- Aligns GBR with established narratological vocabulary
+- Aligns CAP Narrative Profile with established narratological vocabulary
 
 **Negative:**
 - Annotators must make two judgments about time: where does this scene appear in the text (syuzhet), and when did it occur in the story world (encoded by the fabula time implied by `narrative_order` and the content)

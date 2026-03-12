@@ -1,6 +1,6 @@
 # Scene Card
 
-A Scene Card is the atomic unit of the GBR Protocol. It specifies everything needed to generate or extract a prose passage — structural position, narrative voice, craft targets, character states, and the canonical summary.
+A Scene Card is the atomic unit of the CAP Narrative Profile Protocol. It specifies everything needed to generate or extract a prose passage — structural position, narrative voice, craft targets, character states, and the canonical summary.
 
 For normative field definitions, see [SPECIFICATION.md §7](../SPECIFICATION.md#7-scene-cards). For field-level design rationale, see the [architecture docs](../protocol/architecture.md) and [ADRs](../docs/decisions/).
 

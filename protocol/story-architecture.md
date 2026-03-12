@@ -1,6 +1,6 @@
 # Story Architecture
 
-The Story Architecture document encodes book-level structural metadata — the genre contract, collision architecture, inciting incident, antagonist design, protagonist arc, actantial map, and thematic framework. There is exactly one Story Architecture document per GBR corpus.
+The Story Architecture document encodes book-level structural metadata — the genre contract, collision architecture, inciting incident, antagonist design, protagonist arc, actantial map, and thematic framework. There is exactly one Story Architecture document per CAP Narrative Profile corpus.
 
 For normative field definitions, see [SPECIFICATION.md §6](../SPECIFICATION.md#6-story-architecture).
 

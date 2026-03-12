@@ -9,7 +9,7 @@ use std::collections::HashMap;
 use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 
-use gbr_types::enums::{CheckType, GateStatus, PhaseStatus, Severity, SubPhaseStatus};
+use cap_narrative_types::enums::{CheckType, GateStatus, PhaseStatus, Severity, SubPhaseStatus};
 
 // ── Sub-phase spec ────────────────────────────────────────────────────────────
 

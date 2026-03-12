@@ -1,7 +1,7 @@
-/// `grimoire-sip-corpus` — Build a [`NarrativeCorpus`] from a GBR book directory.
+/// `grimoire-cap-corpus` — Build a [`NarrativeCorpus`] from a GBR book directory.
 ///
 /// Usage:
-///   grimoire-sip-corpus --directory <book-dir> [--output <corpus.json>]
+///   grimoire-cap-corpus --directory <book-dir> [--output <corpus.json>]
 ///
 /// Expected directory layout:
 ///
@@ -28,22 +28,22 @@
 use std::collections::HashMap;
 use std::path::PathBuf;
 
-use gbr_types::{
+use cap_narrative_types::{
     corpus::{
         AntagonistDesign, BeatSequenceEntry, IncitingIncident, MotifEntry, NarrativeCorpus,
         ProtagonistArc, StoryArchitecture, ThemeClaim,
     },
-    sip::{
-        artifact::{ArtifactInterpretations, SipArtifact, SipMetadata},
-        entity::SipEntity,
+    cap::{
+        artifact::{ArtifactInterpretations, CapArtifact, CapMetadata},
+        entity::CapEntity,
         enums::{CausalRole, KnownCausalRole, Significance},
         participant_state::{
-            InformationItem, Objective, SipInformationState, SipParticipantState,
+            InformationItem, Objective, CapInformationState, CapParticipantState,
         },
-        relationship::SipRelationship,
-        state::SipState,
-        transition::SipTransition,
-        unit::{SipObservables, SipStep, SipStructure, SipUnit},
+        relationship::CapRelationship,
+        state::CapState,
+        transition::CapTransition,
+        unit::{CapObservables, CapStep, CapStructure, CapUnit},
     },
 };
 use serde_json::{json, Value};
@@ -77,7 +77,7 @@ fn parse_args() -> Args {
             }
             "--help" | "-h" => {
                 eprintln!(
-                    "Usage: grimoire-sip-corpus --directory <book-dir> [--output <corpus.json>]"
+                    "Usage: grimoire-cap-corpus --directory <book-dir> [--output <corpus.json>]"
                 );
                 std::process::exit(0);
             }
@@ -210,9 +210,9 @@ impl Registry {
             .collect()
     }
 
-    /// Build a `SipEntity` for every declared character and setting.
-    fn build_all_shared_entities(&self) -> Vec<SipEntity> {
-        let mut entities: Vec<SipEntity> = Vec::new();
+    /// Build a `CapEntity` for every declared character and setting.
+    fn build_all_shared_entities(&self) -> Vec<CapEntity> {
+        let mut entities: Vec<CapEntity> = Vec::new();
 
         if let Some(chars) = self.root.get("characters").and_then(Value::as_object) {
             for (id, _) in chars {
@@ -221,7 +221,7 @@ impl Registry {
                     .and_then(|e| e.get("observables"))
                     .and_then(|o| o.get("slot"))
                     .map(|slot| json!({ "slot": slot }));
-                entities.push(SipEntity {
+                entities.push(CapEntity {
                     entity_id: id.clone(),
                     entity_type: "character".to_string(),
                     display_name: self.display_name(id),
@@ -234,7 +234,7 @@ impl Registry {
 
         if let Some(settings) = self.root.get("settings").and_then(Value::as_object) {
             for (id, _) in settings {
-                entities.push(SipEntity {
+                entities.push(CapEntity {
                     entity_id: id.clone(),
                     entity_type: "location".to_string(),
                     display_name: self.display_name(id),
@@ -289,7 +289,7 @@ fn translate_causal_role(raw: &str) -> Option<CausalRole> {
 
 // ── Scene converter ───────────────────────────────────────────────────────────
 
-fn convert_scene(gbr: &Value, reg: &Registry) -> Result<SipArtifact, String> {
+fn convert_scene(gbr: &Value, reg: &Registry) -> Result<CapArtifact, String> {
     let artifact_id = str_field(gbr, "scene_id")
         .ok_or("missing required field 'scene_id'")?
         .to_string();
@@ -303,7 +303,7 @@ fn convert_scene(gbr: &Value, reg: &Registry) -> Result<SipArtifact, String> {
     meta_extra.insert("source_format".into(), json!("GBR v0.2.0"));
     meta_extra.insert("scene_id".into(), json!(&artifact_id));
 
-    let metadata = Some(SipMetadata {
+    let metadata = Some(CapMetadata {
         title: None, author: None, owner: None, size: None,
         extra: meta_extra,
     });
@@ -313,14 +313,14 @@ fn convert_scene(gbr: &Value, reg: &Registry) -> Result<SipArtifact, String> {
     let setting_instance = obs.get("setting_instance").unwrap_or(&Value::Null);
     let setting_id = str_field(setting_instance, "setting").map(String::from);
 
-    let mut entities: Vec<SipEntity> = Vec::new();
+    let mut entities: Vec<CapEntity> = Vec::new();
     for p in &participants_raw {
         let obs_desc = reg
             .char_entry(p)
             .and_then(|e| e.get("observables"))
             .and_then(|o| o.get("slot"))
             .map(|slot| json!({ "slot": slot }));
-        entities.push(SipEntity {
+        entities.push(CapEntity {
             entity_id: p.clone(),
             entity_type: reg.entity_type(p, "character"),
             display_name: reg.display_name(p),
@@ -331,7 +331,7 @@ fn convert_scene(gbr: &Value, reg: &Registry) -> Result<SipArtifact, String> {
     }
     if let Some(ref sid) = setting_id {
         if !entities.iter().any(|e| &e.entity_id == sid) {
-            entities.push(SipEntity {
+            entities.push(CapEntity {
                 entity_id: sid.clone(),
                 entity_type: reg.entity_type(sid, "location"),
                 display_name: reg.display_name(sid),
@@ -359,7 +359,7 @@ fn convert_scene(gbr: &Value, reg: &Registry) -> Result<SipArtifact, String> {
     if let Some(nt) = narrative_time  { ctx.insert("narrative_time".into(), nt); }
     let context_val = if ctx.is_empty() { None } else { Some(Value::Object(ctx)) };
 
-    let unit_observables = SipObservables {
+    let unit_observables = CapObservables {
         participants: participants_raw.clone(),
         context: context_val,
         event_type: None,
@@ -383,14 +383,14 @@ fn convert_scene(gbr: &Value, reg: &Registry) -> Result<SipArtifact, String> {
     let scene_turns = canonical_summary
         .get("scene_turns").and_then(Value::as_array).cloned().unwrap_or_default();
 
-    let steps: Vec<SipStep> = scene_turns
+    let steps: Vec<CapStep> = scene_turns
         .iter()
         .enumerate()
         .map(|(i, t)| {
             let turn_obs = t.get("observables").unwrap_or(&Value::Null);
             let seq = turn_obs.get("turn_number").and_then(Value::as_u64)
                 .unwrap_or((i + 1) as u64) as u32;
-            SipStep {
+            CapStep {
                 sequence_number: seq,
                 agent:        str_field(turn_obs, "active_character").unwrap_or("unknown").to_string(),
                 action:       str_field(turn_obs, "verb").unwrap_or("acts").to_string(),
@@ -407,7 +407,7 @@ fn convert_scene(gbr: &Value, reg: &Registry) -> Result<SipArtifact, String> {
     let turn_from = str_field(turn, "from");
     let turn_to   = str_field(turn, "to");
 
-    let make_state = |v: &str| SipState {
+    let make_state = |v: &str| CapState {
         subject: None,
         state_type: "value_charge".to_string(),
         value: json!(v),
@@ -416,7 +416,7 @@ fn convert_scene(gbr: &Value, reg: &Registry) -> Result<SipArtifact, String> {
     let transition_before = turn_from.map(make_state);
     let transition_after  = turn_to.map(make_state);
 
-    let transition = delta.map(|d| SipTransition {
+    let transition = delta.map(|d| CapTransition {
         subject: Some(artifact_id.clone()),
         before: transition_before,
         after: transition_after,
@@ -454,7 +454,7 @@ fn convert_scene(gbr: &Value, reg: &Registry) -> Result<SipArtifact, String> {
         focalizer.as_deref().map(|f| format!("{} acts", f.to_uppercase()))
     });
 
-    let unit_structure = SipStructure {
+    let unit_structure = CapStructure {
         position: None,
         causal_role: causal_role_raw.and_then(translate_causal_role),
         grouping: grouping_val,
@@ -490,7 +490,7 @@ fn convert_scene(gbr: &Value, reg: &Registry) -> Result<SipArtifact, String> {
     let unit_craft = if craft_map.is_empty() { None } else { Some(Value::Object(craft_map)) };
 
     let char_states = gbr.get("character_states").and_then(Value::as_array).cloned().unwrap_or_default();
-    let participant_states: Vec<SipParticipantState> = char_states
+    let participant_states: Vec<CapParticipantState> = char_states
         .iter()
         .map(|cs| {
             let cs_obs    = cs.get("observables").unwrap_or(&Value::Null);
@@ -514,11 +514,11 @@ fn convert_scene(gbr: &Value, reg: &Registry) -> Result<SipArtifact, String> {
                 .unwrap_or_default();
 
             let info_state = if knows.is_empty() && gaps.is_empty() { None }
-                else { Some(SipInformationState { knows, gaps, gained: Vec::new() }) };
+                else { Some(CapInformationState { knows, gaps, gained: Vec::new() }) };
 
             let pre_state = cs.get("interpretations")
                 .and_then(|i| i.get("emotion")).and_then(Value::as_str)
-                .map(|e| SipState { subject: None, state_type: "emotional".to_string(), value: json!(e), evidence: None, provenance: None, confidence: None });
+                .map(|e| CapState { subject: None, state_type: "emotional".to_string(), value: json!(e), evidence: None, provenance: None, confidence: None });
 
             let objective = cs_struct.get("objective").and_then(|obj| {
                 let action = str_field(obj, "action")?;
@@ -527,7 +527,7 @@ fn convert_scene(gbr: &Value, reg: &Registry) -> Result<SipArtifact, String> {
             let obstacle = cs_struct.get("objective").and_then(|obj| str_field(obj, "obstacle")).map(String::from);
             let ps_observables = str_field(cs_struct, "tactic").map(|t| json!({ "tactic": t }));
 
-            SipParticipantState {
+            CapParticipantState {
                 entity_ref,
                 role_in_unit: str_field(cs_obs, "pov_role").map(String::from),
                 pre_state, post_state: None,
@@ -540,7 +540,7 @@ fn convert_scene(gbr: &Value, reg: &Registry) -> Result<SipArtifact, String> {
         })
         .collect();
 
-    let unit = SipUnit {
+    let unit = CapUnit {
         unit_id: format!("{}_scene", artifact_id),
         artifact_id: artifact_id.clone(),
         unit_type: Some("scene".to_string()),
@@ -562,18 +562,18 @@ fn convert_scene(gbr: &Value, reg: &Registry) -> Result<SipArtifact, String> {
 
     let scene_entity_ids: std::collections::HashSet<&str> =
         entities.iter().map(|e| e.entity_id.as_str()).collect();
-    let relationships: Vec<SipRelationship> = reg
+    let relationships: Vec<CapRelationship> = reg
         .build_relationships()
         .into_iter()
         .filter(|(src, tgt, _, _)| {
             scene_entity_ids.contains(src.as_str()) && scene_entity_ids.contains(tgt.as_str())
         })
-        .map(|(source, target, relationship_type, interpretations)| SipRelationship {
+        .map(|(source, target, relationship_type, interpretations)| CapRelationship {
             source, target, relationship_type, evidence: None, interpretations,
         })
         .collect();
 
-    Ok(SipArtifact {
+    Ok(CapArtifact {
         protocol: "semantic-interaction-protocol".to_string(),
         protocol_version: "0.1.0".to_string(),
         profile: "narrative".to_string(),

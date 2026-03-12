@@ -2,10 +2,10 @@
 
 > **Profile Identifier:** `narrative`
 > **Profile Version:** `0.1.0`
-> **SIP Core Version:** `≥ 0.1.0`
+> **CAP Core Version:** `≥ 0.1.0`
 > **Status:** Normative Draft
 
-This document defines the **narrative** domain profile for the Semantic Interaction Protocol (SIP). It registers the types, enums, required fields, and validation rules necessary to annotate prose fiction (and, by extension, other literary works).
+This document defines the **narrative** domain profile for the Canonical Artifact Protocol (CAP). It registers the types, enums, required fields, and validation rules necessary to annotate prose fiction (and, by extension, other literary works).
 
 This skeleton declares the profile structure and type registries. A full normative profile specification will follow in a later phase.
 
@@ -17,7 +17,7 @@ A narrative artifact declares this profile in its top-level header:
 
 ```json
 {
-  "protocol": "semantic-interaction-protocol",
+  "protocol": "canonical-artifact-protocol",
   "protocol_version": "0.1.0",
   "profile": "narrative",
   "profile_version": "0.1.0"
@@ -28,7 +28,7 @@ A narrative artifact declares this profile in its top-level header:
 
 ## 2. Type Registries
 
-Per SIP §6.2, the narrative profile registers the following values for each core type field.
+Per CAP §6.2, the narrative profile registers the following values for each core type field.
 
 ### 2.1 Entity Types
 
@@ -115,7 +115,7 @@ Registered from `scene_structure.json → event_type`:
 
 ### 2.7 Causal Role Extensions
 
-The narrative profile extends the SIP core causal roles (`setup`, `trigger`, `complication`, `resolution`) with:
+The narrative profile extends the CAP core causal roles (`setup`, `trigger`, `complication`, `resolution`) with:
 
 | Value | Source | Description |
 |-------|--------|-------------|
@@ -129,7 +129,7 @@ The narrative profile extends the SIP core causal roles (`setup`, `trigger`, `co
 
 ## 3. Additional Required Fields
 
-Per SIP §6.3, the narrative profile declares these additional requirements on core objects.
+Per CAP §6.3, the narrative profile declares these additional requirements on core objects.
 
 ### 3.1 Entity (when `entity_type: character`)
 
@@ -173,7 +173,7 @@ The narrative profile defines a fourth epistemic section on Units. Craft targets
 | `pacing` | string | `scene_structure.json → pacing` | Target pacing mode for this unit |
 | `tone` | string | `narrative_voice.json → tone` | Authorial/narrator attitude |
 
-**Conversion note:** When converting from GBR v0.2.0, `craft_targets.target_tension` maps to `craft_targets.tension`, `craft_targets.target_pacing` maps to `craft_targets.pacing`, and `craft_targets.tone` stays at `craft_targets.tone`.
+**Conversion note:** When converting from CAP Narrative Profile v0.2.0, `craft_targets.target_tension` maps to `craft_targets.tension`, `craft_targets.target_pacing` maps to `craft_targets.pacing`, and `craft_targets.tone` stays at `craft_targets.tone`.
 
 ---
 
@@ -210,7 +210,7 @@ agent-clause    = UPPER(agent) SP verb SP [UPPER(target)]
 qualifier       = key "=" value
 key             = "ROLE" / "SHIFT" / "BEAT" / "POV" / "TONE" / "ARC"
 
-; ROLE    — causal_role from SIP §5.3
+; ROLE    — causal_role from CAP §5.3
 ; SHIFT   — before_state "→" after_state  (abbreviated state type values)
 ; BEAT    — narrative macro-arc position (see §2 beat enum)
 ; POV     — point-of-view type
@@ -256,23 +256,23 @@ Tools MAY parse the fingerprint by splitting on ` | ` and further splitting each
 
 ---
 
-## 7. GBR v0.2.0 → SIP Narrative Migration Guide
+## 7. CAP Narrative Profile v0.2.0 → CAP Narrative Migration Guide
 
-The following table maps GBR v0.2.0 scene-card fields to their SIP narrative profile equivalents. This is the authoritative mapping used by `grimoire-sip-convert`.
+The following table maps CAP Narrative Profile v0.2.0 scene-card fields to their CAP narrative profile equivalents. This is the authoritative mapping used by `grimoire-cap-convert`.
 
 ### 7.1 Artifact-level fields
 
-| GBR v0.2.0 field | SIP narrative field | Notes |
+| CAP Narrative Profile v0.2.0 field | CAP narrative field | Notes |
 |------------------|---------------------|-------|
-| `scene_id` | `artifact_id` | The SIP artifact wraps one scene |
+| `scene_id` | `artifact_id` | The CAP artifact wraps one scene |
 | `book_id` | `metadata.book_id` | Preserved in free-form metadata |
 | `chapter` | `metadata.chapter` | |
-| *(implied)* | `protocol` = `"semantic-interaction-protocol"` | Added by converter |
+| *(implied)* | `protocol` = `"canonical-artifact-protocol"` | Added by converter |
 | *(implied)* | `profile` = `"narrative"` | Added by converter |
 
 ### 7.2 Entity construction
 
-GBR scene cards do not declare entities; they reference them from a registry. The converter SHOULD:
+CAP Narrative Profile scene cards do not declare entities; they reference them from a registry. The converter SHOULD:
 
 1. Create a `character` entity for every slug in `observables.participants` and `character_states[*].observables.character`, merging duplicates.
 2. Create a `location` entity for `observables.setting_instance.setting`.
@@ -281,7 +281,7 @@ GBR scene cards do not declare entities; they reference them from a registry. Th
 
 ### 7.3 Unit observables
 
-| GBR v0.2.0 field | SIP narrative field |
+| CAP Narrative Profile v0.2.0 field | CAP narrative field |
 |------------------|---------------------|
 | `observables.focalizer` | `units[0].observables.context.focalizer` |
 | `observables.participants` | `units[0].observables.participants` |
@@ -295,7 +295,7 @@ GBR scene cards do not declare entities; they reference them from a registry. Th
 
 ### 7.4 Unit structure
 
-| GBR v0.2.0 field | SIP narrative field |
+| CAP Narrative Profile v0.2.0 field | CAP narrative field |
 |------------------|---------------------|
 | `structure.causal_role` | `units[0].structure.causal_role` |
 | `structure.beat` | `units[0].structure.grouping.beat` |
@@ -312,7 +312,7 @@ GBR scene cards do not declare entities; they reference them from a registry. Th
 
 Each entry in `structure.canonical_summary.scene_turns[]` maps to one entry in `units[0].structure.steps[]`:
 
-| GBR scene_turn field | SIP step field |
+| CAP Narrative Profile scene_turn field | CAP step field |
 |----------------------|----------------|
 | `observables.turn_number` | `sequence_number` |
 | `observables.active_character` | `agent` |
@@ -322,13 +322,13 @@ Each entry in `structure.canonical_summary.scene_turns[]` maps to one entry in `
 | `observables.significance` | `significance` (`kernel` → `essential`, `satellite` → `supplementary`) |
 | `interpretations.*` | `interpretations` (preserved as-is) |
 
-**Significance mapping:** GBR uses `kernel` / `satellite`; SIP uses `essential` / `supplementary`. The converter MUST translate these values.
+**Significance mapping:** CAP Narrative Profile uses `kernel` / `satellite`; CAP uses `essential` / `supplementary`. The converter MUST translate these values.
 
 ### 7.6 Character states → Participant states
 
 Each entry in `character_states[]` maps to one entry in `units[0].participant_states[]`:
 
-| GBR character_state field | SIP participant_state field |
+| CAP Narrative Profile character_state field | CAP participant_state field |
 |---------------------------|----------------------------|
 | `observables.character` | `entity_ref` |
 | `observables.pov_role` | `role_in_unit` |
@@ -343,7 +343,7 @@ Each entry in `character_states[]` maps to one entry in `units[0].participant_st
 
 ### 7.7 Top-level interpretations → Unit interpretations
 
-| GBR v0.2.0 field | SIP narrative field |
+| CAP Narrative Profile v0.2.0 field | CAP narrative field |
 |------------------|---------------------|
 | `interpretations.pov` | `units[0].interpretations.pov` |
 | `interpretations.focalization` | `units[0].interpretations.focalization` |
@@ -362,7 +362,7 @@ Each entry in `character_states[]` maps to one entry in `units[0].participant_st
 
 ## 8. Validation Rules
 
-The narrative profile adds the following rules on top of the SIP base conformance levels.
+The narrative profile adds the following rules on top of the CAP base conformance levels.
 
 ### 8.1 Level 1 additions (Schema)
 
@@ -392,9 +392,9 @@ These rules are enforced by the profile JSON Schema extension (to be added in a 
 
 ### 8.4 Significance mapping contract
 
-When converting from GBR v0.2.0, the following significance values MUST be translated:
+When converting from CAP Narrative Profile v0.2.0, the following significance values MUST be translated:
 
-| GBR v0.2.0 | SIP narrative |
+| CAP Narrative Profile v0.2.0 | CAP narrative |
 |------------|--------------|
 | `kernel` | `essential` |
 | `satellite` | `supplementary` |
@@ -405,7 +405,7 @@ When converting from GBR v0.2.0, the following significance values MUST be trans
 
 | Version | Date | Changes |
 |---------|------|---------|
-| 0.1.0 | 2026-03 | Initial normative draft: type registries, field vocabulary, semantic fingerprint grammar (§6), GBR v0.2.0 migration guide (§7), validation rules (§8) |
+| 0.1.0 | 2026-03 | Initial normative draft: type registries, field vocabulary, semantic fingerprint grammar (§6), CAP Narrative Profile v0.2.0 migration guide (§7), validation rules (§8) |
 
 Placeholder format:
 
@@ -417,7 +417,7 @@ AGENT(entity_ref) ACTION TARGET | ROLE=causal_role | SHIFT=before_emotion→afte
 
 ## 7. Canonical Views
 
-Per SIP §6.7, the narrative profile declares these canonical view types:
+Per CAP §6.7, the narrative profile declares these canonical view types:
 
 | View Type | Description |
 |-----------|-------------|
@@ -430,7 +430,7 @@ Per SIP §6.7, the narrative profile declares these canonical view types:
 
 ## 8. Enum Governance
 
-All narrative enums are versioned independently from SIP core, per SIP §6.5.
+All narrative enums are versioned independently from CAP core, per CAP §6.5.
 
 Current enum files and their version:
 
@@ -465,15 +465,15 @@ Adding a value → minor bump. Removing/renaming → major bump.
 
 ---
 
-## Appendix A: Mapping from GBR v0.2.0
+## Appendix A: Mapping from CAP Narrative Profile v0.2.0
 
-This profile is the direct successor to GBR v0.2.0's narrative-specific fields. The mapping table in SIP SPECIFICATION.md Appendix C documents the correspondence.
+This profile is the direct successor to CAP Narrative Profile v0.2.0's narrative-specific fields. The mapping table in CAP SPECIFICATION.md Appendix C documents the correspondence.
 
 Key transformations:
 - `story_architecture.json` → distributes across `Artifact.metadata`, profile-level `Artifact.structure`, and `Artifact.interpretations`
 - `scene_card.json` → becomes a `Unit` with `unit_type: scene`
 - Character-level JSON → becomes `Entity` with `entity_type: character` + profile extensions
-- All enums remain in the profile; none migrate to SIP core
+- All enums remain in the profile; none migrate to CAP core
 
 ---
 
@@ -482,4 +482,4 @@ Key transformations:
 1. **Full normative profile specification** — field-level schemas, complete enum registries, validation rule formalization.
 2. **Semantic fingerprint grammar** — formal BNF/PEG grammar with reference implementation.
 3. **Profile JSON Schemas** — overlay schemas that extend core schemas with narrative constraints.
-4. **Migration tooling** — GBR v0.2.0 → SIP narrative profile adapter.
+4. **Migration tooling** — CAP Narrative Profile v0.2.0 → CAP narrative profile adapter.

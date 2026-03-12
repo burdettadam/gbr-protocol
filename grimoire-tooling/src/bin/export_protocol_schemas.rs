@@ -1,6 +1,6 @@
 //! `grimoire-export-schemas` — write GBR protocol struct schemas to `schemas/generated/`.
 //!
-//! This binary calls [`gbr_types::generate_all_schemas`] to produce a JSON
+//! This binary calls [`cap_narrative_types::generate_all_schemas`] to produce a JSON
 //! object whose keys are type names and whose values are their JSON Schema
 //! (Draft 7) representations, then writes one file per type into
 //! `<workspace>/schemas/generated/`.
@@ -36,7 +36,7 @@ fn main() {
     }
 
     // Generate all struct-level schemas via gbr-types.
-    let all_schemas = gbr_types::generate_all_schemas();
+    let all_schemas = cap_narrative_types::generate_all_schemas();
 
     let map = all_schemas
         .as_object()

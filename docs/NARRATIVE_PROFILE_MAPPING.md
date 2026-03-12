@@ -1,14 +1,14 @@
-# Narrative Profile Mapping — GBR v0.2.0 → SIP Core + Narrative Profile
+# Narrative Profile Mapping — CAP Narrative Profile v0.2.0 → CAP Core + Narrative Profile
 
 **Status:** Draft  
 **Date:** 2026-03-10  
-**Purpose:** Show exactly how every current GBR concept maps into the new layered architecture (Semantic Interaction Protocol core + narrative domain profile).
+**Purpose:** Show exactly how every current CAP Narrative Profile concept maps into the new layered architecture (Canonical Artifact Protocol core + narrative domain profile).
 
 ---
 
 ## 1. Document Type Mapping
 
-| GBR v0.2.0 Document | SIP Core Object | Narrative Profile Role | Notes |
+| CAP Narrative Profile v0.2.0 Document | CAP Core Object | Narrative Profile Role | Notes |
 |---------------------|-----------------|----------------------|-------|
 | Entity Registry (`registry.json`) | `Artifact.entities` + `Artifact.relationships` | Entity declarations with narrative-specific type registries | Characters → entities of type `character`; settings → entities of type `location` |
 | Story Architecture (`story_architecture.json`) | `Artifact.metadata` + `Artifact.views` + `Artifact.interpretations` | Narrative-specific artifact metadata, structural views, and interpretive overlays | Decomposes into three concerns; no single equivalent |
@@ -23,7 +23,7 @@
 
 ### 2.1 Core Concepts (terms that become core protocol objects)
 
-| GBR v0.2.0 Term | SIP Core Term | Type | Notes |
+| CAP Narrative Profile v0.2.0 Term | CAP Core Term | Type | Notes |
 |-----------------|--------------|------|-------|
 | Book / Corpus | **Artifact** | object | Top-level container |
 | `book_id` | `artifact_id` | field | — |
@@ -51,7 +51,7 @@
 
 ### 2.2 Narrative Profile Terms (terms that become profile-specific)
 
-| GBR v0.2.0 Term | Narrative Profile Location | SIP Core Anchor | Notes |
+| CAP Narrative Profile v0.2.0 Term | Narrative Profile Location | CAP Core Anchor | Notes |
 |-----------------|---------------------------|-----------------|-------|
 | Character | Entity (type: `character`) | `Entity.entity_type` | — |
 | Setting | Entity (type: `location`) | `Entity.entity_type` | — |
@@ -96,7 +96,7 @@
 
 ### 2.3 Character-Specific Fields (all → Narrative Profile)
 
-| GBR Field | Profile Location | Notes |
+| CAP Narrative Profile Field | Profile Location | Notes |
 |-----------|-----------------|-------|
 | `role` | `Entity.structural_properties.role` | protagonist/antagonist/etc. |
 | `archetype` | `Entity.interpretations.archetype` | Campbell/Vogler |
@@ -113,7 +113,7 @@
 
 ### 2.4 Character Scene State Fields (all → Narrative Profile)
 
-| GBR Field | Profile Location | Core Anchor |
+| CAP Narrative Profile Field | Profile Location | Core Anchor |
 |-----------|-----------------|-------------|
 | `character` | `ParticipantState.entity_ref` | core |
 | `pov_role` | `ParticipantState.role_in_unit` | core (role concept), profile (values) |
@@ -192,7 +192,7 @@
 | | `relationship_dynamic` | 12 | Relationship interpretation |
 | | `power_balance` | 5 | Relationship interpretation |
 
-### 3.2 Core Protocol Values (new, not from GBR)
+### 3.2 Core Protocol Values (new, not from CAP Narrative Profile)
 
 | Core Field | Core Values | Profile Extension Point |
 |-----------|-------------|------------------------|
@@ -207,7 +207,7 @@
 
 The current `story_architecture.json` does not map to a single core object. It decomposes:
 
-| Story Architecture Section | SIP Destination | Content |
+| Story Architecture Section | CAP Destination | Content |
 |---------------------------|-----------------|---------|
 | `book_id`, `title`, `author` | `Artifact.metadata` | Identity |
 | `structure.word_count` | `Artifact.metadata.size` | — |
@@ -225,12 +225,12 @@ The current `story_architecture.json` does not map to a single core object. It d
 
 ---
 
-## 5. What GBR Loses / Gains
+## 5. What CAP Narrative Profile Loses / Gains
 
 ### Loses
 - **Standalone document types**: No more separate `story_architecture.json` — its content distributes across artifact metadata, structure, and interpretations
 - **Implicit narrative assumptions**: Fields like `focalizer` can no longer be required at the core level — they become profile requirements
-- **Self-contained simplicity**: A GBR scene card currently "just works" as a single JSON file. In SIP, it's a Unit that references an Artifact
+- **Self-contained simplicity**: A CAP Narrative Profile scene card currently "just works" as a single JSON file. In CAP, it's a Unit that references an Artifact
 
 ### Gains
 - **Formal separation of observation from inference**: Already started with ADR-006; now completed at the architectural level

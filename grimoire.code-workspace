@@ -8,6 +8,9 @@
 		},
 		{
 			"path": "../gbr-research"
+		},
+		{
+			"path": "../sip-protocol"
 		}
 	],
 	"settings": {

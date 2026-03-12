@@ -1,6 +1,6 @@
 # Entity Registry
 
-The Entity Registry is the per-book controlled vocabulary. It declares all named entities — characters, settings, relationships, and want labels — that may be referenced by any other GBR document in the corpus.
+The Entity Registry is the per-book controlled vocabulary. It declares all named entities — characters, settings, relationships, and want labels — that may be referenced by any other CAP Narrative Profile document in the corpus.
 
 For normative field definitions, see [SPECIFICATION.md §5](../SPECIFICATION.md#5-entity-registry). For field-level design rationale, see the [reference implementation entity types](../reference/rust/src/entities.rs).
 

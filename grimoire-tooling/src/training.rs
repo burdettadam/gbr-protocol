@@ -20,10 +20,10 @@ use std::collections::HashMap;
 use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 
-use gbr_types::entities::{Character, Scene, Setting, Motif};
-use gbr_types::enums::{Act, DominantSense, MotifStage, RevisionFlag};
-use gbr_types::tags::{AnnotationChannel, EntityRef, ParagraphAnnotations, SentenceAnnotations};
-use gbr_types::voice::{DialogueSegment, FocalizationConfig, VoiceContract, VoiceSignature};
+use cap_narrative_types::entities::{Character, Scene, Setting, Motif};
+use cap_narrative_types::enums::{Act, DominantSense, MotifStage, RevisionFlag};
+use cap_narrative_types::tags::{AnnotationChannel, EntityRef, ParagraphAnnotations, SentenceAnnotations};
+use cap_narrative_types::voice::{DialogueSegment, FocalizationConfig, VoiceContract, VoiceSignature};
 
 // ── Tier configuration ────────────────────────────────────────────────────────
 
@@ -270,7 +270,7 @@ pub struct CharacterState {
     /// Relationship status with every other attending character
     pub relationship_states: HashMap<String, String>,
     /// Which drive is currently dominant for this character
-    pub dominant_drive: Option<gbr_types::enums::DriveModel>,
+    pub dominant_drive: Option<cap_narrative_types::enums::DriveModel>,
     /// This character's voice signature (copied from VoiceContract for convenience)
     pub voice_signature: Option<VoiceSignature>,
 }

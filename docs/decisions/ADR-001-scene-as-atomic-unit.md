@@ -1,14 +1,14 @@
-# ADR-001: Scene as the Atomic Unit of GBR
+# ADR-001: Scene as the Atomic Unit of CAP Narrative Profile
 
 **Status:** Accepted  
 **Date:** 2026-01-15  
-**Authors:** GBR Protocol Working Group
+**Authors:** CAP Narrative Profile Protocol Working Group
 
 ---
 
 ## Context
 
-The GBR Protocol must choose a granularity at which to encode narrative structure. Candidates considered:
+The CAP Narrative Profile Protocol must choose a granularity at which to encode narrative structure. Candidates considered:
 
 1. **Chapter-level granularity** — one document per chapter
 2. **Scene-level granularity** — one document per dramatic scene
@@ -25,7 +25,7 @@ The protocol is designed to support:
 
 ## Decision
 
-**The scene is the atomic unit of GBR.**
+**The scene is the atomic unit of CAP Narrative Profile.**
 
 A scene is defined as: a continuous unit of dramatic action in a single location (or a continuous movement through space), through a single focalizer's perception, with a unified want, at least one event, and an outcome.
 

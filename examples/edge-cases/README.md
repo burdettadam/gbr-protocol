@@ -1,6 +1,6 @@
 # Edge Cases
 
-This directory contains GBR documents that test the protocol's behavior at the boundaries of its design. Each example is a valid GBR document but exercises a non-standard or potentially ambiguous encoding scenario.
+This directory contains CAP Narrative Profile documents that test the protocol's behavior at the boundaries of its design. Each example is a valid CAP Narrative Profile document but exercises a non-standard or potentially ambiguous encoding scenario.
 
 ---
 
@@ -19,7 +19,7 @@ This directory contains GBR documents that test the protocol's behavior at the b
 
 ## Usage
 
-Edge cases are not conformance test documents — they are correct GBR data that implementation libraries should handle without error. Validators MUST accept these documents at the appropriate conformance level.
+Edge cases are not conformance test documents — they are correct CAP Narrative Profile data that implementation libraries should handle without error. Validators MUST accept these documents at the appropriate conformance level.
 
 ```bash
 # Validate all edge-case documents against Level 1 schema

@@ -1,12 +1,12 @@
 # Enumeration Vocabularies
 
-This directory contains authoritative, documented definitions for all typed enumerations in the GBR Protocol.
+This directory contains authoritative, documented definitions for all typed enumerations in the CAP Narrative Profile Protocol.
 
 ---
 
 ## Philosophy
 
-The GBR Protocol uses closed, typed enumerations for every categorical field. Free text is not permitted where structure is possible.
+The CAP Narrative Profile Protocol uses closed, typed enumerations for every categorical field. Free text is not permitted where structure is possible.
 
 **Why enums matter:**
 - Free-text fields cannot be validated, compared programmatically, or round-tripped deterministically.

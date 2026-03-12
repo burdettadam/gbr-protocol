@@ -2,13 +2,13 @@
 
 **Status:** Accepted  
 **Date:** 2026-01-22  
-**Authors:** GBR Protocol Working Group
+**Authors:** CAP Narrative Profile Protocol Working Group
 
 ---
 
 ## Context
 
-The GBR Protocol must define what "valid data" means. A document can be schema-valid (passes JSON Schema validation) without being semantically useful. Consider:
+The CAP Narrative Profile Protocol must define what "valid data" means. A document can be schema-valid (passes JSON Schema validation) without being semantically useful. Consider:
 
 ```json
 {
@@ -37,7 +37,7 @@ This document passes schema validation. It is useless for any analytical or trai
 
 ## Decision
 
-**The GBR Protocol's Level 3 conformance (Round-Trip Conformant) requires that Canonical Summaries pass a "round-trip test": a comprehending reader with only the Canonical Summary must be able to reconstruct the scene's narrative content.**
+**The CAP Narrative Profile Protocol's Level 3 conformance (Round-Trip Conformant) requires that Canonical Summaries pass a "round-trip test": a comprehending reader with only the Canonical Summary must be able to reconstruct the scene's narrative content.**
 
 This is not a mechanical test. It is a craft test. The Canonical Summary must:
 1. Name the location and time precisely enough to anchor the scene

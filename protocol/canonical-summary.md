@@ -11,7 +11,7 @@ For normative rules, see [SPECIFICATION.md §9](../SPECIFICATION.md#9-canonical-
 Human-authored prose summaries are ambiguous by construction:
 
 ```
-# Human prose summary (NOT valid in GBR)
+# Human prose summary (NOT valid in CAP Narrative Profile)
 "Elizabeth refuses Darcy's proposal. The atmosphere is tense and the
 confrontation exposes their mutual misunderstanding."
 ```
@@ -21,7 +21,7 @@ This cannot be reliably parsed back to structure:
 - Want outcome: `DENIED`? `PYRRHIC`?
 - Causal role: `PIVOTS` or `ESCALATES`?
 
-**A summary that cannot be parsed back to its structured source is not a GBR canonical summary.**
+**A summary that cannot be parsed back to its structured source is not a CAP Narrative Profile canonical summary.**
 
 ---
 

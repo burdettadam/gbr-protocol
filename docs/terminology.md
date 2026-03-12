@@ -1,6 +1,6 @@
-# GBR Protocol Terminology
+# CAP Narrative Profile Protocol Terminology
 
-This document provides formal definitions for all terms used in the GBR Protocol specification. In any dispute over meaning, these definitions govern.
+This document provides formal definitions for all terms used in the CAP Narrative Profile Protocol specification. In any dispute over meaning, these definitions govern.
 
 ---
 
@@ -29,7 +29,7 @@ The macro structural position of a scene in the narrative arc (e.g., `inciting_i
 The ordinal position of the scene within its chapter (integer ≥ 1). Distinct from chapter numbering.
 
 **Book Corpus**
-A complete GBR dataset for a single narrative work. Layout: `{book_id}/registry.json`, `{book_id}/story_architecture.json`, `{book_id}/scenes/{scene_id}.json`. See `protocol/architecture.md`.
+A complete CAP Narrative Profile dataset for a single narrative work. Layout: `{book_id}/registry.json`, `{book_id}/story_architecture.json`, `{book_id}/scenes/{scene_id}.json`. See `protocol/architecture.md`.
 
 ---
 
@@ -83,17 +83,17 @@ The relationship between story time and discourse time in a scene: `scene`, `sum
 ## E
 
 **Entity Registry**
-The master reference document for all named entities in a book corpus. Every character, setting, and relationship must be declared here before being referenced in other GBR documents. Required. See `protocol/entity-registry.md`.
+The master reference document for all named entities in a book corpus. Every character, setting, and relationship must be declared here before being referenced in other CAP Narrative Profile documents. Required. See `protocol/entity-registry.md`.
 
 **Entity Reference**
-A string value in a GBR document pointing to a key in the Entity Registry. Must resolve to a defined entity. Unresolved references are a Level 2 conformance failure.
+A string value in a CAP Narrative Profile document pointing to a key in the Entity Registry. Must resolve to a defined entity. Unresolved references are a Level 2 conformance failure.
 
 ---
 
 ## F
 
 **Fabula**
-The chronological story events in the order they actually occurred (Tomashevsky/Chatman). Distinct from `syuzhet`. The distinction between fabula and syuzhet is the foundational organizing principle of the GBR Protocol's temporal encoding.
+The chronological story events in the order they actually occurred (Tomashevsky/Chatman). Distinct from `syuzhet`. The distinction between fabula and syuzhet is the foundational organizing principle of the CAP Narrative Profile Protocol's temporal encoding.
 
 **Focalization**
 Genette's concept: the perceptual filter through which events are presented. "Who perceives" (focalization) is distinct from "who speaks" (narration). The `focalizer` field on a Scene Card is the character whose perception filters the scene's events. See `focalization_type`.
@@ -111,7 +111,7 @@ The ratio of how many times an event occurs vs. how many times it is narrated: `
 
 ## G
 
-**GBR**
+**CAP Narrative Profile**
 Grimoire Book Representation. The protocol name.
 
 **Genre**
@@ -125,7 +125,7 @@ The top-level narrative frame classification for the book (`genre_type`). Requir
 A float (0.0–1.0) encoding how much of the scene's meaning is withheld from explicit narration (Hemingway's iceberg principle). 0.0 = fully explicit; 1.0 = fully implicit. Optional. Stored in `interpretations.canonical_metrics`.
 
 **Interpretation**
-The epistemic section of a GBR document containing inferred meaning layered on top of observables and structure: motivations, emotional states, themes, subtext, literary-theoretical classifications. Interpretation fields MAY carry an `interpreted_value` wrapper for confidence and provenance. See ADR-006.
+The epistemic section of a CAP Narrative Profile document containing inferred meaning layered on top of observables and structure: motivations, emotional states, themes, subtext, literary-theoretical classifications. Interpretation fields MAY carry an `interpreted_value` wrapper for confidence and provenance. See ADR-006.
 
 **Interpreted Value**
 The optional metadata wrapper for interpretation fields. Either a plain value (e.g., `"humiliation"`) or a structured object: `{ "value": "humiliation", "confidence": 0.85, "source": "model" }`. The `source` enum is: `human`, `model`, `inferred`, `consensus`. Observable fields MUST NOT use this wrapper.
@@ -171,7 +171,7 @@ The degree to which the narrator's account can be trusted to align with the impl
 ## O
 
 **Observable**
-The epistemic section of a GBR document containing facts directly grounded in the artifact: named participants, quoted dialogue, explicit locations, visible actions, explicit objects and ordering markers. Observable fields are always certain and MUST NOT carry the `interpreted_value` metadata wrapper. See ADR-006.
+The epistemic section of a CAP Narrative Profile document containing facts directly grounded in the artifact: named participants, quoted dialogue, explicit locations, visible actions, explicit objects and ordering markers. Observable fields are always certain and MUST NOT carry the `interpreted_value` metadata wrapper. See ADR-006.
 
 **Objective Object**
 A structured assertion encoding what a character wants to do (their action intention) in the scene. Fields: `action`, `target`, `obstacle`, `method`. See `protocol/character-state.md`.
@@ -203,7 +203,7 @@ John Gardner's five-level scale (1–5) of felt closeness between reader and cha
 ## R
 
 **Round-Trip Requirement**
-The core data integrity constraint of GBR: a comprehending reader presented only with the Canonical Summary MUST be able to reconstruct the scene's narrative content. The Canonical Summary is the protocol's guarantee of lossless semantic transport. See `protocol/canonical-summary.md`, SPECIFICATION.md §9.
+The core data integrity constraint of CAP Narrative Profile: a comprehending reader presented only with the Canonical Summary MUST be able to reconstruct the scene's narrative content. The Canonical Summary is the protocol's guarantee of lossless semantic transport. See `protocol/canonical-summary.md`, SPECIFICATION.md §9.
 
 **Relationship**
 A directed edge in the Entity Registry between two characters. Has type, dynamic, and power balance. Direction matters: a relationship from A to B is not the same as B to A (power balance, dynamic may differ).
@@ -216,7 +216,7 @@ A directed edge in the Entity Registry between two characters. Has type, dynamic
 A narratively expandable but non-essential event — one whose removal does not destroy the causal chain (Chatman). Satellites provide texture, characterization, and thematic resonance.
 
 **Scene Card**
-The primary unit of scene-level GBR data. Each scene card describes one scene of a narrative work, organized into four epistemic sections: `observables` (grounded facts), `structure` (organizational relationships), `interpretations` (inferred meaning), and `craft_targets` (authorial intent).
+The primary unit of scene-level CAP Narrative Profile data. Each scene card describes one scene of a narrative work, organized into four epistemic sections: `observables` (grounded facts), `structure` (organizational relationships), `interpretations` (inferred meaning), and `craft_targets` (authorial intent).
 
 **Scene Function**
 The primary dramatic purpose of a scene: `revelation`, `confrontation`, `decision`, `relationship_shift`, `world_building`, `setback`, `discovery`, `transit`. See `scene_structure.json`.
@@ -231,10 +231,10 @@ The rule that every Scene Card's `canonical_summary.scene_turns` array MUST cont
 A `snake_case` unique identifier used as a key in the Entity Registry's maps. Character slugs are used everywhere a character is referenced (focalizer, character_states, etc.).
 
 **Story Architecture**
-The GBR document encoding a book's macro-structural design: genre, collision architecture, protagonist arc, antagonist design, story premise. One per corpus. Organized into three epistemic sections: `observables`, `structure`, `interpretations`. See `protocol/story-architecture.md`.
+The CAP Narrative Profile document encoding a book's macro-structural design: genre, collision architecture, protagonist arc, antagonist design, story premise. One per corpus. Organized into three epistemic sections: `observables`, `structure`, `interpretations`. See `protocol/story-architecture.md`.
 
 **Structure (Epistemic Section)**
-The epistemic section of a GBR document containing how observables are organized in the canonical model: sequence, containment, adjacency, state transitions, dependency and causal links, groupings. The `canonical_summary` lives in this section. See ADR-006.
+The epistemic section of a CAP Narrative Profile document containing how observables are organized in the canonical model: sequence, containment, adjacency, state transitions, dependency and causal links, groupings. The `canonical_summary` lives in this section. See ADR-006.
 
 **Subtext Load**
 An enum encoding how much of a scene's meaning operates below the surface: `explicit`, `moderate`, `high`, `dense`. Relates to `iceberg_proportion`.

@@ -1,12 +1,12 @@
-# GBR Protocol Architecture
+# CAP Narrative Profile Protocol Architecture
 
-This document describes the GBR document model, layer relationships, and corpus layout. For normative rules, see [SPECIFICATION.md](../SPECIFICATION.md).
+This document describes the CAP Narrative Profile document model, layer relationships, and corpus layout. For normative rules, see [SPECIFICATION.md](../SPECIFICATION.md).
 
 ---
 
 ## Four-Layer Data Model
 
-GBR represents a book as four layered document types:
+CAP Narrative Profile represents a book as four layered document types:
 
 ```
 ┌─────────────────────────────────────┐
@@ -80,11 +80,11 @@ Validators MUST load the Entity Registry before validating referential constrain
 
 ## Epistemic Sections (v0.2.0)
 
-Every GBR document type internally separates its fields into up to four epistemic sections. This separation is structural — the JSON schema enforces it.
+Every CAP Narrative Profile document type internally separates its fields into up to four epistemic sections. This separation is structural — the JSON schema enforces it.
 
 ```
 ┌─────────────────────────────────────────────────┐
-│  GBR Document (any type)                        │
+│  CAP Narrative Profile Document (any type)                        │
 │                                                 │
 │  ┌───────────────┐  ┌────────────────────────┐  │
 │  │  observables   │  │  structure              │  │

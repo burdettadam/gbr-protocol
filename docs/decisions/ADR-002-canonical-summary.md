@@ -2,13 +2,13 @@
 
 **Status:** Accepted  
 **Date:** 2026-01-15  
-**Authors:** GBR Protocol Working Group
+**Authors:** CAP Narrative Profile Protocol Working Group
 
 ---
 
 ## Context
 
-GBR needs a mechanism to verify that scene data is semantically complete — that nothing essential has been lost in encoding. Without such a mechanism:
+CAP Narrative Profile needs a mechanism to verify that scene data is semantically complete — that nothing essential has been lost in encoding. Without such a mechanism:
 - A scene card could be technically valid (passes schema validation) while being semantically empty
 - There would be no way to verify that a scene annotation actually captures narrative content
 - Pipeline consumers could not determine whether a scene card was usable for recovery, analysis, or training

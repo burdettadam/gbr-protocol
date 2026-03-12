@@ -1,7 +1,7 @@
 [
   {
     "$schema": "https://gbr-protocol.dev/schemas/scene-card.json",
-    "_comment": "EDGE CASE: dual_pov_split — this is one of two scene cards covering the same dramatic event. The scene is the same; the focalizer changes. Compare with the companion file dual_pov_split_b.json. Both are valid GBR. The two cards together demonstrate 'internal_multiple' focalization across a single dramatic event.",
+    "_comment": "EDGE CASE: dual_pov_split — this is one of two scene cards covering the same dramatic event. The scene is the same; the focalizer changes. Compare with the companion file dual_pov_split_b.json. Both are valid CAP Narrative Profile. The two cards together demonstrate 'internal_multiple' focalization across a single dramatic event.",
     "scene_id": "edge-dual-pov-ch05-s01a",
     "book_id": "edge-cases-example",
     "chapter": 5,

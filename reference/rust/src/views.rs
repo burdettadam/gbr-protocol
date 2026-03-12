@@ -1,4 +1,4 @@
-//! Pre-computed views over a [`NarrativeCorpus`] or [`SipArtifact`].
+//! Pre-computed views over a [`NarrativeCorpus`] or [`CapArtifact`].
 //!
 //! Views are derived, read-only projections that aggregate cross-artifact data.
 //! They correspond to the four view types declared in `PROFILE.md §9`.
@@ -6,8 +6,8 @@
 //! # Usage
 //!
 //! ```rust,no_run
-//! use gbr_types::corpus::NarrativeCorpus;
-//! use gbr_types::views::{build_entity_trajectory_view, build_tension_curve_view, build_causal_chain_view};
+//! use cap_narrative_types::corpus::NarrativeCorpus;
+//! use cap_narrative_types::views::{build_entity_trajectory_view, build_tension_curve_view, build_causal_chain_view};
 //!
 //! let corpus: NarrativeCorpus = unimplemented!();
 //! let trajectory = build_entity_trajectory_view(&corpus, "nadia");
@@ -219,7 +219,7 @@ pub fn build_tension_curve_view(corpus: &NarrativeCorpus) -> TensionCurveView {
             .interpretations
             .as_ref()
             .and_then(|ai| match ai {
-                crate::sip::artifact::ArtifactInterpretations::Object(v) => Some(v),
+                crate::cap::artifact::ArtifactInterpretations::Object(v) => Some(v),
                 _ => None,
             })
             .and_then(|v| v.get("value_charge"))

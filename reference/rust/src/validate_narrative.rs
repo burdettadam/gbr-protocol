@@ -2,25 +2,25 @@
 //! narrative profile.
 //!
 //! Adds profile-specific L1, L2, and L3 checks on top of
-//! `sip_types::validate_core()`.
+//! `cap_types::validate_core()`.
 //!
 //! # Usage
 //!
 //! ```rust,no_run
-//! use gbr_types::sip::{SipArtifact, ConformanceLevel, validate_core};
-//! use gbr_types::validate_narrative::{NarrativeValidator, validate_corpus};
-//! use gbr_types::sip::ProfileValidator;
+//! use cap_narrative_types::cap::{CapArtifact, ConformanceLevel, validate_core};
+//! use cap_narrative_types::validate_narrative::{NarrativeValidator, validate_corpus};
+//! use cap_narrative_types::cap::ProfileValidator;
 //!
-//! let artifact: SipArtifact = unimplemented!();
+//! let artifact: CapArtifact = unimplemented!();
 //! let mut issues = validate_core(&artifact, ConformanceLevel::Referential);
 //! issues.extend(NarrativeValidator.validate(&artifact, ConformanceLevel::Referential));
 //! ```
 
 use crate::corpus::NarrativeCorpus;
-use crate::sip::{
+use crate::cap::{
     enums::{ConformanceLevel, ValidationSeverity},
     validate::{ProfileValidator, ValidationIssue},
-    SipArtifact,
+    CapArtifact,
 };
 
 /// Stateless narrative profile validator.
@@ -30,7 +30,7 @@ use crate::sip::{
 pub struct NarrativeValidator;
 
 impl ProfileValidator for NarrativeValidator {
-    fn validate(&self, artifact: &SipArtifact, level: ConformanceLevel) -> Vec<ValidationIssue> {
+    fn validate(&self, artifact: &CapArtifact, level: ConformanceLevel) -> Vec<ValidationIssue> {
         let mut issues = Vec::new();
 
         for (ui, unit) in artifact.units.iter().enumerate() {
@@ -126,7 +126,7 @@ impl ProfileValidator for NarrativeValidator {
                     let has_essential = structure.steps.iter().any(|s| {
                         matches!(
                             s.significance,
-                            Some(crate::sip::enums::Significance::Essential)
+                            Some(crate::cap::enums::Significance::Essential)
                         )
                     });
                     if !structure.steps.is_empty() && !has_essential {
@@ -350,18 +350,18 @@ pub fn validate_corpus(
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::sip::{validate_core, ConformanceLevel, SipArtifact};
+    use crate::cap::{validate_core, ConformanceLevel, CapArtifact};
     use serde_json::json;
 
-    fn make_minimal_narrative(with_context: Option<serde_json::Value>) -> SipArtifact {
+    fn make_minimal_narrative(with_context: Option<serde_json::Value>) -> CapArtifact {
         let ctx = with_context.unwrap_or_else(|| {
             json!({ "focalizer": "nadia", "pov": "third_person_limited" })
         });
         let raw = json!({
-            "protocol": "semantic-interaction-protocol",
-            "protocol_version": "0.1.0",
+            "protocol": "canonical-artifact-protocol",
+            "protocol_version": "1.0.0",
             "profile": "narrative",
-            "profile_version": "0.1.0",
+            "profile_version": "1.0.0",
             "artifact_id": "test_scene",
             "entities": [
                 { "entity_id": "nadia", "entity_type": "character", "display_name": "Nadia" },

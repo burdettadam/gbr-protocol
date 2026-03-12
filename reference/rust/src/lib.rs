@@ -1,7 +1,7 @@
 #![recursion_limit = "512"]
-//! `gbr-types` — Protocol-core types for the Grimoire Book Representation (GBR) Protocol.
+//! `cap-narrative-types` — Protocol-core types for the Canonical Artifact Protocol — Narrative Profile.
 //!
-//! This crate provides the stable, schema-level type system used by the GBR Protocol.
+//! This crate provides the stable, schema-level type system used by the CAP Narrative Profile.
 //! It is the Rust reference implementation of the types described in `SPECIFICATION.md`.
 //!
 //! # Module overview
@@ -34,9 +34,9 @@ pub mod validate_narrative;
 pub mod views;
 pub mod voice;
 
-// SIP core types — re-exported from the standalone `sip-types` crate.
-// All downstream `gbr_types::sip::*` paths continue to work unchanged.
-pub use sip_types as sip;
+// CAP core types — re-exported from the standalone `cap-types` crate.
+// All downstream `cap_narrative_types::cap::*` paths work unchanged.
+pub use cap_types as cap;
 
 // ── Schema generation ─────────────────────────────────────────────────────────
 
@@ -63,18 +63,18 @@ pub fn generate_all_schemas() -> serde_json::Value {
             "NarrativeVoice": schema_for!(voice::NarrativeVoice),
             "FocalizationConfig": schema_for!(voice::FocalizationConfig),
         },
-        "sip": {
-            "SipArtifact": schema_for!(sip::SipArtifact),
-            "SipEntity": schema_for!(sip::SipEntity),
-            "SipUnit": schema_for!(sip::unit::SipUnit),
-            "SipStep": schema_for!(sip::SipStep),
-            "SipRelationship": schema_for!(sip::SipRelationship),
-            "SipState": schema_for!(sip::SipState),
-            "SipTransition": schema_for!(sip::SipTransition),
-            "SipView": schema_for!(sip::SipView),
-            "SipInterpretation": schema_for!(sip::SipInterpretation),
-            "SipParticipantState": schema_for!(sip::SipParticipantState),
-            "SipInformationState": schema_for!(sip::SipInformationState),
+        "cap": {
+            "CapArtifact": schema_for!(cap::CapArtifact),
+            "CapEntity": schema_for!(cap::CapEntity),
+            "CapUnit": schema_for!(cap::unit::CapUnit),
+            "CapStep": schema_for!(cap::CapStep),
+            "CapRelationship": schema_for!(cap::CapRelationship),
+            "CapState": schema_for!(cap::CapState),
+            "CapTransition": schema_for!(cap::CapTransition),
+            "CapView": schema_for!(cap::CapView),
+            "CapInterpretation": schema_for!(cap::CapInterpretation),
+            "CapParticipantState": schema_for!(cap::CapParticipantState),
+            "CapInformationState": schema_for!(cap::CapInformationState),
         },
     })
 }

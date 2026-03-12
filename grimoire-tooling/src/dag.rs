@@ -7,7 +7,7 @@ use std::collections::{HashMap, HashSet, VecDeque};
 
 use thiserror::Error;
 
-use gbr_types::enums::{GateStatus, SubPhaseStatus};
+use cap_narrative_types::enums::{GateStatus, SubPhaseStatus};
 use crate::gates::{GateResult, PhaseSpec};
 
 // ── Error ─────────────────────────────────────────────────────────────────────

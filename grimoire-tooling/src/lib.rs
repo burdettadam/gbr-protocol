@@ -1,8 +1,8 @@
 #![recursion_limit = "512"]
-//! `grimoire-tooling` — Grimoire authoring-system tooling built on the GBR Protocol.
+//! `grimoire-tooling` — Grimoire authoring-system tooling built on the CAP Narrative Profile.
 //!
 //! This crate provides the Grimoire writing system's authoring tools on top of
-//! the stable `gbr-types` protocol layer. It adds: gate system, sub-phase DAG,
+//! the stable `cap-narrative-types` protocol layer. It adds: gate system, sub-phase DAG,
 //! LLM training pipeline, story recipe, and optional PyO3 Python bindings.
 //!
 //! # Module overview
@@ -14,7 +14,7 @@
 //! | [`dag`] | Sub-phase dependency DAG (Kahn topological sort) |
 //! | [`recipe`] | StoryRecipe — top-level pipeline output |
 //!
-//! # Re-exports from gbr-types
+//! # Re-exports from cap-narrative-types
 //!
 //! All protocol-core modules are re-exported for convenience:
 //! `catalogs`, `constraints`, `entities`, `enums`, `ontology`, `tags`, `voice`.
@@ -25,13 +25,13 @@
 
 // ── Protocol-core re-exports ─────────────────────────────────────────────────
 
-pub use gbr_types::catalogs;
-pub use gbr_types::constraints;
-pub use gbr_types::entities;
-pub use gbr_types::enums;
-pub use gbr_types::ontology;
-pub use gbr_types::tags;
-pub use gbr_types::voice;
+pub use cap_narrative_types::catalogs;
+pub use cap_narrative_types::constraints;
+pub use cap_narrative_types::entities;
+pub use cap_narrative_types::enums;
+pub use cap_narrative_types::ontology;
+pub use cap_narrative_types::tags;
+pub use cap_narrative_types::voice;
 
 // ── Tooling modules ───────────────────────────────────────────────────────────
 
@@ -59,7 +59,7 @@ fn grimoire_tooling(m: &Bound<'_, PyModule>) -> PyResult<()> {
 /// Generate the complete JSON Schema for all public types (protocol-core + tooling).
 pub fn generate_all_schemas() -> serde_json::Value {
     use schemars::schema_for;
-    let mut schemas = gbr_types::generate_all_schemas();
+    let mut schemas = cap_narrative_types::generate_all_schemas();
     let obj = schemas.as_object_mut().unwrap();
     obj.insert("training".to_string(), serde_json::json!({
         "SceneContext": schema_for!(training::SceneContext),

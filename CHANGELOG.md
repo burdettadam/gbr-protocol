@@ -1,6 +1,6 @@
 # Changelog
 
-All notable changes to the GBR Protocol are documented here.
+All notable changes to the CAP Narrative Profile Protocol are documented here.
 
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).  
 This project uses [Semantic Versioning](VERSIONING.md).
@@ -9,52 +9,52 @@ This project uses [Semantic Versioning](VERSIONING.md).
 
 ## [Unreleased]
 
-### Changed — SIP Repo Split (Phase 5)
+### Changed — CAP Repo Split (Phase 5)
 
-**SIP core extracted to standalone `sip-protocol` repository.**
+**CAP core extracted to standalone `cap-protocol` repository.**
 
-The Semantic Interaction Protocol is now maintained in a separate [`sip-protocol`](https://github.com/adamburdett/sip-protocol) repo. GBR builds on SIP as a dependency:
+The Canonical Artifact Protocol is now maintained in a separate [`cap-protocol`](https://github.com/adamburdett/cap-protocol) repo. CAP Narrative Profile builds on CAP as a dependency:
 
-- `docs/sip/` removed; all content lives in `sip-protocol`
+- `docs/sip/` removed; all content lives in `cap-protocol`
 - `PROFILE.md` promoted to repo root (was `docs/sip/profiles/narrative/PROFILE.md`)
-- `reference/rust/src/sip/` removed; SIP Rust types now provided by the `sip-types` crate
-- `gbr-types` `Cargo.toml` gains `sip-types = { path = "..." }` dependency
-- `gbr-types` `lib.rs`: `pub mod sip;` replaced by `pub use sip_types as sip;` (zero downstream breakage — all `gbr_types::sip::*` paths unchanged)
+- `reference/rust/src/sip/` removed; CAP Rust types now provided by the `cap-types` crate
+- `cap-narrative-types` `Cargo.toml` gains `cap-types = { path = "..." }` dependency
+- `cap-narrative-types` `lib.rs`: `pub mod sip;` replaced by `pub use cap_types as sip;` (zero downstream breakage — all `cap_narrative_types::sip::*` paths unchanged)
 
 ---
 
-### Added — SIP Extraction (Phases 1–4)
+### Added — CAP Extraction (Phases 1–4)
 
-**Semantic Interaction Protocol specification** (`docs/sip/`)
-- `docs/sip/SPECIFICATION.md` — full normative SIP spec v0.1.0 (12 sections + 3 appendices)
-- `docs/sip/schemas/` — 12 JSON Schema files covering all SIP core objects: artifact, entity, unit, step, state, transition, relationship, participant-state, information-state, view, interpretation, \`_base\`
+**Canonical Artifact Protocol specification** (`docs/sip/`)
+- `docs/sip/SPECIFICATION.md` — full normative CAP spec v0.1.0 (12 sections + 3 appendices)
+- `docs/sip/schemas/` — 12 JSON Schema files covering all CAP core objects: artifact, entity, unit, step, state, transition, relationship, participant-state, information-state, view, interpretation, \`_base\`
 - `docs/sip/conformance/valid/` — 4 valid fixtures: minimal-artifact, multi-unit-artifact, full-narrative-artifact, full-software-artifact
 - `docs/sip/conformance/invalid/` — 6 invalid fixtures: dangling-entity-ref, misordered-steps, missing-observables, missing-protocol, no-change-transition, wrong-protocol-value
-- `docs/sip/profiles/narrative/PROFILE.md` — Narrative Profile v0.1.0 (Normative Draft); §§6–9 define: semantic fingerprint ABNF grammar, GBR v0.2.0 → SIP migration guide (7 field-mapping subsections), validation rules (L1/2/3 additions, significance mapping contract `kernel`→`essential`/`satellite`→`supplementary`), changelog
+- `docs/sip/profiles/narrative/PROFILE.md` — Narrative Profile v0.1.0 (Normative Draft); §§6–9 define: semantic fingerprint ABNF grammar, CAP Narrative Profile v0.2.0 → CAP migration guide (7 field-mapping subsections), validation rules (L1/2/3 additions, significance mapping contract `kernel`→`essential`/`satellite`→`supplementary`), changelog
 
-**SIP Rust types** (`reference/rust/src/sip/`, 11 modules)
+**CAP Rust types** (`reference/rust/src/sip/`, 11 modules)
 - `artifact.rs`, `entity.rs`, `unit.rs`, `step.rs` (in unit), `state.rs`, `transition.rs`, `relationship.rs`, `participant_state.rs`, `interpretation.rs`, `view.rs`, `enums.rs`, `mod.rs`
 - `SipArtifact`, `SipEntity`, `SipUnit`, `SipStep`, `SipStructure`, `SipObservables`, `SipState`, `SipTransition`, `SipRelationship`, `SipParticipantState`, `SipInformationState`, `Significance`, `CausalRole` types
 - 11 unit tests in `mod.rs`: 5 round-trip fixture tests, 4 structural property tests, 2 protocol-value checks — all passing
 
 **Python `SIPValidator` class** (`reference/python/gbr_validate.py`)
 - Three-level validation for `sip-artifact` doc type: L1 JSON Schema, L2 entity-ref resolution, L3 step-ordering invariants
-- All 10 SIP conformance fixtures produce correct pass/fail results
+- All 10 CAP conformance fixtures produce correct pass/fail results
 
 **CLI tooling** (`grimoire-tooling/`)
-- `grimoire-sip-validate` binary — `--path`, `--level 1|2|3`, `--json` flags; validates any SIP artifact against all three conformance levels; all 10 fixtures correct
-- `grimoire-sip-convert` binary — `--input <gbr.json>`, `--registry`, `--output`; converts GBR v0.2.0 scene cards to SIP narrative artifacts applying all PROFILE.md §7 field mappings; `kernel`→`essential` / `satellite`→`supplementary` significance translation
+- `grimoire-cap-validate` binary — `--path`, `--level 1|2|3`, `--json` flags; validates any CAP artifact against all three conformance levels; all 10 fixtures correct
+- `grimoire-cap-convert` binary — `--input <gbr.json>`, `--registry`, `--output`; converts CAP Narrative Profile v0.2.0 scene cards to CAP narrative artifacts applying all PROFILE.md §7 field mappings; `kernel`→`essential` / `satellite`→`supplementary` significance translation
 
-**SIP example corpus** (`examples/small-story/threshold/`)
+**CAP example corpus** (`examples/small-story/threshold/`)
 - `ch01_s01.sip.json` — Status Quo + Inciting Incident (hand-authored, validated 3/3)
 - `ch01_s02.sip.json` — Revelation; embedded analepsis via document proxy, non-present father as step agent, negative→positive value charge; validated 3/3
 - `ch02_s01.sip.json` — Climax/Resolution; closed Booth dramatic irony encoded in unit interpretations, knowledge-gap final irony, positive→positive value charge; validated 3/3
 
 **Design documentation** (`docs/`)
-- `docs/decisions/ADR-007-sip-extraction.md` — architectural decision record for SIP extraction
-- `docs/GBR_FIELD_AUDIT.md` — field-level audit mapping GBR v0.2.0 fields to SIP equivalents
-- `docs/NARRATIVE_PROFILE_MAPPING.md` — detailed GBR→SIP field mapping tables
-- `docs/CORE_ONTOLOGY_DRAFT.md` — draft core ontology for domain-agnostic SIP types
+- `docs/decisions/ADR-007-sip-extraction.md` — architectural decision record for CAP extraction
+- `docs/GBR_FIELD_AUDIT.md` — field-level audit mapping CAP Narrative Profile v0.2.0 fields to CAP equivalents
+- `docs/NARRATIVE_PROFILE_MAPPING.md` — detailed CAP Narrative Profile→CAP field mapping tables
+- `docs/CORE_ONTOLOGY_DRAFT.md` — draft core ontology for domain-agnostic CAP types
 
 ---
 
@@ -108,7 +108,7 @@ The Semantic Interaction Protocol is now maintained in a separate [`sip-protocol
 
 ## [0.1.0] — 2026-03-09
 
-Initial published version of the GBR (Grimoire Book Representation) Protocol.
+Initial published version of the CAP Narrative Profile (Canonical Artifact Protocol — Narrative Profile) Protocol.
 
 ### Added
 
@@ -158,7 +158,7 @@ Initial published version of the GBR (Grimoire Book Representation) Protocol.
 - `edge-cases/` — iterative scene, dual POV split examples
 
 **Design Documentation** (`docs/`)
-- `terminology.md` — formal glossary of all GBR terms
+- `terminology.md` — formal glossary of all CAP Narrative Profile terms
 - `design-principles.md` — rationale for core protocol decisions
 - `decisions/ADR-001-scene-as-atomic-unit.md`
 - `decisions/ADR-002-canonical-summary.md`
@@ -173,4 +173,4 @@ Initial published version of the GBR (Grimoire Book Representation) Protocol.
 
 ## Pre-History
 
-Earlier work on this repository was conducted under the `grimoire-types` Rust crate and `protocol/docs/` directory. That work informed the 0.1.0 release but was not semantically versioned. The original `protocol/docs/` content (THEORY.md, ENUMS.md, ROUND_TRIP.md, ENTITY_TYPES.md, architecture/) is retained for reference pending migration.
+Earlier work on this repository was conducted under the `cap-narrative-types` Rust crate and `protocol/docs/` directory. That work informed the 0.1.0 release but was not semantically versioned. The original `protocol/docs/` content (THEORY.md, ENUMS.md, ROUND_TRIP.md, ENTITY_TYPES.md, architecture/) is retained for reference pending migration.

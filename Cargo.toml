@@ -1,7 +1,6 @@
 [workspace]
 members = [
-    "reference/rust",      # gbr-types: protocol-core (enums, entities, schemas)
+    "reference/rust",      # cap-narrative-types: narrative profile types (enums, entities, schemas)
     "grimoire-tooling",    # authoring tools (gates, training, DAG, PyO3, bins)
-    "grimoire-types",      # backward-compat facade re-exporting both crates
 ]
 resolver = "2"

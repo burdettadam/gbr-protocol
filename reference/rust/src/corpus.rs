@@ -11,8 +11,8 @@
 //! concern only (see plan decision: "corpus in gbr-protocol only").
 //!
 //! ```rust,no_run
-//! use gbr_types::corpus::{NarrativeCorpus, CrossArtifactRelationship};
-//! use gbr_types::sip::SipArtifact;
+//! use cap_narrative_types::corpus::{NarrativeCorpus, CrossArtifactRelationship};
+//! use cap_narrative_types::cap::CapArtifact;
 //!
 //! let mut corpus = NarrativeCorpus::new("threshold");
 //! // corpus.add_artifact(scene_artifact);
@@ -23,7 +23,7 @@ use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 use serde_json::Value;
 
-use crate::sip::{SipArtifact, SipEntity};
+use crate::cap::{CapArtifact, CapEntity};
 
 // ── Cross-artifact relationship ───────────────────────────────────────────────
 
@@ -240,13 +240,13 @@ pub struct NarrativeCorpus {
     /// These supplement — not replace — per-artifact entities. Resolvers should
     /// union the two sets with per-artifact data taking precedence.
     #[serde(default, skip_serializing_if = "Vec::is_empty")]
-    pub shared_entities: Vec<SipEntity>,
+    pub shared_entities: Vec<CapEntity>,
 
     /// All scene/chapter artifacts in story order.
     ///
     /// The order of entries in this list defines the canonical reading order.
     #[serde(default, skip_serializing_if = "Vec::is_empty")]
-    pub artifacts: Vec<SipArtifact>,
+    pub artifacts: Vec<CapArtifact>,
 
     /// Story-level structural metadata.
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -270,13 +270,13 @@ impl NarrativeCorpus {
     }
 
     /// Append an artifact to the corpus (maintains reading order).
-    pub fn add_artifact(&mut self, artifact: SipArtifact) {
+    pub fn add_artifact(&mut self, artifact: CapArtifact) {
         self.artifacts.push(artifact);
     }
 
     /// Declare a shared entity.  If an entity with the same `entity_id` already
     /// exists, the existing entry is replaced.
-    pub fn declare_shared_entity(&mut self, entity: SipEntity) {
+    pub fn declare_shared_entity(&mut self, entity: CapEntity) {
         if let Some(pos) = self
             .shared_entities
             .iter()
@@ -289,14 +289,14 @@ impl NarrativeCorpus {
     }
 
     /// Look up a shared entity by ID.
-    pub fn shared_entity(&self, entity_id: &str) -> Option<&SipEntity> {
+    pub fn shared_entity(&self, entity_id: &str) -> Option<&CapEntity> {
         self.shared_entities
             .iter()
             .find(|e| e.entity_id == entity_id)
     }
 
     /// Return artifacts in corpus order (reading order).
-    pub fn artifacts_in_order(&self) -> impl Iterator<Item = &SipArtifact> {
+    pub fn artifacts_in_order(&self) -> impl Iterator<Item = &CapArtifact> {
         self.artifacts.iter()
     }
 
@@ -318,8 +318,8 @@ impl NarrativeCorpus {
 mod tests {
     use super::*;
 
-    fn make_entity(id: &str, entity_type: &str) -> SipEntity {
-        SipEntity {
+    fn make_entity(id: &str, entity_type: &str) -> CapEntity {
+        CapEntity {
             entity_id: id.to_owned(),
             entity_type: entity_type.to_owned(),
             display_name: id.to_owned(),

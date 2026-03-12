@@ -1,4 +1,4 @@
-# Core Ontology Draft — Semantic Interaction Protocol v0.1.0
+# Core Ontology Draft — Canonical Artifact Protocol v0.1.0
 
 **Status:** Draft  
 **Date:** 2026-03-10  
@@ -10,7 +10,7 @@
 
 Complex artifacts — novels, codebases, architectural designs, legal documents — resist machine understanding because they mix observable facts, structural organization, and interpretive meaning into a single undifferentiated surface. Current decomposition approaches are either domain-locked (tied to one artifact type) or too abstract to validate (no round-trip guarantee).
 
-The Semantic Interaction Protocol (SIP) defines a general-purpose canonical representation that:
+The Canonical Artifact Protocol (CAP) defines a general-purpose canonical representation that:
 
 1. Separates what is observed from what is inferred
 2. Enables domain-specific richness through a profile extension mechanism
@@ -70,7 +70,7 @@ An Artifact is a complete canonical decomposition of one source work. A novel, a
 | Field | Type | Required | Section | Description |
 |-------|------|----------|---------|-------------|
 | `artifact_id` | slug | **yes** | identity | Unique identifier |
-| `protocol_version` | semver | **yes** | identity | SIP version this artifact conforms to |
+| `protocol_version` | semver | **yes** | identity | CAP version this artifact conforms to |
 | `profile` | string | **yes** | identity | Domain profile identifier (e.g., `narrative`, `software`) |
 | `profile_version` | semver | **yes** | identity | Profile version |
 | `metadata` | object | no | observables | Domain-agnostic metadata (title, author/owner, size, creation date) |
@@ -638,7 +638,7 @@ JSON. All core objects serialize as JSON objects. Field names use `snake_case`.
 
 ### 5.2 Corpus Layout
 
-A SIP corpus is a directory containing:
+A CAP corpus is a directory containing:
 
 ```
 {artifact_id}/
@@ -687,7 +687,7 @@ Adapters transform between real artifacts and the canonical representation. The 
 ingest(source_artifact, profile, config) → Artifact
 ```
 
-Transforms a raw artifact (prose text, codebase, API trace) into a canonical SIP Artifact.
+Transforms a raw artifact (prose text, codebase, API trace) into a canonical CAP Artifact.
 
 ### 7.2 Render Adapter
 
@@ -722,7 +722,7 @@ Validates an artifact at the specified conformance level.
 
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in RFC 2119.
 
-1. Every object in a SIP artifact MUST organize its fields into the three core epistemic sections (observables, structure, interpretations) where applicable.
+1. Every object in a CAP artifact MUST organize its fields into the three core epistemic sections (observables, structure, interpretations) where applicable.
 2. Observable fields MUST NOT carry the interpreted_value wrapper.
 3. Interpretation fields MAY carry the interpreted_value wrapper (`{value, confidence, source}`).
 4. All entity and unit references MUST use slugs that resolve within the parent artifact.

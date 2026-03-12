@@ -2,7 +2,7 @@
   "$schema": "https://gbr-protocol.dev/schemas/v0/registry.schema.json",
   "book_id": "threshold",
   "title": "Threshold",
-  "author": "[Example — for GBR conformance corpus]",
+  "author": "[Example — for CAP Narrative Profile conformance corpus]",
 
   "characters": {
     "nadia": {

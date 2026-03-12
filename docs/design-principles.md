@@ -1,6 +1,6 @@
-# GBR Protocol Design Principles
+# CAP Narrative Profile Protocol Design Principles
 
-This document explains the reasoning behind the core design decisions of the GBR Protocol. It is not normative — the SPECIFICATION.md governs. This document explains *why*.
+This document explains the reasoning behind the core design decisions of the CAP Narrative Profile Protocol. It is not normative — the SPECIFICATION.md governs. This document explains *why*.
 
 ---
 
@@ -30,7 +30,7 @@ This is the protocol's data integrity principle. It means:
 - The summary must say who tried to do what, what happened, and what changed.
 - Empty scene_turns arrays are never acceptable — if nothing happened, the scene should not exist.
 
-The round-trip contract ensures that GBR corpora are not lossy encodings. A scene that cannot be summarized in round-trip-compliant form is probably not a well-constructed scene. The protocol's requirements enforce craft discipline.
+The round-trip contract ensures that CAP Narrative Profile corpora are not lossy encodings. A scene that cannot be summarized in round-trip-compliant form is probably not a well-constructed scene. The protocol's requirements enforce craft discipline.
 
 See also: SPECIFICATION.md §9, ADR-002, `protocol/canonical-summary.md`.
 
@@ -51,7 +51,7 @@ The temptation is to make categorical fields free text — allow `pov: "close th
 
 The cost is flexibility. A field like `beat_type` has 15 values; some stories will need nuances not captured by those values. The answer is not to abandon the enum — it is to use the closest existing value, file a proposal to extend the enum, and contribute to the shared vocabulary.
 
-Every enum extension becomes part of the shared vocabulary for all GBR users. Free text, by contrast, produces silos: each annotator's vocabulary is incompatible with every other.
+Every enum extension becomes part of the shared vocabulary for all CAP Narrative Profile users. Free text, by contrast, produces silos: each annotator's vocabulary is incompatible with every other.
 
 See also: `enums/README.md`, ADR-003.
 
@@ -91,7 +91,7 @@ The registry also provides a place to store character properties that don't belo
 
 ## 6. Lossless Semantic Transport
 
-**GBR documents must preserve all narrative meaning through serialization and deserialization.**
+**CAP Narrative Profile documents must preserve all narrative meaning through serialization and deserialization.**
 
 JSON-LD or Profile URIs are not required, but the protocol commits to a consistent JSON encoding that round-trips through any standard JSON parser without loss. Required fields are required precisely because their absence makes the document lose information.
 
@@ -103,7 +103,7 @@ The `canonical_summary.delta` field is perhaps the most important instance of th
 
 **Every field has a theoretical grounding drawn from narratology, literary theory, or cognitive science.**
 
-GBR is not an ad-hoc data format. Its vocabulary draws from:
+CAP Narrative Profile is not an ad-hoc data format. Its vocabulary draws from:
 - Genette (temporal fields, diegetic levels, focalization)
 - Booth (narrator reliability, implied author)
 - Cohn (consciousness modes)
@@ -124,9 +124,9 @@ This theoretical grounding means:
 
 ---
 
-## 8. GBR Does Not Model the Text
+## 8. CAP Narrative Profile Does Not Model the Text
 
-**GBR encodes narrative structure, not the text itself.**
+**CAP Narrative Profile encodes narrative structure, not the text itself.**
 
 The protocol stores *what happens* (canonical summary), *how it is told* (voice, consciousness mode, focalization), and *what it means* (polarity, stakes, motifs). It does not store the prose text.
 
@@ -135,4 +135,4 @@ This is a deliberate scope decision:
 - The protocol's purpose is structural analysis and round-trip verification
 - Text storage is the problem of document management systems
 
-A GBR corpus can be linked to source text through `source_citation` annotations in the analysis mode, but raw text is never a required or stored field.
+A CAP Narrative Profile corpus can be linked to source text through `source_citation` annotations in the analysis mode, but raw text is never a required or stored field.

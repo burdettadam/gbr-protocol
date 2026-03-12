@@ -1,21 +1,21 @@
-# GBR Protocol Specification
+# CAP Narrative Profile Protocol Specification
 
 **Version:** 0.2.0  
 **Status:** Draft (Legacy — see note below)  
 **Date:** 2026-03-10
 
-> **Architecture note (2026-03-11):** GBR v0.2.0 is now the *migration source* for the current generation of tooling. New work targets the **Semantic Interaction Protocol (SIP)** core and the **GBR Narrative Profile** built on top of it:
+> **Architecture note (2026-03-11):** CAP Narrative Profile v0.2.0 is now the *migration source* for the current generation of tooling. New work targets the **Canonical Artifact Protocol (CAP)** core and the **CAP Narrative Profile Narrative Profile** built on top of it:
 >
-> - **SIP core** — [`sip-protocol` repo](https://github.com/adamburdett/sip-protocol): domain-agnostic specification, 12 JSON schemas, conformance suite, `sip-types` Rust crate
-> - **GBR Narrative Profile** — [`PROFILE.md`](PROFILE.md): narrative-specific types, fingerprint grammar, GBR v0.2.0 → SIP migration guide, validation rules
+> - **CAP core** — [`cap-protocol` repo](https://github.com/adamburdett/cap-protocol): domain-agnostic specification, 12 JSON schemas, conformance suite, `cap-types` Rust crate
+> - **CAP Narrative Profile Narrative Profile** — [`PROFILE.md`](PROFILE.md): narrative-specific types, fingerprint grammar, CAP Narrative Profile v0.2.0 → CAP migration guide, validation rules
 >
-> The `grimoire-sip-convert` CLI converts GBR v0.2.0 scene cards into SIP narrative artifacts. This document remains normative for the v0.2.0 source format only.
+> The `grimoire-cap-convert` CLI converts CAP Narrative Profile v0.2.0 scene cards into CAP narrative artifacts. This document remains normative for the v0.2.0 source format only.
 
 ---
 
 ## Abstract
 
-The Grimoire Book Representation (GBR) Protocol is a formal standard for representing narrative fiction in a structured, machine-readable format. GBR defines document types, data schemas, enumeration vocabularies, and validation rules that enable bidirectional conversion between structured scene specifications and prose — the *lossless round-trip* guarantee.
+The Canonical Artifact Protocol — Narrative Profile Protocol is a formal standard for representing narrative fiction in a structured, machine-readable format. CAP Narrative Profile defines document types, data schemas, enumeration vocabularies, and validation rules that enable bidirectional conversion between structured scene specifications and prose — the *lossless round-trip* guarantee.
 
 ---
 
@@ -24,7 +24,7 @@ The Grimoire Book Representation (GBR) Protocol is a formal standard for represe
 1. [Overview](#1-overview)
 2. [Terminology](#2-terminology)
 3. [Core Design Principles](#3-core-design-principles)
-4. [GBR Document Structure](#4-gbr-document-structure)
+4. [CAP Narrative Profile Document Structure](#4-gbr-document-structure)
 5. [Entity Registry](#5-entity-registry)
 6. [Story Architecture](#6-story-architecture)
 7. [Scene Cards](#7-scene-cards)
@@ -42,7 +42,7 @@ The Grimoire Book Representation (GBR) Protocol is a formal standard for represe
 
 ### 1.1 Purpose
 
-The GBR Protocol defines a machine-readable representation of narrative fiction that supports:
+The CAP Narrative Profile Protocol defines a machine-readable representation of narrative fiction that supports:
 
 - Structured annotation of literary texts
 - Automated validation of story-structure consistency
@@ -57,7 +57,7 @@ The protocol's central guarantee is the **lossless round-trip**:
 parse(render(semantic_structure)) == semantic_structure
 ```
 
-Any prose passage generated from a GBR scene specification MUST be decomposable back into that exact specification. This is achieved through three mechanisms:
+Any prose passage generated from a CAP Narrative Profile scene specification MUST be decomposable back into that exact specification. This is achieved through three mechanisms:
 
 1. **Typed enumerations** — categorical fields use closed vocabularies; free text is not permitted where structure is possible
 2. **Canonical summaries** — deterministic serialization bridges scene semantics and prose
@@ -65,7 +65,7 @@ Any prose passage generated from a GBR scene specification MUST be decomposable 
 
 ### 1.3 Scope
 
-This specification defines the GBR data model, schemas, validation rules, and conformance requirements. It does not define:
+This specification defines the CAP Narrative Profile data model, schemas, validation rules, and conformance requirements. It does not define:
 
 - Prose generation algorithms or LLM fine-tuning methodology
 - Author-facing workflow tools
@@ -80,7 +80,7 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "S
 ## 2. Terminology
 
 **Book ID (`book_id`)**  
-A unique snake_case identifier that namespaces all GBR documents for a single book. Pattern: `^[a-z0-9_]+$`.
+A unique snake_case identifier that namespaces all CAP Narrative Profile documents for a single book. Pattern: `^[a-z0-9_]+$`.
 
 **Canonical Summary**  
 A deterministic, grammar-fixed string that serializes the semantic content of a Scene Card. Defined in §9.
@@ -92,7 +92,7 @@ A document describing one character's internal and relational state at the entry
 A named, declared object in an Entity Registry: a Character, Setting, Relationship, or Want entry.
 
 **Entity Registry**  
-A per-book controlled vocabulary declaring all named entities. Every entity reference in a GBR document MUST resolve against the Entity Registry. Defined in §5.
+A per-book controlled vocabulary declaring all named entities. Every entity reference in a CAP Narrative Profile document MUST resolve against the Entity Registry. Defined in §5.
 
 **Enumeration (Enum)**  
 A closed vocabulary of typed string values. Defined in `enums/`. Fields typed as enums MUST only accept values from the declared vocabulary.
@@ -103,11 +103,11 @@ The chronological sequence of story events as they occur in the story world (wha
 **Focalizer**  
 The character through whose perception a scene is filtered. Referenced by slug.
 
-**GBR Corpus**  
-A complete set of GBR documents (registry, story architecture, scene cards) for a single book.
+**CAP Narrative Profile Corpus**  
+A complete set of CAP Narrative Profile documents (registry, story architecture, scene cards) for a single book.
 
 **Lossless Round-Trip**  
-The property that `parse(render(x)) == x` for all valid GBR semantic structures. See §9.4.
+The property that `parse(render(x)) == x` for all valid CAP Narrative Profile semantic structures. See §9.4.
 
 **Scene Card**  
 A document specifying everything needed to generate or extract a prose scene. The atomic unit of the protocol. Defined in §7.
@@ -130,7 +130,7 @@ A per-book map from want slugs to human-readable labels used in canonical summar
 
 ### 3.1 Fabula/Syuzhet Separation
 
-The GBR Protocol maintains a strict separation between *fabula* (what happens) and *syuzhet* (how it is told).
+The CAP Narrative Profile Protocol maintains a strict separation between *fabula* (what happens) and *syuzhet* (how it is told).
 
 - Structured fields capture the fabula.
 - The prose field holds the syuzhet.
@@ -140,7 +140,7 @@ No fabula information SHALL be stored only in prose fields. Every structurally s
 
 ### 3.2 Typed Enumerations Over Free Text
 
-Wherever a categorical value can be defined, GBR MUST use a typed enumeration rather than free text. Rationale: free-text fields cannot be validated, round-tripped deterministically, or compared programmatically.
+Wherever a categorical value can be defined, CAP Narrative Profile MUST use a typed enumeration rather than free text. Rationale: free-text fields cannot be validated, round-tripped deterministically, or compared programmatically.
 
 Free-text fields (strings) are permitted only for:
 - Proper names (`name`, `title`, `author`)
@@ -149,7 +149,7 @@ Free-text fields (strings) are permitted only for:
 
 ### 3.3 Registry-First Referential Integrity
 
-Every entity reference in a GBR document MUST use a slug that resolves in the Entity Registry. Anonymous entities — entities described inline without a registry declaration — are NOT permitted. This ensures every reference is unambiguous and machine-resolvable.
+Every entity reference in a CAP Narrative Profile document MUST use a slug that resolves in the Entity Registry. Anonymous entities — entities described inline without a registry declaration — are NOT permitted. This ensures every reference is unambiguous and machine-resolvable.
 
 ### 3.4 Scene as Atomic Unit
 
@@ -157,11 +157,11 @@ The Scene Card is the atomic unit of the protocol. Scenes are the level at which
 
 ### 3.5 Deterministic Canonical Summaries
 
-The Canonical Summary is not a free-text description — it is a fixed-grammar string produced by a deterministic render function. A summary that cannot be produced by `render_summary()` is not a valid GBR canonical summary.
+The Canonical Summary is not a free-text description — it is a fixed-grammar string produced by a deterministic render function. A summary that cannot be produced by `render_summary()` is not a valid CAP Narrative Profile canonical summary.
 
 ### 3.6 Observable / Structure / Interpretation Separation
 
-Every GBR document type separates its fields into up to four epistemic sections:
+Every CAP Narrative Profile document type separates its fields into up to four epistemic sections:
 
 | Section | Definition | Metadata |
 |---------|-----------|----------|
@@ -174,11 +174,11 @@ Observable fields MUST NOT use the `interpreted_value` wrapper. Interpretation f
 
 ---
 
-## 4. GBR Document Structure
+## 4. CAP Narrative Profile Document Structure
 
 ### 4.1 Document Types
 
-A GBR Corpus for a single book consists of four document types:
+A CAP Narrative Profile Corpus for a single book consists of four document types:
 
 | Document Type | Cardinality | Description |
 |---|---|---|
@@ -191,7 +191,7 @@ Character Scene States are embedded within Scene Cards rather than stored as sep
 
 ### 4.2 Corpus File Layout
 
-A GBR-compliant book corpus MUST follow this directory structure:
+A CAP Narrative Profile-compliant book corpus MUST follow this directory structure:
 
 ```
 {book_id}/
@@ -205,7 +205,7 @@ File names for scene cards MUST follow the pattern `{book_id}_ch{N:02}_s{N:02}.j
 
 ### 4.3 Document Identification
 
-Every GBR document MUST include a `book_id` field that matches the corpus directory name and the `book_id` in the Entity Registry for that corpus.
+Every CAP Narrative Profile document MUST include a `book_id` field that matches the corpus directory name and the `book_id` in the Entity Registry for that corpus.
 
 Scene Cards MUST include a `scene_id` field that is unique within the corpus. The RECOMMENDED format is `{book_id}_ch{N:02}_s{N:02}`.
 
@@ -446,7 +446,7 @@ All fields in this section MAY use the `interpreted_value` wrapper.
 
 ### 7.1 Purpose
 
-A Scene Card is the atomic unit of the GBR Protocol. It specifies everything needed to generate or extract a prose passage. Every declared scene MUST correspond to exactly one Scene Card.
+A Scene Card is the atomic unit of the CAP Narrative Profile Protocol. It specifies everything needed to generate or extract a prose passage. Every declared scene MUST correspond to exactly one Scene Card.
 
 Scene Cards use the four-section epistemic structure (`observables`, `structure`, `interpretations`, `craft_targets`).
 
@@ -710,7 +710,7 @@ render_summary(semantic_dict, registry) → string
 parse_summary(string, registry) → semantic_dict
 ```
 
-The following invariant MUST hold for all valid GBR semantic structures:
+The following invariant MUST hold for all valid CAP Narrative Profile semantic structures:
 
 ```
 parse_summary(render_summary(d, r), r) == d
@@ -757,7 +757,7 @@ A Canonical Summary is valid if and only if:
 
 ### 10.1 Schema Validation
 
-All GBR documents MUST pass JSON Schema validation against the corresponding schema in `schemas/`:
+All CAP Narrative Profile documents MUST pass JSON Schema validation against the corresponding schema in `schemas/`:
 
 | Document Type | Schema File |
 |---|---|
@@ -812,7 +812,7 @@ The following constraints MUST be satisfied:
 
 ### 11.1 Primary Format: JSON
 
-GBR documents MUST be serialized as [JSON](https://www.json.org/) (ECMA-404 / RFC 8259) unless an alternative format is explicitly negotiated.
+CAP Narrative Profile documents MUST be serialized as [JSON](https://www.json.org/) (ECMA-404 / RFC 8259) unless an alternative format is explicitly negotiated.
 
 Rules for JSON serialization:
 
@@ -823,11 +823,11 @@ Rules for JSON serialization:
 
 ### 11.2 $schema Field
 
-GBR documents SHOULD include a `$schema` field referencing the applicable JSON Schema URI:
+CAP Narrative Profile documents SHOULD include a `$schema` field referencing the applicable JSON Schema URI:
 
 ```json
 {
-  "$schema": "https://gbr-protocol.dev/schemas/registry.schema.json",
+  "$schema": "https://cap-narrative-profile.dev/schemas/registry.schema.json",
   "book_id": "..."
 }
 ```
@@ -842,7 +842,7 @@ Implementations MAY support additional serialization formats (YAML, TOML, Messag
 
 ### 12.1 Conformance Levels
 
-GBR defines three conformance levels. Each level is cumulative.
+CAP Narrative Profile defines three conformance levels. Each level is cumulative.
 
 #### Level 1 — Schema Conformance
 
@@ -870,7 +870,7 @@ A document is Round-Trip Conformant if:
 
 ### 12.2 Conformance Claims
 
-Implementations claiming GBR conformance MUST specify which level they support and MUST pass the corresponding tests in `conformance/`.
+Implementations claiming CAP Narrative Profile conformance MUST specify which level they support and MUST pass the corresponding tests in `conformance/`.
 
 ### 12.3 Conformance Test Suite
 
@@ -883,7 +883,7 @@ The `conformance/` directory contains:
 
 ## 13. Versioning
 
-GBR follows [Semantic Versioning 2.0.0](https://semver.org/).
+CAP Narrative Profile follows [Semantic Versioning 2.0.0](https://semver.org/).
 
 | Change Type | Version Component | Example Trigger |
 |---|---|---|
@@ -891,9 +891,9 @@ GBR follows [Semantic Versioning 2.0.0](https://semver.org/).
 | New optional field or enum value | Minor | Adding a new optional scene card field |
 | Clarification | Patch | Fixing a description; correcting a typo in a rule |
 
-The current version is **GBR 0.1.0**. See [VERSIONING.md](VERSIONING.md) for the full versioning policy and [CHANGELOG.md](CHANGELOG.md) for the version history.
+The current version is **CAP Narrative Profile 0.1.0**. See [VERSIONING.md](VERSIONING.md) for the full versioning policy and [CHANGELOG.md](CHANGELOG.md) for the version history.
 
-Documents MAY include a `gbr_version` field indicating the GBR specification version they were authored against.
+Documents MAY include a `gbr_version` field indicating the CAP Narrative Profile specification version they were authored against.
 
 ---
 
@@ -901,7 +901,7 @@ Documents MAY include a `gbr_version` field indicating the GBR specification ver
 
 ### 14.1 No Executable Content
 
-GBR documents are data — they contain no executable code, scripts, or evaluation instructions. Implementations MUST NOT execute any content from GBR documents.
+CAP Narrative Profile documents are data — they contain no executable code, scripts, or evaluation instructions. Implementations MUST NOT execute any content from CAP Narrative Profile documents.
 
 ### 14.2 Entity Reference Validation
 
@@ -909,11 +909,11 @@ Implementations MUST validate entity references against the registry before reso
 
 ### 14.3 Input Size
 
-GBR documents MAY be arbitrarily large (a complete novel corpus may include hundreds of scene cards). Implementations SHOULD enforce configurable size limits on individual documents and SHOULD stream-parse large corpora rather than loading them entirely into memory.
+CAP Narrative Profile documents MAY be arbitrarily large (a complete novel corpus may include hundreds of scene cards). Implementations SHOULD enforce configurable size limits on individual documents and SHOULD stream-parse large corpora rather than loading them entirely into memory.
 
 ### 14.4 Personally Identifiable Information
 
-GBR documents may contain character names, biographical details, and psychological profiles that correspond to real people in autofiction or biographical narratives. Authors and systems handling such documents are responsible for compliance with applicable data protection regulations. The GBR Protocol does not mandate any specific PII handling; it notes the risk exists.
+CAP Narrative Profile documents may contain character names, biographical details, and psychological profiles that correspond to real people in autofiction or biographical narratives. Authors and systems handling such documents are responsible for compliance with applicable data protection regulations. The CAP Narrative Profile Protocol does not mandate any specific PII handling; it notes the risk exists.
 
 ### 14.5 Schema Reference Security
 
@@ -925,7 +925,7 @@ If implementations fetch external `$schema` URIs, they MUST use HTTPS and SHOULD
 
 The canonical reference implementation is:
 
-- **Rust:** `reference/rust/` — the `gbr-types` crate provides typed structs, enum definitions, schema generation, and validation binaries
+- **Rust:** `reference/rust/` — the `cap-narrative-types` crate provides typed structs, enum definitions, schema generation, and validation binaries
 - **Python:** `reference/python/validate.py` — schema and referential conformance validation
 
 Reference implementations are informative. The specification (this document) is the authoritative source; divergence between this document and a reference implementation MUST be resolved in favor of this document.
@@ -941,4 +941,4 @@ Reference implementations are informative. The specification (this document) is 
 
 ---
 
-*GBR Protocol Specification — Version 0.1.0 — 2026-03-09*
+*CAP Narrative Profile Protocol Specification — Version 0.1.0 — 2026-03-09*

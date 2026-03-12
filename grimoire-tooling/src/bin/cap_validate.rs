@@ -1,10 +1,10 @@
-/// `grimoire-sip-validate` — three-level conformance checker for SIP artifacts.
+/// `grimoire-cap-validate` — three-level conformance checker for SIP artifacts.
 ///
 /// Usage:
-///   grimoire-sip-validate --path <file.json> [--level {1|2|3}] [--json]
+///   grimoire-cap-validate --path <file.json> [--level {1|2|3}] [--json]
 ///
 /// Conformance levels:
-///   1  Structural: JSON is well-formed and matches the SipArtifact type schema;
+///   1  Structural: JSON is well-formed and matches the CapArtifact type schema;
 ///      protocol field equals "semantic-interaction-protocol".
 ///   2  Referential: every entity_ref in units.observables.participants,
 ///      units.participant_states, and relationships resolves to a declared
@@ -20,7 +20,7 @@
 use std::collections::HashSet;
 use std::path::PathBuf;
 
-use gbr_types::sip::artifact::SipArtifact;
+use cap_narrative_types::cap::artifact::CapArtifact;
 
 // ── Diagnostics ──────────────────────────────────────────────────────────────
 
@@ -67,7 +67,7 @@ fn parse_args() -> Args {
             "--json" => json_output = true,
             "--help" | "-h" => {
                 eprintln!(
-                    "Usage: grimoire-sip-validate --path <file.json> [--level {{1|2|3}}] [--json]"
+                    "Usage: grimoire-cap-validate --path <file.json> [--level {{1|2|3}}] [--json]"
                 );
                 std::process::exit(0);
             }
@@ -89,12 +89,12 @@ fn parse_args() -> Args {
 
 // ── Validation ────────────────────────────────────────────────────────────────
 
-fn run_validation(artifact: &SipArtifact, level: u8) -> Vec<Diagnostic> {
+fn run_validation(artifact: &CapArtifact, level: u8) -> Vec<Diagnostic> {
     let mut diags: Vec<Diagnostic> = Vec::new();
 
     // ── Level 1 ──────────────────────────────────────────────────────────────
     // Structural validity is already guaranteed by successful deserialization
-    // to SipArtifact.  Only the protocol field value is checked here.
+    // to CapArtifact.  Only the protocol field value is checked here.
     if !artifact.is_valid_protocol() {
         diags.push(Diagnostic {
             level: 1,
@@ -270,7 +270,7 @@ fn main() {
     });
 
     // Level 1: JSON parse + structural deserialization
-    let parse_result: serde_json::Result<SipArtifact> = serde_json::from_str(&content);
+    let parse_result: serde_json::Result<CapArtifact> = serde_json::from_str(&content);
 
     let (artifact, l1_parse_ok) = match parse_result {
         Ok(a) => (Some(a), true),

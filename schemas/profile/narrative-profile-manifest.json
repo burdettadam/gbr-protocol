@@ -1,7 +1,7 @@
 {
   "profile": "narrative",
   "profile_version": "0.2.0",
-  "description": "Manifest of all JSON Schema files for the GBR Narrative Profile overlay layer.",
+  "description": "Manifest of all JSON Schema files for the CAP Narrative Profile Narrative Profile overlay layer.",
   "schemas": {
     "unit.observables.context": "narrative-context.schema.json",
     "unit.structure.grouping": "narrative-grouping.schema.json",

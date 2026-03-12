@@ -1,8 +1,8 @@
-# GBR Protocol Versioning Policy
+# CAP Narrative Profile Protocol Versioning Policy
 
-GBR uses [Semantic Versioning 2.0.0](https://semver.org/). The version string is `MAJOR.MINOR.PATCH`.
+CAP Narrative Profile uses [Semantic Versioning 2.0.0](https://semver.org/). The version string is `MAJOR.MINOR.PATCH`.
 
-**Current version: GBR 0.2.0 / SIP 0.1.0**
+**Current version: CAP Narrative Profile 0.2.0 / CAP 0.1.0**
 
 ---
 
@@ -10,7 +10,7 @@ GBR uses [Semantic Versioning 2.0.0](https://semver.org/). The version string is
 
 ### MAJOR — Breaking Changes
 
-A major version increment signals that existing GBR documents may not be valid against the new version without migration.
+A major version increment signals that existing CAP Narrative Profile documents may not be valid against the new version without migration.
 
 Breaking changes include:
 - Removing a required field from any schema
@@ -19,7 +19,7 @@ Breaking changes include:
 - Changing the semantics of a required field in an incompatible way
 - Restructuring the Canonical Summary format
 
-The `$schema` URI includes the major version: `https://gbr-protocol.dev/schemas/v1/scene-card.schema.json`. Documents pinned to an older major version remain valid against that version's schemas.
+The `$schema` URI includes the major version: `https://cap-narrative-profile.dev/schemas/v1/scene-card.schema.json`. Documents pinned to an older major version remain valid against that version's schemas.
 
 ### MINOR — Additive Changes
 
@@ -56,16 +56,16 @@ The 1.0.0 release will signal that the protocol is stable and that the full SemV
 
 ## Version in Documents
 
-GBR documents reference the protocol version via the `$schema` URI. The URI format is:
+CAP Narrative Profile documents reference the protocol version via the `$schema` URI. The URI format is:
 
 ```
-https://gbr-protocol.dev/schemas/v{MAJOR}/{document-type}.schema.json
+https://cap-narrative-profile.dev/schemas/v{MAJOR}/{document-type}.schema.json
 ```
 
 During 0.x development, the `$schema` URI uses `v0`:
 
 ```
-https://gbr-protocol.dev/schemas/v0/scene-card.schema.json
+https://cap-narrative-profile.dev/schemas/v0/scene-card.schema.json
 ```
 
 ---

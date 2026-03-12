@@ -2,13 +2,13 @@
 
 **Status:** Accepted  
 **Date:** 2026-03-10  
-**Authors:** GBR Protocol Working Group
+**Authors:** CAP Narrative Profile Protocol Working Group
 
 ---
 
 ## Context
 
-GBR v0.1.0 documents are flat: a Scene Card places `participants` (an observable fact), `beat` (a structural position), `narrator_reliability` (an interpretive judgment), and `target_tension` (a prescriptive craft target) as sibling fields in the same JSON object. The field group names in the spec ("Identity," "Story Structure," "Narrative Voice," "Semantics") hint at a classification, but these groups are purely documentary — the schema does not enforce them, and they do not separate observable facts from inferred meaning.
+CAP Narrative Profile v0.1.0 documents are flat: a Scene Card places `participants` (an observable fact), `beat` (a structural position), `narrator_reliability` (an interpretive judgment), and `target_tension` (a prescriptive craft target) as sibling fields in the same JSON object. The field group names in the spec ("Identity," "Story Structure," "Narrative Voice," "Semantics") hint at a classification, but these groups are purely documentary — the schema does not enforce them, and they do not separate observable facts from inferred meaning.
 
 This creates three concrete problems:
 
@@ -24,7 +24,7 @@ Character Scene State has the same problem: `character` (an identity fact) sits 
 
 ## Decision
 
-**Every GBR document type uses up to four formally separated top-level sections:**
+**Every CAP Narrative Profile document type uses up to four formally separated top-level sections:**
 
 | Section | Definition | Confidence | Example |
 |---------|-----------|------------|---------|

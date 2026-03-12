@@ -1,12 +1,12 @@
 {
-  "protocol": "semantic-interaction-protocol",
+  "protocol": "canonical-artifact-protocol",
   "protocol_version": "0.1.0",
   "profile": "narrative",
   "profile_version": "0.1.0",
   "artifact_id": "threshold_ch01_s01",
   "metadata": {
     "scene_id": "threshold_ch01_s01",
-    "source_format": "GBR v0.2.0",
+    "source_format": "CAP Narrative Profile v0.2.0",
     "book_id": "threshold",
     "chapter": 1
   },

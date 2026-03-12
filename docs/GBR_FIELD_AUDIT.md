@@ -1,8 +1,8 @@
-# GBR Field Audit — Observable / Structural / Interpretive × Core / Narrative Profile
+# CAP Narrative Profile Field Audit — Observable / Structural / Interpretive × Core / Narrative Profile
 
-**Status:** Complete — all fields classified; all buckets implemented in SIP schemas, Rust types, converter, and PROFILE.md
+**Status:** Complete — all fields classified; all buckets implemented in CAP schemas, Rust types, converter, and PROFILE.md
 **Date:** 2026-03-11  
-**Purpose:** Classify every current GBR v0.2.0 field by epistemic layer and destination (core protocol vs. narrative profile) to prepare for the extraction of a domain-agnostic `semantic-interaction-protocol`.
+**Purpose:** Classify every current CAP Narrative Profile v0.2.0 field by epistemic layer and destination (core protocol vs. narrative profile) to prepare for the extraction of a domain-agnostic `canonical-artifact-protocol`.
 
 ## Legend
 
@@ -270,7 +270,7 @@
 
 | # | Field Path | Type | Layer | Dest | Core Equivalent | Notes |
 |---|-----------|------|-------|------|-----------------|-------|
-| 168 | `craft_targets.target_tension` | int 1–5 | C | profile | `unit.craft_targets.tension` | Prescriptive; narrative-specific. GBR integer → profile float 0–1 |
+| 168 | `craft_targets.target_tension` | int 1–5 | C | profile | `unit.craft_targets.tension` | Prescriptive; narrative-specific. CAP Narrative Profile integer → profile float 0–1 |
 | 169 | `craft_targets.target_pacing` | enum(5) | C | profile | `unit.craft_targets.pacing` | — |
 | 170 | `craft_targets.tone` | enum(16) | C | profile | `unit.craft_targets.tone` | Was incorrectly mapped to `unit.interpretations.tone`; corrected 2026-03-11 |
 
@@ -411,7 +411,7 @@
 | Cross-Cutting | 9 | 9 | 0 | 0 |
 | **Total** | **251** | **29** | **196** | **26** |
 
-**Key finding:** Only ~12% of current GBR fields belong in the core. The vast majority (~78%) are narrative profile. ~10% need splitting — these are where the concept is domain-agnostic but the enum values or grammar are narrative-specific.
+**Key finding:** Only ~12% of current CAP Narrative Profile fields belong in the core. The vast majority (~78%) are narrative profile. ~10% need splitting — these are where the concept is domain-agnostic but the enum values or grammar are narrative-specific.
 
 ---
 
@@ -540,7 +540,7 @@ In the new architecture, there is no single "story architecture" document. The a
 
 The fourth epistemic section (`craft_targets`) — prescriptive authorial intent — does not belong in the core's three-section model (observables/structure/interpretations). The core documents that profiles MAY define additional epistemic sections beyond the three core sections, and `craft_targets` is the narrative profile's example of this.
 
-**Implementation status:** `craft_targets` is now a registered fourth section on `unit.schema.json` and `SipUnit.craft_targets` (Rust). The narrative PROFILE.md §4.1 defines three fields: `tension`, `pacing`, `tone`. The converter (`grimoire-sip-convert`) emits all three. The fingerprint grammar uses `TONE=<tone>` from `unit.craft_targets.tone`.
+**Implementation status:** `craft_targets` is now a registered fourth section on `unit.schema.json` and `SipUnit.craft_targets` (Rust). The narrative PROFILE.md §4.1 defines three fields: `tension`, `pacing`, `tone`. The converter (`grimoire-cap-convert`) emits all three. The fingerprint grammar uses `TONE=<tone>` from `unit.craft_targets.tone`.
 
 ### 8.5 Voice signature and voice embedding are production-layer
 

@@ -6,8 +6,8 @@
 use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 
-use gbr_types::entities::{Character, Relationship};
-use gbr_types::enums::Genre;
+use cap_narrative_types::entities::{Character, Relationship};
+use cap_narrative_types::enums::Genre;
 
 // ── Engine output types ───────────────────────────────────────────────────────
 
@@ -58,7 +58,7 @@ pub struct IncitingIncident {
 pub struct GeneratedBeat {
     pub label: String,
     pub description: Option<String>,
-    pub act: Option<gbr_types::enums::Act>,
+    pub act: Option<cap_narrative_types::enums::Act>,
     pub order: u32,
 }
 

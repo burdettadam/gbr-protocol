@@ -112,28 +112,28 @@ macro_rules! py_enum {
     };
 }
 
-py_enum!(PyArchetype, gbr_types::enums::Archetype, Hero, Mentor, Trickster, Lover, Caregiver, Sage, Innocent, Rebel, Ruler, Creator, Explorer, Magician, Jester, Outlaw);
-py_enum!(PyWound, gbr_types::enums::Wound, Abandonment, Betrayal, GuiltAndFailure, TraumaAndAbuse, Shame, Grief, TrustViolation, Powerlessness, IdentityRejection, Injustice, Neglect, SurvivorGuilt, Displacement);
-py_enum!(PyAlignment, gbr_types::enums::Alignment, LawfulGood, NeutralGood, ChaoticGood, LawfulNeutral, TrueNeutral, ChaoticNeutral, LawfulEvil, NeutralEvil, ChaoticEvil);
-py_enum!(PyRole, gbr_types::enums::Role, Protagonist, Deuteragonist, Antagonist, LoveInterest, Mentor, Confidant, Foil, Trickster, Guardian, Herald, Shapeshifter, Contagonist, WalkOn);
-py_enum!(PyDriveModel, gbr_types::enums::DriveModel, Wound, Desire, Duty, Perception, Existential);
-py_enum!(PyGateStatus, gbr_types::enums::GateStatus, Green, Yellow, Red, Locked, Unknown);
-py_enum!(PySubPhaseStatus, gbr_types::enums::SubPhaseStatus, Locked, Ready, InProgress, Complete);
-py_enum!(PyPhaseStatus, gbr_types::enums::PhaseStatus, Green, Yellow, Red, Unknown);
-py_enum!(PyRevisionFlag, gbr_types::enums::RevisionFlag, TellingNotShowing, VoiceContractFail, PivotUnclear, SubtextMissing, PacingDrag, ContinuityBreak);
+py_enum!(PyArchetype, cap_narrative_types::enums::Archetype, Hero, Mentor, Trickster, Lover, Caregiver, Sage, Innocent, Rebel, Ruler, Creator, Explorer, Magician, Jester, Outlaw);
+py_enum!(PyWound, cap_narrative_types::enums::Wound, Abandonment, Betrayal, GuiltAndFailure, TraumaAndAbuse, Shame, Grief, TrustViolation, Powerlessness, IdentityRejection, Injustice, Neglect, SurvivorGuilt, Displacement);
+py_enum!(PyAlignment, cap_narrative_types::enums::Alignment, LawfulGood, NeutralGood, ChaoticGood, LawfulNeutral, TrueNeutral, ChaoticNeutral, LawfulEvil, NeutralEvil, ChaoticEvil);
+py_enum!(PyRole, cap_narrative_types::enums::Role, Protagonist, Deuteragonist, Antagonist, LoveInterest, Mentor, Confidant, Foil, Trickster, Guardian, Herald, Shapeshifter, Contagonist, WalkOn);
+py_enum!(PyDriveModel, cap_narrative_types::enums::DriveModel, Wound, Desire, Duty, Perception, Existential);
+py_enum!(PyGateStatus, cap_narrative_types::enums::GateStatus, Green, Yellow, Red, Locked, Unknown);
+py_enum!(PySubPhaseStatus, cap_narrative_types::enums::SubPhaseStatus, Locked, Ready, InProgress, Complete);
+py_enum!(PyPhaseStatus, cap_narrative_types::enums::PhaseStatus, Green, Yellow, Red, Unknown);
+py_enum!(PyRevisionFlag, cap_narrative_types::enums::RevisionFlag, TellingNotShowing, VoiceContractFail, PivotUnclear, SubtextMissing, PacingDrag, ContinuityBreak);
 
 // ── EntityRef ─────────────────────────────────────────────────────────────────
 
 #[pyclass]
 pub struct PyEntityRef {
-    inner: gbr_types::tags::EntityRef,
+    inner: cap_narrative_types::tags::EntityRef,
 }
 
 #[pymethods]
 impl PyEntityRef {
     #[new]
     fn new(slug: &str) -> Self {
-        Self { inner: gbr_types::tags::EntityRef::new(slug) }
+        Self { inner: cap_narrative_types::tags::EntityRef::new(slug) }
     }
     #[getter]
     fn slug(&self) -> &str { &self.inner.slug }
@@ -145,7 +145,7 @@ impl PyEntityRef {
 
 #[pyclass]
 pub struct PyAnnotation {
-    inner: gbr_types::tags::Annotation,
+    inner: cap_narrative_types::tags::Annotation,
 }
 
 #[pymethods]
@@ -162,15 +162,15 @@ impl PyAnnotation {
 // ── Character ─────────────────────────────────────────────────────────────────
 
 #[pyclass]
-pub struct PyCharacter { inner: gbr_types::entities::Character }
-json_methods!(PyCharacter, gbr_types::entities::Character);
+pub struct PyCharacter { inner: cap_narrative_types::entities::Character }
+json_methods!(PyCharacter, cap_narrative_types::entities::Character);
 
 #[pymethods]
 impl PyCharacter {
     #[new]
     fn new(id: &str, name: &str) -> Self {
         Self {
-            inner: gbr_types::entities::Character {
+            inner: cap_narrative_types::entities::Character {
                 id: id.to_owned(),
                 name: name.to_owned(),
                 slot: None,
@@ -196,15 +196,15 @@ impl PyCharacter {
 // ── Scene ─────────────────────────────────────────────────────────────────────
 
 #[pyclass]
-pub struct PyScene { inner: gbr_types::entities::Scene }
-json_methods!(PyScene, gbr_types::entities::Scene);
+pub struct PyScene { inner: cap_narrative_types::entities::Scene }
+json_methods!(PyScene, cap_narrative_types::entities::Scene);
 
 #[pymethods]
 impl PyScene {
     #[new]
     fn new(id: &str) -> Self {
         Self {
-            inner: gbr_types::entities::Scene {
+            inner: cap_narrative_types::entities::Scene {
                 id: id.to_owned(),
                 working_title: None,
                 story_position: None,
@@ -248,15 +248,15 @@ impl PyScene {
 // ── VoiceSignature ────────────────────────────────────────────────────────────
 
 #[pyclass]
-pub struct PyVoiceSignature { inner: gbr_types::voice::VoiceSignature }
-json_methods!(PyVoiceSignature, gbr_types::voice::VoiceSignature);
+pub struct PyVoiceSignature { inner: cap_narrative_types::voice::VoiceSignature }
+json_methods!(PyVoiceSignature, cap_narrative_types::voice::VoiceSignature);
 
 #[pymethods]
 impl PyVoiceSignature {
     #[new]
     fn new(character_id: &str) -> Self {
         Self {
-            inner: gbr_types::voice::VoiceSignature {
+            inner: cap_narrative_types::voice::VoiceSignature {
                 character_id: character_id.to_owned(),
                 ..Default::default()
             },
@@ -267,14 +267,14 @@ impl PyVoiceSignature {
 // ── VoiceContract ─────────────────────────────────────────────────────────────
 
 #[pyclass]
-pub struct PyVoiceContract { inner: gbr_types::voice::VoiceContract }
-json_methods!(PyVoiceContract, gbr_types::voice::VoiceContract);
+pub struct PyVoiceContract { inner: cap_narrative_types::voice::VoiceContract }
+json_methods!(PyVoiceContract, cap_narrative_types::voice::VoiceContract);
 
 #[pymethods]
 impl PyVoiceContract {
     #[new]
     fn new() -> Self {
-        Self { inner: gbr_types::voice::VoiceContract::default() }
+        Self { inner: cap_narrative_types::voice::VoiceContract::default() }
     }
 }
 
@@ -351,7 +351,7 @@ fn parse_annotation(
     py: Python<'_>,
     raw: &str,
 ) -> PyResult<(Vec<PyAnnotation>, Vec<String>)> {
-    let (anns, warns) = gbr_types::tags::parse_annotation_comment(raw);
+    let (anns, warns) = cap_narrative_types::tags::parse_annotation_comment(raw);
     let py_anns = anns.into_iter().map(|a| PyAnnotation { inner: a }).collect();
     Ok((py_anns, warns))
 }

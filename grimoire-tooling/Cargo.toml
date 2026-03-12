@@ -47,19 +47,19 @@ name = "grimoire-export-schemas"
 path = "src/bin/export_protocol_schemas.rs"
 
 [[bin]]
-name = "grimoire-sip-validate"
-path = "src/bin/sip_validate.rs"
+name = "grimoire-cap-validate"
+path = "src/bin/cap_validate.rs"
 
 [[bin]]
-name = "grimoire-sip-convert"
-path = "src/bin/sip_convert.rs"
+name = "grimoire-cap-convert"
+path = "src/bin/cap_convert.rs"
 
 [[bin]]
-name = "grimoire-sip-corpus"
-path = "src/bin/sip_corpus.rs"
+name = "grimoire-cap-corpus"
+path = "src/bin/cap_corpus.rs"
 
 [dependencies]
-gbr-types = { path = "../reference/rust" }
+cap-narrative-types = { path = "../reference/rust" }
 serde = { version = "1", features = ["derive"] }
 serde_json = "1"
 schemars = { version = "0.8", features = ["derive", "indexmap2"] }

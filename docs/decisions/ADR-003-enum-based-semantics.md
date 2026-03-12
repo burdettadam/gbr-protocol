@@ -2,13 +2,13 @@
 
 **Status:** Accepted  
 **Date:** 2026-01-22  
-**Authors:** GBR Protocol Working Group
+**Authors:** CAP Narrative Profile Protocol Working Group
 
 ---
 
 ## Context
 
-The GBR Protocol includes many categorical fields: point of view, beat type, emotion, archetype, scene function, atmospheric quality, and dozens more. For each field, the protocol must choose between:
+The CAP Narrative Profile Protocol includes many categorical fields: point of view, beat type, emotion, archetype, scene function, atmospheric quality, and dozens more. For each field, the protocol must choose between:
 
 1. **Free text** — annotators write natural language values
 2. **Suggested vocabulary** — values are recommended but not enforced
@@ -23,7 +23,7 @@ The key tradeoffs are:
 
 ## Decision
 
-**All categorical fields in GBR use closed, typed enumerations. Free text is not permitted for enum fields. All enum values use snake_case.**
+**All categorical fields in CAP Narrative Profile use closed, typed enumerations. Free text is not permitted for enum fields. All enum values use snake_case.**
 
 The enum vocabulary is documented in `enums/` and formalized in `schemas/enums.schema.json`. The authoritative runtime source is `reference/rust/src/enums.rs`.
 
@@ -33,7 +33,7 @@ The enum vocabulary is documented in `enums/` and formalized in `schemas/enums.s
 
 **Positive:**
 - All categorical values can be validated at parse time
-- Cross-corpus analysis is possible: aggregate "how many scenes have `beat: climax`?" across any GBR corpus
+- Cross-corpus analysis is possible: aggregate "how many scenes have `beat: climax`?" across any CAP Narrative Profile corpus
 - Enum values appear verbatim in Canonical Summaries, creating a shared vocabulary for the round-trip bridge
 - Downstream consumers (AI training pipelines, visualization tools, search indices) can treat enum fields as structured data without natural language parsing
 - Annotation quality is checkable: an unknown enum value is a schema error, not a semantic debate

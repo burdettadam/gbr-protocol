@@ -1,17 +1,17 @@
-//! Typed narrative overlay structs for GBR's SIP profile.
+//! Typed narrative overlay structs for the CAP narrative profile.
 //!
 //! These types give typed, zero-copy-style access to the `Option<Value>`
-//! extension fields in every SIP core struct when reading a narrative artifact.
+//! extension fields in every CAP core struct when reading a narrative artifact.
 //!
 //! # Quick start
 //!
 //! ```rust,no_run
-//! use gbr_types::sip::overlay::SipUnitOverlayExt;
-//! use gbr_types::overlay::NarrativeContext;
+//! use cap_narrative_types::cap::overlay::CapUnitOverlayExt;
+//! use cap_narrative_types::overlay::NarrativeContext;
 //!
-//! // artifact: SipArtifact loaded from JSON
+//! // artifact: CapArtifact loaded from JSON
 //! # let artifact = unimplemented!();
-//! # let unit: &gbr_types::sip::SipUnit = unimplemented!();
+//! # let unit: &cap_narrative_types::cap::CapUnit = unimplemented!();
 //! if let Some(Ok(ctx)) = unit.context_as::<NarrativeContext>() {
 //!     println!("focalizer: {:?}", ctx.focalizer);
 //! }
@@ -21,7 +21,7 @@ use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 use serde_json::Value;
 
-use crate::sip::ProfileOverlay;
+use crate::cap::ProfileOverlay;
 
 // ── Unit — observables.context ────────────────────────────────────────────────
 
@@ -233,7 +233,7 @@ pub struct NarrativeStepInterpretations {
 // `SettingStructure`, and `SettingInterpretations` types in `entities.rs` but
 // are plain (no `InterpretedValue` wrappers) for use as SIP overlay associated
 // types. They are also used by the converter (`sip_convert.rs`) to serialise
-// registry data into SipEntity fields.
+// registry data into CapEntity fields.
 
 /// Observable descriptors shared by all character entities (name + narrative slot).
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, JsonSchema, Default)]
@@ -363,8 +363,8 @@ pub type NarrativeEntityValue = Value;
 /// Implement this on unit/entity/participant accessors to get typed overlay access:
 ///
 /// ```rust,no_run
-/// use gbr_types::overlay::GbrNarrativeProfile;
-/// use gbr_types::sip::ProfileOverlay;
+/// use cap_narrative_types::overlay::GbrNarrativeProfile;
+/// use cap_narrative_types::cap::ProfileOverlay;
 /// // Use P::Context = NarrativeContext in generic code
 /// type Ctx = <GbrNarrativeProfile as ProfileOverlay>::Context;
 /// ```
