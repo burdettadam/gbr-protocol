@@ -108,6 +108,26 @@
                 },
                 "concreteness": {
                   "$ref": "../enums.schema.json#/$defs/concreteness"
+                },
+                "grammatical_type": {
+                  "$ref": "../enums.schema.json#/$defs/grammatical_sentence_type",
+                  "description": "Declarative, interrogative, imperative, or exclamatory."
+                },
+                "clause_position": {
+                  "$ref": "../enums.schema.json#/$defs/clause_position",
+                  "description": "Main clause position relative to subordinate clause."
+                },
+                "agent_encoding": {
+                  "$ref": "../enums.schema.json#/$defs/agent_encoding",
+                  "description": "Active, passive, ergative, or impersonal."
+                },
+                "defamiliarization": {
+                  "$ref": "../enums.schema.json#/$defs/defamiliarization_level",
+                  "description": "Shklovsky: none, mild, moderate, or radical."
+                },
+                "psychic_distance_shift": {
+                  "$ref": "../enums.schema.json#/$defs/psychic_distance",
+                  "description": "Gardner psychic distance if different from paragraph default."
                 }
               },
               "additionalProperties": false

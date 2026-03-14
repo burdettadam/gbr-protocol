@@ -7,11 +7,20 @@
   "properties": {
     "observables": {
       "type": "object",
-      "description": "Observable tactic or action taken by this participant.",
+      "description": "Observable tactic, body language, and posture.",
       "properties": {
         "tactic": {
           "$ref": "../enums.schema.json#/$defs/tactic",
           "description": "Observable action or strategy used to pursue the objective."
+        },
+        "body_language": {
+          "type": "array",
+          "items": { "$ref": "../enums.schema.json#/$defs/body_language" },
+          "description": "Observable body language cues."
+        },
+        "posture": {
+          "$ref": "../enums.schema.json#/$defs/posture",
+          "description": "Character's physical posture."
         }
       },
       "additionalProperties": false
@@ -190,6 +199,28 @@
           "minimum": 1,
           "maximum": 5,
           "description": "Stakes intensity (1=minimal, 5=existential)."
+        },
+        "social_role": {
+          "$ref": "../enums.schema.json#/$defs/social_role",
+          "description": "Character's social role in this scene."
+        },
+        "actantial_role": {
+          "$ref": "../enums.schema.json#/$defs/actantial_role",
+          "description": "Greimas: scene-specific actantial role."
+        },
+        "psychic_distance_shifts": {
+          "type": "array",
+          "description": "Mid-scene psychic distance changes.",
+          "items": {
+            "type": "object",
+            "properties": {
+              "trigger": { "$ref": "../enums.schema.json#/$defs/psychic_distance_trigger" },
+              "from_level": { "type": "integer", "minimum": 1, "maximum": 5 },
+              "to_level": { "type": "integer", "minimum": 1, "maximum": 5 }
+            },
+            "required": ["trigger", "from_level", "to_level"],
+            "additionalProperties": false
+          }
         }
       },
       "additionalProperties": true

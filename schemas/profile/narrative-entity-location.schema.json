@@ -146,6 +146,32 @@
       },
       "additionalProperties": false
     },
+    "props": {
+      "type": "array",
+      "description": "Significant objects in the space with narrative function.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "category": {
+            "$ref": "../enums.schema.json#/$defs/prop_category",
+            "description": "Type of prop."
+          },
+          "narrative_function": {
+            "$ref": "../enums.schema.json#/$defs/prop_function",
+            "description": "How the prop functions in the narrative."
+          },
+          "introduced_this_scene": {
+            "type": "boolean",
+            "description": "Whether the prop is first introduced in this unit."
+          },
+          "description": {
+            "type": "string"
+          }
+        },
+        "required": ["category"],
+        "additionalProperties": false
+      }
+    },
     "interpretations": {
       "type": "object",
       "properties": {

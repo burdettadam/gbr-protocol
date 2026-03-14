@@ -26,6 +26,15 @@
         "structure_type": {
           "type": "string",
           "description": "Macro structure type (three_act, two_act, kishotenketsu, etc.)."
+        },
+        "word_count": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Approximate total word count."
+        },
+        "has_frame_narrative": {
+          "type": "boolean",
+          "description": "Whether the story uses frame/embedded narrative structure."
         }
       },
       "additionalProperties": false
@@ -41,6 +50,10 @@
         "genre_secondary": {
           "$ref": "../enums.schema.json#/$defs/genre_type",
           "description": "Secondary genre (hybridization)."
+        },
+        "subgenre": {
+          "type": "string",
+          "description": "Specific subgenre label (e.g. 'cozy mystery', 'space opera')."
         },
         "collision_type": {
           "$ref": "../enums.schema.json#/$defs/collision_type",
