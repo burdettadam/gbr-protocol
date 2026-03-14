@@ -12,14 +12,12 @@
       "description": "Target narrative tension level (0.0 = lowest, 1.0 = maximum)."
     },
     "pacing": {
-      "type": "string",
-      "minLength": 1,
-      "description": "Target pacing mode for this unit (from scene_structure.json → pacing)."
+      "$ref": "../enums.schema.json#/$defs/duration_mode",
+      "description": "Target pacing mode for this unit."
     },
     "tone": {
-      "type": "string",
-      "minLength": 1,
-      "description": "Authorial/narrator attitude (from narrative_voice.json → tone)."
+      "$ref": "../enums.schema.json#/$defs/tone",
+      "description": "Authorial/narrator attitude."
     }
   },
   "additionalProperties": false

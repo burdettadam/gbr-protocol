@@ -1,0 +1,130 @@
+{
+  "profile_id": "narrative",
+  "profile_version": "1.0.0",
+  "sip_version_range": ">=1.0.0 <2.0.0",
+  "description": "Domain profile for annotating prose fiction and literary works. Defines character, setting, scene, and narrative voice vocabularies grounded in narratological theory (Genette, Cohn, Booth, Greimas, etc.).",
+
+  "type_registries": {
+    "entity_types": [
+      { "value": "character", "description": "A person or anthropomorphized agent" },
+      { "value": "location", "description": "A named place or setting" },
+      { "value": "object", "description": "A significant physical or conceptual item" },
+      { "value": "group", "description": "A collective (family, organization, faction)" },
+      { "value": "narrator", "description": "A narrating voice that is not a character" }
+    ],
+    "unit_types": [
+      { "value": "scene", "description": "A continuous dramatic action in one setting" },
+      { "value": "beat", "description": "A single dramatic value-change within a scene" },
+      { "value": "chapter_segment", "description": "A structural division within a chapter" }
+    ],
+    "relationship_types": [
+      { "value": "family_parent_child", "description": "Parent-child bond", "source_enum": "relationship.json → relationship_type" },
+      { "value": "family_sibling", "description": "Sibling bond", "source_enum": "relationship.json → relationship_type" },
+      { "value": "family_extended", "description": "Extended family (aunts, uncles, cousins, grandparents)", "source_enum": "relationship.json → relationship_type" },
+      { "value": "family_chosen", "description": "Non-biological relationship functioning as family", "source_enum": "relationship.json → relationship_type" },
+      { "value": "romantic_partner", "description": "Current romantic partnership", "source_enum": "relationship.json → relationship_type" },
+      { "value": "romantic_former", "description": "Previous romantic relationship", "source_enum": "relationship.json → relationship_type" },
+      { "value": "romantic_unrequited", "description": "Unreciprocated romantic interest", "source_enum": "relationship.json → relationship_type" },
+      { "value": "friendship", "description": "Non-romantic relationship based on mutual regard", "source_enum": "relationship.json → relationship_type" },
+      { "value": "professional_peer", "description": "Colleagues within a shared professional context", "source_enum": "relationship.json → relationship_type" },
+      { "value": "professional_hierarchical", "description": "Professional relationship with power differential", "source_enum": "relationship.json → relationship_type" },
+      { "value": "rival", "description": "Competition for shared goal or recognition", "source_enum": "relationship.json → relationship_type" },
+      { "value": "antagonist_protagonist", "description": "Primary oppositional relationship", "source_enum": "relationship.json → relationship_type" },
+      { "value": "enemy", "description": "Active hostility", "source_enum": "relationship.json → relationship_type" },
+      { "value": "alliance", "description": "Mutual utility with or without personal connection", "source_enum": "relationship.json → relationship_type" },
+      { "value": "acquaintance", "description": "Minimal depth; characters know of each other", "source_enum": "relationship.json → relationship_type" },
+      { "value": "stranger", "description": "No prior relationship", "source_enum": "relationship.json → relationship_type" },
+      { "value": "institutional", "description": "Defined by roles within a shared institution", "source_enum": "relationship.json → relationship_type" },
+      { "value": "ambiguous", "description": "Deliberately unclear or contested", "source_enum": "relationship.json → relationship_type" }
+    ],
+    "interpretation_types": [
+      { "value": "motivation", "description": "Character's driving desire" },
+      { "value": "emotion", "description": "Emotional state", "source_enum": "emotion_psychology.json → emotion" },
+      { "value": "theme", "description": "Thematic assertion" },
+      { "value": "conflict_role", "description": "Role in central conflict" },
+      { "value": "archetype", "description": "Jungian/structural archetype", "source_enum": "character.json → archetype" },
+      { "value": "wound", "description": "Psychological wound", "source_enum": "character.json → wound" },
+      { "value": "arc_type", "description": "Character arc trajectory", "source_enum": "character.json → arc_type" },
+      { "value": "drive_model", "description": "Drive model (5 types)", "source_enum": "character.json → drive_model" },
+      { "value": "actant", "description": "Greimas actantial role", "source_enum": "character.json → actant" },
+      { "value": "irony_type", "description": "Type of irony present", "source_enum": "literary_theory.json → irony_type" },
+      { "value": "gaze_type", "description": "Gaze framing", "source_enum": "literary_theory.json → gaze_type" },
+      { "value": "speech_act_category", "description": "Austin/Searle classification", "source_enum": "literary_theory.json → speech_act_category" },
+      { "value": "freudian_mechanism", "description": "Psychoanalytic defense mechanism", "source_enum": "literary_theory.json → freudian_mechanism" },
+      { "value": "antagonist_type", "description": "Antagonist classification", "source_enum": "literary_theory.json → antagonist_type" },
+      { "value": "opposition_level", "description": "Truby level of opposition", "source_enum": "literary_theory.json → opposition_level" },
+      { "value": "transtextuality_type", "description": "Genette transtextual relation", "source_enum": "literary_theory.json → transtextuality_type" },
+      { "value": "stakes_domain", "description": "What is at risk", "source_enum": "scene_structure.json → stakes_domain" }
+    ],
+    "event_types": [
+      { "value": "action", "description": "Physical action", "source_enum": "scene_structure.json → event_type" },
+      { "value": "dialogue", "description": "Speech between characters", "source_enum": "scene_structure.json → event_type" },
+      { "value": "internal_shift", "description": "Internal thought or realization", "source_enum": "scene_structure.json → event_type" },
+      { "value": "revelation", "description": "Information disclosed to reader/character", "source_enum": "scene_structure.json → event_type" },
+      { "value": "description", "description": "Setting or character description", "source_enum": "scene_structure.json → event_type" },
+      { "value": "flashback", "description": "Analeptic event", "source_enum": "scene_structure.json → event_type" },
+      { "value": "flash_forward", "description": "Proleptic event", "source_enum": "scene_structure.json → event_type" }
+    ],
+    "state_types": [
+      { "value": "emotional", "description": "Emotional condition", "source_enum": "emotion_psychology.json → emotion" },
+      { "value": "relational", "description": "Relationship standing" },
+      { "value": "psychological", "description": "Internal psychological state" },
+      { "value": "social", "description": "Social role or status" },
+      { "value": "physical", "description": "Physical condition" }
+    ],
+    "causal_role_extensions": [
+      { "value": "catalyst", "description": "Inciting force", "source_enum": "scene_structure.json → causal_role" },
+      { "value": "escalation", "description": "Raising stakes", "source_enum": "scene_structure.json → causal_role" },
+      { "value": "crisis", "description": "Moment of greatest tension", "source_enum": "scene_structure.json → causal_role" },
+      { "value": "climax", "description": "Peak of dramatic action" },
+      { "value": "denouement", "description": "Unwinding after resolution" }
+    ]
+  },
+
+  "additional_epistemic_sections": [
+    {
+      "name": "craft_targets",
+      "purpose": "Prescriptive authorial intent — what the author is aiming for in this unit",
+      "confidence_model": "always_certain"
+    }
+  ],
+
+  "required_fields": [
+    {
+      "object_type": "entity",
+      "when_type": "character",
+      "required_fields": ["structural_properties.role"],
+      "level": "required"
+    },
+    {
+      "object_type": "unit",
+      "when_type": "scene",
+      "required_fields": [
+        "observables.context.focalizer",
+        "observables.context.pov"
+      ],
+      "level": "required"
+    },
+    {
+      "object_type": "unit",
+      "required_fields": ["structure.beat"],
+      "level": "recommended"
+    }
+  ],
+
+  "fingerprint_grammar": {
+    "format": "string",
+    "grammar_abnf": "fingerprint = agent-clause *( SP \"|\" SP qualifier )\nagent-clause = UPPER(agent) SP verb SP [UPPER(target)]\nqualifier = key \"=\" value\nkey = \"ROLE\" / \"SHIFT\" / \"BEAT\" / \"POV\" / \"TONE\" / \"ARC\"",
+    "description": "Compact single-line string: AGENT verb TARGET | ROLE=causal_role | SHIFT=before→after | BEAT=macro_arc_position. Agent and target are entity_ids in ALL_CAPS. Verb is the action from the kernel step."
+  },
+
+  "profile_schemas": {
+    "unit.observables.context": "schemas/profile/narrative-context.schema.json",
+    "unit.structure.grouping": "schemas/profile/narrative-grouping.schema.json",
+    "unit.interpretations": "schemas/profile/narrative-unit-interpretations.schema.json",
+    "unit.craft_targets": "schemas/profile/narrative-craft-targets.schema.json",
+    "participant_state": "schemas/profile/narrative-participant-state.schema.json",
+    "entity.interpretations": "schemas/profile/narrative-entity-character.schema.json",
+    "relationship.interpretations": "schemas/profile/narrative-relationship.schema.json"
+  }
+}

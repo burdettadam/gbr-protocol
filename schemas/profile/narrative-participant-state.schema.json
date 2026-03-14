@@ -10,7 +10,7 @@
       "description": "Observable tactic or action taken by this participant.",
       "properties": {
         "tactic": {
-          "type": "string",
+          "$ref": "../enums.schema.json#/$defs/tactic",
           "description": "Observable action or strategy used to pursue the objective."
         }
       },
@@ -92,11 +92,11 @@
       "description": "Profile-defined interpretive data for this participant state.",
       "properties": {
         "emotion": {
-          "type": "string",
+          "$ref": "../enums.schema.json#/$defs/emotion",
           "description": "Dominant emotion at scene entry."
         },
         "arc_beat": {
-          "type": "string",
+          "$ref": "../enums.schema.json#/$defs/personal_arc_beat",
           "description": "Character-arc beat active in this scene."
         }
       },

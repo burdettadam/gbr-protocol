@@ -9,9 +9,8 @@
       "type": "object",
       "properties": {
         "role": {
-          "type": "string",
-          "minLength": 1,
-          "description": "Narrative role (protagonist, antagonist, supporting, etc.). REQUIRED for character entities."
+          "$ref": "../enums.schema.json#/$defs/role",
+          "description": "Narrative role. REQUIRED for character entities."
         }
       },
       "required": ["role"]

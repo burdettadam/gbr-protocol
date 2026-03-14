@@ -1,13 +1,13 @@
-# Narrative Profile — Skeleton
+# CAP Narrative Profile — Specification v1.0.0
 
 > **Profile Identifier:** `narrative`
-> **Profile Version:** `0.1.0`
-> **CAP Core Version:** `≥ 0.1.0`
+> **Profile Version:** `1.0.0`
+> **CAP Core Version:** `≥ 1.0.0`
 > **Status:** Normative Draft
 
-This document defines the **narrative** domain profile for the Canonical Artifact Protocol (CAP). It registers the types, enums, required fields, and validation rules necessary to annotate prose fiction (and, by extension, other literary works).
+This document defines the **narrative** domain profile for the Canonical Artifact Protocol (CAP). It registers the types, enums, required fields, validation rules, and semantic fingerprint grammar necessary to annotate prose fiction (and, by extension, other literary works).
 
-This skeleton declares the profile structure and type registries. A full normative profile specification will follow in a later phase.
+This profile is built entirely on the CAP extension mechanism (CAP SPECIFICATION.md §6). It requires zero modifications to the CAP core.
 
 ---
 
@@ -174,6 +174,32 @@ The narrative profile defines a fourth epistemic section on Units. Craft targets
 | `tone` | string | `narrative_voice.json → tone` | Authorial/narrator attitude |
 
 **Conversion note:** When converting from CAP Narrative Profile v0.2.0, `craft_targets.target_tension` maps to `craft_targets.tension`, `craft_targets.target_pacing` maps to `craft_targets.pacing`, and `craft_targets.tone` stays at `craft_targets.tone`.
+
+**Tension scale transform:** Scene cards and other authoring tools use an integer scale of 1–5 for tension. The profile normalizes this to a float 0.0–1.0 using:
+
+```
+tension_float = (tension_int - 1) / 4
+```
+
+| Integer | Float |
+|---------|-------|
+| 1       | 0.00  |
+| 2       | 0.25  |
+| 3       | 0.50  |
+| 4       | 0.75  |
+| 5       | 1.00  |
+
+### 4.2 `story_architecture`
+
+The narrative profile defines a top-level `story_architecture` key on the Artifact. This object is split into three epistemic layers:
+
+| Layer | Contents | Example fields |
+|-------|----------|---------------|
+| `observables` | Facts directly verifiable from the artifact | `act_count`, `chapter_count`, `structure_type` |
+| `structure` | How the narrative is organized at book level | `genre`, `collision_type`, `inciting_incident`, `beat_sequence`, `motifs` |
+| `interpretations` | Inferred meaning and analytical claims | `protagonist_arc`, `antagonist`, `controlling_idea`, `themes` |
+
+Schema: `schemas/profile/narrative-story-architecture.schema.json`
 
 ---
 
@@ -401,21 +427,7 @@ When converting from CAP Narrative Profile v0.2.0, the following significance va
 
 ---
 
-## 9. Changelog
-
-| Version | Date | Changes |
-|---------|------|---------|
-| 0.1.0 | 2026-03 | Initial normative draft: type registries, field vocabulary, semantic fingerprint grammar (§6), CAP Narrative Profile v0.2.0 migration guide (§7), validation rules (§8) |
-
-Placeholder format:
-
-```
-AGENT(entity_ref) ACTION TARGET | ROLE=causal_role | SHIFT=before_emotion→after_emotion
-```
-
----
-
-## 7. Canonical Views
+## 9. Canonical Views
 
 Per CAP §6.7, the narrative profile declares these canonical view types:
 
@@ -428,7 +440,7 @@ Per CAP §6.7, the narrative profile declares these canonical view types:
 
 ---
 
-## 8. Enum Governance
+## 10. Enum Governance
 
 All narrative enums are versioned independently from CAP core, per CAP §6.5.
 
@@ -449,7 +461,7 @@ Adding a value → minor bump. Removing/renaming → major bump.
 
 ---
 
-## 9. Domain-Specific Validation Rules
+## 11. Domain-Specific Validation Rules
 
 ### Level 1 (Schema)
 - Profile schemas extend core schemas with narrative-specific constraints.
@@ -477,9 +489,9 @@ Key transformations:
 
 ---
 
-## Appendix B: Future Work
+## Appendix B: Changelog
 
-1. **Full normative profile specification** — field-level schemas, complete enum registries, validation rule formalization.
-2. **Semantic fingerprint grammar** — formal BNF/PEG grammar with reference implementation.
-3. **Profile JSON Schemas** — overlay schemas that extend core schemas with narrative constraints.
-4. **Migration tooling** — CAP Narrative Profile v0.2.0 → CAP narrative profile adapter.
+| Version | Date | Changes |
+|---------|------|--------|
+| 1.0.0 | 2026-03-12 | Promoted from skeleton to normative draft. Renumbered sections. Added canonical views (§9), enum governance (§10), domain-specific validation rules (§11). Removed placeholder content. |
+| 0.1.0 | 2026-03-11 | Initial skeleton: type registries, field vocabulary, semantic fingerprint grammar (§6), migration guide (§7), validation rules (§8). |

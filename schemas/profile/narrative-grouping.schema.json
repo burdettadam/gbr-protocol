@@ -6,13 +6,12 @@
   "type": "object",
   "properties": {
     "beat": {
-      "type": "string",
-      "minLength": 1,
-      "description": "Macro-arc beat label at this unit (e.g. inciting_incident, midpoint, climax)."
+      "$ref": "../enums.schema.json#/$defs/beat_type",
+      "description": "Macro-arc beat label at this unit."
     },
     "scene_function": {
-      "type": "string",
-      "description": "Primary narrative function of this scene (action, reaction, revelation, etc.)."
+      "$ref": "../enums.schema.json#/$defs/scene_function",
+      "description": "Primary narrative function of this scene."
     },
     "scene_number_in_chapter": {
       "type": "integer",

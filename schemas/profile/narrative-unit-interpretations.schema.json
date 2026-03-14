@@ -6,33 +6,37 @@
   "type": "object",
   "properties": {
     "pov": {
-      "type": "string",
-      "minLength": 1,
-      "description": "Point of view type (third_person_limited, first_person, omniscient, etc.)."
+      "$ref": "../enums.schema.json#/$defs/pov_type",
+      "description": "Point of view type."
     },
     "focalization": {
-      "type": "string",
-      "description": "Genette focalization type (zero, internal, external)."
+      "$ref": "../enums.schema.json#/$defs/focalization_type",
+      "description": "Genette focalization type."
     },
     "consciousness_mode": {
-      "type": "string",
-      "description": "Dorrit Cohn consciousness mode (psychonarration, narrated_monologue, quoted_monologue)."
+      "$ref": "../enums.schema.json#/$defs/consciousness_mode",
+      "description": "Dorrit Cohn consciousness mode."
     },
     "psychic_distance": {
-      "type": "string",
-      "description": "Gardner psychic distance level (1–5 or label)."
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 5,
+      "description": "Gardner psychic distance level (1=distant narrator, 5=stream of consciousness)."
     },
     "narrator_reliability": {
-      "type": "string",
-      "description": "Booth narrator reliability (reliable, unreliable, partially_unreliable)."
+      "$ref": "../enums.schema.json#/$defs/narrator_reliability_type",
+      "description": "Booth narrator reliability."
     },
     "arc_type": {
-      "type": "string",
+      "$ref": "../enums.schema.json#/$defs/arc_type",
       "description": "Scene-level arc direction."
     },
     "stakes_domain": {
-      "type": "string",
-      "description": "Domain of stakes at risk in this unit (physical, emotional, social, etc.)."
+      "oneOf": [
+        { "$ref": "../enums.schema.json#/$defs/personal_stakes" },
+        { "type": "array", "items": { "$ref": "../enums.schema.json#/$defs/personal_stakes" } }
+      ],
+      "description": "Domain of stakes at risk in this unit."
     },
     "canonical_metrics": {
       "type": "object",

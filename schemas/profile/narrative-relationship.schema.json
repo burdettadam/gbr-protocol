@@ -10,15 +10,15 @@
       "description": "Human-readable description of the relationship."
     },
     "dynamic_at_start": {
-      "type": "string",
+      "$ref": "../enums.schema.json#/$defs/relationship_dynamic",
       "description": "Relational dynamic when the story begins."
     },
     "dynamic_at_end": {
-      "type": "string",
-      "description": "Relational dynamic at the story's end (or last observed point)."
+      "$ref": "../enums.schema.json#/$defs/relationship_dynamic",
+      "description": "Relational dynamic at the story's end."
     },
     "power_balance": {
-      "type": "string",
+      "$ref": "../enums.schema.json#/$defs/power_balance",
       "description": "Who holds structural power in the relationship."
     },
     "trust": {

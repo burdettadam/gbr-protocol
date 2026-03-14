@@ -2,7 +2,7 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "narrative-context.schema.json",
   "title": "Narrative Profile — Unit Observables Context",
-  "description": "Profile overlay schema constraining unit.observables.context for the narrative profile. Applies when profile='narrative'.",
+  "description": "Profile overlay schema constraining unit.observables.context for the narrative profile. Fields reference governed enums from enums.schema.json.",
   "type": "object",
   "properties": {
     "focalizer": {
@@ -11,8 +11,7 @@
       "description": "Entity ref of the perceiving character. REQUIRED for unit_type 'scene'."
     },
     "pov": {
-      "type": "string",
-      "minLength": 1,
+      "$ref": "../enums.schema.json#/$defs/pov_type",
       "description": "Point of view type. REQUIRED for unit_type 'scene'."
     },
     "setting": {
@@ -21,19 +20,19 @@
       "description": "Entity ref of the location. SHOULD resolve to entity_type 'location'."
     },
     "diegetic_level": {
-      "type": "string",
-      "description": "Genette diegetic level (e.g., extradiegetic, intradiegetic, metadiegetic)."
+      "$ref": "../enums.schema.json#/$defs/diegetic_level",
+      "description": "Genette diegetic level."
     },
     "time_of_day": {
-      "type": "string",
+      "$ref": "../enums.schema.json#/$defs/time_of_day",
       "description": "When the unit occurs."
     },
     "atmosphere": {
-      "type": "string",
-      "description": "Environmental mood."
+      "$ref": "../enums.schema.json#/$defs/tone",
+      "description": "Environmental mood (uses tone vocabulary)."
     },
     "spatial_structure": {
-      "type": "string",
+      "$ref": "../enums.schema.json#/$defs/spatial_structure",
       "description": "Spatial configuration."
     },
     "narrative_time": {
@@ -41,16 +40,16 @@
       "description": "Genette temporal architecture.",
       "properties": {
         "order": {
-          "type": "string",
-          "description": "Narrative order (chronological, analepsis, prolepsis, achrony)."
+          "$ref": "../enums.schema.json#/$defs/narrative_order",
+          "description": "Narrative order."
         },
         "duration_mode": {
-          "type": "string",
-          "description": "Genette duration (ellipsis, summary, scene, stretch, pause)."
+          "$ref": "../enums.schema.json#/$defs/duration_mode",
+          "description": "Genette duration."
         },
         "frequency": {
-          "type": "string",
-          "description": "Genette frequency (singulative, repeating, iterative, pseudo_iterative)."
+          "$ref": "../enums.schema.json#/$defs/frequency",
+          "description": "Genette frequency."
         }
       },
       "additionalProperties": false
