@@ -130,6 +130,115 @@
       },
       "additionalProperties": false
     },
+    "reader_experience": {
+      "type": "object",
+      "description": "Sternberg/Iser/Ahmed reader-experience analysis.",
+      "properties": {
+        "primary_effect": {
+          "$ref": "../enums.schema.json#/$defs/reader_effect",
+          "description": "Sternberg: primary reader experience (curiosity, suspense, surprise)."
+        },
+        "information_asymmetry": {
+          "$ref": "../enums.schema.json#/$defs/information_asymmetry",
+          "description": "Who knows more: reader, character, or equal."
+        },
+        "knowledge_gap_source": {
+          "$ref": "../enums.schema.json#/$defs/knowledge_gap_source",
+          "description": "Source of the knowledge gap driving suspense/curiosity."
+        },
+        "textual_affect_type": {
+          "$ref": "../enums.schema.json#/$defs/textual_affect_type",
+          "description": "Ahmed: type of textual affect economy."
+        }
+      },
+      "additionalProperties": false
+    },
+    "thematic": {
+      "type": "object",
+      "description": "Scene-level thematic positioning.",
+      "properties": {
+        "controlling_idea_position": {
+          "$ref": "../enums.schema.json#/$defs/controlling_idea_position",
+          "description": "Where this scene falls relative to the controlling idea."
+        },
+        "thematic_question": {
+          "$ref": "../enums.schema.json#/$defs/thematic_question",
+          "description": "Which thematic question is being explored."
+        }
+      },
+      "additionalProperties": false
+    },
+    "motif_deployment": {
+      "type": "array",
+      "description": "Structured motif tracking (richer than motif_tags).",
+      "items": {
+        "type": "object",
+        "properties": {
+          "motif": { "type": "string", "minLength": 1 },
+          "category": {
+            "$ref": "../enums.schema.json#/$defs/motif_category",
+            "description": "Type of recurring element."
+          },
+          "deployment": {
+            "$ref": "../enums.schema.json#/$defs/motif_deployment",
+            "description": "How the motif is deployed in this unit."
+          },
+          "motif_type": {
+            "$ref": "../enums.schema.json#/$defs/motif_type",
+            "description": "Motif/symbol/leitmotif/objective-correlative."
+          }
+        },
+        "required": ["motif"],
+        "additionalProperties": false
+      }
+    },
+    "threads": {
+      "type": "object",
+      "description": "Narrative thread tracking for continuity.",
+      "properties": {
+        "active": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "thread": { "type": "string", "minLength": 1 },
+              "type": { "$ref": "../enums.schema.json#/$defs/thread_type" },
+              "status": { "$ref": "../enums.schema.json#/$defs/thread_status" }
+            },
+            "required": ["thread"],
+            "additionalProperties": false
+          },
+          "description": "Narrative threads active in this unit."
+        },
+        "callbacks": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "thread": { "type": "string", "minLength": 1 },
+              "type": { "$ref": "../enums.schema.json#/$defs/callback_thread_type" },
+              "effect": { "$ref": "../enums.schema.json#/$defs/callback_effect" }
+            },
+            "required": ["thread"],
+            "additionalProperties": false
+          },
+          "description": "Callbacks to previously established threads."
+        }
+      },
+      "additionalProperties": false
+    },
+    "scene_polarity": {
+      "$ref": "../enums.schema.json#/$defs/scene_polarity",
+      "description": "McKee: scene-ending polarity shift (positive, negative, ironic)."
+    },
+    "polarity_transition": {
+      "$ref": "../enums.schema.json#/$defs/polarity_transition",
+      "description": "Direction of polarity shift through the scene."
+    },
+    "objective_correlative": {
+      "$ref": "../enums.schema.json#/$defs/objective_correlative_type",
+      "description": "Eliot: type of objective correlative present."
+    },
     "theory_notes": {
       "description": "Free-form or structured literary-theory annotations not covered by formal fields above.",
       "additionalProperties": true

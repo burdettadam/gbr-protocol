@@ -1,0 +1,258 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "narrative-representation-audit.schema.json",
+  "title": "Narrative Profile — Representation Audit",
+  "description": "Sixth epistemic section: critical-theory representation audits. NON-GENERATION data — these fields aid representation analysis and revision, not prose generation. Covers postcolonial, feminist, queer, indigenous, ethics, gaze, and intersectional audit dimensions.",
+  "type": "object",
+  "properties": {
+    "postcolonial_audit": {
+      "type": "object",
+      "description": "Said/Spivak/Bhabha: postcolonial representation analysis.",
+      "properties": {
+        "mode": {
+          "$ref": "../enums.schema.json#/$defs/postcolonial_mode",
+          "description": "Dominant postcolonial mode in this unit."
+        },
+        "othering_detected": {
+          "type": "boolean",
+          "description": "Whether Orientalist othering patterns are present."
+        },
+        "subaltern_voice": {
+          "type": "boolean",
+          "description": "Whether subaltern characters have unmediated voice."
+        },
+        "notes": {
+          "type": "string",
+          "description": "Free-form postcolonial analysis notes."
+        }
+      },
+      "additionalProperties": false
+    },
+    "feminist_audit": {
+      "type": "object",
+      "description": "Lanser/DuPlessis/Warhol: feminist narratology analysis.",
+      "properties": {
+        "narrative_type": {
+          "$ref": "../enums.schema.json#/$defs/feminist_narrative_type",
+          "description": "Dominant feminist narrative mode."
+        },
+        "bechdel_pass": {
+          "type": "boolean",
+          "description": "Whether this unit passes the Bechdel test (two named women talk about something other than a man)."
+        },
+        "marriage_plot_dependency": {
+          "type": "boolean",
+          "description": "DuPlessis: whether the plot depends on marriage/romance closure."
+        },
+        "notes": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "queer_audit": {
+      "type": "object",
+      "description": "Sedgwick/Butler/Edelman: queer narratology analysis.",
+      "properties": {
+        "mode": {
+          "$ref": "../enums.schema.json#/$defs/queer_mode",
+          "description": "Dominant queer narratological mode."
+        },
+        "performativity_mode": {
+          "$ref": "../enums.schema.json#/$defs/performativity_mode",
+          "description": "Butler: how gender/identity is performed."
+        },
+        "heteronormative_assumption": {
+          "type": "boolean",
+          "description": "Whether heteronormative assumptions go unexamined."
+        },
+        "notes": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "indigenous_audit": {
+      "type": "object",
+      "description": "Vizenor/Womack/Silko/Archibald: Indigenous narratology analysis.",
+      "properties": {
+        "survivance_mode": {
+          "$ref": "../enums.schema.json#/$defs/survivance_mode",
+          "description": "Vizenor: survivance vs. victimry mode."
+        },
+        "storywork_protocol": {
+          "$ref": "../enums.schema.json#/$defs/storywork_protocol",
+          "description": "Archibald: which storywork protocol is active."
+        },
+        "appropriation_risk": {
+          "type": "boolean",
+          "description": "Whether cultural appropriation risks are present."
+        },
+        "notes": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "ethics_audit": {
+      "type": "object",
+      "description": "Booth/Keen/Nussbaum: narrative ethics analysis.",
+      "properties": {
+        "mode": {
+          "$ref": "../enums.schema.json#/$defs/narrative_ethics_mode",
+          "description": "Dominant ethical framing mode."
+        },
+        "empathy_risk": {
+          "type": "boolean",
+          "description": "Keen: whether empathy manipulation risks are present."
+        },
+        "coduction_pass": {
+          "type": "boolean",
+          "description": "Booth: whether the unit passes the coduction test."
+        },
+        "notes": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "gaze_audit": {
+      "type": "object",
+      "description": "Mulvey/Garland-Thomson: gaze and staring analysis.",
+      "properties": {
+        "gaze_type": {
+          "$ref": "../enums.schema.json#/$defs/gaze_type",
+          "description": "Dominant gaze framing in this unit."
+        },
+        "male_gaze_detected": {
+          "type": "boolean",
+          "description": "Mulvey: whether male gaze patterns are present."
+        },
+        "staring_detected": {
+          "type": "boolean",
+          "description": "Garland-Thomson: whether objectifying staring occurs."
+        },
+        "notes": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "intersectional_audit": {
+      "type": "object",
+      "description": "Crenshaw/Collins/hooks: intersectional representation analysis.",
+      "properties": {
+        "single_axis_detected": {
+          "type": "boolean",
+          "description": "Crenshaw: whether characters are reduced to a single axis of identity."
+        },
+        "matrix_domains": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": ["structural", "disciplinary", "hegemonic", "interpersonal"]
+          },
+          "description": "Collins: which domains of the matrix of domination are engaged."
+        },
+        "checklist_cast_risk": {
+          "type": "boolean",
+          "description": "Whether diversity feels tokenistic rather than intersectional."
+        },
+        "notes": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "disability_audit": {
+      "type": "object",
+      "description": "Garland-Thomson/Siebers/Mitchell-Snyder: disability representation.",
+      "properties": {
+        "narrative_prosthesis_detected": {
+          "type": "boolean",
+          "description": "Mitchell/Snyder: whether disability serves only as narrative device."
+        },
+        "supercrip_detected": {
+          "type": "boolean",
+          "description": "Whether the 'overcoming' trope reduces the character."
+        },
+        "complex_embodiment": {
+          "type": "boolean",
+          "description": "Siebers: whether disability is shown as complex embodied experience."
+        },
+        "notes": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "ecocritical_audit": {
+      "type": "object",
+      "description": "Buell/Morton/Nixon: environmental and ecological representation.",
+      "properties": {
+        "environmental_text": {
+          "type": "boolean",
+          "description": "Buell: whether the environment is a meaningful presence, not mere backdrop."
+        },
+        "slow_violence_depicted": {
+          "type": "boolean",
+          "description": "Nixon: whether slow violence (environmental degradation) is represented."
+        },
+        "multispecies_presence": {
+          "type": "boolean",
+          "description": "Haraway: whether nonhuman agents have meaningful presence."
+        },
+        "notes": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "class_audit": {
+      "type": "object",
+      "description": "Jameson/Williams/Eagleton: class and economic representation.",
+      "properties": {
+        "class_visible": {
+          "type": "boolean",
+          "description": "Whether economic/class structures are visible in the narrative."
+        },
+        "structures_of_feeling": {
+          "type": "string",
+          "description": "Williams: dominant/residual/emergent structure of feeling."
+        },
+        "notes": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "age_audit": {
+      "type": "object",
+      "description": "Gullette/Woodward: age representation analysis.",
+      "properties": {
+        "decline_narrative_detected": {
+          "type": "boolean",
+          "description": "Gullette: whether aging is framed only as decline."
+        },
+        "agetonormativity_detected": {
+          "type": "boolean",
+          "description": "Whether adult-normative assumptions shape the narrative."
+        },
+        "notes": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "overall_flags": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Summary flags from any audit dimension (e.g. 'male_gaze', 'single_axis', 'narrative_prosthesis')."
+    },
+    "overall_notes": {
+      "type": "string",
+      "description": "Cross-cutting representation notes."
+    }
+  },
+  "additionalProperties": false
+}

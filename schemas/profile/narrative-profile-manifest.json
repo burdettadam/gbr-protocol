@@ -1,6 +1,6 @@
 {
   "profile": "narrative",
-  "profile_version": "1.0.0",
+  "profile_version": "1.1.0",
   "description": "Manifest of all JSON Schema files for the CAP Narrative Profile Narrative Profile overlay layer.",
   "schemas": {
     "unit.observables.context": "narrative-context.schema.json",
@@ -9,8 +9,10 @@
     "unit.craft_targets": "narrative-craft-targets.schema.json",
     "participant_state": "narrative-participant-state.schema.json",
     "entity[entity_type=character]": "narrative-entity-character.schema.json",
+    "entity[entity_type=location]": "narrative-entity-location.schema.json",
     "corpus.story_architecture": "narrative-story-architecture.schema.json",
-    "relationship.interpretations": "narrative-relationship.schema.json"
+    "relationship.interpretations": "narrative-relationship.schema.json",
+    "unit.representation_audit": "narrative-representation-audit.schema.json"
   },
   "notes": [
     "All schemas use draft-07.",

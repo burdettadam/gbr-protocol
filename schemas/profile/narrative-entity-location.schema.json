@@ -2,7 +2,7 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "narrative-entity-location.schema.json",
   "title": "Narrative Profile — Location Entity Constraints",
-  "description": "Profile overlay schema constraining entity when entity_type is 'location'. Covers observable_descriptors and interpretations for settings.",
+  "description": "Profile overlay schema constraining entity when entity_type is 'location'. Covers observable_descriptors, spatial_semantics (Lotman/Bakhtin/Bachelard), blocking, power_topology, and interpretations.",
   "type": "object",
   "properties": {
     "observable_descriptors": {
@@ -19,9 +19,132 @@
         "territory_type": {
           "$ref": "../enums.schema.json#/$defs/territory_type",
           "description": "Whose territory this setting represents."
+        },
+        "room_type": {
+          "$ref": "../enums.schema.json#/$defs/room_type",
+          "description": "Interior room type."
+        },
+        "location_qualifier": {
+          "$ref": "../enums.schema.json#/$defs/location_qualifier",
+          "description": "Qualifier for the setting (e.g. abandoned, ruined, sacred)."
+        },
+        "season": {
+          "$ref": "../enums.schema.json#/$defs/season",
+          "description": "Season at this location."
+        },
+        "weather": {
+          "$ref": "../enums.schema.json#/$defs/weather_condition",
+          "description": "Weather condition at the location."
+        },
+        "lighting": {
+          "type": "object",
+          "description": "Lighting conditions.",
+          "properties": {
+            "source": { "$ref": "../enums.schema.json#/$defs/lighting_source" },
+            "quality": { "$ref": "../enums.schema.json#/$defs/lighting_quality" }
+          },
+          "additionalProperties": false
+        },
+        "sensory_palette": {
+          "type": "array",
+          "description": "Structured sensory details with prominence.",
+          "items": {
+            "type": "object",
+            "properties": {
+              "sense": { "$ref": "../enums.schema.json#/$defs/sensory_type" },
+              "detail": { "type": "string" },
+              "prominence": { "$ref": "../enums.schema.json#/$defs/sensory_prominence" }
+            },
+            "required": ["sense", "detail"],
+            "additionalProperties": false
+          }
         }
       },
       "additionalProperties": true
+    },
+    "spatial_semantics": {
+      "type": "object",
+      "description": "Lotman/Bakhtin/Bachelard spatial-theoretical analysis.",
+      "properties": {
+        "boundary_type": {
+          "$ref": "../enums.schema.json#/$defs/boundary_type",
+          "description": "Lotman: type of spatial boundary present."
+        },
+        "semantic_zone": {
+          "$ref": "../enums.schema.json#/$defs/semantic_zone",
+          "description": "Lotman: which semantic zone this space belongs to."
+        },
+        "chronotope_type": {
+          "$ref": "../enums.schema.json#/$defs/chronotope_type",
+          "description": "Bakhtin: time-space configuration."
+        },
+        "intimate_space_type": {
+          "$ref": "../enums.schema.json#/$defs/intimate_space_type",
+          "description": "Bachelard: type of intimate/domestic space."
+        },
+        "boundary_crossing": {
+          "type": "object",
+          "description": "Whether a boundary crossing occurs at this location.",
+          "properties": {
+            "occurs": { "type": "boolean" },
+            "description": { "type": "string" }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "blocking": {
+      "type": "object",
+      "description": "Character positions and movements within the space.",
+      "properties": {
+        "positions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "entity": { "type": "string", "description": "Entity ref." },
+              "position": { "$ref": "../enums.schema.json#/$defs/position_type" },
+              "posture": { "$ref": "../enums.schema.json#/$defs/posture" }
+            },
+            "required": ["entity"],
+            "additionalProperties": false
+          }
+        },
+        "movements": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "entity": { "type": "string", "description": "Entity ref." },
+              "type": { "$ref": "../enums.schema.json#/$defs/movement_type" },
+              "description": { "type": "string" }
+            },
+            "required": ["entity"],
+            "additionalProperties": false
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "power_topology": {
+      "type": "object",
+      "description": "Power dynamics encoded in the spatial arrangement.",
+      "properties": {
+        "dominant_entity": {
+          "type": "string",
+          "description": "Entity ref of the spatially dominant character."
+        },
+        "power_source": {
+          "$ref": "../enums.schema.json#/$defs/power_source",
+          "description": "Source of spatial power."
+        },
+        "territory_owner": {
+          "type": "string",
+          "description": "Entity ref of the territory holder."
+        }
+      },
+      "additionalProperties": false
     },
     "interpretations": {
       "type": "object",

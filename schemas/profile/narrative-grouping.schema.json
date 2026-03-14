@@ -17,6 +17,10 @@
       "type": "integer",
       "minimum": 1,
       "description": "1-based scene index within its chapter."
+    },
+    "sequence_type": {
+      "$ref": "../enums.schema.json#/$defs/sequence_type",
+      "description": "Gulino sequence type within the act structure."
     }
   },
   "additionalProperties": true

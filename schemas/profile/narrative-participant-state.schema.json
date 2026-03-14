@@ -41,14 +41,38 @@
       "description": "What the participant is trying to achieve in this unit.",
       "properties": {
         "action": { "type": "string", "minLength": 1 },
-        "target": { "type": "string" }
+        "target": { "type": "string" },
+        "constraint": {
+          "$ref": "../enums.schema.json#/$defs/objective_constraint",
+          "description": "What limits how the objective can be pursued."
+        },
+        "target_role": {
+          "type": "string",
+          "description": "Entity ref of the person the objective is directed at."
+        }
       },
       "required": ["action"],
       "additionalProperties": false
     },
     "obstacle": {
+      "oneOf": [
+        { "type": "string" },
+        {
+          "type": "object",
+          "properties": {
+            "type": { "$ref": "../enums.schema.json#/$defs/obstacle_type" },
+            "source": { "type": "string", "description": "Entity ref or description of obstacle source." },
+            "description": { "type": "string" }
+          },
+          "required": ["description"],
+          "additionalProperties": false
+        }
+      ],
+      "description": "What opposes the objective. May be a string or structured object."
+    },
+    "tactic_shift": {
       "type": "string",
-      "description": "What opposes the objective."
+      "description": "How the participant changes tactic during the unit."
     },
     "information_state": {
       "type": "object",
@@ -144,6 +168,28 @@
         "drive_model": {
           "$ref": "../enums.schema.json#/$defs/drive_model",
           "description": "Active motivation model in this scene."
+        },
+        "gaze_type": {
+          "$ref": "../enums.schema.json#/$defs/gaze_type",
+          "description": "Mulvey: how this participant is framed by the gaze."
+        },
+        "trauma_representation": {
+          "$ref": "../enums.schema.json#/$defs/trauma_representation_mode",
+          "description": "Caruth/Herman: mode of trauma representation."
+        },
+        "somatic_response": {
+          "$ref": "../enums.schema.json#/$defs/somatic_trauma_response",
+          "description": "Van der Kolk: somatic trauma response."
+        },
+        "perception_of_other": {
+          "$ref": "../enums.schema.json#/$defs/perception_of_other",
+          "description": "How this participant perceives the other characters."
+        },
+        "stakes_level": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 5,
+          "description": "Stakes intensity (1=minimal, 5=existential)."
         }
       },
       "additionalProperties": true

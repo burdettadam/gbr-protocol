@@ -225,6 +225,34 @@ Schema: `schemas/profile/narrative-prose-analysis.schema.json`
 
 ---
 
+### 4.4 `representation_audit`
+
+The narrative profile defines a sixth epistemic section for critical-theory representation audits. This section is **NON-GENERATION** — it aids representation analysis and revision, not prose generation.
+
+| Sub-section | Theory Source | Example fields |
+|-------------|--------------|----------------|
+| `postcolonial_audit` | Said/Spivak/Bhabha | `mode`, `othering_detected`, `subaltern_voice` |
+| `feminist_audit` | Lanser/DuPlessis/Warhol | `narrative_type`, `bechdel_pass`, `marriage_plot_dependency` |
+| `queer_audit` | Sedgwick/Butler/Edelman | `mode`, `performativity_mode`, `heteronormative_assumption` |
+| `indigenous_audit` | Vizenor/Womack/Silko/Archibald | `survivance_mode`, `storywork_protocol`, `appropriation_risk` |
+| `ethics_audit` | Booth/Keen/Nussbaum | `mode`, `empathy_risk`, `coduction_pass` |
+| `gaze_audit` | Mulvey/Garland-Thomson | `gaze_type`, `male_gaze_detected`, `staring_detected` |
+| `intersectional_audit` | Crenshaw/Collins/hooks | `single_axis_detected`, `matrix_domains`, `checklist_cast_risk` |
+| `disability_audit` | Garland-Thomson/Siebers/Mitchell-Snyder | `narrative_prosthesis_detected`, `complex_embodiment` |
+| `ecocritical_audit` | Buell/Morton/Nixon/Haraway | `environmental_text`, `slow_violence_depicted`, `multispecies_presence` |
+| `class_audit` | Jameson/Williams/Eagleton | `class_visible`, `structures_of_feeling` |
+| `age_audit` | Gullette/Woodward | `decline_narrative_detected`, `agetonormativity_detected` |
+
+**Confidence model:** `interpreted_value`. All audit fields are inherently interpretive.
+
+**Normative placement:** When present, `unit.representation_audit` MUST conform to `narrative-representation-audit.schema.json`.
+
+**Usage note:** This section is intended for revision-phase analysis, sensitivity reading, and scholarly analysis. It SHOULD NOT be used by text generation systems to guide prose output. Production systems MAY omit this section entirely when generating prose.
+
+Schema: `schemas/profile/narrative-representation-audit.schema.json`
+
+---
+
 ## 5. Narrative Voice Observables
 
 The narrative profile adds these fields to `unit.observables.context`:
@@ -515,5 +543,6 @@ Key transformations:
 
 | Version | Date | Changes |
 |---------|------|--------|
+| 1.1.0 | 2026-03-14 | Gap closure: enriched narrative-context (continuity, narrative_time detail, character_positions, social_circle), narrative-entity-location (spatial_semantics, blocking, power_topology, sensory_palette), narrative-participant-state (structured obstacle, gaze, trauma, somatic, perception, stakes_level), narrative-unit-interpretations (reader_experience, thematic, motif_deployment, threads, scene_polarity, objective_correlative), narrative-story-architecture (collision_pattern, transtextuality, comic_mode, emplotment_type, mimesis_phase), narrative-prose-analysis (illocutionary_force, gricean_violation, total_words, agency_ratio, period_vocabulary), narrative-grouping (sequence_type). Added §4.4 representation_audit — non-generation critical-theory audit section (11 audit dimensions). |
 | 1.0.0 | 2026-03-12 | Promoted from skeleton to normative draft. Renumbered sections. Added canonical views (§9), enum governance (§10), domain-specific validation rules (§11). Removed placeholder content. |
 | 0.1.0 | 2026-03-11 | Initial skeleton: type registries, field vocabulary, semantic fingerprint grammar (§6), migration guide (§7), validation rules (§8). |

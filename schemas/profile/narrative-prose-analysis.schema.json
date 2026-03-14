@@ -124,7 +124,8 @@
         "type": "object",
         "properties": {
           "speaker": {
-            "$ref": "../enums.schema.json#/$defs/slug",
+            "type": "string",
+            "minLength": 1,
             "description": "Entity ref for the speaker."
           },
           "speech_register": {
@@ -146,6 +147,19 @@
           "figures": {
             "type": "array",
             "items": { "$ref": "../enums.schema.json#/$defs/figure_type" }
+          },
+          "illocutionary_force": {
+            "$ref": "../enums.schema.json#/$defs/illocutionary_force",
+            "description": "Austin: illocutionary force of the speech act."
+          },
+          "gricean_violation": {
+            "type": "object",
+            "description": "Grice: maxim violation in dialogue.",
+            "properties": {
+              "maxim": { "$ref": "../enums.schema.json#/$defs/gricean_maxim" },
+              "violation": { "type": "string" }
+            },
+            "additionalProperties": false
           }
         },
         "additionalProperties": false
@@ -192,6 +206,17 @@
         "dominant_figures": {
           "type": "array",
           "items": { "$ref": "../enums.schema.json#/$defs/figure_type" }
+        },
+        "total_words": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Total word count for this passage."
+        },
+        "agency_ratio": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "description": "Proportion of material processes with animate agents (0.0–1.0)."
         }
       },
       "additionalProperties": true
@@ -214,6 +239,11 @@
           "type": "array",
           "items": { "type": "string" },
           "description": "Constructions conspicuously absent."
+        },
+        "period_vocabulary": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Period-specific vocabulary items (e.g. 'gaol', 'fortnight')."
         }
       },
       "additionalProperties": false

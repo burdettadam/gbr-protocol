@@ -1,6 +1,6 @@
 {
   "profile_id": "narrative",
-  "profile_version": "1.0.0",
+  "profile_version": "1.1.0",
   "sip_version_range": ">=1.0.0 <2.0.0",
   "description": "Domain profile for annotating prose fiction and literary works. Defines character, setting, scene, and narrative voice vocabularies grounded in narratological theory (Genette, Cohn, Booth, Greimas, etc.).",
 
@@ -100,6 +100,11 @@
       "name": "prose_analysis",
       "purpose": "Prose-level stylistic analysis — voice contract, paragraph/sentence linguistics, dialogue features, passage statistics. Analysis mode: describes how the prose IS, not authorial intent.",
       "confidence_model": "interpreted_value"
+    },
+    {
+      "name": "representation_audit",
+      "purpose": "Critical-theory representation audits — postcolonial, feminist, queer, indigenous, ethics, gaze, intersectional, disability, ecocritical, class, and age dimensions. NON-GENERATION: aids representation analysis and revision, not prose generation.",
+      "confidence_model": "interpreted_value"
     }
   ],
 
@@ -142,6 +147,7 @@
     "entity[entity_type=location]": "schemas/profile/narrative-entity-location.schema.json",
     "relationship.interpretations": "schemas/profile/narrative-relationship.schema.json",
     "artifact.interpretations.story_architecture": "schemas/profile/narrative-story-architecture.schema.json",
-    "unit.prose_analysis": "schemas/profile/narrative-prose-analysis.schema.json"
+    "unit.prose_analysis": "schemas/profile/narrative-prose-analysis.schema.json",
+    "unit.representation_audit": "schemas/profile/narrative-representation-audit.schema.json"
   }
 }

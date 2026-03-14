@@ -87,6 +87,10 @@
         "actantial_map": {
           "description": "Greimas actantial map.",
           "additionalProperties": true
+        },
+        "collision_pattern": {
+          "$ref": "../enums.schema.json#/$defs/collision_pattern",
+          "description": "How the central collision unfolds structurally."
         }
       },
       "additionalProperties": false
@@ -144,6 +148,32 @@
             "required": ["theme"],
             "additionalProperties": false
           }
+        },
+        "transtextuality": {
+          "type": "array",
+          "description": "Genette transtextual relations to other texts.",
+          "items": {
+            "type": "object",
+            "properties": {
+              "type": { "$ref": "../enums.schema.json#/$defs/transtextuality_type" },
+              "source_text": { "type": "string" },
+              "description": { "type": "string" }
+            },
+            "required": ["type"],
+            "additionalProperties": false
+          }
+        },
+        "comic_mode": {
+          "$ref": "../enums.schema.json#/$defs/comic_mode",
+          "description": "Bergson/Morreall: dominant comic mode, if applicable."
+        },
+        "emplotment_type": {
+          "$ref": "../enums.schema.json#/$defs/emplotment_type",
+          "description": "Hayden White: emplotment type (romance, tragedy, comedy, satire)."
+        },
+        "mimesis_phase_focus": {
+          "$ref": "../enums.schema.json#/$defs/mimesis_phase",
+          "description": "Ricoeur: which mimesis phase the story foregrounds."
         }
       },
       "additionalProperties": false

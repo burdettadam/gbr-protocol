@@ -27,6 +27,10 @@
       "$ref": "../enums.schema.json#/$defs/time_of_day",
       "description": "When the unit occurs."
     },
+    "season": {
+      "$ref": "../enums.schema.json#/$defs/season",
+      "description": "Season in which the unit occurs."
+    },
     "atmosphere": {
       "$ref": "../enums.schema.json#/$defs/tone",
       "description": "Environmental mood (uses tone vocabulary)."
@@ -50,6 +54,111 @@
         "frequency": {
           "$ref": "../enums.schema.json#/$defs/frequency",
           "description": "Genette frequency."
+        },
+        "analepsis_type": {
+          "$ref": "../enums.schema.json#/$defs/analepsis_type",
+          "description": "Type of analepsis (flashback), if order involves analepsis."
+        },
+        "prolepsis_type": {
+          "$ref": "../enums.schema.json#/$defs/prolepsis_type",
+          "description": "Type of prolepsis (flash-forward), if order involves prolepsis."
+        },
+        "analepsis_reach": {
+          "type": "string",
+          "description": "How far back the analepsis reaches (e.g. '10 years', 'childhood')."
+        },
+        "analepsis_extent": {
+          "type": "string",
+          "description": "Duration the analepsis covers in story time."
+        },
+        "iterative_pattern": {
+          "$ref": "../enums.schema.json#/$defs/iterative_pattern",
+          "description": "Type of iterative telling pattern, if frequency is iterative."
+        },
+        "story_duration": {
+          "type": "object",
+          "description": "Duration of story time covered by this unit.",
+          "properties": {
+            "value": { "type": "number", "minimum": 0 },
+            "unit": { "$ref": "../enums.schema.json#/$defs/time_unit" }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "continuity": {
+      "type": "object",
+      "description": "Inter-unit continuity: how this unit connects to the previous one.",
+      "properties": {
+        "time_elapsed": {
+          "type": "string",
+          "description": "Time elapsed since the previous unit (e.g. 'moments later', '3 days')."
+        },
+        "location_change": {
+          "$ref": "../enums.schema.json#/$defs/location_change_type",
+          "description": "Whether and how the location changed from the previous unit."
+        },
+        "temporal_gap_type": {
+          "$ref": "../enums.schema.json#/$defs/temporal_gap_type",
+          "description": "Nature of any temporal gap from the previous unit."
+        }
+      },
+      "additionalProperties": false
+    },
+    "character_positions": {
+      "type": "object",
+      "description": "Which characters are present, arriving, or departing in this unit.",
+      "properties": {
+        "present": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Entity refs of characters present throughout the unit."
+        },
+        "arrives": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "entity": { "type": "string" },
+              "arrival_type": { "$ref": "../enums.schema.json#/$defs/character_arrival" }
+            },
+            "required": ["entity"],
+            "additionalProperties": false
+          },
+          "description": "Characters who arrive during the unit."
+        },
+        "departs": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "entity": { "type": "string" },
+              "departure_type": { "$ref": "../enums.schema.json#/$defs/character_departure" }
+            },
+            "required": ["entity"],
+            "additionalProperties": false
+          },
+          "description": "Characters who depart during the unit."
+        }
+      },
+      "additionalProperties": false
+    },
+    "social_circle": {
+      "type": "object",
+      "description": "Social dynamics of the scene space.",
+      "properties": {
+        "dominant": {
+          "$ref": "../enums.schema.json#/$defs/dominant_social_circle",
+          "description": "Which social world dominates the scene."
+        },
+        "intersection": {
+          "$ref": "../enums.schema.json#/$defs/circle_intersection",
+          "description": "How social circles interact or collide."
+        },
+        "territory": {
+          "$ref": "../enums.schema.json#/$defs/character_territory",
+          "description": "Whose home territory the scene occurs in."
         }
       },
       "additionalProperties": false
