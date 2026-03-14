@@ -1447,7 +1447,8 @@
       "description": "Direction of a character's arc through the story"
     },
     "interpreted_value": {
-      "description": "Wrapper for interpretation fields that may carry confidence and provenance metadata. Use oneOf[ <bare_type>, interpreted_value_wrapper ] in field schemas.",
+      "$comment": "GBR wrapper-only form. SIP _base.schema.json defines a full oneOf[plain_value, wrapper] pattern with the same name. This def is the wrapper half only — field schemas use oneOf[<bare_type>, $ref interpreted_value] to compose the full pattern.",
+      "description": "Structured wrapper for interpretation fields carrying confidence and provenance metadata. This is the WRAPPER OBJECT form only. Field schemas compose the full pattern as oneOf[<bare_type>, { $ref: interpreted_value }].",
       "type": "object",
       "required": ["value"],
       "properties": {
