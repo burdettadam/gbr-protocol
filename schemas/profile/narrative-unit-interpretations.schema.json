@@ -107,6 +107,10 @@
         "violation_type": {
           "type": "string",
           "description": "How the maxim is violated."
+        },
+        "violation_signature": {
+          "$ref": "../enums.schema.json#/$defs/violation_signature",
+          "description": "How the Gricean violation manifests in dialogue."
         }
       },
       "additionalProperties": false
@@ -145,6 +149,14 @@
         "knowledge_gap_source": {
           "$ref": "../enums.schema.json#/$defs/knowledge_gap_source",
           "description": "Source of the knowledge gap driving suspense/curiosity."
+        },
+        "gap_domain": {
+          "$ref": "../enums.schema.json#/$defs/gap_domain",
+          "description": "What domain the information gap concerns."
+        },
+        "information_gap_type": {
+          "$ref": "../enums.schema.json#/$defs/information_gap_type",
+          "description": "Sternberg: type of information gap (temporary, permanent, ambiguous, false)."
         },
         "textual_affect_type": {
           "$ref": "../enums.schema.json#/$defs/textual_affect_type",

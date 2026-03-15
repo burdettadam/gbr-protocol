@@ -28,9 +28,12 @@
       "description": "The emotion the author intends the reader to feel."
     },
     "chapter_position": {
-      "type": "string",
-      "enum": ["opening", "midpoint", "closing"],
+      "$ref": "../enums.schema.json#/$defs/chapter_position",
       "description": "This unit's structural role within its chapter."
+    },
+    "prose_pacing": {
+      "$ref": "../enums.schema.json#/$defs/prose_pacing",
+      "description": "Scene vs. summary ratio at prose level."
     }
   },
   "additionalProperties": true

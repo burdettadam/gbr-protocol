@@ -22,9 +22,14 @@
           "description": "Vocabulary complexity and register."
         },
         "vocabulary_source": {
-          "type": "array",
-          "items": { "type": "string" },
-          "description": "Semantic fields the vocabulary draws from (e.g. 'maritime', 'domestic', 'clinical')."
+          "oneOf": [
+            {
+              "type": "array",
+              "items": { "type": "string" }
+            },
+            { "$ref": "../enums.schema.json#/$defs/vocabulary_source" }
+          ],
+          "description": "Vocabulary source: governed enum (character_owned, narrator_owned, period_appropriate, mixed) or free-form array of semantic fields."
         },
         "period_markers": {
           "type": "array",

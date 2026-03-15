@@ -87,7 +87,12 @@
         },
         "fid_markers": {
           "type": "array",
-          "items": { "type": "string" },
+          "items": {
+            "oneOf": [
+              { "$ref": "../enums.schema.json#/$defs/fid_marker" },
+              { "type": "string" }
+            ]
+          },
           "description": "Free indirect discourse markers associated with this character."
         },
         "signature_phrases": {

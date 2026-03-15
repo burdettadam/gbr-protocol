@@ -24,8 +24,8 @@
           "description": "Number of chapters."
         },
         "structure_type": {
-          "type": "string",
-          "description": "Macro structure type (three_act, two_act, kishotenketsu, etc.)."
+          "$ref": "../enums.schema.json#/$defs/structure_type",
+          "description": "Macro structure type."
         },
         "word_count": {
           "type": "integer",

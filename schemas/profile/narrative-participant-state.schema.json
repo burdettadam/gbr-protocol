@@ -50,14 +50,22 @@
       "description": "What the participant is trying to achieve in this unit.",
       "properties": {
         "action": { "type": "string", "minLength": 1 },
+        "verb": {
+          "$ref": "../enums.schema.json#/$defs/objective_verb",
+          "description": "Canonical action verb for the objective."
+        },
+        "object_type": {
+          "$ref": "../enums.schema.json#/$defs/objective_object",
+          "description": "What type of thing is being acted upon."
+        },
         "target": { "type": "string" },
         "constraint": {
           "$ref": "../enums.schema.json#/$defs/objective_constraint",
           "description": "What limits how the objective can be pursued."
         },
         "target_role": {
-          "type": "string",
-          "description": "Entity ref of the person the objective is directed at."
+          "$ref": "../enums.schema.json#/$defs/character_role",
+          "description": "Role of the person the objective is directed at."
         }
       },
       "required": ["action"],
@@ -93,8 +101,17 @@
             "type": "object",
             "properties": {
               "subject":   { "type": "string" },
-              "predicate": { "type": "string" },
+              "predicate": {
+                "oneOf": [
+                  { "$ref": "../enums.schema.json#/$defs/knowledge_predicate" },
+                  { "type": "string" }
+                ]
+              },
               "about":     { "type": "string" },
+              "domain": {
+                "$ref": "../enums.schema.json#/$defs/knowledge_domain",
+                "description": "What category of knowledge this is."
+              },
               "certainty": {
                 "oneOf": [
                   { "$ref": "../enums.schema.json#/$defs/knowledge_certainty" },
@@ -111,7 +128,12 @@
             "type": "object",
             "properties": {
               "subject":   { "type": "string" },
-              "predicate": { "type": "string" },
+              "predicate": {
+                "oneOf": [
+                  { "$ref": "../enums.schema.json#/$defs/knowledge_predicate" },
+                  { "type": "string" }
+                ]
+              },
               "about":     { "type": "string" },
               "certainty": {
                 "oneOf": [
@@ -167,8 +189,29 @@
           "description": "What this character personally stands to lose."
         },
         "stakes_relational": {
-          "type": "string",
+          "$ref": "../enums.schema.json#/$defs/relational_stakes",
           "description": "What the relationship stands to lose."
+        },
+        "outcome": {
+          "$ref": "../enums.schema.json#/$defs/outcome_type",
+          "description": "Whether the character achieved their scene objective."
+        },
+        "trigger_type": {
+          "$ref": "../enums.schema.json#/$defs/trigger_type",
+          "description": "What activates the character's wound response."
+        },
+        "want_from_other": {
+          "$ref": "../enums.schema.json#/$defs/want_type",
+          "description": "What this participant wants from other characters."
+        },
+        "underlying_conflict": {
+          "$ref": "../enums.schema.json#/$defs/underlying_conflict",
+          "description": "The deeper issue beneath surface disagreement."
+        },
+        "social_circles_active": {
+          "type": "array",
+          "items": { "$ref": "../enums.schema.json#/$defs/social_circle" },
+          "description": "Social circles this character is operating in."
         },
         "want_need_alignment": {
           "$ref": "../enums.schema.json#/$defs/want_need_alignment",
@@ -234,10 +277,11 @@
           "description": "Primary emotion."
         },
         "intensity": {
-          "type": "integer",
-          "minimum": 1,
-          "maximum": 5,
-          "description": "Emotional intensity (1=subtle, 5=overwhelming)."
+          "oneOf": [
+            { "$ref": "../enums.schema.json#/$defs/emotion_intensity" },
+            { "type": "integer", "minimum": 1, "maximum": 5 }
+          ],
+          "description": "Emotional intensity (1=subtle, 5=overwhelming). Accepts integer or enum."
         },
         "secondary_emotion": {
           "$ref": "../enums.schema.json#/$defs/emotion",

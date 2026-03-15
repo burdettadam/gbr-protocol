@@ -33,6 +33,18 @@
       "type": "string",
       "enum": ["stable", "volatile", "deteriorating", "improving", "oscillating"],
       "description": "How stable or volatile the relationship is."
+    },
+    "relationship_turn": {
+      "$ref": "../enums.schema.json#/$defs/relationship_turn",
+      "description": "How the relationship changes in this scene."
+    },
+    "want_from_other": {
+      "$ref": "../enums.schema.json#/$defs/want_type",
+      "description": "What one party wants from the other."
+    },
+    "underlying_conflict": {
+      "$ref": "../enums.schema.json#/$defs/underlying_conflict",
+      "description": "Deeper issue beneath surface disagreement."
     }
   },
   "additionalProperties": true
