@@ -202,6 +202,154 @@
       }
     },
 
+    "prose_directives": {
+      "type": "object",
+      "description": "Scene-level voice and style constraints for prose generation. Supplements the book-level voice contract with concrete mechanical rules that override model default voice. Designed to produce model-agnostic prose.",
+      "properties": {
+        "voice_contract_ref": {
+          "type": "string",
+          "description": "Relative path to the book-level voice contract or prose style guide."
+        },
+        "sentence_mechanics": {
+          "type": "object",
+          "description": "Sentence-level rhythm and construction rules.",
+          "properties": {
+            "avg_sentence_length": {
+              "type": "string",
+              "enum": ["short", "medium", "medium-long", "long", "varied"],
+              "description": "Target average sentence length for this scene."
+            },
+            "rhythm_pattern": {
+              "type": "string",
+              "description": "Prose rhythm contract. E.g. 'periodic baseline, shortening under pressure; fractures into fragments at emotional rupture'."
+            },
+            "max_consecutive_same_opener": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 5,
+              "description": "Max sentences in a row starting with the same word/pronoun."
+            },
+            "punctuation_preferences": {
+              "type": "array",
+              "items": { "type": "string" },
+              "description": "Ordered punctuation preference. E.g. ['semicolons', 'commas', 'em-dashes-sparingly']."
+            },
+            "fragment_policy": {
+              "type": "string",
+              "enum": ["forbidden", "rare-for-impact", "moderate", "frequent"],
+              "description": "How freely sentence fragments may be used."
+            }
+          }
+        },
+        "diction": {
+          "type": "object",
+          "description": "Word-level constraints on register, vocabulary, and sensory focus.",
+          "properties": {
+            "register": {
+              "type": "string",
+              "description": "Target diction register. E.g. 'formal-literary-regency', 'contemporary-literary', 'vernacular-Southern'."
+            },
+            "sensory_priority": {
+              "type": "array",
+              "items": { "type": "string" },
+              "description": "Ordered sensory channels to emphasize. E.g. ['touch', 'sound', 'smell', 'sight']."
+            },
+            "embrace": {
+              "type": "array",
+              "items": { "type": "string" },
+              "description": "Word families and diction categories to favor."
+            },
+            "avoid": {
+              "type": "array",
+              "items": { "type": "string" },
+              "description": "Word families and diction categories to suppress."
+            }
+          }
+        },
+        "metaphor_budget": {
+          "type": "object",
+          "description": "Controls on figurative language density.",
+          "properties": {
+            "density": {
+              "type": "string",
+              "enum": ["spare", "moderate", "rich"],
+              "description": "Overall metaphor density target."
+            },
+            "max_extended_conceits": {
+              "type": "integer",
+              "minimum": 0,
+              "description": "Maximum extended metaphorical conceits per scene."
+            },
+            "prohibited_types": {
+              "type": "array",
+              "items": { "type": "string" },
+              "description": "Figurative language types to avoid. E.g. ['mixed metaphor', 'cliché simile']."
+            }
+          }
+        },
+        "anti_patterns": {
+          "type": "array",
+          "description": "Explicit model-default patterns to suppress. Each entry names a pattern and gives a concrete correction instruction.",
+          "items": {
+            "type": "object",
+            "required": ["pattern", "instruction"],
+            "properties": {
+              "pattern": {
+                "type": "string",
+                "description": "Short label for the anti-pattern."
+              },
+              "description": {
+                "type": "string",
+                "description": "What the pattern looks like in generated prose."
+              },
+              "instruction": {
+                "type": "string",
+                "description": "Concrete correction rule for the model to follow."
+              }
+            }
+          }
+        },
+        "scene_calibration": {
+          "type": "object",
+          "description": "Scene-specific prose ratio targets.",
+          "properties": {
+            "dialogue_interiority_ratio": {
+              "type": "string",
+              "description": "Target ratio as 'X:Y'. E.g. '40:60' means 40% dialogue, 60% interiority/narration."
+            },
+            "show_tell_ratio": {
+              "type": "string",
+              "description": "Target show:tell ratio as 'X:Y'."
+            },
+            "scene_ending_type": {
+              "type": "string",
+              "description": "How the scene should close. E.g. 'concrete-object', 'action-beat', 'line-of-dialogue', 'image'."
+            }
+          }
+        },
+        "dos": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Plain-language positive instructions for prose generation."
+        },
+        "donts": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Plain-language prohibitions for prose generation."
+        },
+        "exemplar_lines": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "3–5 sentences demonstrating the target voice. May be from the voice contract, prior approved drafts, or comp titles."
+        },
+        "anti_exemplar_lines": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "3–5 sentences demonstrating what to avoid — model-default patterns, wrong register, wrong rhythm."
+        }
+      }
+    },
+
     "character_states": {
       "type": "array",
       "items": { "$ref": "character-state.schema.json" },

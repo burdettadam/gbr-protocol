@@ -629,6 +629,12 @@ fn convert(gbr: &Value, reg: &Registry) -> Result<CapArtifact, String> {
     if let Some(tp) = str_field(craft, "target_pacing") {
         craft_targets_map.insert("pacing".into(), json!(tp));
     }
+    // prose_directives: forward the entire block as opaque JSON into craft_targets
+    if let Some(pd) = gbr.get("prose_directives") {
+        if !pd.is_null() {
+            craft_targets_map.insert("prose_directives".into(), pd.clone());
+        }
+    }
     let unit_craft_targets = if craft_targets_map.is_empty() {
         None
     } else {

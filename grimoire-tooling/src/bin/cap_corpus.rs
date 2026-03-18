@@ -487,6 +487,12 @@ fn convert_scene(gbr: &Value, reg: &Registry) -> Result<CapArtifact, String> {
     if let Some(t)  = str_field(craft, "tone")        { craft_map.insert("tone".into(), json!(t)); }
     if let Some(tt) = craft.get("target_tension")     { craft_map.insert("tension".into(), tt.clone()); }
     if let Some(tp) = str_field(craft, "target_pacing"){ craft_map.insert("pacing".into(), json!(tp)); }
+    // prose_directives: forward the entire block as opaque JSON into craft_targets
+    if let Some(pd) = gbr.get("prose_directives") {
+        if !pd.is_null() {
+            craft_map.insert("prose_directives".into(), pd.clone());
+        }
+    }
     let unit_craft = if craft_map.is_empty() { None } else { Some(Value::Object(craft_map)) };
 
     let char_states = gbr.get("character_states").and_then(Value::as_array).cloned().unwrap_or_default();

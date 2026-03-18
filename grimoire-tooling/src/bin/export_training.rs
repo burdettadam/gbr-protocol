@@ -194,6 +194,7 @@ fn collect_examples(
             preceding_context: None,
             preceding_scene_summary: None,
             tier_config: tier_config.clone(),
+            prose_directives: None,
         };
 
         // -- Build ProsePassage
@@ -365,6 +366,7 @@ fn minimal_scene(id: &str, title: &str) -> Scene {
         sequence_id: None,
         scene_type: None,
         tension_level: None,
+        prose_directives: None,
     }
 }
 

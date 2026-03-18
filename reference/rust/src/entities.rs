@@ -403,6 +403,130 @@ pub struct Scene {
     pub sequence_id: Option<EntityRef>,
     pub scene_type: Option<SceneType>,
     pub tension_level: Option<u8>,
+    /// Scene-level voice and style constraints for prose generation.
+    /// Supplements the book-level voice contract with concrete mechanical rules
+    /// that override model default voice. Designed to produce model-agnostic prose.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub prose_directives: Option<ProseDirectives>,
+}
+
+// ── Prose Directives ──────────────────────────────────────────────────────────
+
+/// Scene-level voice and style constraints for prose generation.
+///
+/// Supplements the book-level voice contract with concrete mechanical rules
+/// that override model default voice. Each sub-section targets a specific
+/// axis of prose control: sentence rhythm, word choice, figurative language
+/// density, known anti-patterns to suppress, and scene-specific calibration.
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize, JsonSchema)]
+pub struct ProseDirectives {
+    /// Relative path to the book-level voice contract or prose style guide.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub voice_contract_ref: Option<String>,
+    /// Sentence-level rhythm and construction rules.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub sentence_mechanics: Option<SentenceMechanics>,
+    /// Word-level constraints on register, vocabulary, and sensory focus.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub diction: Option<Diction>,
+    /// Controls on figurative language density.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub metaphor_budget: Option<MetaphorBudget>,
+    /// Explicit model-default patterns to suppress.
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    pub anti_patterns: Vec<AntiPattern>,
+    /// Scene-specific prose ratio targets.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub scene_calibration: Option<SceneCalibration>,
+    /// Plain-language positive instructions for prose generation.
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    pub dos: Vec<String>,
+    /// Plain-language prohibitions for prose generation.
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    pub donts: Vec<String>,
+    /// 3–5 sentences demonstrating the target voice.
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    pub exemplar_lines: Vec<String>,
+    /// 3–5 sentences demonstrating what to avoid.
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    pub anti_exemplar_lines: Vec<String>,
+}
+
+/// Sentence-level rhythm and construction rules.
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize, JsonSchema)]
+pub struct SentenceMechanics {
+    /// Target average sentence length (short / medium / medium-long / long / varied).
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub avg_sentence_length: Option<String>,
+    /// Prose rhythm contract describing the expected sentence flow.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub rhythm_pattern: Option<String>,
+    /// Maximum sentences in a row starting with the same word/pronoun.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub max_consecutive_same_opener: Option<u8>,
+    /// Ordered punctuation preference (e.g. semicolons, commas, em-dashes-selective).
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    pub punctuation_preferences: Vec<String>,
+    /// How freely sentence fragments may be used.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub fragment_policy: Option<String>,
+}
+
+/// Word-level constraints on register, vocabulary, and sensory focus.
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize, JsonSchema)]
+pub struct Diction {
+    /// Target diction register (e.g. formal-literary-regency).
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub register: Option<String>,
+    /// Ordered sensory channels to emphasize.
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    pub sensory_priority: Vec<String>,
+    /// Word families and diction categories to favor.
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    pub embrace: Vec<String>,
+    /// Word families and diction categories to suppress.
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    pub avoid: Vec<String>,
+}
+
+/// Controls on figurative language density.
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize, JsonSchema)]
+pub struct MetaphorBudget {
+    /// Overall metaphor density target (spare / moderate / rich).
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub density: Option<String>,
+    /// Maximum extended metaphorical conceits per scene.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub max_extended_conceits: Option<u8>,
+    /// Figurative language types to avoid.
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    pub prohibited_types: Vec<String>,
+}
+
+/// A named anti-pattern with detection description and correction instruction.
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize, JsonSchema)]
+pub struct AntiPattern {
+    /// Short label for the anti-pattern (e.g. "aphoristic_excess").
+    pub pattern: String,
+    /// What the pattern looks like in generated prose.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub description: Option<String>,
+    /// Concrete correction rule for the model to follow.
+    pub instruction: String,
+}
+
+/// Scene-specific prose ratio targets.
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize, JsonSchema)]
+pub struct SceneCalibration {
+    /// Target ratio as "X:Y" (e.g. "40:60" = 40% dialogue, 60% interiority).
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub dialogue_interiority_ratio: Option<String>,
+    /// Target show:tell ratio as "X:Y".
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub show_tell_ratio: Option<String>,
+    /// How the scene should close (e.g. "concrete-object", "action-beat").
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub scene_ending_type: Option<String>,
 }
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, JsonSchema)]

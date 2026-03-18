@@ -20,7 +20,7 @@ use std::collections::HashMap;
 use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 
-use cap_narrative_types::entities::{Character, Scene, Setting, Motif};
+use cap_narrative_types::entities::{Character, ProseDirectives, Scene, Setting, Motif};
 use cap_narrative_types::enums::{Act, DominantSense, MotifStage, RevisionFlag};
 use cap_narrative_types::tags::{AnnotationChannel, EntityRef, ParagraphAnnotations, SentenceAnnotations};
 use cap_narrative_types::voice::{DialogueSegment, FocalizationConfig, VoiceContract, VoiceSignature};
@@ -345,6 +345,14 @@ pub struct SceneContext {
     /// when this context is serialised into a training example.  Defaults to
     /// [`TierConfig::default`] (Tier 1 + Tier 2, no sentence level, no theory).
     pub tier_config: TierConfig,
+
+    // ── Prose directives (scene-card level voice override)
+    /// Scene-level voice and style constraints loaded from the GBR scene card's
+    /// `prose_directives` section. Overrides model default voice with concrete
+    /// mechanical rules (sentence mechanics, anti-patterns, diction, etc.).
+    /// When present, this takes precedence over `scene.prose_directives`.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub prose_directives: Option<ProseDirectives>,
 }
 
 // ── Sentence unit ────────────────────────────────────────────────────────────
