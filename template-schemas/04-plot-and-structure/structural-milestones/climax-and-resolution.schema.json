@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "grimoire:schemas/04-plot-and-structure/scene-design/climax-and-resolution.schema.json",
+  "$id": "grimoire:schemas/04-plot-and-structure/structural-milestones/climax-and-resolution.schema.json",
   "title": "Grimoire · Climax And Resolution",
   "description": "Extraction schema for climax-and-resolution.md. Fields map to **Label:** fill-ins, tables, and checkbox groups in the template. Mark fields with x-source-required: true when the value should cite a source passage.",
   "type": "object",

@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "grimoire:schemas/04-plot-and-structure/seriality-and-series-craft.schema.json",
+  "$id": "grimoire:schemas/04-plot-and-structure/reader-experience/seriality-and-series-craft.schema.json",
   "title": "Grimoire · Seriality And Series Craft",
   "description": "Extraction schema for seriality-and-series-craft.md. Fields map to **Label:** fill-ins, tables, and checkbox groups in the template. Mark fields with x-source-required: true when the value should cite a source passage.",
   "type": "object",

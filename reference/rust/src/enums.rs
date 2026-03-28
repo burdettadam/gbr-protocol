@@ -1722,7 +1722,7 @@ pub enum BloomInfluenceMode {
 // ── Metaphor and figurative language ──────────────────────────────────────────
 
 /// Figurative language type; anchors to Lakoff/Johnson, Richards, and Black
-/// frameworks in `theory/metaphor-and-figurative-language.md`.
+/// frameworks in `theory/craft/metaphor-and-figurative-language.md`.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Serialize, Deserialize, JsonSchema, Display, EnumString)]
 #[serde(rename_all = "snake_case")]
 #[strum(serialize_all = "snake_case")]
@@ -2144,7 +2144,7 @@ pub enum SurvivranceMode {
 }
 
 /// Vizenor *Manifest Manners* (1994): extended survivance vocabulary.
-/// Reference: `theory/indigenous-narratology.md`
+/// Reference: `theory/ethics/indigenous-narratology.md`
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Serialize, Deserialize, JsonSchema, Display, EnumString)]
 #[serde(rename_all = "snake_case")]
 #[strum(serialize_all = "snake_case")]
@@ -2379,7 +2379,7 @@ pub enum QueerTimeMode {
 }
 
 /// Sedgwick/Rich/Butler/Edelman/Halberstam: combined queer narrative modes for audit.
-/// Reference: `theory/queer-narratology.md`
+/// Reference: `theory/ethics/queer-narratology.md`
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Serialize, Deserialize, JsonSchema, Display, EnumString)]
 #[serde(rename_all = "snake_case")]
 #[strum(serialize_all = "snake_case")]
@@ -2437,7 +2437,7 @@ pub enum AffectMode {
 
 /// Freudian mechanisms as applied to narrative production and character psychology.
 /// Source: Freud *The Interpretation of Dreams* (1900), *Beyond the Pleasure Principle* (1920).
-/// Reference: `theory/psychoanalytic-narratology.md`
+/// Reference: `theory/craft/psychoanalytic-narratology.md`
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Serialize, Deserialize, JsonSchema, Display, EnumString)]
 #[serde(rename_all = "snake_case")]
 #[strum(serialize_all = "snake_case")]
@@ -2497,7 +2497,7 @@ pub enum AbjectCategory {
 /// Postcolonial narrative modes and critical categories.
 /// Sources: Said *Orientalism* (1978), Spivak *Can the Subaltern Speak?* (1988),
 /// Bhabha *The Location of Culture* (1994), Fanon *Black Skin, White Masks* (1952).
-/// Reference: `theory/postcolonial-narratology.md`
+/// Reference: `theory/ethics/postcolonial-narratology.md`
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Serialize, Deserialize, JsonSchema, Display, EnumString)]
 #[serde(rename_all = "snake_case")]
 #[strum(serialize_all = "snake_case")]
@@ -2529,7 +2529,7 @@ pub enum PostcolonialMode {
 /// Ecocritical modes for representing environment and ecological crisis.
 /// Sources: Buell *The Environmental Imagination* (1995), Morton *Ecology Without Nature* (2007),
 /// Nixon *Slow Violence* (2011), Haraway *Staying with the Trouble* (2016).
-/// Reference: `theory/ecocriticism.md`
+/// Reference: `theory/ethics/ecocriticism.md`
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Serialize, Deserialize, JsonSchema, Display, EnumString)]
 #[serde(rename_all = "snake_case")]
 #[strum(serialize_all = "snake_case")]
@@ -2558,7 +2558,7 @@ pub enum EcocriticalMode {
 
 /// Image schemas — recurrent kinesthetic-sensory gestalts that structure abstract thought.
 /// Source: Johnson *The Body in the Mind* (1987); Lakoff & Johnson *Philosophy in the Flesh* (1999).
-/// Reference: `theory/embodied-narration.md`
+/// Reference: `theory/craft/embodied-narration.md`
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Serialize, Deserialize, JsonSchema, Display, EnumString)]
 #[serde(rename_all = "snake_case")]
 #[strum(serialize_all = "snake_case")]
@@ -2589,7 +2589,7 @@ pub enum ImageSchema {
 
 /// Defamiliarization and foregrounding modes.
 /// Sources: Shklovsky *Art as Technique* (1917); Leech & Short *Style in Fiction* (2007).
-/// Reference: `theory/prose-linguistics.md`
+/// Reference: `theory/craft/prose-linguistics.md`
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Serialize, Deserialize, JsonSchema, Display, EnumString)]
 #[serde(rename_all = "snake_case")]
 #[strum(serialize_all = "snake_case")]
@@ -2636,7 +2636,7 @@ pub enum SemioticSquarePosition {
 /// Experimental narration modes — deviations from conventionally transparent narration.
 /// Sources: Booth *The Rhetoric of Fiction* (1961), Waugh *Metafiction* (1984),
 /// McHale *Postmodernist Fiction* (1987).
-/// Reference: `theory/experimental-narration.md`
+/// Reference: `theory/craft/experimental-narration.md`
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Serialize, Deserialize, JsonSchema, Display, EnumString)]
 #[serde(rename_all = "snake_case")]
 #[strum(serialize_all = "snake_case")]
@@ -2664,7 +2664,7 @@ pub enum ExperimentalNarrationMode {
 /// Posthumanist narrative modes — how narrative frames nonhuman, animal, machine subjects.
 /// Sources: Wolfe *Animal Rites* (2003), Braidotti *The Posthuman* (2013),
 /// Hayles *How We Became Posthuman* (1999).
-/// Reference: `theory/posthumanism-and-nonhuman.md`
+/// Reference: `theory/ethics/posthumanism-and-nonhuman.md`
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Serialize, Deserialize, JsonSchema, Display, EnumString)]
 #[serde(rename_all = "snake_case")]
 #[strum(serialize_all = "snake_case")]
@@ -2690,7 +2690,7 @@ pub enum PosthumanMode {
 /// Marxist and class-based narrative analysis modes.
 /// Sources: Jameson *The Political Unconscious* (1981), Williams *Marxism and Literature* (1977),
 /// Lukács *Studies in European Realism* (1950), Eagleton *Criticism and Ideology* (1976).
-/// Reference: `theory/class-and-marxist-narratology.md`
+/// Reference: `theory/ethics/class-and-marxist-narratology.md`
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Serialize, Deserialize, JsonSchema, Display, EnumString)]
 #[serde(rename_all = "snake_case")]
 #[strum(serialize_all = "snake_case")]
@@ -2748,7 +2748,7 @@ impl From<CulturalStructure> for MarxistNarrativeMode {
 /// Feminist narrative categories.
 /// Sources: Lanser *Fictions of Authority* (1992), DuPlessis *Writing Beyond the Ending* (1985),
 /// Warhol *Gendered Interventions* (1989), Fetterley *The Resisting Reader* (1978).
-/// Reference: `theory/feminist-narratology.md`
+/// Reference: `theory/ethics/feminist-narratology.md`
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Serialize, Deserialize, JsonSchema, Display, EnumString)]
 #[serde(rename_all = "snake_case")]
 #[strum(serialize_all = "snake_case")]
@@ -2828,7 +2828,7 @@ pub enum CognitiveNarrativeMode {
 /// Prosodic and verse form elements — for verse novel and prose-poetry work.
 /// Sources: Fussell *Poetic Meter and Poetic Form* (1965), Hartman *Free Verse* (1980),
 /// Attridge *The Rhythms of English Poetry* (1982).
-/// Reference: `theory/verse-novel-and-prose-poetry.md`
+/// Reference: `theory/craft/verse-novel-and-prose-poetry.md`
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Serialize, Deserialize, JsonSchema, Display, EnumString)]
 #[serde(rename_all = "snake_case")]
 #[strum(serialize_all = "snake_case")]

@@ -1,0 +1,66 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "grimoire:schemas/04-plot-and-structure/structural-milestones/midpoint.schema.json",
+  "title": "Grimoire · Midpoint Template",
+  "description": "Extraction schema for midpoint.md. Fields map to **Label:** fill-ins, tables, and checkbox groups in the template.",
+  "type": "object",
+  "properties": {
+    "_source_text": {
+      "$ref": "grimoire:base#/$defs/sourceTextMeta",
+      "description": "Metadata about the source text being analyzed.",
+      "x-analysis-only": true
+    },
+    "story_title": {
+      "type": "string",
+      "description": "Story Title:",
+      "x-source-required": false
+    },
+    "midpoint_type": {
+      "type": "string",
+      "enum": ["false_victory", "false_defeat", "revelation", "mirror_moment"],
+      "description": "Structural Function (false victory / false defeat / revelation / mirror moment):",
+      "x-source-required": true
+    },
+    "midpoint_event": {
+      "type": "string",
+      "description": "What happens at the midpoint:",
+      "x-source-required": true
+    },
+    "internal_arc_shift": {
+      "type": "string",
+      "description": "Internal Arc: What changes inside the protagonist:",
+      "x-source-required": true
+    },
+    "external_arc_shift": {
+      "type": "string",
+      "description": "External Arc: What changes in the external situation:",
+      "x-source-required": true
+    },
+    "stakes_before": {
+      "type": "string",
+      "description": "Stakes Before Midpoint:",
+      "x-source-required": false
+    },
+    "stakes_after": {
+      "type": "string",
+      "description": "Stakes After Midpoint:",
+      "x-source-required": false
+    },
+    "thematic_declaration": {
+      "type": "string",
+      "description": "Thematic Declaration (what truth is surfaced or challenged):",
+      "x-source-required": true
+    },
+    "act_2a_trajectory": {
+      "type": "string",
+      "description": "Act 2A trajectory (reactive/proactive/investigative):",
+      "x-source-required": false
+    },
+    "act_2b_trajectory": {
+      "type": "string",
+      "description": "Act 2B trajectory (reactive/proactive/investigative):",
+      "x-source-required": false
+    }
+  },
+  "required": ["midpoint_type", "midpoint_event"]
+}

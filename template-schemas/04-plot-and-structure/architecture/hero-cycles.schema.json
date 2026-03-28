@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "grimoire:schemas/04-plot-and-structure/reader-experience/hero-cycles.schema.json",
+  "$id": "grimoire:schemas/04-plot-and-structure/architecture/hero-cycles.schema.json",
   "title": "Grimoire · Hero Cycles",
   "description": "Extraction schema for hero-cycles.md. Fields map to **Label:** fill-ins, tables, and checkbox groups in the template. Mark fields with x-source-required: true when the value should cite a source passage.",
   "type": "object",
