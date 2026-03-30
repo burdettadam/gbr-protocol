@@ -25,7 +25,7 @@ The map structure (rather than an array) enables O(1) lookup by slug. Every scen
 Character entries use the three-section epistemic structure. See [ADR-006](../docs/decisions/ADR-006-observable-structure-interpretation.md) for rationale.
 
 - **Observables:** `id`, `name` (REQUIRED), `aliases`
-- **Structure:** `role`, `voice_signature`
+- **Structure:** `role`, `voice_signature`, `stress_profile`
 - **Interpretations:** `archetype`, `wound`, `alignment`, `drive_model`, `arc_type`, `actant`, `ghost`, `want`, `need`, `flaw`
 
 ### Required Fields
@@ -70,6 +70,60 @@ Optional character voice fingerprint for prose generation consistency:
   "fid_markers": ["exclamatory_syntax", "evaluative_language"],
   "forbidden_words": ["awesome"],
   "signature_phrases": ["I dare say", "Upon my word"]
+}
+```
+
+### Stress Profile
+
+Optional behavioral fingerprint for how a character operates under pressure. Declares persistent tells, voice shifts, temperament baseline, and interpersonal defaults. Maps to Grimoire's Behavioral Operating Profile and Escalation Ladder templates.
+
+**Baseline temperament:** `affect_intensity` (muted/moderate/intense), `recovery_speed` (fast/moderate/slow), `frustration_threshold` (low/medium/high).
+
+**Interpersonal defaults:** `conflict_style` (avoid/negotiate/dominate/withdraw/deflect), `attachment_pattern` (secure/anxious/avoidant/disorganized).
+
+**Tells:** An array of behavioral shifts that surface under pressure. Each tell declares:
+- `stress_level` — when it activates (low/moderate/acute/any)
+- `channel` — how it manifests (speech/body/behavioral/cognitive)
+- `tell` — free-text description of the behavior
+- `visible_to_others` — whether other characters can observe it (default: true)
+
+**Voice under stress:** Overrides for `voice_signature` fields when the character is pressured: `sentence_length_tendency`, `vocabulary_register`, `syntax_complexity`, `stress_phrases`.
+
+```json
+{
+  "baseline_temperament": {
+    "affect_intensity": "moderate",
+    "recovery_speed": "slow",
+    "frustration_threshold": "low"
+  },
+  "conflict_style": "deflect",
+  "attachment_pattern": "anxious",
+  "tells": [
+    {
+      "stress_level": "low",
+      "channel": "speech",
+      "tell": "Starts citing obscure trivia — random facts about animals, history, etymology",
+      "visible_to_others": true
+    },
+    {
+      "stress_level": "moderate",
+      "channel": "speech",
+      "tell": "Facts become faster and more disjointed; loses conversational threading",
+      "visible_to_others": true
+    },
+    {
+      "stress_level": "acute",
+      "channel": "body",
+      "tell": "Goes completely silent mid-sentence, hands go still",
+      "visible_to_others": true
+    }
+  ],
+  "voice_under_stress": {
+    "sentence_length_tendency": "short",
+    "vocabulary_register": "elevated",
+    "syntax_complexity": "simple",
+    "stress_phrases": ["Did you know that", "Fun fact", "Actually—"]
+  }
 }
 ```
 

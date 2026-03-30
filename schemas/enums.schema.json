@@ -1667,6 +1667,41 @@
         "bureaucratic", "forensic", "photographic", "cinematic"
       ],
       "description": "Semantic domain of vocabulary and imagery."
+    },
+    "stress_level": {
+      "type": "string",
+      "enum": ["low", "moderate", "acute", "any"],
+      "description": "Character's current stress intensity. 'any' is used in stress_profile tells to indicate a tell that surfaces at all levels."
+    },
+    "tell_channel": {
+      "type": "string",
+      "enum": ["speech", "body", "behavioral", "cognitive"],
+      "description": "Sensory channel through which a character tell manifests. speech = verbal patterns; body = physical gestures/posture; behavioral = actions/habits; cognitive = thought patterns (only visible to reader via narration)."
+    },
+    "conflict_style": {
+      "type": "string",
+      "enum": ["avoid", "negotiate", "dominate", "withdraw", "deflect"],
+      "description": "Character's default interpersonal conflict approach."
+    },
+    "attachment_pattern": {
+      "type": "string",
+      "enum": ["secure", "anxious", "avoidant", "disorganized"],
+      "description": "Bowlby/Ainsworth attachment style governing close-relationship behavior."
+    },
+    "affect_intensity": {
+      "type": "string",
+      "enum": ["muted", "moderate", "intense"],
+      "description": "Baseline strength of emotional responses."
+    },
+    "recovery_speed": {
+      "type": "string",
+      "enum": ["fast", "moderate", "slow"],
+      "description": "How quickly the character returns to emotional baseline after disruption."
+    },
+    "frustration_threshold": {
+      "type": "string",
+      "enum": ["low", "medium", "high"],
+      "description": "How much pressure the character absorbs before stress behavior activates."
     }
   }
 }

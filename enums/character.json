@@ -124,6 +124,25 @@
         { "value": "helper", "definition": "An entity who aids the subject in achieving the object.", "example_usage": "Allies, tools, lucky events." },
         { "value": "opponent", "definition": "An entity who impedes the subject from achieving the object.", "example_usage": "Antagonist, obstacles, opposing forces." }
       ]
+    },
+    "conflict_style": {
+      "description": "Character's default interpersonal conflict approach — how they habitually respond when facing opposition.",
+      "values": [
+        { "value": "avoid", "definition": "Withdraws from conflict entirely; sidesteps confrontation at any cost.", "example_usage": "A character who changes the subject, leaves the room, or goes quiet when tensions rise." },
+        { "value": "negotiate", "definition": "Seeks a mutually acceptable solution; engages conflict as a problem to solve.", "example_usage": "A diplomat character who always looks for the middle ground." },
+        { "value": "dominate", "definition": "Seeks to win the conflict outright; prioritizes their position over the relationship.", "example_usage": "A character who raises their voice, pulls rank, or escalates until the other backs down." },
+        { "value": "withdraw", "definition": "Disengages emotionally while remaining physically present; shuts down.", "example_usage": "A character who goes blank-faced and monosyllabic under pressure." },
+        { "value": "deflect", "definition": "Redirects the conflict through humor, subject changes, or reframing — never addresses it head-on.", "example_usage": "A character who cracks jokes when the argument gets serious, or pivots to someone else's problem." }
+      ]
+    },
+    "attachment_pattern": {
+      "description": "Bowlby/Ainsworth attachment style governing behavior in close relationships, especially under stress.",
+      "values": [
+        { "value": "secure", "definition": "Comfortable with intimacy and autonomy; seeks closeness without anxiety or avoidance.", "example_usage": "A character who can ask for help, express needs, and tolerate distance." },
+        { "value": "anxious", "definition": "Hyperactivates attachment system under stress; seeks excessive reassurance and closeness.", "example_usage": "A character who becomes clingy, panics at perceived distance, or reads abandonment into neutral signals." },
+        { "value": "avoidant", "definition": "Deactivates attachment system under stress; suppresses needs and maintains emotional distance.", "example_usage": "A character who pulls away when things get intimate, insists they're fine, or refuses to depend on anyone." },
+        { "value": "disorganized", "definition": "Oscillates between anxious and avoidant strategies; approach-avoidance conflict in close bonds.", "example_usage": "A character who desperately wants closeness but sabotages it when it arrives — often linked to trauma." }
+      ]
     }
   }
 }

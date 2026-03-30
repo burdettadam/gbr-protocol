@@ -29,6 +29,10 @@
         "fid_markers": {
           "type": "array",
           "items": { "$ref": "enums.schema.json#/$defs/fid_marker" }
+        },
+        "stress_level": {
+          "$ref": "enums.schema.json#/$defs/stress_level",
+          "description": "Current stress intensity. Links scene state to the character's entity-level stress_profile tells."
         }
       }
     },

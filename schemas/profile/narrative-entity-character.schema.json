@@ -88,6 +88,95 @@
         }
       },
       "additionalProperties": false
+    },
+    "stress_profile": {
+      "type": "object",
+      "description": "Persistent behavioral patterns under pressure. Declares tells, voice shifts, and escalation that recur across scenes. Maps to Grimoire's Behavioral Operating Profile and Escalation Ladder.",
+      "properties": {
+        "baseline_temperament": {
+          "type": "object",
+          "description": "Default emotional operating parameters.",
+          "properties": {
+            "affect_intensity": {
+              "$ref": "../enums.schema.json#/$defs/affect_intensity",
+              "description": "Baseline strength of emotional responses."
+            },
+            "recovery_speed": {
+              "$ref": "../enums.schema.json#/$defs/recovery_speed",
+              "description": "How quickly the character returns to emotional baseline."
+            },
+            "frustration_threshold": {
+              "$ref": "../enums.schema.json#/$defs/frustration_threshold",
+              "description": "How much pressure the character absorbs before stress behavior activates."
+            }
+          },
+          "additionalProperties": false
+        },
+        "conflict_style": {
+          "$ref": "../enums.schema.json#/$defs/conflict_style",
+          "description": "Default interpersonal conflict approach."
+        },
+        "attachment_pattern": {
+          "$ref": "../enums.schema.json#/$defs/attachment_pattern",
+          "description": "Bowlby/Ainsworth attachment style governing close-relationship behavior."
+        },
+        "tells": {
+          "type": "array",
+          "description": "Observable behavioral shifts that surface under pressure. Each tell is a persistent character trait that readers and other characters can learn to recognize.",
+          "items": {
+            "type": "object",
+            "required": ["stress_level", "channel", "tell"],
+            "properties": {
+              "stress_level": {
+                "$ref": "../enums.schema.json#/$defs/stress_level",
+                "description": "Stress intensity at which this tell activates."
+              },
+              "channel": {
+                "$ref": "../enums.schema.json#/$defs/tell_channel",
+                "description": "Sensory channel through which the tell manifests."
+              },
+              "tell": {
+                "type": "string",
+                "description": "Free-text description of the behavioral tell."
+              },
+              "visible_to_others": {
+                "type": "boolean",
+                "default": true,
+                "description": "Whether other characters can observe this tell (false = only visible to reader via narration)."
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "voice_under_stress": {
+          "type": "object",
+          "description": "How voice_signature shifts under stress. Values override voice_signature defaults when the character is pressured.",
+          "properties": {
+            "sentence_length_tendency": {
+              "type": "string",
+              "enum": ["short", "varied", "long"],
+              "description": "Sentence length pattern under stress."
+            },
+            "vocabulary_register": {
+              "type": "string",
+              "enum": ["elevated", "standard", "colloquial", "dialect"],
+              "description": "Vocabulary register under stress."
+            },
+            "syntax_complexity": {
+              "type": "string",
+              "enum": ["simple", "moderate", "complex"],
+              "description": "Syntactic complexity under stress."
+            },
+            "stress_phrases": {
+              "type": "array",
+              "items": { "type": "string" },
+              "description": "Verbal tics or phrases that emerge only under stress."
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
     }
   }
 }

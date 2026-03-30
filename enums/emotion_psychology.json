@@ -92,6 +92,48 @@
         { "value": "disillusionment", "definition": "Character begins with idealism and ends with hardened or sorrowful knowledge of the world's actual nature.", "example_usage": "Portrait of the Artist; Great Expectations." },
         { "value": "flat", "definition": "Character's emotional baseline does not fundamentally change; they function as a catalyst for others.", "example_usage": "Mentor/hero flat arcs; genre protagonists." }
       ]
+    },
+    "stress_level": {
+      "description": "Character's current stress intensity. Used in entity profiles (stress_profile.tells) and scene-level character state.",
+      "values": [
+        { "value": "low", "definition": "Mild pressure or discomfort; early behavioral signals may surface.", "example_usage": "A conversation that touches a sore subject." },
+        { "value": "moderate", "definition": "Sustained pressure that compromises normal coping; tells become visible to others.", "example_usage": "An escalating argument; a deadline crisis." },
+        { "value": "acute", "definition": "Extreme pressure; coping breaks down; fight/flight/freeze/fawn responses activate.", "example_usage": "Physical danger; confrontation with the wound; public exposure." },
+        { "value": "any", "definition": "Used in entity profile tells to indicate a behavior that surfaces at all stress levels.", "example_usage": "A nervous habit that is always active under any pressure." }
+      ]
+    },
+    "tell_channel": {
+      "description": "Sensory channel through which a character tell manifests — how the stress behavior is observable.",
+      "values": [
+        { "value": "speech", "definition": "Verbal patterns: word choice, sentence rhythm, filler phrases, topic shifts, accent thickening.", "example_usage": "Starts citing random facts when nervous." },
+        { "value": "body", "definition": "Physical signals: posture, gesture, facial expression, somatic responses.", "example_usage": "Hands go still; jaw clenches; avoids eye contact." },
+        { "value": "behavioral", "definition": "Actions and habits: compulsive rituals, displacement activities, coping behaviors.", "example_usage": "Alphabetizes nearby objects; cleans compulsively; checks phone repeatedly." },
+        { "value": "cognitive", "definition": "Thought patterns visible only to the reader via narration: rumination, catastrophizing, dissociation.", "example_usage": "Internal monologue fragments; loses track of conversation." }
+      ]
+    },
+    "affect_intensity": {
+      "description": "Baseline strength of a character's emotional responses — their default emotional volume.",
+      "values": [
+        { "value": "muted", "definition": "Emotions are understated, controlled, or suppressed by default.", "example_usage": "A stoic character whose feelings are hard to read." },
+        { "value": "moderate", "definition": "Emotions are proportional to stimulus; readable but not overwhelming.", "example_usage": "A character whose emotional range feels natural and balanced." },
+        { "value": "intense", "definition": "Emotions run hot and visible; strong reactions are the norm.", "example_usage": "A character who cries easily, rages quickly, or laughs loudly." }
+      ]
+    },
+    "recovery_speed": {
+      "description": "How quickly a character returns to emotional baseline after disruption.",
+      "values": [
+        { "value": "fast", "definition": "Bounces back quickly; processes and moves on.", "example_usage": "A resilient character who shakes off setbacks within a scene." },
+        { "value": "moderate", "definition": "Takes time but recovers without external help.", "example_usage": "A character who carries tension across a scene boundary but resolves by the next chapter." },
+        { "value": "slow", "definition": "Lingers in emotional states; carries disruption across multiple scenes.", "example_usage": "A brooding character who lets a slight fester for chapters." }
+      ]
+    },
+    "frustration_threshold": {
+      "description": "How much pressure a character absorbs before stress behaviors activate.",
+      "values": [
+        { "value": "low", "definition": "Quickly overwhelmed; stress behaviors surface early.", "example_usage": "A character who snaps at small inconveniences." },
+        { "value": "medium", "definition": "Normal tolerance; stress behaviors appear under genuine pressure.", "example_usage": "A character who handles daily friction but breaks under sustained conflict." },
+        { "value": "high", "definition": "Absorbs significant pressure before showing strain; can appear unflappable until the dam breaks.", "example_usage": "A character who seems calm through a crisis — until the single remark that pierces the armor." }
+      ]
     }
   }
 }
