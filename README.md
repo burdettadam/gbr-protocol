@@ -99,6 +99,12 @@ Documented enum definitions are in [`enums/`](enums/). Each file covers a domain
 
 ---
 
+## Training Pipeline
+
+The full AI training architecture — task types, annotation layers, semantic/registry separation, critique capability, and the 6-step annotation pipeline — is documented in [`docs/training-pipeline.md`](docs/training-pipeline.md).
+
+---
+
 ## Examples
 
 Structured example documents are in [`examples/`](examples/):
